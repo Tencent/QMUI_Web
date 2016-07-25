@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/**
+ * var.scss 变量
+ * @author Kayo&Clearwu
+ * @date 2014-11-14
+ *
+ * --- function ----
+ * #function QMUI 功能相关
+ *
+ * --- common ----
+ * #common 通用
+
+ * --- component ----
+ * #button 按钮组件
+ * #dialog 对话框组件
+ * #mask 遮罩层组件
+ * #dropdownMenu 下拉菜单组件
+ * #tab 选项卡组件
+ * #inputText、#textarea 文本输入组件
+ *
+ */
+
+// #function QMUI 功能相关
+// 由于移动页面也有大量渠道流向 PC，最终在 PC 上浏览，因此综合考虑这里 Mobile Only 仅仅会抛弃 IE6/7 相关的属性
+$function_mobileOnly: false;
+// 在雪碧图的每个原图之间加入空隙，这样可以防止因元素位置没有对齐像素产生的问题，同时也能基本避免浏览器缩放时发生的问题
+$function_sprite_spacing: 10px;
+
+// #common 通用
+$common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;
+$common_fontSize: 14px;
+$common_body_background: #fff;
+$common_body_color: #000;
+$common_color_link: #2685d2;
+$common_color_linkTapHighlight: rgba(105, 186, 255, .13);
+$common_color_separator: #ccccce;
+$common_color_border: $common_color_separator;
+$common_zIndex_1: 10;
+$common_zIndex_2: 20;
+$common_zIndex_3: 30;
+$common_zIndex_4: 40;
+$common_zIndex_5: 50;
+$common_zIndex_6: 60;
+$common_zIndex_7: 70;
+$common_zIndex_8: 80;
+$common_zIndex_9: 90;
+$common_zIndex_10: 100;
+
+
+// #button 按钮组件
+$btn_minWidth: 24px;
+$btn_height: 22px;
+$btn_lineHeight: $btn_height;
+$btn_padding: 0 12px;
+$btn_background: #f4f4f4;
+$btn_border: 1px solid #888;
+$btn_fontSize: 12px;
+$btn_color: #000;
+
+// #dialog 对话框组件
+$dialog_zIndex: $common_zIndex_10;
+$dialog_minWidth: 440px; // 对话框的最小宽度
+$dialog_background: #eaeaea;
+$dialog_border: 1px solid #aaa;
+$dialog_radius: 5px;
+
+$dialog_head_background: #eaeaea;
+$dialog_head_borderBottom: 1px solid #ccc; // 对话框头部的下边线，样式默认与对话框边线一样
+
+$dialog_title_height: 25px;
+$dialog_title_fontSize: 12px;
+$dialog_title_fontWeight: bold;
+$dialog_title_color: #000;
+$dialog_title_lineHeight: $dialog_title_height;
+
+$dialog_close_top: 10px;
+$dialog_close_right: 10px;
+
+$dialog_body_background: #fff;
+
+$dialog_foot_background: $dialog_head_background; // 对话框底部的背景，默认与对话框头部的背景一样
+$dialog_foot_borderTop: $dialog_head_borderBottom; // 对话框底部的上边线，样式默认与对话框边线一样
+
+
+// #mask 遮罩层组件
+$mask_zIndex: $common_zIndex_9;
+$maskWrap_zIndex: $mask_zIndex;
+$mask_background: #000;
+$mask_opacity: 0.5;
+
+
+// #dropdownMenu 下拉菜单组件
+$dropdownMenu_zIndex: $common_zIndex_3;
+$dropdownMenu_background: #fff;
+$dropdownMenu_border: 1px solid #a0a0a0;
+$dropdownMenu_ulPadding: 5px 0;
+$dropdownMenu_itemLink_height: 22px;
+$dropdownMenu_itemLink_lineHeight: $dropdownMenu_itemLink_height;
+$dropdownMenu_itemLink_padding: 0 14px;
+$dropdownMenu_itemLink_color:  #000;
+$dropdownMenu_split_margin: 5px 0;
+$dropdownMenu_split_borderTop: 1px solid #ccc;
+
+
+// #tab 选项卡组件
+$tab_background: #ecf9ff;
+$tab_head_background: #a5d9f0;
+$tabNav_padding: 5px 5px 0;
+$tabNav_item_margin: 0;
+$tabNav_itemLink_height: 28px;
+$tabNav_itemLink_lineHeight: $tabNav_itemLink_height;
+$tabNav_itemLink_padding: 5px 10px;
+$tabNav_itemLink_background: transparent;
+$tabNav_itemLink_color: #006091;
+
+// #inputText、#textarea 文本输入组件
+$textField_width: 270px;
+$textField_lineHeight: 18px;
+$textField_padding: 5px;
+$textField_background: #fff;
+$textField_border: 1px solid #96a5b4;
+$textField_borderRadius: 2px;
+
+$inputText_height: $textField_lineHeight;
+
+$textarea_height: $textField_lineHeight * 3;

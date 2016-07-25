@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/**
+ * _button.scss 按钮组件
+ * @author Kayo 
+ * @date 2014-11-04
+ *
+ * .qui_btn
+ *
+ */
+
+
+/* .qui_btn */
+.qui_btn {
+  display: inline-block;
+  margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
+  @include box-sizing(content-box);
+  min-width: $btn_minWidth;
+  height: $btn_height;
+  padding: $btn_padding;
+  background: $btn_background;
+  border: $btn_border;
+  line-height: $btn_lineHeight;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: $btn_fontSize; 
+  color: $btn_color;
+  @extend %disabledUserSelect;
+  _overflow-y: hidden;
+}
+
+/* 在低版本 ie 下，带有 border 的 submit 类型的 input 或 button 会有一条黑边，无法去除,
+ * 所以如果按钮样式的 border 不为 none，项目又需要考虑兼容低版本 ie，则建议使用 a 标签代替 */
+button.qui_btn,
+input.qui_btn {
+  *overflow: visible; /* IE6/7的button需要设置此属性以使padding生效 */
+  *min-width: auto;
+}
