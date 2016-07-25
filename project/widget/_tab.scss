@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/**
+ * _tab.scss
+ * @author clearwu
+ * @date 2014-11-12
+ *
+ * .qui_tab
+ *
+ */
+
+/* .qui_tab */
+.qui_tabNav_item_Curr {
+  background: #ecf9ff;
+}
+.qui_tabNav_itemLink:hover {
+  color: #0087ca;
+  text-decoration: underline;
+}

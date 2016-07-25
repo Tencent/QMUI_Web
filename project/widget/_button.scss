@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/**
+ * _button.scss
+ * @author Kayo 
+ * @date 2014-11-04
+ *
+ * .qui_btn
+ *  + .qui_btn_Blue
+ *
+ */
+
+
+/* .qui_btn */
+.qui_btn {
+  @include gradient_vertical_threeColor(#fff, #ebebeb, #f3f3f3, 0%, 90%, 100%);
+  border-radius: 4px;
+  /* line-height 的偏移值依赖于不同字体 */
+  line-height: $btn_lineHeight + 2;
+  line-height: $btn_lineHeight + 1 \9\0;
+  _line-height: $btn_lineHeight + 4;
+  
+  &:focus {
+    border-color: #0074bc;
+  }
+  &:active,
+  &_Active {
+    @include box_shadow(inset 0 1px 2px rgba(0,0,0,0.2));
+    border-color: #7e7e7e;
+    background: #F3F3F3;
+    @include gradient_vertical(#ebebeb, #f3f3f3);
+  }
+  &:disabled,
+  &_Disabled {
+    background: #ececec;
+    filter: none;
+    border-color: #c3c3c3;
+    color: #a8a8a8!important;
+    box-shadow: none;
+  }
+
+}
+
+button.qui_btn,
+input.qui_btn {
+  *height: $btn_lineHeight + 2;
+  *line-height: $btn_lineHeight - 3;
+  _line-height: $btn_lineHeight - 1;
+}
+
+.qui_btn_Blue {
+  border: 1px solid #1d567d;
+  color: #fff!important;
+  background: #2e89c5;
+  @include gradient_vertical_threeColor(#2a96d8, #257db9, #2e89c5, 0%, 90%, 100%);
+
+  &:active,
+  &_Active {
+    border-color: #1d567d;
+    background: #0074bc;
+    @include gradient_vertical(#0074bc, #238aca);
+  }
+  &:disabled,
+  &_Disabled {
+    background: #98c3e2;
+    filter: none;
+    border-color: #a2b6c5;
+    color: #f9fcfe!important;
+    box-shadow: none;
+  }
+}

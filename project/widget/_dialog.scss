@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/**
+ * _dialog.scss
+ * @author Kayo 
+ * @date 2014-11-03
+ *
+ * .qui_dialog
+ */
+
+
+/* .qui_dialog */
+.qui_dialog {
+  @include box_shadow(0 0 8px rgba(0, 0, 0, 0.2));
+}
+
+.qui_dialog_head {
+  padding: 5px 15px;
+}
+
+.qui_dialog_title {
+  font-weight: bold;
+}
+
+.qui_dialog_close {
+  font-size: 0;
+  line-height: 0;
+}
+.qui_dialog_colseIcon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(project/images/qui_dialog_close.png) no-repeat;
+}
+
+.qui_dialog_body {
+  padding: 23px 30px 30px 37px;
+  font-size: 14px;
+} 
+
+.qui_dialog_foot {
+  padding: 5px 12px;
+  text-align: right;
+  line-height: 25px;
+}
+
+.qui_dialog_foot .qui_btn {
+  margin-left: 3px;
+}

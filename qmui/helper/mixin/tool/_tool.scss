@@ -1,0 +1,16 @@
+@charset "utf-8";
+/**
+ * _tool.scss 常用工具方法 
+ * @author Kayo 
+ * @date 2015-08-23
+ * 
+ */
+
+// 辅助编写样式效果的工具方法
+@import "_effect";
+
+// 辅助数值计算的工具方法
+@import "_calculate";
+
+// 原生增强，补充 SASS 原生语法缺少的能力
+@import "_enhance";

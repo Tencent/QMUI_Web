@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/**
+ * _textField.scss 文本输入组件
+ * @author clearwu 
+ * @date 2014-11-13
+ *
+ * .qui_inputText
+ * .qui_textarea
+ *
+ */
+
+%textField {
+	display: block;
+	width: $textField_width;
+	line-height: $textField_lineHeight;
+	padding: $textField_padding;
+	background: $textField_background;
+	border: $textField_border;
+	border-radius: $textField_borderRadius;
+  @include box-sizing(content-box);
+}
+
+/* .qui_inputText */
+.qui_inputText {
+	@extend %textField;
+	height: $inputText_height;
+	&::-ms-clear {
+		display: none;	//去除IE10给输入框加上clear叉叉按钮的效果
+	}
+}
+/* .qui_textarea */
+.qui_textarea {
+	@extend %textField;
+	height: $textarea_height;
+}

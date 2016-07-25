@@ -1,0 +1,14 @@
+@charset "utf-8";
+/**
+ * _qmui.scss QMUI 总样式文件
+ * @author Kayo 
+ * @date 2014-10-31
+ *
+ */
+
+
+// 助手方法 helper（主要包含 reset 和 常用 mixin） 
+@import "helper/_helper";
+
+// 基础组件 component
+@import "component/_component";
