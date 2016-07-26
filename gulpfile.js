@@ -78,7 +78,7 @@ gulp.task('initProject', false, function(){
 });
 
 // 创建一个新项目并执行一次 compass 编译
-gulp.task('createProject', '创建一个新项目', ['initProject', 'compass']);
+gulp.task('init', '创建一个新项目', ['initProject', 'compass']);
 
 // 调用 shell 执行 Compass 命令
 gulp.task('compass', '编译 Compass（建议调用 watch 任务自动监控文件变化并调用）', plugins.shell.task([
