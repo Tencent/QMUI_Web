@@ -36,7 +36,7 @@ QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一
 * 树状选择菜单
 
 ## 效果预览
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/Generator.gif" width="628" height="442" alt="效果预览" />
+<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
 
 ## 快速开始
 请浏览官方网站：[http://qmuiteam.com/web/start.html](http://qmuiteam.com/web/start.html)
@@ -44,7 +44,7 @@ QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一
 ## 其他说明
 推荐配合桌面 App：[QMUI Web Desktop](http://qmuiteam.com/web/app.html)。它可以管理基于 QMUI Web 进行开发的项目，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
 
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="501" height="601" alt="QMUI Web Desktop" />
+<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="501" alt="QMUI Web Desktop" />
 
 ## 意见反馈
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
