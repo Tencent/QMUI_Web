@@ -42,7 +42,8 @@ QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一
 
 ## 其他说明
 推荐配合桌面 App：[QMUI Web Desktop](http://qmuiteam.com/web/app.html)。它可以管理基于 QMUI Web 进行开发的项目，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
-<div style="text-align: left;">![QMUI Web Desktop](https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App.png)</div>
+
+![QMUI Web Desktop](https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App.png)
 
 ## 意见反馈
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
