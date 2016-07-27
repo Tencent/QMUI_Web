@@ -1,5 +1,6 @@
 # QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/qmui_web/ "Version Number")
 > 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流
+>
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies") 
