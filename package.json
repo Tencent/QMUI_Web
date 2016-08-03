@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流",
   "repository": {
-    "type": "svn",
-    "url": "http://gz-svn.tencent.com/gzrd/gzrd_mail_rep/QMUI_proj/trunk/qmui_sass"
+    "type": "git",
+    "url": "git+https://github.com/QMUI/qmui_web.git"
   },
   "main": "gulpfile.js",
   "dependencies": {
@@ -38,5 +38,9 @@
     "QMUI"
   ],
   "author": "QMUI Team",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QMUI/qmui_web/issues"
+  },
+  "homepage": "http://qmuiteam.com/web/"
 }
