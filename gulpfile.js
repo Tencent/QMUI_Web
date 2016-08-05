@@ -167,6 +167,7 @@ gulp.task('merge', '合并变更文件', function() {
             plugins.util.beep();
           }}))
         .pipe(plugins.concat(_resultFileName))
+        .pipe(plugins.uglify())
         .pipe(gulp.dest(_resultFilePath));
   }
   // 变更文件引用路径
