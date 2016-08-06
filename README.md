@@ -2,6 +2,8 @@
 > 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流
 >
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
+>
+> [Quick Start document for English](Quick Start document for English)
 
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies") 
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team") 
