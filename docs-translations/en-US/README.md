@@ -1,4 +1,4 @@
-## Enviroment 
+## Environment
 
 ```
 #Install gulp
