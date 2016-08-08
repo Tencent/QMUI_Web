@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/BannerForGithub_2x.png" alt="Banner" />
+<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/BannerForGithub_2x.png" style="max-width: 240px;" alt="Banner" />
 
 # QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/qmui_web/ "Version Number")
 > 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流
