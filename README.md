@@ -3,7 +3,7 @@
 </p>
 
 # QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/qmui_web/ "Version Number")
-> 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流
+> 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端框架
 >
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
