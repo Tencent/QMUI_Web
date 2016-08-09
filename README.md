@@ -7,6 +7,8 @@
 >
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
+> 下载 Demo：[https://github.com/QMUI/qmuidemo_web/releases](https://github.com/QMUI/qmuidemo_web/releases)
+>
 > [Quick Start document for English](https://github.com/QMUI/qmui_web/tree/master/docs-translations/en-US)
 
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies") 
@@ -18,27 +20,16 @@ QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一
 ## 功能特性
 
 ### 基础配置与组件
-* 通过预设的 SASS 配置表和公共组件快速实现项目的基本样式（[QMUI SASS 配置表和公共组件如何帮忙开发者快速搭建项目基础 UI？](https://github.com/QMUI/qmui_web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
+通过内置的公共组件和对应的 SASS 配置表，你只需修改简单的配置即可快速实现所需样式的组件。（[QMUI SASS 配置表和公共组件如何帮忙开发者快速搭建项目基础 UI？](https://github.com/QMUI/qmui_web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
 ### SASS 与 Compass 支持
-* CSS Reset
-* 大量封装处理好浏览器兼容的原生 SASS 方法
-* 各种数值计算和获取方法，方便约束 UI 统一
-* 实现如 border 三角形等效果的各种方法
-* 工具类（清除浮动，多行省略号等）
+QMUI Web 包含70个 SASS mixin/function/extend，涉及布局、外观、动画、设备适配、数值计算以及 SASS 原生能力增强等多个方面，可以大幅提升开发效率。
 
 ### 脚手架
-* 利用 gulp 监控代替不稳定的 Compass Watch
-* 模板引擎，强化 html 能力
-* 图片集中管理与图片压缩
-* 静态资源文件的合并、压缩与自动变更
-* 文件清理
+QMUI Web 内置的工作流拥有从初始化项目到变更文件的各种自动化处理，包含了模板引擎，图片集中管理与自动压缩，静态资源合并、压缩与变更以及冗余文件清理等功能。
 
 ### 扩展组件
-* 雪碧图组件
-* 等高左右双栏
-* 文件上传按钮
-* 树状选择菜单
+QMUI Web 除了内置的公共组件外，还通过扩展的方式提供了常用的扩展组件，如雪碧图组件，等高左右双栏，文件上传按钮，树状选择菜单。
 
 ## 环境配置
 
