@@ -22,13 +22,13 @@
     "gulp-replace": "^0.5.4",
     "gulp-shell": "^0.5.0",
     "gulp-util": "^3.0.6",
+    "gulp-uglify": "^2.0.0",
     "imagemin-pngquant": "^5.0.0",
     "js-md5": "^0.4.1",
     "path": "^0.12.7",
     "yargs": "^4.8.0"
   },
   "devDependencies": {
-    "gulp-uglify": "^2.0.0",
     "lodash": "^4.13.1",
     "sassdoc": "^2.1.20"
   },
