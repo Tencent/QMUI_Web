@@ -15,7 +15,7 @@
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team") 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.") 
 
-QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一整套设计的框架。通过 QMUI Web，开发者可以很轻松地提高 Web UI 开发的效率，同时保持了项目的高可维护性与稳健。如果你的项目需要有一套完整的设计，并且可能有频繁的变动，那么 QMUI Web 框架将会是你最好的解决方案。
+QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一整套设计的框架。框架主要由一个强大的 SASS 方法合集与内置的工作流构成。通过 QMUI Web，开发者可以很轻松地提高 Web UI 开发的效率，同时保持了项目的高可维护性与稳健。如果你需要方便地控制项目的整体样式，或者需要应对频繁的界面变动，那么 QMUI Web 框架将会是你最好的解决方案。
 
 ## 功能特性
 
