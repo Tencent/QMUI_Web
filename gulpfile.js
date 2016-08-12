@@ -20,8 +20,7 @@ var gulp        = require('gulp-help')(require('gulp'), {
     plugins     = require('gulp-load-plugins')({
                     rename: {
                       'gulp-file-include': 'include',
-                      'gulp-merge-link': 'merge',
-                      'gulp-file-sync': 'fileSync'
+                      'gulp-merge-link': 'merge'
                     }
                   }),
     config      = require('../config.json'),
@@ -160,6 +159,14 @@ gulp.task('merge', '合并变更文件', function() {
       _childFiles.push(_childFilesRelative);
     }
 
+    var _condition = function (_file) {
+      if(_file.path.toString().indexOf('\.js') !== -1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     gulp.src(_childFiles)
         .pipe(plugins.plumber({
           errorHandler: function(_error) {
@@ -167,7 +174,7 @@ gulp.task('merge', '合并变更文件', function() {
             plugins.util.beep();
           }}))
         .pipe(plugins.concat(_resultFileName))
-        .pipe(plugins.uglify())
+        .pipe(plugins.if(_condition, plugins.uglify(), plugins.cleanCss({compatibility: 'ie8'})))
         .pipe(gulp.dest(_resultFilePath));
   }
   // 变更文件引用路径
