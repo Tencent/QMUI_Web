@@ -78,7 +78,7 @@ yo qmui
 对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
 
 ## QMUI Web Desktop 
-推荐配合桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
+推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
 
 <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
 
