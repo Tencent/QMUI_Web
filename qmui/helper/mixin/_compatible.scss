@@ -297,14 +297,14 @@
 ///
 /// @group 外观
 /// @name text_multiLine_ellipsis
-/// @param {Number} $line - 文字最大行数 
+/// @param {Number} $line - 文字的行数 
 /// @param {Measure} $lineHeight - 文字行高
 /// @throw 不支持多行省略的浏览器降级处理为结尾处没有省略号，直接裁剪掉。
 /// @support css-line-clamp 
 @mixin text_multiLine_ellipsis($line: 2, $lineHeight: 20px){
   line-height:$lineHeight;
   overflow:hidden;
-  max-height: $lineHeight * $line;
+  height: $lineHeight * $line;
   display: -webkit-box;
   display: -moz-box;
   display: box;
