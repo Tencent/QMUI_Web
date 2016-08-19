@@ -1,6 +1,6 @@
 {
   "name": "qmui_web",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "一个旨在提高 UI 开发效率、快速产生项目 UI 的前端工作流",
   "repository": {
     "type": "git",
