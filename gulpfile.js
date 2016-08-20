@@ -9,7 +9,6 @@ var gulp = require('gulp-help')(require('gulp'), {
              hideDepsMessage: true
            }),
     fs = require('fs'),
-    path = require('path'),
     common = require('./workflow/common.js');
 
 // 载入任务

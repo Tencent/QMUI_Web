@@ -1,7 +1,7 @@
 // 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JSON 文件
 // 传入 Sass 文件列表，以及待输出的 JSON 文件地址
 
-module.exports = function(gulp, common) {
+module.exports = function(gulp) {
   gulp.task('readToolMethod', false, function(){
     var fs = require('fs'),
         sassdoc = require('sassdoc'),
@@ -23,8 +23,8 @@ module.exports = function(gulp, common) {
             for (var _j = 0; _j < _item.parameter.length; _j++) {
               var _paraItem = _item.parameter[_j];
               if (_paraItem.hasOwnProperty('default')) {
-                _paraItem['defaultValue'] = _paraItem['default'];
-                delete _paraItem['default'];
+                _paraItem.defaultValue = _paraItem.default;
+                Reflect.deleteProperty(_paraItem, 'default');
               }
             }
           }

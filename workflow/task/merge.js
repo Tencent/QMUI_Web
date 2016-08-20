@@ -25,11 +25,10 @@ module.exports = function(gulp, common) {
       }
 
       var _condition = function (_file) {
-        if(_file.path.toString().indexOf('\.js') !== -1) {
+        if(_file.path.toString().indexOf('.js') !== -1) {
           return true;
-        } else {
-          return false;
         }
+        return false;
       }
 
       gulp.src(_childFiles)
