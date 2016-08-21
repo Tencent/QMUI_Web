@@ -11,7 +11,7 @@
     "del": "^2.2.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-file-include": "^0.13.7",
+    "gulp-file-include": "^0.14.0",
     "gulp-file-sync": "^1.0.5",
     "gulp-help": "^1.6.1",
     "gulp-if": "^2.0.1",
@@ -28,7 +28,7 @@
     "imagemin-pngquant": "^5.0.0",
     "js-md5": "^0.4.1",
     "path": "^0.12.7",
-    "yargs": "^4.8.0"
+    "yargs": "^5.0.0"
   },
   "devDependencies": {
     "lodash": "^4.13.1",
