@@ -1,6 +1,8 @@
 // 创建一个新项目
 
-var path = require('path');
+var fs     = require('fs'),
+    mkdirp = require('mkdirp'),
+    path   = require('path');
 
 module.exports = function(gulp, common) {
 
@@ -14,7 +16,8 @@ module.exports = function(gulp, common) {
      * 第五步：获取主 scss 文件 demo.scss ，并更新其中的 _qmui.scss 的引用路径（因为 demo.scss 被复制到上一层）；
      * 第六步：重命名 demo.scss，新名称从 config.json 中读取；
      * 第七步：把 demo.scss 复制到上一层目录；
-     * 第八步：执行 compass 编译任务，打开浏览器，并打开新复制的 demo.html；
+     * 第八步：按配置表创建图片目录；
+     * 第九步：执行 compass 编译任务，打开浏览器，并打开新复制的 demo.html；
      */
 
     // 需要遍历的文件
@@ -44,6 +47,17 @@ module.exports = function(gulp, common) {
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
         .pipe(common.plugins.rename(common.config.resultCssFileName))
         .pipe(gulp.dest('../project'));
+    
+    // 创建公共图片目录
+    if (!fs.existsSync(common.config.imagesSourcePath)) {
+      mkdirp(common.config.imagesSourcePath);
+    }
+
+    // 创建独立图片目录
+    var _independentImagesSourcePath = common.config.imagesSourcePath + common.config.independentImagesDirectory;
+    if (!fs.existsSync(_independentImagesSourcePath)) {
+      mkdirp(_independentImagesSourcePath);
+    }
 
     common.plugins.util.log(common.plugins.util.colors.green('QMUI Create Project: ') + '项目创建完毕，接下来会按 config.rb 的配置执行一次 Compass 编译')
   });

@@ -5,7 +5,16 @@ var path = require('path');
 module.exports = function(gulp, common) {
   gulp.task('merge', '合并变更文件', function() {
     // 读取合并规则并保存起来
-    var _mergeRule = require('../../mergeRule.json');
+    var _mergeRule;
+    try {
+        _mergeRule = require('../../../mergeRule.js');
+    } catch (_evnet) {
+      try {
+        _mergeRule = require('../../../mergeRule.json');
+      } catch (_evnet) {
+        common.plugins.util.log(common.plugins.util.colors.red('QMUI Merge: ') + '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
+      }
+    }
 
     // 合并文件
     for(var _key in _mergeRule) {
