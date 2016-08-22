@@ -15,7 +15,7 @@ try {
 } catch (_event) {
   try {
     config = require('../../config.json');
-  } catch (_event) {
+  } catch (_e) {
     plugins.util.log(plugins.util.colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
 
   }

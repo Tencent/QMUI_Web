@@ -11,7 +11,7 @@ module.exports = function(gulp, common) {
     } catch (_evnet) {
       try {
         _mergeRule = require('../../../mergeRule.json');
-      } catch (_evnet) {
+      } catch (_e) {
         common.plugins.util.log(common.plugins.util.colors.red('QMUI Merge: ') + '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
       }
     }
