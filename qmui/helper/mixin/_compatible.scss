@@ -315,14 +315,6 @@
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
-
-  &:after {
-    content: ".";
-    display: block;
-    font-size: 0;
-    visibility: hidden;
-    overflow: hidden;
-  }
 }
 
 /// 在长单词或 URL 地址内部进行换行，适用于以中文为主混有英文的文字排版
