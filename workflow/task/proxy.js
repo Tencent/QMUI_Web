@@ -1,10 +1,16 @@
+// proxy 监视文件改动并重新载入
+
 module.exports = function (gulp, common) {
-    // proxy 监视文件改动并重新载入
-    gulp.task('proxy', function () {
-        common.browserSync.init({
-            proxy: common.config.browserSyncProxy,
-            port: common.config.browserSyncPort
-        });
-        gulp.watch(common.config.browserSyncWatchPath).on('change', common.reload);
+  gulp.task('proxy', function () {
+
+    common.browserSync.init({
+      open: "external",
+      proxy: common.config.browserSyncProxy,
+      port: common.config.browserSyncPort,
+      host: common.config.browserSyncHost,
+      logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
+      startPath: common.config.browserSyncStartPath
     });
+    gulp.watch(common.config.browserSyncWatchPath).on('change', common.reload);
+  });
 };

@@ -8,7 +8,7 @@ var plugins     = require('gulp-load-plugins')({
     packageInfo = require('../package.json'),
     lib         = require('./lib.js'),
     browserSync = require('browser-sync').create(),
-    reload = browserSync.reload,
+    reload      = browserSync.reload,
     config;
 
 // 读取项目配置表

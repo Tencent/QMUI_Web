@@ -22,20 +22,21 @@ module.exports = {
    * BrowerSync 设置
    *
    */
-  // browserSync 的模式，本地模式或者代理模式(server/proxy)
-  "browserSyncMod" : "server",
+  // browserSync 的模式，本地模式、代理模式或者关闭(server/proxy/close)
+  "browserSyncMod" : "proxy",
   // 自定义端口
-  "browserSyncPort" : 5000,
+  "browserSyncPort" : 3000,
+  // server 开启后的默认路径
+  "browserSyncStartPath" : '',
+  "browserSyncHost": "dev.weknow.io",
+  "browserSyncWatchPath":['../../UI_html_result/*.html', '../../public/**/*'],
   // 自定义路由，server 模式下方可产生作用
-  "browserSyncRoute" : {
+  "browserSyncServerRoute" : {
       '/public': '../../public',
       '/web': '../../UI_html_result'
   },
-  // 自定义server 开启后的默认路径，server 模式下方可产生作用
-  "browserSyncStartPath" : '/web',
   // 自定义代理源地址，proxy 模式下方可产生作用
-  "browserSyncProxy": "http://localhost:13082/",
-  "browserSyncWatchPath":['../../UI_html_result/*.html', '../../public/**/**'],
+  "browserSyncProxy": "http://dev.weknow.io",
 
   /**
    * 模板 include 引擎
