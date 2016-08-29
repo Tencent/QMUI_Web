@@ -9,6 +9,7 @@ module.exports = function (gulp, common) {
         // 设置路由
         routes: common.config.browserSyncServerRoute
       },
+      logLevel: !common.config.browserSyncShowLog ? 'silent' : 'info',
       logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
       startPath: common.config.browserSyncStartPath,
       port: common.config.browserSyncPort

@@ -4,10 +4,11 @@ module.exports = function (gulp, common) {
   gulp.task('proxy', function () {
 
     common.browserSync.init({
-      open: "external",
+      open: 'external',
       proxy: common.config.browserSyncProxy,
       port: common.config.browserSyncPort,
       host: common.config.browserSyncHost,
+      logLevel: !common.config.browserSyncShowLog ? 'silent' : 'info',
       logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
       startPath: common.config.browserSyncStartPath
     });
