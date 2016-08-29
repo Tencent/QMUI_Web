@@ -26,7 +26,7 @@ module.exports = function(gulp, common) {
           common.plugins.util.beep(10);
       });
 
-      gulp.watch('gulpfile.js', function() {
+      gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*', '../config.js'], function() {
           common.plugins.util.log('');
           if (argv.debug) {
             common.plugins.util.log(common.plugins.util.colors.yellow('QMUI Debug: ') + '目前为 Debug 模式，检测到 gulpfile.js 有被更新，将自动重启 gulp');
