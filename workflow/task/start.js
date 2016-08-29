@@ -41,7 +41,7 @@ module.exports = function(gulp, common) {
   });
 
   // 默认任务
-  gulp.task('default', '默认任务，自动执行一次 include 和 compass 任务，并调用 watch 任务', ['start', common.config.browserSyncMod], function() {
+  gulp.task('default', '默认任务，自动执行一次 include 和 compass 任务，并调用 watch 任务', ['start'], function() {
     // TODO: 语法要求，有 options 必须填写 fn，所以这里弄个空函数，不优雅待优化 
   }, {
     options: {
@@ -49,5 +49,5 @@ module.exports = function(gulp, common) {
     }
   });
 
-  gulp.task('main', false, ['include', 'compass', 'watch']);
+  gulp.task('main', false, ['include', 'compass', 'watch', common.config.browserSyncMod]);
 };
