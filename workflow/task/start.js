@@ -29,11 +29,11 @@ module.exports = function(gulp, common) {
       gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*', '../config.js'], function() {
           common.plugins.util.log('');
           if (argv.debug) {
-            common.plugins.util.log(common.plugins.util.colors.yellow('QMUI Debug: ') + '目前为 Debug 模式，检测到 gulpfile.js 有被更新，将自动重启 gulp');
+            common.plugins.util.log(common.plugins.util.colors.yellow('QMUI Debug: ') + '目前为 Debug 模式，检测到工作流源码有被更新，将自动重启 gulp');
             common.plugins.util.beep(10);
             restart();
           } else {
-            common.plugins.util.log(common.plugins.util.colors.yellow('QMUI Update: ') + '检测到 gulpfile.js 有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
+            common.plugins.util.log(common.plugins.util.colors.yellow('QMUI Update: ') + '检测到工作流源码有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
             common.plugins.util.beep(10);
           }
       });
