@@ -11,7 +11,7 @@ lib.checkDateFormat = function(_date) {
 
 lib.getCurrentTime = function(){
   var _time = new Date(),
-      _timeResult = lib.checkDateFormat(_time.getHours()) +':' + lib.checkDateFormat(_time.getMinutes()) + ':' + lib.checkDateFormat(_time.getSeconds());
+      _timeResult = lib.checkDateFormat(_time.getHours()) + ':' + lib.checkDateFormat(_time.getMinutes()) + ':' + lib.checkDateFormat(_time.getSeconds());
   return _timeResult;
 };
 
