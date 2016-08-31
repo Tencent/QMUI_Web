@@ -44,7 +44,6 @@ module.exports = {
    * 模板 include 引擎
    *
    */
-  "commentTemplate": "模板 include 引擎的相关配置",
   "openIncludeFunction": true,
   "includePrefix": "@@"
 };
