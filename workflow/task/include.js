@@ -11,8 +11,9 @@ module.exports = function(gulp, common) {
         .pipe(common.plugins.include({
           prefix: common.config.includePrefix // 模板函数的前缀
         }))
-        .pipe(gulp.dest(common.config.htmlResultPath)); 
+        .pipe(gulp.dest(common.config.htmlResultPath));
 
-    common.plugins.util.log(common.plugins.util.colors.green('QMUI Include: ') + '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
+      common.reload();
+      common.plugins.util.log(common.plugins.util.colors.green('QMUI Include: ') + '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
   });
 };
