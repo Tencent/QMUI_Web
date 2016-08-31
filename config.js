@@ -29,7 +29,7 @@ module.exports = {
   // 是否显示 BrowserSync 的日志
   "browserSyncShowLog": false,
   // server 开启后的默认路径
-  "browserSyncStartPath": "/index.html",
+  "browserSyncStartPath": "/web",
   "browserSyncHost": "",
   "browserSyncWatchPath":['../../UI_html_result/*.html', '../../public/**/*'],
   // 自定义路由，server 模式下方可产生作用
