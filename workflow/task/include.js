@@ -1,6 +1,8 @@
 // 模板 include 命令，解释被 include 的内容并输出独立的 HTML 文件
 
-var path = require('path');
+var path = require('path'),
+    browserSync = require('browser-sync').create(),
+    reload = browserSync.reload;
 
 module.exports = function(gulp, common) {
 
@@ -25,7 +27,6 @@ module.exports = function(gulp, common) {
         }))
         .pipe(common.plugins.if(_condition, gulp.dest(common.config.htmlResultPath)));
 
-      common.reload();
       common.plugins.util.log(common.plugins.util.colors.green('QMUI Include: ') + '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
   });
 };
