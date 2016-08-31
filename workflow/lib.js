@@ -9,6 +9,12 @@ lib.checkDateFormat = function(_date) {
   return _date; 
 };
 
+lib.getCurrentTime = function(){
+  var _time = new Date(),
+      _timeResult = lib.checkDateFormat(_time.getHours()) + ':' + lib.checkDateFormat(_time.getMinutes()) + ':' + lib.checkDateFormat(_time.getSeconds());
+  return _timeResult;
+};
+
 // 判断一个元素是否存在于某个数组中
 lib.isElementInArray = function(_array, _element) {
   for(var _i = 0; _i < _array.length; _i++) {
