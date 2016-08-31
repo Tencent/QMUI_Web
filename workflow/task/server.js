@@ -2,6 +2,14 @@
 
 module.exports = function (gulp, common) {
   gulp.task('server', function () {
+
+    var _showLog = function () {
+      if (common.config.browserSyncShowLog) {
+        return 'info';
+      }
+      return 'silent';
+    }
+
     common.browserSync.init({
       server: {
         // 静态路径根目录
@@ -9,7 +17,7 @@ module.exports = function (gulp, common) {
         // 设置路由
         routes: common.config.browserSyncServerRoute
       },
-      logLevel: !common.config.browserSyncShowLog ? 'silent' : 'info',
+      logLevel: _showLog(),
       logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
       startPath: common.config.browserSyncStartPath,
       port: common.config.browserSyncPort
