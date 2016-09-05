@@ -4,18 +4,18 @@
  * @author clearwu
  * @date 2015-08-17
  *
- * .dm_tab
+ * .qui_tab
  *
  */
 
-/* .dm_tab */
-.dm_tab {
+/* .qui_tab */
+.qui_tab {
   border: 1px solid #DEE0E2;
 }
-.dm_tabNav {
+.qui_tabNav {
   border-bottom: 1px solid #DEE0E2;
 }
-.dm_tabNav_item {
+.qui_tabNav_item {
   margin-bottom: -1px;
   border-bottom: 3px solid transparent;
   font-size: 16px;
@@ -23,17 +23,17 @@
   &_Curr {
     border-color: #04C9E8;
 
-    .dm_tabNav_itemLink {
+    .qui_tabNav_itemLink {
       color: #04C9E8;
     }
   }
 }
-.dm_tabNav_itemLink:hover {
+.qui_tabNav_itemLink:hover {
   color: #04C9E8;
   text-decoration: none;
 }
 
-.dm_tab_cnt {
+.qui_tab_cnt {
   min-height: 100px;
   padding: 16px 24px;
 }

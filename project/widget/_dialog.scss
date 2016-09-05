@@ -4,19 +4,19 @@
  * @author Kayo 
  * @date 2015-08-17
  *
- * .dm_dialog
+ * .qui_dialog
  */
 
 
-/* .dm_dialog */
-.dm_dialog {
+/* .qui_dialog */
+.qui_dialog {
   @include box_shadow(0 2px 20px 0 rgba(0, 0, 0, .15));
 }
 
-.dm_dialog_head {
+.qui_dialog_head {
   padding: 0 12px;
 }
-.dm_dialog_close {
+.qui_dialog_close {
   padding: 5px; // 把点击区域做大
   line-height: 1;
   font-size: 12px;
@@ -31,18 +31,18 @@
   }
 }
 
-.dm_dialog_body {
+.qui_dialog_body {
   padding: 23px 30px 30px 37px;
   font-size: 14px;
   color: #353C46;
 } 
 
-.dm_dialog_foot {
+.qui_dialog_foot {
   padding: 17px 12px;
   text-align: right;
   line-height: 25px;
 }
 
-.dm_dialog_foot .dm_btn {
+.qui_dialog_foot .qui_btn {
   margin-left: 12px;
 }

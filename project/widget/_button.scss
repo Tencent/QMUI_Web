@@ -4,14 +4,14 @@
  * @author Kayo 
  * @date 2015-08-17
  *
- * .dm_btn
- *  + .dm_btn_Blue
+ * .qui_btn
+ *  + .qui_btn_Blue
  *
  */
 
 
-/* .dm_btn */
-.dm_btn {
+/* .qui_btn */
+.qui_btn {
   background-color: #04C9E8;
   border-radius: 2px;
   /* line-height 的偏移值依赖于不同字体 */
@@ -32,14 +32,14 @@
 
 }
 
-button.dm_btn,
-input.dm_btn {
+button.qui_btn,
+input.qui_btn {
   *height: $btn_lineHeight + 2;
   *line-height: $btn_lineHeight - 3;
   _line-height: $btn_lineHeight - 1;
 }
 
-.dm_btn_Ghost {
+.qui_btn_Ghost {
   background-color: transparent;
   border: 1px solid #04C9E8;
   color: #04C9E8;
