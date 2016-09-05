@@ -50,37 +50,38 @@ $common_zIndex_10: 100;
 
 
 // #button 按钮组件
-$btn_minWidth: 24px;
-$btn_height: 22px;
+$btn_minWidth: 46px;
+$btn_height: 30px;
 $btn_lineHeight: $btn_height;
 $btn_padding: 0 12px;
-$btn_background: #f4f4f4;
-$btn_border: 1px solid #888;
-$btn_fontSize: 12px;
-$btn_color: #000;
+$btn_background: #04C9E8;
+$btn_border: 1px solid transparent;
+$btn_fontSize: 13px;
+$btn_color: #fff;
+
 
 // #dialog 对话框组件
 $dialog_zIndex: $common_zIndex_10;
-$dialog_minWidth: 440px; // 对话框的最小宽度
-$dialog_background: #eaeaea;
-$dialog_border: 1px solid #aaa;
+$dialog_minWidth: 420px; // 对话框的最小宽度
+$dialog_background: #fff;
+$dialog_border: none;
 $dialog_radius: 5px;
 
-$dialog_head_background: #eaeaea;
-$dialog_head_borderBottom: 1px solid #ccc; // 对话框头部的下边线，样式默认与对话框边线一样
+$dialog_head_background: #00C0E1;
+$dialog_head_borderBottom: none; // 对话框头部的下边线
 
-$dialog_title_height: 25px;
-$dialog_title_fontSize: 12px;
+$dialog_title_height: 40px;
+$dialog_title_fontSize: 14px;
 $dialog_title_fontWeight: bold;
-$dialog_title_color: #000;
+$dialog_title_color: #fff;
 $dialog_title_lineHeight: $dialog_title_height;
 
-$dialog_close_top: 10px;
-$dialog_close_right: 10px;
+$dialog_close_top: 9px;
+$dialog_close_right: 6px;
 
 $dialog_body_background: #fff;
 
-$dialog_foot_background: $dialog_head_background; // 对话框底部的背景，默认与对话框头部的背景一样
+$dialog_foot_background: $dialog_background; // 对话框底部的背景，默认与对话框的背景一样
 $dialog_foot_borderTop: $dialog_head_borderBottom; // 对话框底部的上边线，样式默认与对话框边线一样
 
 
@@ -94,34 +95,35 @@ $mask_opacity: 0.5;
 // #dropdownMenu 下拉菜单组件
 $dropdownMenu_zIndex: $common_zIndex_3;
 $dropdownMenu_background: #fff;
-$dropdownMenu_border: 1px solid #a0a0a0;
-$dropdownMenu_ulPadding: 5px 0;
-$dropdownMenu_itemLink_height: 22px;
+$dropdownMenu_border: 1px solid $common_color_border;
+$dropdownMenu_ulPadding: 12px 0;
+$dropdownMenu_itemLink_height: 32px;
 $dropdownMenu_itemLink_lineHeight: $dropdownMenu_itemLink_height;
-$dropdownMenu_itemLink_padding: 0 14px;
+$dropdownMenu_itemLink_padding: 0 15px;
 $dropdownMenu_itemLink_color:  #000;
 $dropdownMenu_split_margin: 5px 0;
 $dropdownMenu_split_borderTop: 1px solid #ccc;
 
 
 // #tab 选项卡组件
-$tab_background: #ecf9ff;
-$tab_head_background: #a5d9f0;
-$tabNav_padding: 5px 5px 0;
-$tabNav_item_margin: 0;
-$tabNav_itemLink_height: 28px;
+$tab_background: #fff;
+$tab_head_background: $tab_background;
+$tabNav_padding: 0 16px;
+$tabNav_item_margin: 0 24px 0 0;
+$tabNav_itemLink_height: 43px;
 $tabNav_itemLink_lineHeight: $tabNav_itemLink_height;
-$tabNav_itemLink_padding: 5px 10px;
+$tabNav_itemLink_padding: 0;
 $tabNav_itemLink_background: transparent;
-$tabNav_itemLink_color: #006091;
+$tabNav_itemLink_color: #858C96;
+
 
 // #inputText、#textarea 文本输入组件
 $textField_width: 270px;
-$textField_lineHeight: 18px;
-$textField_padding: 5px;
+$textField_lineHeight: 22px;
+$textField_padding: 12px 16px;
 $textField_background: #fff;
-$textField_border: 1px solid #96a5b4;
-$textField_borderRadius: 2px;
+$textField_border: 1px solid $common_color_border;
+$textField_borderRadius: 5px;
 
 $inputText_height: $textField_lineHeight;
 
