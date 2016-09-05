@@ -2,47 +2,47 @@
 /**
  * _dialog.scss
  * @author Kayo 
- * @date 2014-11-03
+ * @date 2015-08-17
  *
- * .qui_dialog
+ * .dm_dialog
  */
 
 
-/* .qui_dialog */
-.qui_dialog {
-  @include box_shadow(0 0 8px rgba(0, 0, 0, 0.2));
+/* .dm_dialog */
+.dm_dialog {
+  @include box_shadow(0 2px 20px 0 rgba(0, 0, 0, .15));
 }
 
-.qui_dialog_head {
-  padding: 5px 15px;
+.dm_dialog_head {
+  padding: 0 12px;
+}
+.dm_dialog_close {
+  padding: 5px; // 把点击区域做大
+  line-height: 1;
+  font-size: 12px;
+  color: #fff;
+
+  &:hover {
+    color: #d6d9de;
+    text-decoration: none;
+  }
+  &:active {
+    color: #eaecee;
+  }
 }
 
-.qui_dialog_title {
-  font-weight: bold;
-}
-
-.qui_dialog_close {
-  font-size: 0;
-  line-height: 0;
-}
-.qui_dialog_colseIcon {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: url(project/images/qui_dialog_close.png) no-repeat;
-}
-
-.qui_dialog_body {
+.dm_dialog_body {
   padding: 23px 30px 30px 37px;
   font-size: 14px;
+  color: #353C46;
 } 
 
-.qui_dialog_foot {
-  padding: 5px 12px;
+.dm_dialog_foot {
+  padding: 17px 12px;
   text-align: right;
   line-height: 25px;
 }
 
-.qui_dialog_foot .qui_btn {
-  margin-left: 3px;
+.dm_dialog_foot .dm_btn {
+  margin-left: 12px;
 }

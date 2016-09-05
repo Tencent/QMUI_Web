@@ -2,13 +2,19 @@
 /**
  * _textField.scss
  * @author clearwu
- * @date 2014-11-12
+ * @date 2015-08-17
  *
- * .qui_inputText
- * .qui_textarea
+ * .dm_inputText
+ * .dm_textarea
  *
  */
 
-/* .qui_inputText */
+.dm_inputText,
+.dm_textarea {
+  font-size: 15px;
+  color: #353C46;
+}
 
-/* .qui_textarea */
+/* .dm_inputText */
+
+/* .dm_textarea */
