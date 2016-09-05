@@ -33,3 +33,41 @@
 	@extend %textField;
 	height: $textarea_height;
 }
+
+/* placeholder 颜色重置 */
+// Webkit
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $common_color_placeholder;
+}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: $common_color_placeholderFocus;
+}
+// Firefox < 19
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: $common_color_placeholder;
+}
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  color: $common_color_placeholderFocus;
+}
+// Firefox > 19
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: $common_color_placeholder;
+}
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: $common_color_placeholderFocus;
+}
+// IE10
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $common_color_placeholder;
+}
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: $common_color_placeholder;
+}
