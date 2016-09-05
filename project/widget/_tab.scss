@@ -2,17 +2,38 @@
 /**
  * _tab.scss
  * @author clearwu
- * @date 2014-11-12
+ * @date 2015-08-17
  *
  * .qui_tab
  *
  */
 
 /* .qui_tab */
-.qui_tabNav_item_Curr {
-  background: #ecf9ff;
+.qui_tab {
+  border: 1px solid #DEE0E2;
+}
+.qui_tabNav {
+  border-bottom: 1px solid #DEE0E2;
+}
+.qui_tabNav_item {
+  margin-bottom: -1px;
+  border-bottom: 3px solid transparent;
+  font-size: 16px;
+
+  &_Curr {
+    border-color: #04C9E8;
+
+    .qui_tabNav_itemLink {
+      color: #04C9E8;
+    }
+  }
 }
 .qui_tabNav_itemLink:hover {
-  color: #0087ca;
-  text-decoration: underline;
+  color: #04C9E8;
+  text-decoration: none;
+}
+
+.qui_tab_cnt {
+  min-height: 100px;
+  padding: 16px 24px;
 }

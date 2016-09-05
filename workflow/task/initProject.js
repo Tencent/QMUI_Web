@@ -10,11 +10,11 @@ module.exports = function(gulp, common) {
     /**
      * 创建一个新项目
      * 第一步：获取 Project 文件夹中的基本目录结构和公共通用组件并持有它们，但排除了主 scss 文件 demo.scss
-     * 第二步：修改持有文件中的 qui_ 前缀为新项目的前缀，新前缀值从 config.json 中读取；
+     * 第二步：修改持有文件中的 qui_ 前缀为新项目的前缀，新前缀值从 config.js 中读取；
      * 第三步：修改持有文件内容注释中的日期为创建项目时的日期；
      * 第四步：把这些持有的文件复制到上一层目录；
      * 第五步：获取主 scss 文件 demo.scss ，并更新其中的 _qmui.scss 的引用路径（因为 demo.scss 被复制到上一层）；
-     * 第六步：重命名 demo.scss，新名称从 config.json 中读取；
+     * 第六步：重命名 demo.scss，新名称从 config.js 中读取；
      * 第七步：把 demo.scss 复制到上一层目录；
      * 第八步：按配置表创建图片目录；
      * 第九步：执行 compass 编译任务，打开浏览器，并打开新复制的 demo.html；
@@ -59,9 +59,9 @@ module.exports = function(gulp, common) {
       mkdirp(_independentImagesSourcePath);
     }
 
-    common.plugins.util.log(common.plugins.util.colors.green('QMUI Create Project: ') + '项目创建完毕，接下来会按 config.rb 的配置执行一次 Compass 编译')
+    common.plugins.util.log(common.plugins.util.colors.green('QMUI Create Project: ') + '项目创建完毕，接下来会按配置执行一次 Default Task')
   });
 
   // 创建一个新项目并执行一次 compass 编译
-  gulp.task('init', '创建一个新项目', ['initProject', 'compass']);
+  gulp.task('init', '创建一个新项目', ['initProject', 'default']);
 };
