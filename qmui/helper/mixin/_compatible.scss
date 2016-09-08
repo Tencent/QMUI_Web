@@ -982,7 +982,7 @@
 /// 单独适配 IE 8 CSS 选择器，需要仅针对 IE 8 的样式可以写在这里
 ///
 /// @group 设备适配 
-/// @name screenForIE10AndLater
+/// @name forIE8
 @mixin forIE8 {
 	@media \0screen {
 		@content;
