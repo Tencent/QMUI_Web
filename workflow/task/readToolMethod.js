@@ -24,7 +24,7 @@ module.exports = function(gulp) {
               var _paraItem = _item.parameter[_j];
               if (_paraItem.hasOwnProperty('default')) {
                 _paraItem.defaultValue = _paraItem.default;
-                Reflect.deleteProperty(_paraItem, 'default');
+                delete _paraItem.default;
               }
             }
           }

@@ -14,8 +14,8 @@ var gulp = require('gulp-help')(require('gulp'), {
 // 载入任务
 var taskPath = 'workflow/task';
 
-fs.readdirSync(taskPath).filter(function (file) {
-  return file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
+fs.readdirSync(taskPath).filter(function (_file) {
+  return _file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
 }).forEach(function (_file) {
   require('./' + taskPath + '/' + _file)(gulp, common);
 });
