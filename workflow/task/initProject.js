@@ -33,7 +33,7 @@ module.exports = function(gulp, common) {
     _currentMonth = common.lib.checkDateFormat(_currentDate.getMonth() + 1),
     _currentDay = common.lib.checkDateFormat(_currentDate.getDate()),
     _formattingDate = _currentYear + '-' + _currentMonth + '-' + _currentDay,
-    _targetQmuiStylePath = '../' + path.resolve('.').split('/').pop() + '/qmui/_qmui.scss';
+    _targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss';
 
     // 执行创建项目的任务
     gulp.src(_sourceArr)
@@ -63,5 +63,5 @@ module.exports = function(gulp, common) {
   });
 
   // 创建一个新项目并执行一次 compass 编译
-  gulp.task('init', '创建一个新项目', ['initProject', 'default']);
+  gulp.task('init', '创建一个新项目', common.plugins.sequence('initProject', 'default'));
 };
