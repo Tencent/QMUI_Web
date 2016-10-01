@@ -26,7 +26,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: (-$height)/2 0 0 (-$width)/2; 
+  margin: (-$height)/2 0 0 (-$width)/2;
 }
 
 %triangleCommonStyle {
@@ -59,26 +59,56 @@
     border-bottom-color: $borderColor;
     _border-bottom-color: $borderColor;
   }
-  /* 向下小三角 */
+    /* 向下小三角 */
   @else if $direction == bottom {
     border-width: $height $width / 2;
     border-bottom: 0;
     border-top-color: $borderColor;
     _border-top-color: $borderColor;
   }
-  /* 向左小三角 */
+    /* 向左小三角 */
   @else if $direction == left {
     border-width: $width / 2 $height ;
     border-left: 0;
     border-right-color: $borderColor;
     _border-right-color: $borderColor;
   }
-  /* 向右小三角 */
+    /* 向右小三角 */
   @else if $direction == right {
     border-width: $width / 2 $height;
     border-right: 0;
     border-left-color: $borderColor;
     _border-left-color: $borderColor;
+  }
+}
+
+
+/// @name cross
+/// @param {Measure} $crossLength - 十字架的大小
+/// @param {Measure} $crossLineThickness - 十字架线条的粗细
+/// @param {Color} $crossLineColor [#2685d2] - 十字架的颜色
+@mixin cross($crossLength:26px,$crossLineThickness:2px,$crossLineColor:$common_color_link){
+  position: relative;
+  @include square($crossLength);
+  &:before,
+  &:after{
+    content: "";
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    background-color: $crossLineColor;
+  }
+  &:before{
+    left:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+    top:0;
+    width:$crossLineThickness;
+    height: 100%;
+  }
+  &:after{
+    left:0;
+    top:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+    width: 100%;
+    height: $crossLineThickness;
   }
 }
 
@@ -93,7 +123,7 @@
 // borderStyleForOnePixel 是 onePixelBorder 内部使用的方法
 @mixin borderStyleForOnePixel($direction: all, $color:#dedede){
   border-style: solid;
-  border-color: $color; 
+  border-color: $color;
   @if $direction == all {
     border-width: 1px;
   }
