@@ -377,7 +377,7 @@
 /// @name bgWithOpacity
 /// @param {Color} $color - 背景色的颜色值 
 /// @param {Number} $alpha - 背景色的透明度 
-@mixin rgba($color,$alpha) {
+@mixin bgWithOpacity($color,$alpha) {
   background-color:rgba($color,$alpha);
   @include forIE8{
     filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#{ie-hex-str(rgba($color,$alpha))},endcolorstr=#{ie-hex-str(rgba($color,$alpha))});

@@ -82,6 +82,37 @@
   }
 }
 
+/// 用以生成十字架图标
+///
+/// @name cross
+/// @param {Measure} $crossLength [26px] - 十字架的大小
+/// @param {Measure} $crossLineThickness [2px] - 十字架线条的粗细
+/// @param {Color} $crossLineColor [#2685d2] - 十字架的颜色
+@mixin cross($crossLength:26px,$crossLineThickness:2px,$crossLineColor:$common_color_link){
+  position: relative;
+  @include square($crossLength);
+  &:before,
+  &:after{
+    content: "";
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    background-color: $crossLineColor;
+  }
+  &:before{
+    left:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+    top:0;
+    width:$crossLineThickness;
+    height: 100%;
+  }
+  &:after{
+    left:0;
+    top:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+    width: 100%;
+    height: $crossLineThickness;
+  }
+}
+
 /// 使得指定的元素产生 Block Formatting Contexts 或 hasLayout
 ///
 /// @name bfc 
