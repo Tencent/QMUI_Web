@@ -1,10 +1,12 @@
 // Gulp 服务入口
 var argv  = require('yargs').argv,
     spawn = require('child_process').spawn,
-    os = require('os');
+    os    = require('os');
 
 module.exports = function(gulp, common) {
+
   if (os.platform() === 'linux' || os.platform() === 'darwin') {
+
     gulp.task('start', false, function(){
       if (argv.debug) {
         common.plugins.util.log(common.plugins.util.colors.green('QMUI Debug: ') + 'QMUI 进入 Debug 模式');
@@ -39,7 +41,11 @@ module.exports = function(gulp, common) {
       });
 
       // 获取第一次进入时 gulp 的进程
-      _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+      if (argv.debug) {
+        _mainTaskProcess = spawn('gulp', ['main', '--debug'], {stdio: 'inherit'});
+      } else {
+        _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+      }
     });
 
     // 默认任务
