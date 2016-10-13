@@ -85,11 +85,11 @@ yo qmui
 ## 意见反馈
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
 
-### 内置工作流调试辅助
+### 调试辅助
 
 当 QMUI Web 工作流在工作时，会自动检测工作流源码是否有更新并在有更新时发出通知，包括日志通知以及声音通知。
 
-另外为了方便调试，QMUI Web 带有 Debug 模式，通过 Debug 模式开启工作流后，当 QMUI Web 检测到工作流源码有更新时会发出通知并自行重启工作流，方便调试。
+另外为了方便调试，QMUI Web 带有 Debug 模式，通过 Debug 模式开启工作流后，当 QMUI Web 检测到工作流源码有更新时会发出通知并自行重启工作流，同时 Compass 在编译时也会输出完整日志，方便调试。
 
 ```
 #在 UI_dev/qmui_web 中执行以下命令可以开启 Debug 模式工作流
