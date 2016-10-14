@@ -11,9 +11,9 @@
 >
 > [Quick Start document for English](https://github.com/QMUI/qmui_web/tree/master/docs-translations/en-US)
 
-[![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies") 
-[![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team") 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.") 
+[![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
+[![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team")
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
 
 QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一整套设计的框架。框架主要由一个强大的 SASS 方法合集与内置的工作流构成。通过 QMUI Web，开发者可以很轻松地提高 Web UI 开发的效率，同时保持了项目的高可维护性与稳健。如果你需要方便地控制项目的整体样式，或者需要应对频繁的界面变动，那么 QMUI Web 框架将会是你最好的解决方案。
 
@@ -36,7 +36,7 @@ QMUI Web 除了内置的公共组件外，还通过扩展的方式提供了常�
 ```
 #安装 gulp
 npm install --global gulp
-#安装 SASS 
+#安装 SASS
 gem install sass
 #安装 Compass
 gem update --system
@@ -77,13 +77,16 @@ yo qmui
 
 对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
 
-## QMUI Web Desktop 
+## QMUI Web Desktop
 推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
 
 <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
 
 ## 意见反馈
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
+
+### 设计稿
+设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
 
 ### 调试辅助
 
