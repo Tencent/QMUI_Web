@@ -12,4 +12,9 @@ before_script:
   - cp config.js ../config.js
   - cp config.rb ../config.rb
   - npm install
-script: gulp init
+script:
+  - gulp initProject
+  - gulp compass
+  - gulp include
+  - gulp clean
+  - gulp merge
