@@ -1,0 +1,15 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+before_install:
+  - gem install sass
+  - gem install compass
+node_js:
+  - "4.0"
+  - "stable"
+before_script:
+  - cp config.js ../config.js
+  - cp config.rb ../config.rb
+  - npm install
+script: gulp init
