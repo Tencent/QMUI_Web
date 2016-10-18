@@ -8,7 +8,7 @@
 
 - [x] 操作系统版本：`macOS (10.x)` / `Windows (7/8/10)` / `Linux` / `其他（自行填写具体系统）`
 - [x] QMUI Web 版本：`1.x.x`
-- [x] NodeJs 版本：`4.x.x`
+- [x] Node.js 版本：`4.x.x`
 
 ### 具体问题描述 ###
 
