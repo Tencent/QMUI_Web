@@ -11,7 +11,7 @@
 >
 > [Quick Start document for English](https://github.com/QMUI/qmui_web/tree/master/docs-translations/en-US)
 
-[![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
+[![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg?branch=master)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
