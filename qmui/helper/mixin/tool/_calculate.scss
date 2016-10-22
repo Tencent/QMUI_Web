@@ -99,6 +99,25 @@
   @return ceil($center);
 }
 
+/// 获取数值的n次幂的值
+///
+/// @name pow
+/// @param {Number} $number - 底数
+/// @param {Number} $power - 幂数
+@function pow ($number, $power) {
+	$result: 1;
+	@if $power >= 0 {
+		@for $i from 1 through $power {
+			$result: $result * $number;
+		}
+	} @else {
+		@for $i from $power to 0 {
+			$result: $result / $number;
+		}
+	}
+	@return $result;
+}
+
 /// 将数值格式化为指定小数位数的数字。
 ///
 /// @name toFixed
@@ -107,18 +126,18 @@
 /// @param {String} $type [round] - 格式化方式("round":"四舍五入","floor":"向下取整","ceil":"向上取整")
 @function toFixed($number, $precision: 0, $type: round) {
 	$result: null;
-	@if $precision == 0 {
-		$precision: 0.1;
-	}
 	@if $type == round {
-			$result: round($number * $precision * 10) / ($precision * 10);
+			$result: round($number * pow(10,$precision)) / pow(10,$precision);
 	} @else if $type == floor {
-			$result: floor($number * $precision * 10) / ($precision * 10);
+			$result: floor($number * pow(10,$precision)) / pow(10,$precision);
 	} @else if $type == ceil {
-		$result: ceil($number * $precision * 10) / ($precision * 10);
+		$result: ceil($number * pow(10,$precision)) / pow(10,$precision);
 	} @else {
 		@warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
 		$result: $number;
 	}
 	@return $result;
 }
+
+
+
