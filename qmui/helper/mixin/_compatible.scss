@@ -2,7 +2,7 @@
 
 ////
 /// 兼容性封装，解决浏览器常用 css 兼容性问题
-/// @author Clear, Molice, Zhoon, Kayo，Jeff 
+/// @author Clear, Molice, Zhoon, Kayo，Jeff
 /// @group 兼容性封装
 /// @date 2014-08-19
 ////
@@ -12,7 +12,7 @@
 ///
 /// @group 布局
 /// @name flex
-%flex 
+%flex
 {
   display: -o-box;
   display: -moz-box;
@@ -26,7 +26,7 @@
 /// display: flex 的兼容性方法
 ///
 /// @group 布局
-/// @name display_flex 
+/// @name display_flex
 @mixin display_flex
 {
   display: -o-box;
@@ -41,8 +41,8 @@
 /// flex 的兼容性方法
 ///
 /// @group 布局
-/// @name flex 
-/// @param {Number} $num - CSS flex 的属性值，即在父元素中的权重 
+/// @name flex
+/// @param {Number} $num - CSS flex 的属性值，即在父元素中的权重
 @mixin flex($num)
 {
   // 在移动端只支持 flexbox 协议（旧的 flex API）的浏览器下，只有当你设置了 display: flex 属性后，其子元素的 flex 才会生效，因此这里同时设置了 display 以及 box-flex 属性
@@ -89,7 +89,7 @@
 /// 设置 flex 元素的伸缩流方向，即 box-orient 的兼容性方法
 ///
 /// @group 布局
-/// @name flex_direction 
+/// @name flex_direction
 /// @param {String} $direction - 伸缩流方向，有 row，row-reverse，column，column-reverse 四个可选值
 @mixin flex_direction($direction){
   @include flex_direction_ForOld($direction);
@@ -98,12 +98,12 @@
   flex-direction:$direction;
 }
 
-/// flex-grow 的兼容性方法 
+/// flex-grow 的兼容性方法
 ///
 /// @group 布局
 /// @name flex_grow
 /// @param {Number} $num - CSS flex-grow 的属性值，即在父元素中的权重
-@mixin flex_grow($num) 
+@mixin flex_grow($num)
 {
   -webkit-box-flex: $num;
   -moz-box-flex: $num;
@@ -113,38 +113,38 @@
   -moz-box-flex-grow: $num;
   -webkit-flex-grow: $num;
   -ms-flex-grow: $num;
-  flex-grow: $num; 
+  flex-grow: $num;
 }
 
-/// flex-shrink 的兼容性方法 
+/// flex-shrink 的兼容性方法
 ///
 /// @group 布局
 /// @name flex_shrink
 /// @param {Number} $num - CSS flex-shrink 的属性值
-@mixin flex_shrink($num) 
+@mixin flex_shrink($num)
 {
   -webkit-box-flex-shrink: $num;
   -moz-box-flex-shrink: $num;
   -webkit-flex-shrink: $num;
   -ms-flex-shrink: $num;
-  flex-shrink: $num; 
+  flex-shrink: $num;
 }
 
-/// flex-basis 的兼容性方法 
+/// flex-basis 的兼容性方法
 ///
 /// @group 布局
 /// @name flex_basis
 /// @param {Number} $num - CSS flex-basis 的属性值
-@mixin flex_basis($num) 
+@mixin flex_basis($num)
 {
   -webkit-box-flex-basis: $num;
   -moz-box-flex-basis: $num;
   -webkit-flex-basis: $num;
   -ms-flex-basis: $num;
-  flex-basis: $num; 
+  flex-basis: $num;
 }
 
-/// align-items 的兼容性方法 
+/// align-items 的兼容性方法
 ///
 /// @group 布局
 /// @name flex_align_items
@@ -172,7 +172,7 @@
     -o-align-items: $value;
     -ms-align-items: $value;
     -ms-flex-align: $value; // for IE10
-    align-items: $value;    
+    align-items: $value;
 }
 
 /// justify-content 的兼容性方法
@@ -184,20 +184,20 @@
 {
   @if $value == 'space-around' {
     -webkit-box-pack: justify;
-    -moz-box-pack: justify; 
+    -moz-box-pack: justify;
     -ms-flex-pack: distribute;
   } @else if $value == 'flex-start' {
     -webkit-box-pack: start;
-    -moz-box-pack: start; 
+    -moz-box-pack: start;
     -ms-flex-pack: start;
   } @else if $value == 'flex-end' {
     -webkit-box-pack: end;
-    -moz-box-pack: end; 
+    -moz-box-pack: end;
     -ms-flex-pack: end;
   } @else {
     -webkit-box-pack: $value;
-    -moz-box-pack: $value; 
-    -ms-flex-pack: $value; 
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
   }
   -webkit-justify-content: $value;
   -ms-justify-content: $value;
@@ -205,17 +205,17 @@
   justify-content: $value;
 }
 
-/// 根据子元素的布局方向，控制其对齐方式  
+/// 根据子元素的布局方向，控制其对齐方式
 ///
 /// @group 布局
 /// @name flex_childPos
 /// @param {String} $dir - 子元素当前的布局方向，可选值为 vertical 和 horizontal
-/// @param {String} $value - 希望子元素对齐的方式，可选值为 flex-start，flex-end，center 
-@mixin flex_childPos($dir, $value) 
+/// @param {String} $value - 希望子元素对齐的方式，可选值为 flex-start，flex-end，center
+@mixin flex_childPos($dir, $value)
 {
   @if $dir == 'vertical' {
     @include flex_align_items($value);
-  } 
+  }
   @if $dir == 'horizontal' {
     @include flex_justify_content($value);
   }
@@ -237,7 +237,7 @@
 ///
 /// @group 布局
 /// @name clear
-%clear { 
+%clear {
   @if not($function_mobileOnly) {
     *zoom: 1;
   }
@@ -256,7 +256,7 @@
 
 /// display: inline-block 的兼容性方法
 ///
-/// @group 布局 
+/// @group 布局
 /// @name inlineBlock
 @mixin inlineBlock {
   display: inline-block;
@@ -273,8 +273,8 @@
 /// @param {String} $value - CSS 属性 box-shadow 的属性值
 @mixin box_shadow($value...)
 {
-  -webkit-box-shadow:$value; 
-  -moz-box-shadow:$value; 
+  -webkit-box-shadow:$value;
+  -moz-box-shadow:$value;
   box-shadow:$value;
 }
 
@@ -282,7 +282,7 @@
 ///
 /// @group 外观
 /// @name text_ellipsis
-%text_ellipsis 
+%text_ellipsis
 {
   overflow: hidden;
   white-space: nowrap;
@@ -297,10 +297,10 @@
 ///
 /// @group 外观
 /// @name text_multiLine_ellipsis
-/// @param {Number} $line - 文字的行数 
+/// @param {Number} $line - 文字的行数
 /// @param {Measure} $lineHeight - 文字行高
 /// @throw 不支持多行省略的浏览器降级处理为结尾处没有省略号，直接裁剪掉。
-/// @support css-line-clamp 
+/// @support css-line-clamp
 @mixin text_multiLine_ellipsis($line: 2, $lineHeight: 20px){
   line-height:$lineHeight;
   overflow:hidden;
@@ -330,7 +330,7 @@
 ///
 /// @group 外观
 /// @name opacity
-/// @param {Number} $var - 不透明度 
+/// @param {Number} $var - 不透明度
 @mixin opacity($var) {
   -webkit-opacity:$var;
   -moz-opacity:$var;
@@ -345,7 +345,7 @@
 ///
 /// @group 外观
 /// @name appearance
-/// @param {Number} $value - CSS 属性 appearance 的属性值 
+/// @param {Number} $value - CSS 属性 appearance 的属性值
 @mixin appearance($value) { // 暂不支持IE和Opera
   -moz-appearance:$value;
   -webkit-appearance:$value;
@@ -356,7 +356,7 @@
 ///
 /// @group 外观
 /// @name selection
-/// @support css-selection 
+/// @support css-selection
 @mixin selection {
   @at-root #{&}::selection {
     @content;
@@ -375,8 +375,8 @@
 ///
 /// @group 外观
 /// @name bgWithOpacity
-/// @param {Color} $color - 背景色的颜色值 
-/// @param {Number} $alpha - 背景色的透明度 
+/// @param {Color} $color - 背景色的颜色值
+/// @param {Number} $alpha - 背景色的透明度
 @mixin bgWithOpacity($color,$alpha) {
   background-color:rgba($color,$alpha);
   @include forIE8{
@@ -462,7 +462,7 @@
 
 /// user-select: none 的兼容性方法
 ///
-/// @group 外观 
+/// @group 外观
 /// @name disabledUserSelect
 %disabledUserSelect {
   -moz-user-select: none;
@@ -476,7 +476,7 @@
 /// @group 变形
 /// @name transform
 /// @param {String} $value - CSS 属性 transform 的属性值
-/// @support transforms2d 
+/// @support transforms2d
 @mixin transform($value) {
   -o-transform:$value;
   -moz-transform:$value;
@@ -491,7 +491,7 @@
 /// @name scale
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @support transforms2d 
+/// @support transforms2d
 @mixin scale($ratioX, $ratioY: $ratioX){
     -webkit-transform: scale($ratioX, $ratioY);
     -moz-transform: scale($ratioX, $ratioY);
@@ -507,7 +507,7 @@
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioZ [$ratioY 的值] - Z轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @support transforms3d 
+/// @support transforms3d
 @mixin scale3d($ratioX, $ratioY: $ratioX, $ratioZ: $ratioY){
     -webkit-transform: scale3d($ratioX, $ratioY, $ratioZ);
     -moz-transform: scale3d($ratioX, $ratioY, $ratioZ);
@@ -521,7 +521,7 @@
 /// @group 变形
 /// @name scaleX
 /// @param {Number} $ratio - X轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @support transforms2d 
+/// @support transforms2d
 @mixin scaleX($ratio){
     -webkit-transform: scaleX($ratio);
     -moz-transform: scaleX($ratio);
@@ -535,7 +535,7 @@
 /// @group 变形
 /// @name scaleY
 /// @param {Number} $ratio - Y轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @support transforms2d 
+/// @support transforms2d
 @mixin scaleY($ratio){
     -webkit-transform: scaleY($ratio);
     -moz-transform: scaleY($ratio);
@@ -548,9 +548,9 @@
 ///
 /// @group 变形
 /// @name skew
-/// @param {Number} $x - X轴方向倾斜的角度 
-/// @param {Number} $y - X轴方向倾斜的角度 
-/// @support transforms2d 
+/// @param {Number} $x - X轴方向倾斜的角度
+/// @param {Number} $y - X轴方向倾斜的角度
+/// @support transforms2d
 @mixin skew($x, $y){
     -webkit-transform: skew($x, $y);
     -moz-transform: skew($x, $y);
@@ -565,7 +565,7 @@
 /// @name translate
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
-/// @support transforms2d 
+/// @support transforms2d
 @mixin translate($x, $y){
     -webkit-transform: translate($x, $y);
     -moz-transform: translate($x, $y);
@@ -579,7 +579,7 @@
 /// @group 变形
 /// @name translateX
 /// @param {Number} $x - X轴方向平移的距离
-/// @support transforms2d 
+/// @support transforms2d
 @mixin translateX($x){
     -webkit-transform: translateX($x);
     -moz-transform: translateX($x);
@@ -593,7 +593,7 @@
 /// @group 变形
 /// @name translateY
 /// @param {Number} $y - Y轴方向平移的距离
-/// @support transforms2d 
+/// @support transforms2d
 @mixin translateY($y){
     -webkit-transform: translateY($y);
     -moz-transform: translateY($y);
@@ -609,7 +609,7 @@
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
 /// @param {Number} $z - Z轴方向平移的距离
-/// @support transforms3d 
+/// @support transforms3d
 @mixin translate3d($x, $y, $z){
     -webkit-transform: translate3d($x, $y, $z);
     -moz-transform: translate3d($x, $y, $z);
@@ -621,7 +621,7 @@
 /// @group 变形
 /// @name rotate
 /// @param {Number} $degrees - 元素旋转的角度
-/// @support transforms2d 
+/// @support transforms2d
 @mixin rotate($degrees) {
     -webkit-transform: rotate($degrees);
     -moz-transform: rotate($degrees);
@@ -789,7 +789,7 @@
 /// CSS3 animation-name 的兼容性方法
 ///
 /// @group 动画
-/// @name animation
+/// @name animation-name
 /// @param {String} $name - CSS 属性 animation-name 的属性值
 /// @support css-animation
 @mixin animation-name($name) {
@@ -914,7 +914,7 @@
 //     @keyframes #{$animationName} {
 //         $browser: ''; @content;
 //     }
-// } 
+// }
 // $browser: null;
 // @include keyframes('rotate') {
 //     from { #{$browser}transform: rotate(0deg);}
@@ -924,9 +924,9 @@
 
 /// 适配多倍屏的 CSS 选择器
 ///
-/// @group 设备适配 
+/// @group 设备适配
 /// @name screenResolution
-/// @param {Number} $num - 需要适配的屏幕倍数 
+/// @param {Number} $num - 需要适配的屏幕倍数
 /// @support css-media-resolution
 @mixin screenResolution($num)
 {
@@ -936,13 +936,13 @@
     (min-device-pixel-ratio: $num),
     (min-resolution: #{$num}dppx),
     (min-resolution: #{$num*96}dpi) {
-      @content; 
+      @content;
     }
 }
 
 /// 适配 Pad 的 CSS 选择器，例如有响应式布局中适配 Pad 的代码可以包在这里
 ///
-/// @group 设备适配 
+/// @group 设备适配
 /// @name screenForPad
 /// @support css-media-resolution
 @mixin screenForPad
@@ -957,7 +957,7 @@
 
 /// 适配手机的 CSS 选择器，与 screenForPad 方法对应，可以用于包裹只在 Phone 版使用的代码，不在 Pad 版使用的样式
 ///
-/// @group 设备适配 
+/// @group 设备适配
 /// @name screenForPhone
 /// @support css-media-resolution
 @mixin screenForPhone
@@ -969,7 +969,7 @@
 
 /// 适配 IE 10 及以上版本的 CSS 选择器，需要针对 IE10 或以上版本的样式可以写在这里
 ///
-/// @group 设备适配 
+/// @group 设备适配
 /// @name screenForIE10AndLater
 /// @support css-media-resolution
 @mixin screenForIE10AndLater
@@ -981,7 +981,7 @@
 
 /// 单独适配 IE 8 CSS 选择器，需要仅针对 IE 8 的样式可以写在这里
 ///
-/// @group 设备适配 
+/// @group 设备适配
 /// @name forIE8
 @mixin forIE8 {
 	@media \0screen {
