@@ -37,9 +37,6 @@
     "lodash": "^4.16.2",
     "sassdoc": "^2.1.20"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "QMUI"
   ],

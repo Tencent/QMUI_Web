@@ -789,7 +789,7 @@
 /// CSS3 animation-name 的兼容性方法
 ///
 /// @group 动画
-/// @name animation-name
+/// @name animation
 /// @param {String} $name - CSS 属性 animation-name 的属性值
 /// @support css-animation
 @mixin animation-name($name) {
@@ -985,6 +985,16 @@
 /// @name forIE8
 @mixin forIE8 {
 	@media \0screen {
+		@content;
+	}
+}
+
+/// 单独适配 IE 9 CSS 选择器，需要仅针对 IE 9（不包括 IE 10 等更高版本） 的样式可以写在这里
+///
+/// @group 设备适配
+/// @name forIE9
+@mixin forIE9 {
+	@media all and (min-width:0\0) and (min-resolution: .001dpcm) {
 		@content;
 	}
 }
