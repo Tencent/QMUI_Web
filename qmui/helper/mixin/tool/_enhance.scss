@@ -2,19 +2,23 @@
 
 ////
 /// 原生增强，补充 SASS 原生语法缺少的能力
-/// @author Kayo 
-/// @group Sass 原生增强 
+/// @author Kayo
+/// @group Sass 原生增强
 /// @date 2016-06-18
 ////
 
 
 /// 字符串 replace 方法，用于在字符串中用一些字符替换另一些字符
 ///
-/// @name replace
-/// @param {String} $string - 需要进行查找的字符串 
-/// @param {String} $search - 规定需要被替换的子字符串 
-/// @param {String} $replace [''] - 替换文本 
-@function str_replace($string, $search, $replace: '') {
+/// @name str-replace
+/// @param {String} $string - 需要进行查找的字符串
+/// @param {String} $search - 规定需要被替换的子字符串
+/// @param {String} $replace [''] - 替换文本
+/// @example
+///   str-replace("QMUI Web", " Web") => "QMUI"
+///   str-replace("QMUI Web", "Web", "iOS") => "QMUI iOS"
+///   str-replace("QMUI Web", "Web", "Android") => "QMUI Android"
+@function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
 
   @if $index {
