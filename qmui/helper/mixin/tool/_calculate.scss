@@ -104,18 +104,21 @@
 /// @name pow
 /// @param {Number} $number - 底数
 /// @param {Number} $power - 幂数
-@function pow ($number, $power) {
-	$result: 1;
-	@if $power >= 0 {
-		@for $i from 1 through $power {
-			$result: $result * $number;
-		}
-	} @else {
-		@for $i from $power to 0 {
-			$result: $result / $number;
-		}
-	}
-	@return $result;
+/// @example
+///   pow(10, 5) => 100000
+///   pow(10, -1) => 0.1
+@function pow($number, $power) {
+  $result: 1;
+  @if $power >= 0 {
+    @for $i from 1 through $power {
+      $result: $result * $number;
+    }
+  } @else {
+    @for $i from $power to 0 {
+      $result: $result / $number;
+    }
+  }
+  @return $result;
 }
 
 /// 将数值格式化为指定小数位数的数字。
@@ -124,19 +127,26 @@
 /// @param {Number} $number - 待格式化的数值
 /// @param {Number} $precision [0] - 精确度(精确到小数点后几位)
 /// @param {String} $type [round] - 格式化方式("round":"四舍五入","floor":"向下取整","ceil":"向上取整")
+/// @example
+///   toFixed(3.1415926535898) => 3.14
+///   toFixed(3.1415926535898, 4, floor) => 3.1415
+///   toFixed(3.1415926535898, 4, ceil) => 3.1416
+///   toFixed(-3.1415926535898, 4, floor) => -3.1416
+///   toFixed(-3.1415926535898, 4, ceil) => -3.1415
+///   toFixed(3.1415926535898px) => 3.14px
 @function toFixed($number, $precision: 0, $type: round) {
-	$result: null;
-	@if $type == round {
-			$result: round($number * pow(10,$precision)) / pow(10,$precision);
-	} @else if $type == floor {
-			$result: floor($number * pow(10,$precision)) / pow(10,$precision);
-	} @else if $type == ceil {
-		$result: ceil($number * pow(10,$precision)) / pow(10,$precision);
-	} @else {
-		@warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
-		$result: $number;
-	}
-	@return $result;
+  $result: null;
+  @if $type == round {
+    $result: round($number * pow(10,$precision)) / pow(10,$precision);
+  } @else if $type == floor {
+    $result: floor($number * pow(10,$precision)) / pow(10,$precision);
+  } @else if $type == ceil {
+    $result: ceil($number * pow(10,$precision)) / pow(10,$precision);
+  } @else {
+    @warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
+    $result: $number;
+  }
+  @return $result;
 }
 
 
