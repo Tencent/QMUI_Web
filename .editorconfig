@@ -13,8 +13,12 @@ insert_final_newline = false
 charset = utf-8
 
 # Tab indentation (no size specified)
-indent_style = space
+indent_style = tab
 indent_size = 2
 
 # Others
 trim_trailing_whitespace = true
+
+# YAML Format
+[*.yml]
+indent_style = space
