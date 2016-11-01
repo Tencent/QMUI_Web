@@ -137,11 +137,11 @@
 @function toFixed($number, $precision: 0, $type: round) {
   $result: null;
   @if $type == round {
-    $result: round($number * pow(10,$precision)) / pow(10,$precision);
+    $result: round($number * pow(10, $precision)) / pow(10, $precision);
   } @else if $type == floor {
-    $result: floor($number * pow(10,$precision)) / pow(10,$precision);
+    $result: floor($number * pow(10, $precision)) / pow(10, $precision);
   } @else if $type == ceil {
-    $result: ceil($number * pow(10,$precision)) / pow(10,$precision);
+    $result: ceil($number * pow(10, $precision)) / pow(10, $precision);
   } @else {
     @warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
     $result: $number;
