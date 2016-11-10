@@ -33,4 +33,27 @@ common.lib = lib;
 common.browserSync = browserSync;
 common.reload = reload;
 
+// 日志方法
+common.log = function(_tag, _content) {
+  if (arguments.length > 1) {
+    plugins.util.log(common.plugins.util.colors.green('QMUI ' + _tag + ': ') + _content);
+  } else {
+    plugins.util.log(arguments[0]);
+  }
+};
+common.warn = function(_tag, _content) {
+  if (arguments.length > 1) {
+    plugins.util.log(common.plugins.util.colors.yellow('QMUI ' + _tag + ': ') + _content);
+  } else {
+    plugins.util.log(arguments[0]);
+  }
+};
+common.error = function(_tag, _content) {
+  if (arguments.length > 1) {
+    plugins.util.log(common.plugins.util.colors.red('QMUI ' + _tag + ': ') + _content);
+  } else {
+    plugins.util.log(arguments[0]);
+  }
+};
+
 module.exports = common;

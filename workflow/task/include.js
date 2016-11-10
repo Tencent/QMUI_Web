@@ -19,7 +19,7 @@ module.exports = function(gulp, common) {
     gulp.src(common.config.htmlSourcePath)
         .pipe(common.plugins.plumber({
           errorHandler: function(_error) {
-            common.plugins.util.log(common.plugins.util.colors.red('QMUI Include: ') + _error);
+            common.error('Include', _error);
             common.plugins.util.beep();
           }}))
         .pipe(common.plugins.include({
@@ -27,6 +27,6 @@ module.exports = function(gulp, common) {
         }))
         .pipe(common.plugins.if(_condition, gulp.dest(common.config.htmlResultPath)));
 
-      common.plugins.util.log(common.plugins.util.colors.green('QMUI Include: ') + '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
+      common.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
   });
 };

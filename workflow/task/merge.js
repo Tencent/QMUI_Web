@@ -12,7 +12,7 @@ module.exports = function(gulp, common) {
       try {
         _mergeRule = require('../../../mergeRule.json');
       } catch (_e) {
-        common.plugins.util.log(common.plugins.util.colors.red('QMUI Merge: ') + '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
+        common.error('Merge', '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
       }
     }
 
@@ -57,19 +57,19 @@ module.exports = function(gulp, common) {
       gulp.src(_childFiles)
           .pipe(common.plugins.plumber({
             errorHandler: function(_error) {
-              common.plugins.util.log(common.plugins.util.colors.red('QMUI Merge: ') + _error);
+              common.error('Merge', _error);
               common.plugins.util.beep();
             }}))
           .pipe(common.plugins.concat(_resultFileName))
           .pipe(common.plugins.if(_condition, common.plugins.uglify(), common.plugins.cleanCss({compatibility: 'ie8'})))
           .pipe(gulp.dest(_resultFilePath));
 
-      common.plugins.util.log(common.plugins.util.colors.green('QMUI Merge: ') + '文件 ' + _childFilesString + ' 合并压缩为 ' + _replaceProjectParentDirectory(path.resolve(path.join(_resultFilePath, _resultFileName))));
+      common.log('Merge', '文件 ' + _childFilesString + ' 合并压缩为 ' + _replaceProjectParentDirectory(path.resolve(path.join(_resultFilePath, _resultFileName))));
     }
     // 变更文件引用路径
     gulp.src(common.config.htmlResultPath + '/**/*.html')
         .pipe(common.plugins.merge(_mergeRule))
         .pipe(gulp.dest(common.config.htmlResultPath));
-    common.plugins.util.log(common.plugins.util.colors.green('QMUI Merge: ') + '文件合并变更已完成');
+    common.log('Merge', '文件合并变更已完成');
   });
 };
