@@ -34,7 +34,7 @@ QMUI Web 除了内置的公共组件外，还通过扩展的方式提供了常�
 
 ## 环境配置
 
-```
+```bash
 #安装 gulp
 npm install --global gulp
 #安装 SASS
@@ -48,7 +48,7 @@ gem install compass
 ## 快速开始
 推荐使用 [Yeoman](http://yeoman.io/) 脚手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安装和配置 QMUI Web。该工具可以帮助你完成 QMUI Web 的所有安装和配置。
 
-```
+```bash
 #安装 Yeoman，如果本地已安装可以忽略
 npm install -g yo
 #安装 QMUI 的模板
@@ -59,7 +59,7 @@ yo qmui
 <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
 
 ### 完成后生成的项目目录结构
-```
+```bash
 项目根目录
 ├─public          // 静态资源目录，由 Compass 和 gulp 生成
 │  ├─js           // 静态资源 js 文件
@@ -78,10 +78,14 @@ yo qmui
 
 对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
 
-## QMUI Web Desktop
-推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
+## 工作流任务列表
 
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
+```bash
+#在 UI_dev/qmui_web 中执行以下命令可以查看工作流的任务列表及说明
+gulp help
+```
+
+也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
 
 ## 意见反馈
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
@@ -95,7 +99,23 @@ yo qmui
 
 另外为了方便调试，QMUI Web 带有 Debug 模式，通过 Debug 模式开启工作流后，当 QMUI Web 检测到工作流源码有更新时会发出通知并自行重启工作流，同时 Compass 在编译时也会输出完整日志，方便调试。
 
-```
+```bash
 #在 UI_dev/qmui_web 中执行以下命令可以开启 Debug 模式工作流
 gulp --debug
 ```
+
+### 日志方法
+
+修改 QMUI Web 工作流时，应当使用 QMUI 提供的公共日志方法而不是 console：
+```javascript
+// 示例
+common.log('Tag', '普通消息')
+common.warn('Tag', '警告消息')
+common.error('Tag', '错误消息')
+```
+
+## QMUI Web Desktop
+
+推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
+
+<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
