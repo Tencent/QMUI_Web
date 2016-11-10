@@ -88,31 +88,9 @@ gulp help
 也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
 
 ## 意见反馈
-如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，感谢你的支持和贡献。
+如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，调试与修改框架请先阅读[文档](http://localhost:3030/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
 
-### 设计稿
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
-
-### 调试辅助
-
-当 QMUI Web 工作流在工作时，会自动检测工作流源码是否有更新并在有更新时发出通知，包括日志通知以及声音通知。
-
-另外为了方便调试，QMUI Web 带有 Debug 模式，通过 Debug 模式开启工作流后，当 QMUI Web 检测到工作流源码有更新时会发出通知并自行重启工作流，同时 Compass 在编译时也会输出完整日志，方便调试。
-
-```bash
-#在 UI_dev/qmui_web 中执行以下命令可以开启 Debug 模式工作流
-gulp --debug
-```
-
-### 日志方法
-
-修改 QMUI Web 工作流时，应当使用 QMUI 提供的公共日志方法而不是 console：
-```javascript
-// 示例
-common.log('Tag', '普通消息')
-common.warn('Tag', '警告消息')
-common.error('Tag', '错误消息')
-```
 
 ## QMUI Web Desktop
 
