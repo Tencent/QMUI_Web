@@ -26,7 +26,7 @@ module.exports = function(gulp, common) {
     _sourceArr.push('!project/demo.scss');
 
     // 获取当天的日期，并统一格式为 'yyyy-mm-dd'，替换掉 demo 注释中的文件创建日期
-    // gulp-replace 的正则引擎似乎对 $ 和 ^ 不支持，只能忽略开头和结尾的判断 
+    // gulp-replace 的正则引擎似乎对 $ 和 ^ 不支持，只能忽略开头和结尾的判断
     var _dateRegex = /[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))/g,
     _currentDate = new Date(),
     _currentYear = _currentDate.getFullYear(),
@@ -47,7 +47,7 @@ module.exports = function(gulp, common) {
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
         .pipe(common.plugins.rename(common.config.resultCssFileName))
         .pipe(gulp.dest('../project'));
-    
+
     // 创建公共图片目录
     if (!fs.existsSync(common.config.imagesSourcePath)) {
       mkdirp(common.config.imagesSourcePath);
@@ -59,7 +59,7 @@ module.exports = function(gulp, common) {
       mkdirp(_independentImagesSourcePath);
     }
 
-    common.plugins.util.log(common.plugins.util.colors.green('QMUI Create Project: ') + '项目创建完毕，接下来会按配置执行一次 Default Task')
+    common.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task')
   });
 
   // 创建一个新项目并执行一次 compass 编译
