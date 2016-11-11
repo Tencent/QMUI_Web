@@ -87,7 +87,7 @@ gulp help
 
 也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
 
-## 意见反馈
+## 完善框架
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，调试与修改框架请先阅读[文档](http://localhost:3030/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
 
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
