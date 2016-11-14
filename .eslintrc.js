@@ -183,7 +183,7 @@ module.exports = {
         "prefer-arrow-callback": "off",
         "prefer-const": "error",
         "prefer-reflect": [2, { exceptions: ["delete"] }],
-        "prefer-rest-params": "error",
+        "prefer-rest-params": "off",
         "prefer-spread": "error",
         "prefer-template": "off",
         "quote-props": "off",
