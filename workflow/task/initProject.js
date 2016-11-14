@@ -2,7 +2,8 @@
 
 var fs     = require('fs'),
     mkdirp = require('mkdirp'),
-    path   = require('path');
+    path   = require('path'),
+    os = require('os');
 
 module.exports = function(gulp, common) {
 
@@ -40,12 +41,14 @@ module.exports = function(gulp, common) {
     gulp.src(_sourceArr)
         .pipe(common.plugins.replace('qui_', common.config.prefix + '_'))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
+        .pipe(common.plugins.replace(/@author .*\n$/, '@author ' + path.basename(os.homedir()) + '\n'))
         .pipe(gulp.dest('../project'));
 
     gulp.src(['project/demo.scss'])
         .pipe(common.plugins.replace('../qmui/_qmui.scss', _targetQmuiStylePath))
         .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
+        .pipe(common.plugins.replace(/@author .*\n$/, '@author ' + path.basename(os.homedir()) + '\n'))
         .pipe(common.plugins.rename(common.config.resultCssFileName))
         .pipe(gulp.dest('../project'));
 
