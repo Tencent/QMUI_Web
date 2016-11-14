@@ -35,20 +35,21 @@ module.exports = function(gulp, common) {
         _currentMonth = common.lib.checkDateFormat(_currentDate.getMonth() + 1),
         _currentDay = common.lib.checkDateFormat(_currentDate.getDate()),
         _formattingDate = _currentYear + '-' + _currentMonth + '-' + _currentDay,
-        _targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss';
+        _targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss',
+        _authorName = common.lib.upperFirst(path.basename(os.homedir()));
 
     // 执行创建项目的任务
     gulp.src(_sourceArr)
         .pipe(common.plugins.replace('qui_', common.config.prefix + '_'))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-        .pipe(common.plugins.replace(/@author .*\n$/, '@author ' + path.basename(os.homedir()) + '\n'))
+        .pipe(common.plugins.replace(/@author .*\n/, '@author ' + _authorName + '\n'))
         .pipe(gulp.dest('../project'));
 
     gulp.src(['project/demo.scss'])
         .pipe(common.plugins.replace('../qmui/_qmui.scss', _targetQmuiStylePath))
         .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-        .pipe(common.plugins.replace(/@author .*\n$/, '@author ' + path.basename(os.homedir()) + '\n'))
+        .pipe(common.plugins.replace(/@author .*\n/, '@author ' + _authorName + '\n'))
         .pipe(common.plugins.rename(common.config.resultCssFileName))
         .pipe(gulp.dest('../project'));
 

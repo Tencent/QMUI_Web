@@ -4,9 +4,9 @@ var lib = {};
 
 lib.checkDateFormat = function(_date) {
   if (_date < 10) {
-    _date = '0' + _date; 
+    _date = '0' + _date;
   }
-  return _date; 
+  return _date;
 };
 
 lib.getCurrentTime = function(){
@@ -32,6 +32,11 @@ lib.deleteElementInArray = function(_array, _element) {
       return  _array.slice(0, _i).concat(_array.slice(_i + 1, _array.length));
     }
   }
+}
+
+// 使字符串的第一个字符大写
+lib.upperFirst = function(_data) {
+  return  _data.substring(0, 1).toUpperCase() + _data.substring(1);
 }
 
 module.exports = lib;
