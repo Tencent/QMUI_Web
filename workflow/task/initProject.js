@@ -42,14 +42,14 @@ module.exports = function(gulp, common) {
     gulp.src(_sourceArr)
         .pipe(common.plugins.replace('qui_', common.config.prefix + '_'))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-        .pipe(common.plugins.replace(/@author .*\n/, '@author ' + _authorName + '\n'))
+        .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + _authorName + '$1'))
         .pipe(gulp.dest('../project'));
 
     gulp.src(['project/demo.scss'])
         .pipe(common.plugins.replace('../qmui/_qmui.scss', _targetQmuiStylePath))
         .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
         .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-        .pipe(common.plugins.replace(/@author .*\n/, '@author ' + _authorName + '\n'))
+        .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + _authorName + '$1'))
         .pipe(common.plugins.rename(common.config.resultCssFileName))
         .pipe(gulp.dest('../project'));
 
