@@ -1,5 +1,5 @@
-// 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JSON 文件
-// 传入 Sass 文件列表，以及待输出的 JSON 文件地址
+// 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JS 文件
+// 传入 Sass 文件列表，以及待输出的 JS 文件地址
 
 module.exports = function(gulp) {
   gulp.task('readToolMethod', false, function(){
@@ -31,8 +31,8 @@ module.exports = function(gulp) {
 
           if (!_.isEqual(_item.group, _currentGroup)) {
             _currentGroup = _item.group;
-            _currentGroupArray = []; 
-            _result.push(_currentGroupArray); 
+            _currentGroupArray = [];
+            _result.push(_currentGroupArray);
           } else {
             _currentGroupArray = _result[_result.length - 1];
           }
@@ -41,7 +41,7 @@ module.exports = function(gulp) {
         _result.reverse();
 
         // 准备把数组写入到指定文件中
-        var _outputPath = '../../data/qmui_tools.json';
+        var _outputPath = '../../data/qmui_method.js';
 
         // 写入文件
         fs.writeFileSync(_outputPath, 'var comments = ' + JSON.stringify(_result), 'utf8');
