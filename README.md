@@ -45,6 +45,8 @@ gem install compass
 ```
 [为什么采用原生 SASS 和 Compass？](https://github.com/QMUI/qmui_web/wiki/Q&A#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E5%8E%9F%E7%94%9F-sass-%E5%92%8C-compass)
 
+[遇到环境配置问题？](https://github.com/QMUI/qmui_web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
+
 ## 快速开始
 推荐使用 [Yeoman](http://yeoman.io/) 脚手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安装和配置 QMUI Web。该工具可以帮助你完成 QMUI Web 的所有安装和配置。
 
