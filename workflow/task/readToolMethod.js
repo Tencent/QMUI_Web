@@ -41,7 +41,7 @@ module.exports = function(gulp) {
         _result.reverse();
 
         // 准备把数组写入到指定文件中
-        var _outputPath = '../../data/qmui_tools.json';
+        var _outputPath = '../../data/qmui_tools.js';
 
         // 写入文件
         fs.writeFileSync(_outputPath, 'var comments = ' + JSON.stringify(_result), 'utf8');
