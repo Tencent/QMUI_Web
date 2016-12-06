@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+////
+/// 辅助数值计算的工具方法
+/// @author Kayo
+/// @group 数值计算
+/// @date 2015-08-23
+////
+
+/// 获取 CSS 长度值属性（例如：margin，padding，border-width 等）在某个方向的值
+///
+/// @name getLengthDirectionValue
+/// @param {String} $property - 记录着长度值的 SASS 变量
+/// @param {String} $direction - 需要获取的方向，可选值为 top，right，bottom，left，horizontal，vertical，其中 horizontal 和 vertical 分别需要长度值的左右或上下方向值相等，否则会报 Warning。
+/// @example
+///   // UI 界面的一致性往往要求相似外观的组件保持距离、颜色等元素统一，例如：
+///   // 搜索框和普通输入框分开两种结构处理，但希望搜索框的搜索 icon 距离左边的空白与
+///   // 普通输入框光标距离左边的空白保持一致，就需要获取普通输入框的 padding-left
+///   $textField_padding: 4px 5px;
+///   .dm_textField {
+///     padding: $textField_padding;
+///   }
+///   .dm_searchInput {
+///     position: relative;
+///     ...
+///   }
+///   .dm_searchInput_icon {
+///     position: absolute;
+///     left: getLengthDirectionValue($textField_padding, left);
+///     ...
+///   }
+@function getLengthDirectionValue($property, $direction) {
+  // 声明变量
+  $top: 0;
+  $right: 0;
+  $bottom: 0;
+  $left: 0;
+  // 获取 $property 列表值中值的个数，从而判断是哪种 CSS length 的写法
+  $propertyLength: length($property);
+  @if $propertyLength == 1 {
+    $top: $property;
+    $right: $property;
+    $bottom: $property;
+    $left: $property;
+  } @else if $propertyLength == 2 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 1);
+    $left: nth($property, 2);
+  } @else if $propertyLength == 3 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 3);
+    $left: nth($property, 2);
+  } @else if $propertyLength == 4 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 3);
+    $left: nth($property, 4);
+  } @else {
+    @return 0;
+  }
+
+  // 根据参数中的方向值输出需要的结果
+  @if $direction == top {
+    @return $top;
+  } @else if $direction == right {
+    @return $right;
+  } @else if $direction == bottom {
+    @return $bottom;
+  } @else if $direction == left {
+    @return $left;
+  } @else if $direction == horizontal {
+    @if $left != $right {
+      @warn "左边（#{$left}）与右边（#{$right}）的值并不相等，不应该直接使用 horizontal 这个方向";
+    }
+    @return $left;
+  } @else if $direction == vertical {
+    @if $top != $bottom {
+      @warn "上边（#{$top}）与下边（#{$bottom}）的值并不相等，不应该直接使用 vertical 这个方向";
+    }
+    @return $top;
+  } @else {
+    @return 0;
+  }
+}
+
+/// 获取两个 CSS 长度值的中间值并取整，通常可用于子元素在父元素中需要居中时计算两者高度差
+///
+/// @name getLengthMaxIntegerCenter
+/// @param {Number | String} $parent - 较大的长度值
+/// @param {Number | String} $child - 较小的长度值
+@function getLengthMaxIntegerCenter($parent, $child) {
+  $center: ($parent - $child) / 2;
+  // 注意这里的取整使用 ceil 而不是 floor 并不是随意写的，这是模拟现代浏览器对于小数点长度值的表现而定的。
+  // 例如，margin-top: 10.5px 在现代浏览器中会表现为 margin-top: 11px 而不是 margin-top: 10px
+  // 又例如，margin-top: -10.5px 在现代浏览器的表现等同于 margin-top: -10px 而不是 margin-top: -11px
+  // 即小数长度值会被当成不小于该小数的下一个整数去处理，也就是 ceil 的效果。所以不要随意改成 floor，其他长度值方法也应该如此处理
+  @return ceil($center);
+}
+
+/// 获取数值的n次幂的值
+///
+/// @name pow
+/// @param {Number} $number - 底数
+/// @param {Number} $power - 幂数
+/// @example
+///   pow(10, 5) => 100000
+///   pow(10, -1) => 0.1
+@function pow($number, $power) {
+  $result: 1;
+  @if $power >= 0 {
+    @for $i from 1 through $power {
+      $result: $result * $number;
+    }
+  } @else {
+    @for $i from $power to 0 {
+      $result: $result / $number;
+    }
+  }
+  @return $result;
+}
+
+/// 将数值格式化为指定小数位数的数字。
+///
+/// @name toFixed
+/// @param {Number} $number - 待格式化的数值
+/// @param {Number} $precision [0] - 精确度(精确到小数点后几位)
+/// @param {String} $type [round] - 格式化方式("round":"四舍五入","floor":"向下取整","ceil":"向上取整")
+/// @example
+///   toFixed(3.1415926535898) => 3.14
+///   toFixed(3.1415926535898, 4, floor) => 3.1415
+///   toFixed(3.1415926535898, 4, ceil) => 3.1416
+///   toFixed(-3.1415926535898, 4, floor) => -3.1416
+///   toFixed(-3.1415926535898, 4, ceil) => -3.1415
+///   toFixed(3.1415926535898px) => 3.14px
+@function toFixed($number, $precision: 0, $type: round) {
+  $result: null;
+  @if $type == round {
+    $result: round($number * pow(10, $precision)) / pow(10, $precision);
+  } @else if $type == floor {
+    $result: floor($number * pow(10, $precision)) / pow(10, $precision);
+  } @else if $type == ceil {
+    $result: ceil($number * pow(10, $precision)) / pow(10, $precision);
+  } @else {
+    @warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
+    $result: $number;
+  }
+  @return $result;
+}

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/**
+ * _dialog.scss
+ * @author Kayo 
+ * @date 2015-08-17
+ *
+ * .qui_dialog
+ */
+
+
+/* .qui_dialog */
+.qui_dialog {
+  @include box_shadow(0 2px 20px 0 rgba(0, 0, 0, .15));
+}
+
+.qui_dialog_head {
+  padding: 0 12px;
+}
+.qui_dialog_close {
+  padding: 5px; // 把点击区域做大
+  line-height: 1;
+  font-size: 18px;
+  color: #fff;
+
+  &:hover {
+    color: #d6d9de;
+    text-decoration: none;
+  }
+  &:active {
+    color: #eaecee;
+  }
+}
+
+.qui_dialog_body {
+  padding: 23px 30px 30px 37px;
+  font-size: 14px;
+  color: #353C46;
+} 
+
+.qui_dialog_foot {
+  padding: 17px 12px;
+  text-align: right;
+  line-height: 25px;
+}
+
+.qui_dialog_foot .qui_btn {
+  margin-left: 12px;
+}
