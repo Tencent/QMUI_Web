@@ -39,9 +39,9 @@
 /// flex 的兼容性方法
 ///
 /// @group 布局
-/// @name flex
+/// @name flexbox
 /// @param {Number} $num - CSS flex 的属性值，即在父元素中的权重
-@mixin flex($num) {
+@mixin flexbox($num) {
   // 在移动端只支持 flexbox 协议（旧的 flex API）的浏览器下，只有当你设置了 display: flex 属性后，其子元素的 flex 才会生效，因此这里同时设置了 display 以及 box-flex 属性
   display: -webkit-box;
   display: -moz-box;
