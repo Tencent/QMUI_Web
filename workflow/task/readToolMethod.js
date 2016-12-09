@@ -1,4 +1,4 @@
-// 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JS 文件
+		// 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JS 文件
 // 传入 Sass 文件列表，以及待输出的 JS 文件地址
 
 module.exports = function(gulp) {
@@ -41,6 +41,7 @@ module.exports = function(gulp) {
         _result.reverse();
 
         // 准备把数组写入到指定文件中
+
         var _outputPath = '../../data/qmui_method.js';
 
         // 写入文件

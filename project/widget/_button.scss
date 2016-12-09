@@ -1,11 +1,11 @@
 @charset "UTF-8";
 /**
  * _button.scss
- * @author Kayo 
+ * @author Kayo
  * @date 2015-08-17
  *
  * .qui_btn
- *  + .qui_btn_Blue
+ *  + .qui_btn_Ghost
  *
  */
 
@@ -18,7 +18,7 @@
   line-height: $btn_lineHeight + 2;
   line-height: $btn_lineHeight + 1 \9\0;
   _line-height: $btn_lineHeight + 4;
-  
+
   &:hover {
     background-color: #05D7F7;
   }
