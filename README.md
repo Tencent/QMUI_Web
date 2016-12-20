@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/BannerForGithub_2x.png" width="220" alt="Banner" />
+  <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/BannerForGithub_2x.png" width="220" alt="Banner" />
 </p>
 
 # QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/QMUI_Web/ "Version Number")
@@ -7,7 +7,7 @@
 >
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
-> 下载 Demo：[https://github.com/QMUI/qmuidemo_web/releases](https://github.com/QMUI/qmuidemo_web/releases)
+> 下载 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
 >
 > [Quick Start document for English](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US)
 
@@ -58,7 +58,7 @@ npm install -g generator-qmui
 #在项目根目录执行以下命令
 yo qmui
 ```
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
+<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
 
 ### 完成后生成的项目目录结构
 ```bash
@@ -98,4 +98,4 @@ gulp help
 
 推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
 
-<img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
+<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
