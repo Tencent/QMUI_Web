@@ -2,14 +2,14 @@
   <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/BannerForGithub_2x.png" width="220" alt="Banner" />
 </p>
 
-# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/qmui_web/ "Version Number")
+# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/QMUI_Web/ "Version Number")
 > 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端框架
 >
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
 > 下载 Demo：[https://github.com/QMUI/qmuidemo_web/releases](https://github.com/QMUI/qmuidemo_web/releases)
 >
-> [Quick Start document for English](https://github.com/QMUI/qmui_web/tree/master/docs-translations/en-US)
+> [Quick Start document for English](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US)
 
 [![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg?branch=master)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
@@ -21,7 +21,7 @@ QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一
 ## 功能特性
 
 ### 基础配置与组件
-通过内置的公共组件和对应的 SASS 配置表，你只需修改简单的配置即可快速实现所需样式的组件。（[QMUI SASS 配置表和公共组件如何帮忙开发者快速搭建项目基础 UI？](https://github.com/QMUI/qmui_web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
+通过内置的公共组件和对应的 SASS 配置表，你只需修改简单的配置即可快速实现所需样式的组件。（[QMUI SASS 配置表和公共组件如何帮忙开发者快速搭建项目基础 UI？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
 ### SASS 与 Compass 支持
 QMUI Web 包含70个 SASS mixin/function/extend，涉及布局、外观、动画、设备适配、数值计算以及 SASS 原生能力增强等多个方面，可以大幅提升开发效率。
@@ -43,9 +43,9 @@ gem install sass
 gem update --system
 gem install compass
 ```
-[为什么采用原生 SASS 和 Compass？](https://github.com/QMUI/qmui_web/wiki/Q&A#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E5%8E%9F%E7%94%9F-sass-%E5%92%8C-compass)
+[为什么采用原生 SASS 和 Compass？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E5%8E%9F%E7%94%9F-sass-%E5%92%8C-compass)
 
-[遇到环境配置问题？](https://github.com/QMUI/qmui_web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
+[遇到环境配置问题？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
 
 ## 快速开始
 推荐使用 [Yeoman](http://yeoman.io/) 脚手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安装和配置 QMUI Web。该工具可以帮助你完成 QMUI Web 的所有安装和配置。
@@ -90,12 +90,12 @@ gulp help
 也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
 
 ## 完善框架
-如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/qmui_web/issues) 或发送 [Pull Request](https://github.com/QMUI/qmui_web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
+如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
 
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
 
 ## QMUI Web Desktop
 
-推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/qmui_web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
+推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
 
 <img src="https://raw.githubusercontent.com/QMUI/qmuidemo_web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
