@@ -3,7 +3,7 @@ module.exports = {
    * 项目相关部分代码，复制后应首先进行这些配置
    *
    */
-  "project": "Demo",     
+  "project": "Demo",
   "prefix": "dm",
   "resultCssFileName": "main.scss",
   "cleanFileType": ["../.sass-cache", "../.sass-cache/**/*"],
@@ -13,7 +13,7 @@ module.exports = {
    *
    */
   "htmlSourcePath": ["../../UI_html/**/*.html"],
-  "imagesSourcePath": "../project/images", 
+  "imagesSourcePath": "../project/images",
   "htmlResultPath": "../../UI_html_result",
   "imagesResultPath": "../../public/style/images",
   "independentImagesDirectory": "/independent",
@@ -31,11 +31,11 @@ module.exports = {
   // server 开启后的默认路径
   "browserSyncStartPath": "/web",
   "browserSyncHost": "",
-  "browserSyncWatchPath":['../../UI_html_result/*.html', '../../public/**/*'],
+  "browserSyncWatchPath": ["../../UI_html_result/*.html", "../../public/**/*"],
   // 自定义路由，server 模式下方可产生作用
   "browserSyncServerRoute": {
-      '/public': '../../public',
-      '/web': '../../UI_html_result'
+      "/public": "../../public",
+      "/web": "../../UI_html_result"
   },
   // 自定义代理源地址，proxy 模式下方可产生作用
   "browserSyncProxy": "",
