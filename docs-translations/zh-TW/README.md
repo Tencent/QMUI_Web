@@ -3,11 +3,11 @@
 </p>
 
 # QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/QMUI_Web/ "Version Number")
-> 一个旨在提高 UI 开发效率、快速产生项目 UI 的前端框架
+> 一個旨在提高 UI 開發效率、快速產生項目 UI 的前端框架
 >
-> 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
+> 官網：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
-> 下载 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
+> 下載 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
 >
 > [Quick Start document for English](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US)
 
@@ -16,86 +16,86 @@
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
 
-QMUI Web 是一个专注 Web UI 开发，帮助开发者快速实现特定的一整套设计的框架。框架主要由一个强大的 SASS 方法合集与内置的工作流构成。通过 QMUI Web，开发者可以很轻松地提高 Web UI 开发的效率，同时保持了项目的高可维护性与稳健。如果你需要方便地控制项目的整体样式，或者需要应对频繁的界面变动，那么 QMUI Web 框架将会是你最好的解决方案。
+QMUI Web 是一個專註 Web UI 開發，幫助開發者快速實現特定的一整套設計的框架。框架主要由一個強大的 SASS 方法合集與內置的工作流構成。通過 QMUI Web，開發者可以很輕松地提高 Web UI 開發的效率，同時保持了項目的高可維護性與穩健。如果你需要方便地控制項目的整體樣式，或者需要應對頻繁的界面變動，那麽 QMUI Web 框架將會是你最好的解決方案。
 
 ## 功能特性
 
-### 基础配置与组件
-通过内置的公共组件和对应的 SASS 配置表，你只需修改简单的配置即可快速实现所需样式的组件。（[QMUI SASS 配置表和公共组件如何帮忙开发者快速搭建项目基础 UI？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
+### 基礎配置與組件
+通過內置的公共組件和對應的 SASS 配置表，你只需修改簡單的配置即可快速實現所需樣式的組件。（[QMUI SASS 配置表和公共組件如何幫忙開發者快速搭建項目基礎 UI？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
-### SASS 与 Compass 支持
-QMUI Web 包含70个 SASS mixin/function/extend，涉及布局、外观、动画、设备适配、数值计算以及 SASS 原生能力增强等多个方面，可以大幅提升开发效率。
+### SASS 與 Compass 支援
+QMUI Web 包含70個 SASS mixin/function/extend，涉及布局、外觀、動畫、設備適配、數值計算以及 SASS 原生能力增強等多個方面，可以大幅提升開發效率。
 
-### 脚手架
-QMUI Web 内置的工作流拥有从初始化项目到变更文件的各种自动化处理，包含了模板引擎，图片集中管理与自动压缩，静态资源合并、压缩与变更以及冗余文件清理等功能。
+### 腳手架（自動化任務執行工具）
+QMUI Web 內置的工作流擁有從初始化項目到變更文件的各種自動化處理，包含了模板引擎，圖片集中管理與自動壓縮，靜態資源合並、壓縮與變更以及冗余文件清理等功能。
 
-### 扩展组件
-QMUI Web 除了内置的公共组件外，还通过扩展的方式提供了常用的扩展组件，如雪碧图组件，等高左右双栏，文件上传按钮，树状选择菜单。
+### 擴展組件
+QMUI Web 除了內置的公共組件外，還通過擴展的方式提供了常用的擴展組件，如雪碧圖組件，等高左右雙欄，文件上傳按鈕，樹狀選擇菜單。
 
-## 环境配置
+## 環境配置
 
 ```bash
-#安装 gulp
+#安裝 gulp
 npm install --global gulp
-#安装 SASS
+#安裝 SASS
 gem install sass
-#安装 Compass
+#安裝 Compass
 gem update --system
 gem install compass
 ```
-[为什么采用原生 SASS 和 Compass？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E5%8E%9F%E7%94%9F-sass-%E5%92%8C-compass)
+[為什麽采用原生 SASS 和 Compass？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E5%8E%9F%E7%94%9F-sass-%E5%92%8C-compass)
 
-[遇到环境配置问题？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
+[遇到環境配置問題？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
 
-## 快速开始
-推荐使用 [Yeoman](http://yeoman.io/) 脚手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安装和配置 QMUI Web。该工具可以帮助你完成 QMUI Web 的所有安装和配置。
+## 快速開始
+推薦使用 [Yeoman](http://yeoman.io/) 腳手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安裝和配置 QMUI Web。該工具可以幫助你完成 QMUI Web 的所有安裝和配置。
 
 ```bash
-#安装 Yeoman，如果本地已安装可以忽略
+#安裝 Yeoman，如果本地已安裝可以忽略
 npm install -g yo
-#安装 QMUI 的模板
+#安裝 QMUI 的模板
 npm install -g generator-qmui
-#在项目根目录执行以下命令
+#在項目根目錄執行以下命令
 yo qmui
 ```
-<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
+<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/Generator.gif" width="628" alt="效果預覽" />
 
-### 完成后生成的项目目录结构
+### 完成後生成的項目目錄結構
 ```bash
 项目根目录
-├─public          // 静态资源目录，由 Compass 和 gulp 生成
-│  ├─js           // 静态资源 js 文件
-│  └─style        // 静态资源 UI 文件
-│     ├─css       // 静态资源 css 文件
-│     └─images    // 静态资源 images 文件
-├─UI_dev          // 实际进行开发的样式目录
-│  ├─project      // 项目相关 SASS 与 images 文件，由 gulp 生成
-│  │  ├─images    // 项目相关图片文件
-│  │  ├─logic     // 项目相关逻辑样式
-│  │  └─widget    // 项目相关公共组件样式
-│  └─qmui_web     // QMUI Web 主源码应放置在这一层目录
-├─UI_html         // 静态模板目录，用于 UI 工程师开发
-└─UI_html_result  // 静态模板 gulp 处理后的版本，用于前端拼接最终的模板
+├─public          // 靜態資源目錄，由 Compass 和 gulp 生成
+│  ├─js           // 靜態資源 js 文件
+│  └─style        // 靜態資源 UI 文件
+│     ├─css       // 靜態資源 css 文件
+│     └─images    // 靜態資源 images 文件
+├─UI_dev          // 實際進行開發的樣式目錄
+│  ├─project      // 項目相關 SASS 與 images 文件，由 gulp 生成
+│  │  ├─images    // 項目相關圖片文件
+│  │  ├─logic     // 項目相關邏輯樣式
+│  │  └─widget    // 項目相關公共組件樣式
+│  └─qmui_web     // QMUI Web 主源碼應放置在這一層目錄
+├─UI_html         // 靜態模板目錄，用於 UI 工程師開發
+└─UI_html_result  // 靜態模板 gulp 處理後的版本，用於前端拼接最終的模板
 ```
 
-对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
+對於需要有更強定制性的開發者，請參考[創建新項目（進階）](http://qmuiteam.com/web/start.html#qui_createProject)
 
-## 工作流任务列表
+## 工作流任務列表
 
 ```bash
-#在 UI_dev/qmui_web 中执行以下命令可以查看工作流的任务列表及说明
+#在 UI_dev/qmui_web 中執行以下命令可以查看工作流的任務列表及說明
 gulp help
 ```
 
-也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
+也可以查看文檔中的[詳細說明](http://qmuiteam.com/web/scaffold.html)。
 
 ## 完善框架
-如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
+如果有意見反饋或者功能建議，歡迎創建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或發送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，調試與修改框架請先閱讀[文檔](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感謝你的支持和貢獻。
 
-设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
+設計稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上獲取。
 
 ## QMUI Web Desktop
 
-推荐配合使用的桌面 App：[QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop)。它可以管理基于 QMUI Web 进行开发的项目，通过 GUI 界面处理 QMUI Web 的服务开启/关闭，使框架的使用变得更加便捷，并提供了编译提醒，出错提醒，进程关闭提醒等额外的功能。
+推薦配合使用的桌機應用程式：[QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop)。它可以管理基於 QMUI Web 進行開發的項目，通過 GUI 界面處理 QMUI Web 的服務開啟/關閉，使框架的使用變得更加便捷，並提供了編譯提醒，出錯提醒，進程關閉提醒等額外的功能。
 
 <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
