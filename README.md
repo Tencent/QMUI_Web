@@ -78,7 +78,7 @@ yo qmui
 └─UI_html_result  // 静态模板 gulp 处理后的版本，用于前端拼接最终的模板
 ```
 
-对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
+对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/page/start.html#qui_createProject)
 
 ## 工作流任务列表
 
@@ -87,10 +87,10 @@ yo qmui
 gulp help
 ```
 
-也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
+也可以查看文档中的[详细说明](http://qmuiteam.com/web/page/scaffold.html)。
 
 ## 完善框架
-如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
+如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
 
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
 
