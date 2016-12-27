@@ -25,7 +25,7 @@ module.exports = function(gulp, common) {
     // 合并文件
     for(var _key in _mergeRule) {
       // 后面变更文件时，需要的是每个文件在 HTML 中书写的路径，即相对模板文件的路径
-      // 但对合并文件，即 concat 来说，需要的是文件相对 qmui_sass 目录的路径，因此需要对合并的结果以及来源文件手工加上一个 '../'
+      // 但对合并文件，即 concat 来说，需要的是文件相对 qmui_web 目录的路径，因此需要对合并的结果以及来源文件手工加上一个 '../'
 
       var _resultFile = '../' + _key, // 合并的结果加上 '../'
           _resultFileName = path.basename(_resultFile),

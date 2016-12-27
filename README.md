@@ -8,8 +8,8 @@
 > 官网：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
 > 下载 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
->
-> [Quick Start document for English](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US)
+
+[[English]](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/QMUI/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/QMUI/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
 
 [![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg?branch=master)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
@@ -78,7 +78,7 @@ yo qmui
 └─UI_html_result  // 静态模板 gulp 处理后的版本，用于前端拼接最终的模板
 ```
 
-对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/start.html#qui_createProject)
+对于需要有更强定制性的开发者，请参考[创建新项目（高级）](http://qmuiteam.com/web/page/start.html#qui_createProject)
 
 ## 工作流任务列表
 
@@ -87,10 +87,14 @@ yo qmui
 gulp help
 ```
 
-也可以查看文档中的[详细说明](http://qmuiteam.com/web/scaffold.html)。
+也可以查看文档中的[详细说明](http://qmuiteam.com/web/page/scaffold.html)。
 
 ## 完善框架
+<<<<<<< HEAD
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
+=======
+如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
+>>>>>>> 7df1e30a3e8474d06a603636f51f2b9c6bf78791
 
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
 
