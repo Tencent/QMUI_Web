@@ -90,11 +90,7 @@ gulp help
 也可以查看文档中的[详细说明](http://qmuiteam.com/web/page/scaffold.html)。
 
 ## 完善框架
-<<<<<<< HEAD
-如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
-=======
 如果有意见反馈或者功能建议，欢迎创建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或发送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，调试与修改框架请先阅读[文档](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove)，感谢你的支持和贡献。
->>>>>>> 7df1e30a3e8474d06a603636f51f2b9c6bf78791
 
 设计稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上获取。
 
