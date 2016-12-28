@@ -217,6 +217,7 @@
 /// @group 布局
 /// @name box-sizing
 /// @param {String} $value - CSS 属性 box-sizing 的属性值
+/// @deprecated 由于浏览器的迭代更新，目前 box-sizing 已经得到非常广泛的支持，无需使用兼容封装，请使用原生的 CSS 属性 box-sizing 取代本方法。
 @mixin box-sizing($value) {
   -webkit-box-sizing: $value;
   -moz-box-sizing: $value;
@@ -261,6 +262,7 @@
 /// @group 外观
 /// @name box-shadow
 /// @param {String} $value - CSS 属性 box-shadow 的属性值
+/// @deprecated 由于浏览器的迭代更新，目前 box-shadow 已经得到非常广泛的支持，无需使用兼容封装，请使用原生的 CSS 属性 box-shadow 取代本方法。
 @mixin box-shadow($value...) {
   -webkit-box-shadow:$value;
   -moz-box-shadow:$value;
