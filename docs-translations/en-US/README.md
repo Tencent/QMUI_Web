@@ -24,7 +24,7 @@ This framework consists of a collection of SASS methods and a built-in workflow,
 You can easily adjust global appearance of basic built-in components by editing a SASS config file. （[How do QMUI config file and basic components contribute to your UI development?](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
 ### SASS and Compass Enhancement
-QMUI Web ships with more than 70 SASS Mixin, Function and Extend, dealing with layout, appearance, animation, device adaptation, math calculation and other SASS enhancement, which will make your development faster and easier.  
+QMUI Web ships with more than 70 SASS Mixin, Function and Extend, dealing with layout, appearance, animation, device adaptation, math calculation and other SASS enhancement, which will make your development faster and easier.
 ### Automatic Processing
 QMUI Web has a built-in workflow and tools to automate a lot of work, including the html template engine, image management and compression, static resource merging and compression, and redundant file cleanup.
 
@@ -73,7 +73,7 @@ Root Directory
 └─UI_html_result  // HTML files compiled by gulp
 ```
 
-If you need more customization, please refer to [Creating Project (Advanced)](http://qmuiteam.com/web/start.html#qui_createProject)
+If you need more customization, please refer to [Creating Project (Advanced)](http://qmuiteam.com/web/page/start.html#qui_createProject)
 
 ## Task List in Build-In Workflow
 
@@ -83,7 +83,7 @@ gulp help
 
 ## Make Contributions
 You can create [issues](https://github.com/QMUI/QMUI_Web/issues) or send [pull requests](https://github.com/QMUI/QMUI_Web/pulls) if you have any feedback or suggestion.
-Please read the [documentation](http://qmuiteam.com/web/start.html#qui_frameworkImprove) before debugging or modifying this framework.
+Please read the [documentation](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove) before debugging or modifying this framework.
 
 Thanks very much for your support and contributions.
 
