@@ -19,7 +19,7 @@ module.exports = function(gulp, common) {
      * 第七步：重命名 demo.scss，新名称从 config.js 中读取；
      * 第八步：把 demo.scss 复制到上一层目录；
      * 第九步：按配置表创建图片目录；
-     * 第十步：执行 compass 编译任务，打开浏览器，并打开新复制的 demo.html；
+     * 第十步：执行 Sass 编译任务，打开浏览器，并打开新复制的 demo.html；
      */
 
     // 需要遍历的文件
@@ -67,6 +67,6 @@ module.exports = function(gulp, common) {
     common.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task')
   });
 
-  // 创建一个新项目并执行一次 compass 编译
+  // 执行创建新项目任务
   gulp.task('init', '创建一个新项目', common.plugins.sequence('initProject', 'default'));
 };
