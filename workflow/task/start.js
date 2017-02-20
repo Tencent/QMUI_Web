@@ -61,9 +61,9 @@ module.exports = function(gulp, common) {
   }
 
   if (common.config.browserSyncMod === 'server' || common.config.browserSyncMod === 'proxy') {
-    gulp.task('main', false, common.plugins.sequence('include', 'compass', 'watch', common.config.browserSyncMod));
+    gulp.task('main', false, common.plugins.sequence('include', 'sass', 'watch', common.config.browserSyncMod));
   } else if (common.config.browserSyncMod === 'close') {
-    gulp.task('main', false, common.plugins.sequence('include', 'compass', 'watch'));
+    gulp.task('main', false, common.plugins.sequence('include', 'sass', 'watch'));
   } else {
     gulp.task('main', false, function() {
       common.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');

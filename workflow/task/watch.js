@@ -2,7 +2,8 @@
 
 var path     = require('path'),
     pngquant = require('imagemin-pngquant'),
-    md5      = require('js-md5');
+    md5      = require('js-md5'),
+    lazysprite = require('postcss-lazysprite');
 
 // 逻辑变量
 var justAddedImage = [],
@@ -14,21 +15,6 @@ module.exports = function(gulp, common) {
   gulp.task('watch', watchTaskDesciption, function () {
 
     common.log('Watch', 'QMUI 进入自动监听');
-
-    // 监控 SASS 文件变化并自动执行 Compass 编译
-
-    // Compass 下存在一个 bug：有四个 scss 文件 A，B，C，D，其中 A 和 B import C，C import D，那么当 D 修改后时重新 compile，只有 A 文件会被更新，B 不会被更新。但如果修改的是 C，那么 A 和 B 都会被更新。在 QMUI 的项目结构中，组件样式刚好命中这个 bug，因此这里做了一个处理，当组件样式被更新时，会触发修改一个空的 scss 文件然后 compile，这个文件被所有主样式文件 import，因此最终所有样式文件都得到更新。
-    var _widgetStyleSourcePath = '../project/widget/',
-        _compassWatch = gulp.watch(['../**/*.scss', '!' + _widgetStyleSourcePath, '!' + _widgetStyleSourcePath + '**/*'], ['compass']);
-    _compassWatch.on('change', function() {
-      common.log('');
-      common.log('Compass', '进行 Compass 编译');
-    });
-    var _compassWidgetWatch = gulp.watch([_widgetStyleSourcePath, _widgetStyleSourcePath + '**/*']);
-    _compassWidgetWatch.on('change', function() {
-      gulp.src(qmuiSupportScssFile)
-          .pipe(gulp.dest('../project'));
-    });
 
     // 图片管理（图片文件夹操作同步以及图片文件自动压缩）
 
@@ -124,13 +110,24 @@ module.exports = function(gulp, common) {
       });
     });
 
-    // Compass 图片部分（即由 Compass 支持的雪碧图部分）
-
+    // 雪碧图与样式处理
     // 监控雪碧图原图，若有修改触发 scss 修改，从而触发 Compass 重新生成雪碧图
-    var _imageSpriteWatch = gulp.watch([common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*']);
+    var _imageSpriteWatch = gulp.watch(['../project/**/*.scss', common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'], function() {
+
+      gulp.src('../project/**/*.scss')
+          .pipe(common.plugins.sass({outputStyle: 'compressed'}).on('error', common.plugins.sass.logError))
+          .pipe(common.plugins.postcss([lazysprite({
+            cssSeparator: "_",
+            imagePath: common.config.imagesSourcePath,
+            stylesheetPath: '../../public/style/css',
+            spritePath: common.config.imagesResultPath,
+            smartUpdate: true,
+            nameSpace: common.config.prefix + "_"
+          })]))
+          .pipe(gulp.dest('../../public/style/css'));                                                                                                                                                });
     _imageSpriteWatch.on('change', function() {
-      gulp.src(qmuiSupportScssFile)
-          .pipe(gulp.dest('../project'));
+      common.log('');
+      common.log('Sass', '进行样式编译');
     });
 
     // 压缩雪碧图
