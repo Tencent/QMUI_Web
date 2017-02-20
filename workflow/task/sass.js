@@ -9,7 +9,7 @@ module.exports = function(gulp, common) {
 
   gulp.task('sass', '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）', function () {
     return gulp.src('../project/**/*.scss')
-               .pipe(common.plugins.sass({outputStyle: 'compressed'}).on('error', common.plugins.sass.logError))
+               .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
                .pipe(common.plugins.postcss([lazysprite({
                  cssSeparator: "_",
                  imagePath: common.config.imagesSourcePath,
