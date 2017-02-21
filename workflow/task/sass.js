@@ -6,7 +6,7 @@ module.exports = function(gulp, common) {
   var _spriteConfig = {
     cssSeparator: '_',
     imagePath: common.config.imagesSourcePath,
-    stylesheetPath: '../../public/style/css',
+    stylesheetPath: common.config.styleResultPath,
     spritePath: common.config.imagesResultPath,
     smartUpdate: true,
     nameSpace: common.config.prefix + '_'
@@ -19,6 +19,6 @@ module.exports = function(gulp, common) {
     return gulp.src('../project/**/*.scss')
                .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
                .pipe(common.plugins.postcss([lazysprite(_spriteConfig)]))
-               .pipe(gulp.dest('../../public/style/css'));
+               .pipe(gulp.dest(common.config.styleResultPath));
   });
 };

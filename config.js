@@ -17,6 +17,7 @@ module.exports = {
   "htmlResultPath": "../../UI_html_result",
   "imagesResultPath": "../../public/style/images",
   "independentImagesDirectory": "/independent",
+  "styleResultPath": "../../public/style/css",
 
   /**
    * BrowerSync 设置
