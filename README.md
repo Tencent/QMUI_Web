@@ -33,12 +33,12 @@ QMUI Web 内置的工作流拥有从初始化项目到变更文件的各种自�
 QMUI Web 除了内置的公共组件外，还通过扩展的方式提供了常用的扩展组件，如雪碧图组件，等高左右双栏，文件上传按钮，树状选择菜单。
 
 ## 环境配置
+请确保安装 [Node.js](https://nodejs.org/)（4.0 以上版本），并用以下命令全局安装 gulp：
 
 ```bash
 #安装 gulp
 npm install --global gulp
 ```
-[遇到环境配置问题？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#%E9%81%87%E5%88%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98)
 
 ## 快速开始
 推荐使用 [Yeoman](http://yeoman.io/) 脚手架 [generator-qmui](https://github.com/QMUI/generator-qmui) 安装和配置 QMUI Web。该工具可以帮助你完成 QMUI Web 的所有安装和配置。
@@ -67,7 +67,7 @@ yo qmui
 │  │  ├─logic     // 项目相关逻辑样式
 │  │  └─widget    // 项目相关公共组件样式
 │  └─qmui_web     // QMUI Web 主源码应放置在这一层目录
-├─UI_html         // 静态模板目录，用于 UI 工程师开发
+├─UI_html         // 静态模板目录
 └─UI_html_result  // 静态模板 gulp 处理后的版本，用于前端拼接最终的模板
 ```
 
