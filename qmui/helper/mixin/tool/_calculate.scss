@@ -103,18 +103,18 @@
 ///
 /// @name pow
 /// @param {Number} $number - 底数
-/// @param {Number} $power - 幂数
+/// @param {Number} $pow - 幂数
 /// @example
 ///   pow(10, 5) => 100000
 ///   pow(10, -1) => 0.1
-@function pow($number, $power) {
+@function pow($number, $pow) {
   $result: 1;
-  @if $power >= 0 {
-    @for $i from 1 through $power {
+  @if $pow > 0 {
+    @for $i from 1 through $pow {
       $result: $result * $number;
     }
-  } @else {
-    @for $i from $power to 0 {
+  } @else if $pow < 0 {
+    @for $i from $pow to 0 {
       $result: $result / $number;
     }
   }
@@ -147,4 +147,49 @@
     $result: $number;
   }
   @return $result;
+}
+
+@function factorial($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / factorial(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / factorial(2 * $i);
+  }
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
 }
