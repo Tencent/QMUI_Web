@@ -67,7 +67,7 @@ module.exports = function(gulp, common) {
     gulp.watch([_independentImagesSourcePath, _independentImagesSourcePath + '/**/*'], function() {
       _shouldOutputEmptyLineForSyncImage = true;
       common.plugins.fileSync(_independentImagesSourcePath, _independentImagesResultPath, {
-        ignore: ['.DS_Store', '.svn/**/*', '.git/**/*'],
+        ignore: ['.DS_Store', '.svn', '.git'],
         beforeAddFileCallback: function(_fullPathSrc) {
          var _absoluteMinImageFilePath = path.resolve(_fullPathSrc),
              _absoluteMinImageFilePathMd5 = md5(_absoluteMinImageFilePath);
