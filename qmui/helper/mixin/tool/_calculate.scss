@@ -149,6 +149,12 @@
   @return $result;
 }
 
+/// 阶乘计算
+///
+/// @name factorial
+/// @param {Number} $number - 待进行阶乘计算的数值
+/// @example
+///   factorial(4) => 4 * 3 * 2 * 1 => 24
 @function factorial($number) {
   $value: 1;
   @if $number > 0 {
@@ -159,10 +165,20 @@
   @return $value;
 }
 
+/// 获取 π 的值（11位小数精度）
+///
+/// @name pi
 @function pi() {
   @return 3.14159265359;
 }
 
+/// 通过角度计算弧度
+///
+/// @name rad
+/// @param {Number} $angle - 需要被转换为弧度的角度值
+/// @example
+///   rad(180deg) -> 3.14159
+///   rad(45deg) -> 0.7854
 @function rad($angle) {
   $unit: unit($angle);
   $unitless: $angle / ($angle * 0 + 1);
@@ -172,6 +188,13 @@
   @return $unitless;
 }
 
+/// 计算 sin 三角函数
+///
+/// @name sin
+/// @param {Number} $angle - 需要进行 sin 计算的角度值
+/// @example
+///   sin(45deg) -> 0.70711
+///   sin(90deg) -> 1
 @function sin($angle) {
   $sin: 0;
   $angle: rad($angle);
@@ -181,6 +204,13 @@
   @return $sin;
 }
 
+/// 计算 cos 三角函数
+///
+/// @name cos
+/// @param {Number} $angle - 需要进行 cos 计算的角度值
+/// @example
+///   cos(45deg) -> 0.70711
+///   cos(90deg) -> 0
 @function cos($angle) {
   $cos: 0;
   $angle: rad($angle);
@@ -190,6 +220,13 @@
   @return $cos;
 }
 
+/// 计算 tan 三角函数
+///
+/// @name tan
+/// @param {Number} $angle - 需要进行 tan 计算的角度值
+/// @example
+///   tan(45deg) -> 1
+///   tan(50deg) -> 1.19175
 @function tan($angle) {
   @return sin($angle) / cos($angle);
 }
