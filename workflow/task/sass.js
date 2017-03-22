@@ -9,7 +9,9 @@ module.exports = function(gulp, common) {
     stylesheetPath: common.config.styleResultPath,
     spritePath: common.config.imagesResultPath,
     smartUpdate: true,
-    nameSpace: common.config.prefix + '_'
+    nameSpace: common.config.prefix + '_',
+    retinaInfix: '_',
+    outputExtralCSS: true
   };
   if (argv.debug) {
     _spriteConfig.logLevel = 'silent';
