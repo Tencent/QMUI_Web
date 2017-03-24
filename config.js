@@ -7,6 +7,8 @@ module.exports = {
   "prefix": "dm",
   "resultCssFileName": "main.scss",
   "cleanFileType": ["../.sass-cache", "../.sass-cache/**/*"],
+  "needsCssSprite": true,
+  "needsSourceMaps": false,
 
   /**
    * 项目的路径配置，建议尽量使用推荐的路径，若要修改，请保持与 config.rb 中的指向的目录保持一致，但需要注意因为相对位置不同（这里是以 qmui_web 目录为 Base Path），所以这里的值应该比 config.rb 中的多了一个 ../
