@@ -27,13 +27,14 @@
     "gulp-sass": "^3.1.0",
     "gulp-sequence": "^0.4.6",
     "gulp-shell": "^0.6.3",
+    "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "imagemin-pngquant": "^5.0.0",
     "js-md5": "^0.4.2",
     "mkdirp": "^0.5.1",
     "path": "^0.12.7",
-    "postcss-lazysprite": "^1.0.1",
+    "postcss-lazysprite": "^1.1.0",
     "yargs": "^7.0.2"
   },
   "devDependencies": {

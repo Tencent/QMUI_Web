@@ -13,14 +13,17 @@ module.exports = function(gulp, common) {
     retinaInfix: '_',
     outputExtralCSS: true
   };
+  var _styleResultPath = common.config.styleResultPath;
   if (argv.debug) {
     _spriteConfig.logLevel = 'silent';
   }
 
   gulp.task('sass', '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）', function () {
     return gulp.src('../project/**/*.scss')
+               .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
                .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
-               .pipe(common.plugins.postcss([lazysprite(_spriteConfig)]))
-               .pipe(gulp.dest(common.config.styleResultPath));
+               .pipe(common.plugins.if(common.config.needsCssSprite, common.plugins.postcss([lazysprite(_spriteConfig)])))
+               .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
+               .pipe(gulp.dest(_styleResultPath));
   });
 };

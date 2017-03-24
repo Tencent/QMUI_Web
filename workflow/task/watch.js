@@ -110,7 +110,11 @@ module.exports = function(gulp, common) {
 
     // 雪碧图与样式处理
     // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
-    var _imageSpriteWatch = gulp.watch(['../project/**/*.scss', common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'], ['sass']);
+    var _styleWatchFiles = ['../project/**/*.scss'];
+    if (common.config.needsCssSprite) {
+      _styleWatchFiles = _styleWatchFiles.concat([common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*']);
+    }
+    var _imageSpriteWatch = gulp.watch(_styleWatchFiles, ['sass']);
     _imageSpriteWatch.on('change', function() {
       common.log('');
       common.log('Sass', '进行样式编译');
