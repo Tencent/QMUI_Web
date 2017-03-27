@@ -34,7 +34,7 @@ try {
 var common = {};
 
 common.plugins = plugins;
-common.config = _.defaults(configUser, configDefault);
+common.config = _.defaultsDeep(configUser, configDefault);
 common.packageInfo = packageInfo;
 common.lib = lib;
 common.browserSync = browserSync;
