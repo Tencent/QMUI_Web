@@ -9,25 +9,32 @@ var plugins     = require('gulp-load-plugins')({
     lib         = require('./lib.js'),
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload,
-    config;
+    _           = require('lodash'),
+    configDefault,
+    configUser = {};
 
 // 读取项目配置表
 try {
-  config = require('../../config.js');
+  configDefault = require('../../config.js');
 } catch (_event) {
   try {
-    config = require('../../config.json');
+    configDefault = require('../../config.json');
   } catch (_e) {
     plugins.util.log(plugins.util.colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
-
   }
+}
+
+try {
+  configUser = require('../../config.user.js');
+} catch (_e) {
+  // 没有个人用户配置，无需额外处理
 }
 
 // 创建 common 对象
 var common = {};
 
 common.plugins = plugins;
-common.config = config;
+common.config = _.defaults(configUser, configDefault);
 common.packageInfo = packageInfo;
 common.lib = lib;
 common.browserSync = browserSync;
