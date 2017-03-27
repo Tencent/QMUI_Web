@@ -8,8 +8,6 @@ module.exports = {
   "resultCssFileName": "main.scss",
   "cleanFileType": ["../.sass-cache", "../.sass-cache/**/*"],
   "needsSourceMaps": false,
-  // 是否需要监听雪碧图变化，如果为 false，则在雪碧图发生变化时不会触发雪碧图重新生成
-  "needsWatchingCssSprite": true,
 
   /**
    * 项目的路径配置，建议尽量使用推荐的路径，若要修改，请保持与 config.rb 中的指向的目录保持一致，但需要注意因为相对位置不同（这里是以 qmui_web 目录为 Base Path），所以这里的值应该比 config.rb 中的多了一个 ../
