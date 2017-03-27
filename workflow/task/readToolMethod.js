@@ -7,10 +7,7 @@ module.exports = function(gulp) {
         sassdoc = require('sassdoc'),
         _ = require('lodash');
 
-    sassdoc.parse([
-      './qmui/helper/mixin/'
-    ], {verbose: true})
-    .then(function (_data) {
+    sassdoc.parse('./qmui/helper/mixin/').then(function (_data) {
       if (_data.length > 0) {
         // 按 group 把数组重新整理成二维数组
         var _result = [],
