@@ -22,7 +22,7 @@ module.exports = function(gulp, common) {
     return gulp.src('../project/**/*.scss')
                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
                .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
-               .pipe(common.plugins.if(common.config.needsCssSprite, common.plugins.postcss([lazysprite(_spriteConfig)])))
+               .pipe(common.plugins.if(common.config.needsWatchingCssSprite || common.firstLoop, common.plugins.postcss([lazysprite(_spriteConfig)])))
                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
                .pipe(gulp.dest(_styleResultPath));
   });

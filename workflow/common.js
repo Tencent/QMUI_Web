@@ -32,6 +32,7 @@ common.packageInfo = packageInfo;
 common.lib = lib;
 common.browserSync = browserSync;
 common.reload = reload;
+common.firstLoop = true; // QMUI gulp 任务启动时的标记位
 
 // 日志方法
 common.log = function(_tag, _content) {

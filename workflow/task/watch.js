@@ -111,7 +111,7 @@ module.exports = function(gulp, common) {
     // 雪碧图与样式处理
     // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
     var _styleWatchFiles = ['../project/**/*.scss'];
-    if (common.config.needsCssSprite) {
+    if (common.config.needsWatchingCssSprite) {
       _styleWatchFiles = _styleWatchFiles.concat([common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*']);
     }
     var _imageSpriteWatch = gulp.watch(_styleWatchFiles, ['sass']);
@@ -149,5 +149,6 @@ module.exports = function(gulp, common) {
       });
     }
 
+    common.firstLoop = false; // 结束任务初始启动
   });
 };
