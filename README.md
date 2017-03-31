@@ -51,7 +51,7 @@ npm install -g generator-qmui
 #在项目根目录执行以下命令
 yo qmui
 ```
-<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/Generator.gif" width="628" alt="效果预览" />
+<img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/Generator.gif" width="842" alt="效果预览" />
 
 ### 完成后生成的项目目录结构
 ```bash
