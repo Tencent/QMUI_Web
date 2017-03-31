@@ -34,7 +34,7 @@
     "js-md5": "^0.4.2",
     "mkdirp": "^0.5.1",
     "path": "^0.12.7",
-    "postcss-lazysprite": "^1.2.0",
+    "postcss-lazysprite": "^1.2.2",
     "lodash": "^4.17.4",
     "yargs": "^7.0.2"
   },
