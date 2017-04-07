@@ -15,7 +15,7 @@ module.exports = function(gulp, common) {
   };
   var _styleResultPath = common.config.styleResultPath;
   if (argv.debug) {
-    _spriteConfig.logLevel = 'silent';
+    _spriteConfig.logLevel = 'debug';
   }
 
   gulp.task('sass', '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）', function () {
