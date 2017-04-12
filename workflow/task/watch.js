@@ -12,6 +12,8 @@ var justAddedImage = [],
 module.exports = function(gulp, common) {
   gulp.task('watch', watchTaskDesciption, function () {
 
+    global.isWatching = true;
+
     common.log('Watch', 'QMUI 进入自动监听');
 
     // 图片管理（图片文件夹操作同步以及图片文件自动压缩）

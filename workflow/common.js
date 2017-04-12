@@ -2,7 +2,8 @@
 var plugins     = require('gulp-load-plugins')({
                     rename: {
                       'gulp-file-include': 'include',
-                      'gulp-merge-link': 'merge'
+                      'gulp-merge-link': 'merge',
+                      'gulp-better-sass-inheritance': 'sassInheritance'
                     }
                   }),
     packageInfo = require('../package.json'),
