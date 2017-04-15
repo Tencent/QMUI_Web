@@ -22,6 +22,7 @@ module.exports = function(gulp, common) {
     var _isOpeningBrowserSyncMod = common.config.browserSyncMod !== 'close';
     return gulp.src('../project/**/*.scss')
                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
+               .pipe(common.plugins.if(global.isWatching, common.plugins.cached('sass')))
                .pipe(common.plugins.sassInheritance({base: '../project/'}))
                .pipe(common.plugins.if(!!argv.debug, common.plugins.debug({title: 'Sass Debug:'})))
                .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
