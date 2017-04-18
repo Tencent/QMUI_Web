@@ -116,7 +116,14 @@ module.exports = function(gulp, common) {
     // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
     var _styleWatchFiles = ['../project/**/*.scss', common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'];
     var _imageSpriteWatch = gulp.watch(_styleWatchFiles, ['sass']);
-    _imageSpriteWatch.on('change', function() {
+    _imageSpriteWatch.on('change', function(event) {
+      var _file = event.path;
+      if (/[^\.]+(.[gif|jpg|jpeg|png|bmp])$/.test(_file)) {
+      // 图片文件需要忽略缓存
+        global.isHandleStyle = false;
+      } else {
+        global.isHandleStyle = true;
+      }
       common.log('');
       common.log('Sass', '进行样式编译');
     });

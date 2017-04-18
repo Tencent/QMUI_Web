@@ -22,9 +22,9 @@ module.exports = function(gulp, common) {
     var _isOpeningBrowserSyncMod = common.config.browserSyncMod !== 'close';
     return gulp.src('../project/**/*.scss')
                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-               .pipe(common.plugins.if(global.isWatching, common.plugins.cached('sass')))
+               .pipe(common.plugins.if(global.isWatching && global.isHandleStyle, common.plugins.cached('sass')))
                .pipe(common.plugins.sassInheritance({base: '../project/'}))
-               .pipe(common.plugins.if(!!argv.debug, common.plugins.debug({title: 'Sass Debug:'})))
+               .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
                .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
                .pipe(common.plugins.postcss([lazysprite(_spriteConfig)]))
                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
