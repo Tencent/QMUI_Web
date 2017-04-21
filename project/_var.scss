@@ -23,8 +23,6 @@
 // #function QMUI 功能相关
 // 由于移动页面也有大量渠道流向 PC，最终在 PC 上浏览，因此综合考虑这里 Mobile Only 仅仅会抛弃 IE6/7 相关的属性
 $function_mobileOnly: false;
-// 在雪碧图的每个原图之间加入空隙，这样可以防止因元素位置没有对齐像素产生的问题，同时也能基本避免浏览器缩放时发生的问题
-$function_sprite_spacing: 10px;
 
 // #common 通用
 $common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;
