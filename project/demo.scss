@@ -1,19 +1,16 @@
 @charset "UTF-8";
 
 /**
- * main.scss 项目总样式文件 
- * @author Kayo 
+ * main.scss 项目总样式文件
+ * @author Kayo
  * @date 2014-10-31
  *
  */
 
-// QMUI 框架需要用作功能支撑的 scss 文件
-@import "_qmuiSupport.scss";
-
-// 业务公共变量 
+// 业务公共变量
 @import "_var";
- 
-// 引入 QMUI 
+
+// 引入 QMUI
 @import "../qmui/_qmui.scss";
 
 // 业务公共组件
