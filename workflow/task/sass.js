@@ -6,7 +6,8 @@ module.exports = function(gulp, common) {
   var _spriteConfig = {
     cssSeparator: '_',
     imagePath: common.config.imagesSourcePath,
-    stylesheetPath: common.config.styleResultPath,
+    stylesheetRelative: common.config.styleResultPath,
+    stylesheetInput: '../project/',
     spritePath: common.config.imagesResultPath,
     smartUpdate: true,
     nameSpace: common.config.prefix + '_',
