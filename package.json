@@ -8,19 +8,19 @@
   },
   "main": "gulpfile.js",
   "dependencies": {
-    "browser-sync": "^2.18.8",
+    "browser-sync": "^2.18.12",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-better-sass-inheritance": "0.0.3",
     "gulp-cached": "^1.1.1",
-    "gulp-clean-css": "^3.0.4",
+    "gulp-clean-css": "^3.4.1",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
-    "gulp-file-include": "^1.0.0",
+    "gulp-file-include": "^1.1.0",
     "gulp-file-sync": "^1.0.7",
     "gulp-help": "^1.6.1",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.2.0",
+    "gulp-imagemin": "^3.3.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-merge-link": "^0.1.3",
     "gulp-plumber": "^1.1.0",
@@ -30,19 +30,19 @@
     "gulp-sass": "^3.1.0",
     "gulp-sequence": "^0.4.6",
     "gulp-shell": "^0.6.3",
-    "gulp-sourcemaps": "^2.4.1",
-    "gulp-uglify": "^2.1.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "imagemin-pngquant": "^5.0.0",
+    "imagemin-pngquant": "^5.0.1",
     "js-md5": "^0.4.2",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "path": "^0.12.7",
-    "postcss-lazysprite": "~1.5.0",
+    "postcss-lazysprite": "~1.6.0",
     "yargs": "^8.0.1"
   },
   "devDependencies": {
-    "sassdoc": "^2.2.1"
+    "sassdoc": "^2.2.2"
   },
   "keywords": [
     "QMUI"
