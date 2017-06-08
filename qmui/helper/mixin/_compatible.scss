@@ -13,10 +13,8 @@
 /// @group 布局
 /// @name flex
 %flex {
-  display: -o-box;
   display: -moz-box;
   display: -webkit-box;
-  display: box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -27,10 +25,8 @@
 /// @group 布局
 /// @name display-flex
 @mixin display-flex {
-  display: -o-box;
   display: -moz-box;
   display: -webkit-box;
-  display: box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -299,7 +295,6 @@
   height: $lineHeight * $line;
   display: -webkit-box;
   display: -moz-box;
-  display: box;
   text-overflow: ellipsis;
   -webkit-line-clamp: $line;
   -moz-line-clamp: $line;
