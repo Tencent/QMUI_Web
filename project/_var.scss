@@ -21,8 +21,8 @@
  */
 
 // #function QMUI 功能相关
-// 由于移动页面也有大量渠道流向 PC，最终在 PC 上浏览，因此综合考虑这里 Mobile Only 仅仅会抛弃 IE6/7 相关的属性
-$function_mobileOnly: false;
+// Mobile Only 模式下，会抛弃 IE6/7 的相关支持，默认为 true。
+$function_mobileOnly: true;
 
 // #common 通用
 $common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;

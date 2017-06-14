@@ -1,6 +1,6 @@
 {
   "name": "qmui_web",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "一个旨在提高 UI 开发效率、快速产生项目 UI 的前端框架",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "browser-sync": "^2.18.12",
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-better-sass-inheritance": "0.0.3",
     "gulp-cached": "^1.1.1",
