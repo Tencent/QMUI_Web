@@ -19,7 +19,7 @@ body {font-size:$common_fontSize;line-height:1.5;background:$common_body_backgro
 h1,h2,h3,h4{font-size:18px; font-weight:normal;}
 body,input,textarea,select,button {font-family:$common_fontFamily; outline:none; -webkit-text-size-adjust:none;}
 input, textarea, select, button {
-  font-size:inherit; // form control's default font in webkit is "-webkit-small-control" 
+  font-size:inherit; // form control's default font in webkit is "-webkit-small-control"
   -webkit-tap-highlight-color:rgba(0,0,0,0); // remove widget tap highlighted in mobile safari
 }
 a {color: $common_color_link;text-decoration:none;-webkit-tap-highlight-color:$common_color_linkTapHighlight;}

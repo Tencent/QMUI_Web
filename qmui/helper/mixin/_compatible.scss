@@ -1,7 +1,7 @@
+// stylelint-disable
 @charset "utf-8";
 
-////
-/// 兼容性封装，解决浏览器常用 css 兼容性问题
+/// 兼容性封装，解决浏览器常用 css 兼容性问题，本文件所有方法均已废弃，改由 autoprefixer 代替
 /// @author Clear, Molice, Zhoon, Kayo，Jeff
 /// @group 兼容性封装
 /// @date 2014-08-19
@@ -12,6 +12,7 @@
 ///
 /// @group 布局
 /// @name flex
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 %flex {
   display: -moz-box;
   display: -webkit-box;
@@ -24,6 +25,7 @@
 ///
 /// @group 布局
 /// @name display-flex
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin display-flex {
   display: -moz-box;
   display: -webkit-box;
@@ -37,6 +39,7 @@
 /// @group 布局
 /// @name flexbox
 /// @param {Number} $num - CSS flex 的属性值，即在父元素中的权重
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flexbox($num) {
   // 在移动端只支持 flexbox 协议（旧的 flex API）的浏览器下，只有当你设置了 display: flex 属性后，其子元素的 flex 才会生效，因此这里同时设置了 display 以及 box-flex 属性
   display: -webkit-box;
@@ -55,24 +58,24 @@
 
 @mixin flex-direction-ForOld($direction) {
   @if $direction == row { // old 版本还有 inline-axis | block-axis，暂不考虑
-    -webkit-box-orient:horizontal ;
-    -moz-box-orient:horizontal ;
-    box-orient:horizontal;
+    -webkit-box-orient: horizontal ;
+    -moz-box-orient: horizontal ;
+    box-orient: horizontal;
   } @else if $direction == column {
-    -webkit-box-orient:vertical ;
-    -moz-box-orient:vertical ;
-        box-orient:vertical;
-  } @else if $direction == row-reverse{
-    -webkit-box-orient:horizontal ;
-    -moz-box-orient:horizontal ;
-     box-orient:horizontal;
+    -webkit-box-orient: vertical ;
+    -moz-box-orient: vertical ;
+    box-orient: vertical;
+  } @else if $direction == row-reverse {
+    -webkit-box-orient: horizontal ;
+    -moz-box-orient: horizontal ;
+    box-orient: horizontal;
     -webkit-box-direction: reverse;
     -moz-box-direction: reverse;
     box-direction: reverse;
-  } @else{
-    -webkit-box-orient:vertical ;
-    -moz-box-orient:vertical ;
-    box-orient:vertical;
+  } @else {
+    -webkit-box-orient: vertical ;
+    -moz-box-orient: vertical ;
+    box-orient: vertical;
     -webkit-box-direction: reverse;
     -moz-box-direction: reverse;
     box-direction: reverse;
@@ -84,11 +87,12 @@
 /// @group 布局
 /// @name flex-direction
 /// @param {String} $direction - 伸缩流方向，有 row，row-reverse，column，column-reverse 四个可选值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-direction($direction) {
   @include flex-direction-ForOld($direction);
-  -ms-flex-direction:$direction;
-  -webkit-flex-direction:$direction;
-  flex-direction:$direction;
+  -ms-flex-direction: $direction;
+  -webkit-flex-direction: $direction;
+  flex-direction: $direction;
 }
 
 /// flex-grow 的兼容性方法
@@ -96,6 +100,7 @@
 /// @group 布局
 /// @name flex-grow
 /// @param {Number} $num - CSS flex-grow 的属性值，即在父元素中的权重
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-grow($num) {
   -webkit-box-flex: $num;
   -moz-box-flex: $num;
@@ -113,6 +118,7 @@
 /// @group 布局
 /// @name flex-shrink
 /// @param {Number} $num - CSS flex-shrink 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-shrink($num) {
   -webkit-box-flex-shrink: $num;
   -moz-box-flex-shrink: $num;
@@ -126,6 +132,7 @@
 /// @group 布局
 /// @name flex-basis
 /// @param {Number} $num - CSS flex-basis 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-basis($num) {
   -webkit-box-flex-basis: $num;
   -moz-box-flex-basis: $num;
@@ -139,13 +146,14 @@
 /// @group 布局
 /// @name flex-align-items
 /// @param {String} $value - 对齐方式，有 flex-start，flex-end，center，baseline，stretch 5个可选值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-align-items($value) {
-  @if $value == 'flex-start' {
+  @if $value == "flex-start" {
     -webkit-box-align: start;
     -moz-box-align: start;
     -o-box-align: start;
     -ms-box-align: start;
-  } @else if $value == 'flex-end' {
+  } @else if $value == "flex-end" {
     -webkit-box-align: end;
     -moz-box-align: end;
     -o-box-align: end;
@@ -169,16 +177,17 @@
 /// @group 布局
 /// @name flex-justify-content
 /// @param {String} $value - CSS 属性 justify-content 的属性值，即 flex-start，flex-end，center，space-between，space-around 5个可选值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-justify-content($value) {
-  @if $value == 'space-around' {
+  @if $value == "space-around" {
     -webkit-box-pack: justify;
     -moz-box-pack: justify;
     -ms-flex-pack: distribute;
-  } @else if $value == 'flex-start' {
+  } @else if $value == "flex-start" {
     -webkit-box-pack: start;
     -moz-box-pack: start;
     -ms-flex-pack: start;
-  } @else if $value == 'flex-end' {
+  } @else if $value == "flex-end" {
     -webkit-box-pack: end;
     -moz-box-pack: end;
     -ms-flex-pack: end;
@@ -199,11 +208,12 @@
 /// @name flex-childPos
 /// @param {String} $dir - 子元素当前的布局方向，可选值为 vertical 和 horizontal
 /// @param {String} $value - 希望子元素对齐的方式，可选值为 flex-start，flex-end，center
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-childPos($dir, $value) {
-  @if $dir == 'vertical' {
+  @if $dir == "vertical" {
     @include flex-align-items($value);
   }
-  @if $dir == 'horizontal' {
+  @if $dir == "horizontal" {
     @include flex-justify-content($value);
   }
 }
@@ -220,31 +230,11 @@
   box-sizing: $value;
 }
 
-/// 清除浮动
-///
-/// @group 布局
-/// @name clear
-%clear {
-  @if not($function_mobileOnly) {
-    *zoom: 1;
-  }
-  &:after {
-    clear: both;
-    content: ".";
-    display: block;
-    line-height: 0;
-    font-size: 0;
-    visibility: hidden;
-    @if not($function_mobileOnly) {
-      overflow: hidden;
-    }
-  }
-}
-
 /// display: inline-block 的兼容性方法
 ///
 /// @group 布局
 /// @name inlineBlock
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin inlineBlock {
   display: inline-block;
   @if not($function_mobileOnly) {
@@ -260,60 +250,9 @@
 /// @param {String} $value - CSS 属性 box-shadow 的属性值
 /// @deprecated 由于浏览器的迭代更新，目前 box-shadow 已经得到非常广泛的支持，无需使用兼容封装，请使用原生的 CSS 属性 box-shadow 取代本方法。
 @mixin box-shadow($value...) {
-  -webkit-box-shadow:$value;
-  -moz-box-shadow:$value;
-  box-shadow:$value;
-}
-
-/// 单行省略号
-///
-/// @group 外观
-/// @name text-ellipsis
-%text-ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  word-break:break-all;
-  //在IE9的<td>中，如果之前已经设置了word-wrap:break-word，则这里的white-space:nowrap会失效，所以要在这里加上word-wrap:normal来以防万一
-  word-wrap: normal;
-}
-%text_ellipsis {
-  @extend %text-ellipsis;
-}
-
-/// 多行省略号
-///
-/// @group 外观
-/// @name text-multiLine-ellipsis
-/// @param {Number} $line - 文字的行数
-/// @param {Measure} $lineHeight - 文字行高
-/// @throw 不支持多行省略的浏览器降级处理为结尾处没有省略号，直接裁剪掉。
-@mixin text-multiLine-ellipsis($line: 2, $lineHeight: 20px){
-  line-height:$lineHeight;
-  overflow:hidden;
-  height: $lineHeight * $line;
-  display: -webkit-box;
-  display: -moz-box;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: $line;
-  -moz-line-clamp: $line;
-  line-clamp: $line;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-}
-
-/// 在长单词或 URL 地址内部进行换行，适用于以中文为主混有英文的文字排版
-///
-/// @group 外观
-/// @name text-breakWord
-%text-breakWord {
-  word-wrap: break-word;
-  word-break: break-word;
-}
-%text_breakWord {
-  @extend %text-breakWord;
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
 }
 
 /// 透明度的浏览器兼容方法
@@ -321,13 +260,14 @@
 /// @group 外观
 /// @name opacity
 /// @param {Number} $var - 不透明度
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin opacity($var) {
-  -webkit-opacity:$var;
-  -moz-opacity:$var;
-  opacity:$var;
-  filter:alpha(opacity=$var*100);
+  -webkit-opacity: $var;
+  -moz-opacity: $var;
+  opacity: $var;
+  filter: alpha(opacity=$var*100);
   @if not($function_mobileOnly) {
-    -khtml-opacity:$var;
+    -khtml-opacity: $var;
   }
 }
 
@@ -336,16 +276,18 @@
 /// @group 外观
 /// @name appearance
 /// @param {Number} $value - CSS 属性 appearance 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin appearance($value) { // 暂不支持IE和Opera
-  -moz-appearance:$value;
-  -webkit-appearance:$value;
-  appearance:$value;
+  -moz-appearance: $value;
+  -webkit-appearance: $value;
+  appearance: $value;
 }
 
 /// 选择内容的 CSS 选择器
 ///
 /// @group 外观
 /// @name selection
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin selection {
   @at-root #{&}::selection {
     @content;
@@ -360,99 +302,11 @@
   }
 }
 
-/// 半透明背景颜色
-///
-/// @group 外观
-/// @name bgWithOpacity
-/// @param {Color} $color - 背景色的颜色值
-/// @param {Number} $alpha - 背景色的透明度
-@mixin bgWithOpacity($color,$alpha) {
-  background-color:rgba($color,$alpha);
-  @include forIE8{
-    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#{ie-hex-str(rgba($color,$alpha))},endcolorstr=#{ie-hex-str(rgba($color,$alpha))});
-  }
-}
-
-/// 跨浏览器的渐变背景，垂直渐变，自上而下
-///
-/// @group 外观
-/// @name gradient-vertical
-/// @param {Color} $start-color [#555] - 渐变的开始颜色
-/// @param {Color} $end-color [#333] - 渐变的结束颜色
-/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
-/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
-@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%){
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop($start-percent, $start-color), color-stop($end-percent, $end-color)); // Safari 4-5, Chrome 1-9
-  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
-  background-image: -moz-linear-gradient(top, $start-color $start-percent, $end-color $end-percent); // Firefox 3.6+
-  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
-  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
-}
-
-/// 跨浏览器的渐变背景，水平渐变，自左而右
-///
-/// @group 外观
-/// @name gradient-horizontal
-/// @param {Color} $start-color [#555] - 渐变的开始颜色
-/// @param {Color} $end-color [#333] - 渐变的结束颜色
-/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
-/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
-@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%){
-  background-image: -webkit-gradient(linear, left center, right center, color-stop($start-percent, $start-color), color-stop($end-percent, $end-color));
-  background-image: -webkit-linear-gradient(left, color-stop($start-color $start-percent), color-stop($end-color $end-percent)); // Safari 5.1-6, Chrome 10+
-  background-image: -moz-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Firefox 3.6+
-  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
-  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
-}
-
-/// 跨浏览器的渐变背景，垂直渐变，自上而下，支持三个渐变点
-///
-/// @group 外观
-/// @name gradient-vertical-threeColor
-/// @param {Color} $start-color [#555] - 渐变的开始颜色
-/// @param {Color} $middle-color [#444] - 渐变的中间颜色
-/// @param {Color} $end-color [#333] - 渐变的结束颜色
-/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
-/// @param {Number} $start-percent [50%] - 渐变的中间位置，需要以百分号为单位
-/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
-@mixin gradient-vertical-threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%){
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop($start-percent, $start-color), color-stop($middle-percent, $middle-color), color-stop($end-percent, $end-color)); // Safari 4-5, Chrome 1-9
-  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
-  background-image: -moz-linear-gradient(top, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Firefox 3.6+
-  background-image: -o-linear-gradient(top, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent);  // Opera 12
-  background-image: linear-gradient(to bottom, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
-}
-
-/// 跨浏览器的渐变背景，水平渐变，自左而右
-///
-/// @group 外观
-/// @name gradient-horizontal-threeColor
-/// @param {Color} $start-color [#555] - 渐变的开始颜色
-/// @param {Color} $middle-color [#444] - 渐变的中间颜色
-/// @param {Color} $end-color [#333] - 渐变的结束颜色
-/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
-/// @param {Number} $start-percent [50%] - 渐变的中间位置，需要以百分号为单位
-/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
-@mixin gradient-horizontal-threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%){
-  background-image: -webkit-gradient(linear, left center, right center, color-stop($start-percent, $start-color), color-stop($middle-percent, $middle-color), color-stop($end-percent, $end-color));
-  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
-  background-image: -moz-linear-gradient(left, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Firefox 3.6+
-  background-image: -o-linear-gradient(left, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Opera 12
-  background-image: linear-gradient(to right, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
-}
-
 /// user-select: none 的兼容性方法
 ///
 /// @group 外观
 /// @name disabledUserSelect
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 %disabledUserSelect {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -465,12 +319,13 @@
 /// @group 变形
 /// @name transform
 /// @param {String} $value - CSS 属性 transform 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transform($value) {
-  -o-transform:$value;
-  -moz-transform:$value;
-  -ms-transform:$value;
-  -webkit-transform:$value;
-  transform:$value;
+  -o-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -webkit-transform: $value;
+  transform: $value;
 }
 
 /// CSS3 transform: scale 的兼容性方法
@@ -479,6 +334,7 @@
 /// @name scale
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin scale($ratioX, $ratioY: $ratioX) {
   -webkit-transform: scale($ratioX, $ratioY);
   -moz-transform: scale($ratioX, $ratioY);
@@ -494,7 +350,8 @@
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioZ [$ratioY 的值] - Z轴方向缩放的倍数，小数位缩小，大于1为放大
-@mixin scale3d($ratioX, $ratioY: $ratioX, $ratioZ: $ratioY){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin scale3d($ratioX, $ratioY: $ratioX, $ratioZ: $ratioY) {
   -webkit-transform: scale3d($ratioX, $ratioY, $ratioZ);
   -moz-transform: scale3d($ratioX, $ratioY, $ratioZ);
   -ms-transform: scale3d($ratioX, $ratioY, $ratioZ); // IE9 only
@@ -507,7 +364,8 @@
 /// @group 变形
 /// @name scaleX
 /// @param {Number} $ratio - X轴方向缩放的倍数，小数位缩小，大于1为放大
-@mixin scaleX($ratio){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin scaleX($ratio) {
   -webkit-transform: scaleX($ratio);
   -moz-transform: scaleX($ratio);
   -ms-transform: scaleX($ratio); // IE9 only
@@ -520,7 +378,8 @@
 /// @group 变形
 /// @name scaleY
 /// @param {Number} $ratio - Y轴方向缩放的倍数，小数位缩小，大于1为放大
-@mixin scaleY($ratio){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin scaleY($ratio) {
   -webkit-transform: scaleY($ratio);
   -moz-transform: scaleY($ratio);
   -ms-transform: scaleY($ratio); // IE9 only
@@ -534,7 +393,8 @@
 /// @name skew
 /// @param {Number} $x - X轴方向倾斜的角度
 /// @param {Number} $y - X轴方向倾斜的角度
-@mixin skew($x, $y){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin skew($x, $y) {
   -webkit-transform: skew($x, $y);
   -moz-transform: skew($x, $y);
   -ms-transform: skewX($x) skewY($y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
@@ -548,7 +408,8 @@
 /// @name translate
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
-@mixin translate($x, $y){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin translate($x, $y) {
   -webkit-transform: translate($x, $y);
   -moz-transform: translate($x, $y);
   -ms-transform: translate($x, $y); // IE9 only
@@ -561,7 +422,8 @@
 /// @group 变形
 /// @name translateX
 /// @param {Number} $x - X轴方向平移的距离
-@mixin translateX($x){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin translateX($x) {
   -webkit-transform: translateX($x);
   -moz-transform: translateX($x);
   -ms-transform: translateX($x); // IE9 only
@@ -574,7 +436,8 @@
 /// @group 变形
 /// @name translateY
 /// @param {Number} $y - Y轴方向平移的距离
-@mixin translateY($y){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin translateY($y) {
   -webkit-transform: translateY($y);
   -moz-transform: translateY($y);
   -ms-transform: translateY($y); // IE9 only
@@ -589,7 +452,8 @@
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
 /// @param {Number} $z - Z轴方向平移的距离
-@mixin translate3d($x, $y, $z){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
   -moz-transform: translate3d($x, $y, $z);
   transform: translate3d($x, $y, $z);
@@ -600,6 +464,7 @@
 /// @group 变形
 /// @name rotate
 /// @param {Number} $degrees - 元素旋转的角度
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotate($degrees) {
   -webkit-transform: rotate($degrees);
   -moz-transform: rotate($degrees);
@@ -613,6 +478,7 @@
 /// @group 变形
 /// @name rotateX
 /// @param {Number} $degrees - 元素在X轴方向旋转的角度
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotateX($degrees) {
   -webkit-transform: rotateX($degrees);
   -moz-transform: rotateX($degrees);
@@ -626,6 +492,7 @@
 /// @group 变形
 /// @name rotateY
 /// @param {Number} $degrees - 元素在Y轴方向旋转的角度
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotateY($degrees) {
   -webkit-transform: rotateY($degrees);
   -moz-transform: rotateY($degrees);
@@ -639,6 +506,7 @@
 /// @group 变形
 /// @name perspective
 /// @param {Measure} $perspective - 观察者与 z=0 平面的距离
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin perspective($perspective) {
   -webkit-perspective: $perspective;
   -moz-perspective: $perspective;
@@ -650,6 +518,7 @@
 /// @group 变形
 /// @name perspective-origin
 /// @param {Number} $origin - CSS 属性 perspective-origin 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin perspective-origin($origin) {
   -webkit-perspective-origin: $origin;
   -moz-perspective-origin: $origin;
@@ -661,6 +530,7 @@
 /// @group 变形
 /// @name transform-origin
 /// @param {Number} $origin - CSS 属性 transform-origin 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transform-origin($origin) {
   -webkit-transform-origin: $origin;
   -moz-transform-origin: $origin;
@@ -673,6 +543,7 @@
 /// @group 过渡效果
 /// @name transition
 /// @param {String} $transition - CSS 属性 transition 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition($transition...) {
   -webkit-transition: $transition;
   -moz-transition: $transition;
@@ -685,6 +556,7 @@
 /// @group 过渡效果
 /// @name transition-property
 /// @param {String} $transition-property - CSS 属性 transition-property 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-property($transition-property...) {
   -webkit-transition-property: $transition-property;
   -moz-transition-property: $transition-property;
@@ -697,6 +569,7 @@
 /// @group 过渡效果
 /// @name transition-delay
 /// @param {Number} $transition-delay - CSS 属性 transition-delay 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-delay($transition-delay) {
   -webkit-transition-delay: $transition-delay;
   -moz-transition-delay: $transition-delay;
@@ -709,6 +582,7 @@
 /// @group 过渡效果
 /// @name transition-duration
 /// @param {Number} $transition-duration - CSS 属性 transition-duration 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-duration($transition-duration...) {
   -webkit-transition-duration: $transition-duration;
   -moz-transition-duration: $transition-duration;
@@ -721,6 +595,7 @@
 /// @group 过渡效果
 /// @name transition-timing-function
 /// @param {String} $timing-function - CSS 属性 transition-timing-function 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-timing-function($timing-function) {
   -webkit-transition-timing-function: $timing-function;
   -moz-transition-timing-function: $timing-function;
@@ -733,6 +608,7 @@
 /// @group 过渡效果
 /// @name transition-transform
 /// @param {String} $transionWithoutProperty - CSS 属性 transition 中除了 transition-property 外的其他值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-transform($transionWithoutProperty...) {
   -webkit-transition: -webkit-transform $transionWithoutProperty;
   -moz-transition: -webkit-transform $transionWithoutProperty;
@@ -745,6 +621,7 @@
 /// @group 动画
 /// @name animation
 /// @param {String} $animation - CSS 属性 animation 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation($animation) {
   -webkit-animation: $animation;
   -moz-animation: $animation;
@@ -757,6 +634,7 @@
 /// @group 动画
 /// @name animation
 /// @param {String} $name - CSS 属性 animation-name 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-name($name) {
   -webkit-animation-name: $name;
   -moz-animation-name: $name;
@@ -769,6 +647,7 @@
 /// @group 动画
 /// @name animation-duration
 /// @param {Number} $duration - CSS 属性 animation-duration 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-duration($duration) {
   -webkit-animation-duration: $duration;
   -moz-animation-duration: $duration;
@@ -781,6 +660,7 @@
 /// @group 动画
 /// @name animation-timing-function
 /// @param {Number} $timing-function - CSS 属性 animation-timing-function 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-timing-function($timing-function) {
   -webkit-animation-timing-function: $timing-function;
   -moz-animation-timing-function: $timing-function;
@@ -793,6 +673,7 @@
 /// @group 动画
 /// @name animation-delay
 /// @param {Number} $delay - CSS 属性 animation-delay 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-delay($delay) {
   -webkit-animation-delay: $delay;
   -moz-animation-delay: $delay;
@@ -805,6 +686,7 @@
 /// @group 动画
 /// @name animation-iteration-count
 /// @param {Number} $iteration-count - CSS 属性 animation-iteration-count 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-iteration-count($iteration-count) {
   -webkit-animation-iteration-count: $iteration-count;
   -moz-animation-iteration-count: $iteration-count;
@@ -817,6 +699,7 @@
 /// @group 动画
 /// @name animation-direction
 /// @param {String} $direction - CSS 属性 animation-direction 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-direction($direction) {
   -webkit-animation-direction: $direction;
   -moz-animation-direction: $direction;
@@ -829,6 +712,7 @@
 /// @group 动画
 /// @name animation-fill-mode
 /// @param {String} $fill-mode - CSS 属性 animation-fill-mode 的属性值
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-fill-mode($fill-mode) {
   -webkit-animation-fill-mode: $fill-mode;
   -moz-animation-fill-mode: $fill-mode;
@@ -841,110 +725,19 @@
 /// @group 动画
 /// @name keyframes
 /// @param {String} $name - 动画名
-@mixin keyframes($name){
+/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
+@mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
-      @content;
+    @content;
   }
   @-moz-keyframes #{$name} {
-      @content;
+    @content;
   }
   @-o-keyframes #{$name} {
-      @content;
+    @content;
   }
   @keyframes #{$name} {
-      @content;
-  }
-}
-// modified by clearwu
-// 封装keyframes作用不大，上面的写法不能根据前缀对应相应的内容。当然可以在内部做前缀的判断，但 sass v3.4.1 之后有修改日志：
-// Don’t put rulesets inside @keyframes directives when bubbling them up to the top level.
-// 以下例子可用于说明区别：（可自行用不同版本sass测试，也可线上测试：http://sassmeister.com/）
-// @mixin keyframes($animationName) {
-//     @-webkit-keyframes #{$animationName} {
-//         $browser: '-webkit-'; @content;
-//     }
-//     @-moz-keyframes #{$animationName} {
-//         $browser: '-moz-'; @content;
-//     }
-//     @-o-keyframes #{$animationName} {
-//         $browser: '-o-'; @content;
-//     }
-//     @keyframes #{$animationName} {
-//         $browser: ''; @content;
-//     }
-// }
-// $browser: null;
-// @include keyframes('rotate') {
-//     from { #{$browser}transform: rotate(0deg);}
-//     to { #{$browser}transform: rotate(360deg);}
-// }
-
-
-/// 适配多倍屏的 CSS 选择器
-///
-/// @group 设备适配
-/// @name screenResolution
-/// @param {Number} $num - 需要适配的屏幕倍数
-@mixin screenResolution($num) {
-  @media (-webkit-min-device-pixel-ratio: $num),
-    (min--moz-device-pixel-ratio: $num),
-    (-o-min-device-pixel-ratio: $num),
-    (min-device-pixel-ratio: $num),
-    (min-resolution: #{$num}dppx),
-    (min-resolution: #{$num*96}dpi) {
-      @content;
-    }
-}
-
-/// 适配 Pad 的 CSS 选择器，例如有响应式布局中适配 Pad 的代码可以包在这里
-///
-/// @group 设备适配
-/// @name screenForPad
-@mixin screenForPad {
-  @media (min-width:$screen_width_pad) {
-    @content;
-  }
-  @media \0screen {
     @content;
   }
 }
-
-/// 适配手机的 CSS 选择器，与 screenForPad 方法对应，可以用于包裹只在 Phone 版使用的代码，不在 Pad 版使用的样式
-///
-/// @group 设备适配
-/// @name screenForPhone
-@mixin screenForPhone {
-  @media (max-width:$screen_width_pad) {
-    @content;
-  }
-}
-
-/// 适配 IE 10 及以上版本的 CSS 选择器，需要针对 IE10 或以上版本的样式可以写在这里
-///
-/// @group 设备适配
-/// @name screenForIE10AndLater
-@mixin screenForIE10AndLater {
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    @content;
-  }
-}
-
-/// 单独适配 IE 8 CSS 选择器，需要仅针对 IE 8 的样式可以写在这里
-///
-/// @group 设备适配
-/// @name forIE8
-@mixin forIE8 {
-  @media \0screen {
-    @content;
-  }
-}
-
-/// 单独适配 IE 9 CSS 选择器，需要仅针对 IE 9（不包括 IE 10 等更高版本） 的样式可以写在这里
-///
-/// @group 设备适配
-/// @name forIE9
-@mixin forIE9 {
-  @media all and (min-width:0\0) and (min-resolution: .001dpcm) {
-    @content;
-  }
-}
+// stylelint-enable

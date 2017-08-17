@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * _tab.scss 选项卡组件
- * @author clearwu 
+ * @author clearwu
  * @date 2014-11-12
  *
  * .qui_tab
@@ -17,22 +17,26 @@
 .qui_tab {
   background: $tab_background;
 }
+
 .qui_tab_title {
   background: $tab_head_background;
 }
+
 .qui_tabNav {
   @extend %clear;
   padding: $tabNav_padding;
 }
+
 .qui_tabNav_item {
   float: left;
   margin: $tabNav_item_margin;
 }
+
 .qui_tabNav_itemLink {
   display: block;
   height: $tabNav_itemLink_height;
   line-height: $tabNav_itemLink_lineHeight;
   padding: $tabNav_itemLink_padding;
   background: $tabNav_itemLink_background;
-  color: $tabNav_itemLink_color; 
+  color: $tabNav_itemLink_color;
 }

@@ -9,21 +9,27 @@
 .qui_txtNormal {
   font-weight: normal!important;
 }
+
 .qui_txtBold {
   font-weight: bold!important;
 }
+
 .qui_txtLeft {
   text-align: left!important;
 }
+
 .qui_txtRight {
   text-align: right!important;
 }
+
 .qui_txtUnderline {
   text-decoration: underline!important;
 }
+
 .qui_txtUnderlineNone {
   text-decoration: none!important;
 }
+
 .qui_txtOverflow {
   @extend %text_ellipsis;
 }
@@ -31,12 +37,15 @@
 .qui_clear {
   @extend %clear;
 }
+
 .qui_txtNowrap {
   white-space: nowrap!important;
 }
+
 .qui_layoutLeft {
   float: left!important;
 }
+
 .qui_layoutRight {
   float: right!important;
 }

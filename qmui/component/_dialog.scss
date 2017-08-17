@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * _dialog.scss 对话框组件
- * @author Kayo 
+ * @author Kayo
  * @date 2014-11-03
  *
  * .qui_dialog
@@ -19,7 +19,7 @@
   z-index: $dialog_zIndex;
   min-width: $dialog_minWidth;
   _width: $dialog_minWidth;
-  background: $dialog_background; 
+  background: $dialog_background;
   border: $dialog_border;
   border-radius: $dialog_radius;
 }
@@ -47,6 +47,7 @@
 .qui_dialog_body {
   background: $dialog_body_background;
 }
+
 .qui_dialog_body:last-child {
   border-radius: 0 0 $dialog_radius $dialog_radius;
 }

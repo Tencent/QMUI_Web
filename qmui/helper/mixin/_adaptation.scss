@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+////
+/// 平台与浏览器适配相关方法
+/// @author Clear, Molice, Zhoon, Kayo，Jeff
+/// @group 兼容性封装
+/// @date 2014-08-19
+////
+
+
+/// 清除浮动
+///
+/// @group 布局
+/// @name clear
+%clear {
+  @if not($function_mobileOnly) {
+    *zoom: 1;
+  }
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    line-height: 0;
+    font-size: 0;
+    visibility: hidden;
+    @if not($function_mobileOnly) {
+      overflow: hidden;
+    }
+  }
+}
+
+/// 单行省略号
+///
+/// @group 外观
+/// @name text-ellipsis
+%text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  //在IE9的<td>中，如果之前已经设置了word-wrap:break-word，则这里的white-space:nowrap会失效，所以要在这里加上word-wrap:normal来以防万一
+  word-wrap: normal;
+}
+
+%text_ellipsis {
+  @extend %text-ellipsis;
+}
+
+/// 多行省略号
+///
+/// @group 外观
+/// @name text-multiLine-ellipsis
+/// @param {Number} $line - 文字的行数
+/// @param {Measure} $lineHeight - 文字行高
+/// @throw 不支持多行省略的浏览器降级处理为结尾处没有省略号，直接裁剪掉。
+@mixin text-multiLine-ellipsis($line: 2, $lineHeight: 20px) {
+  line-height: $lineHeight;
+  overflow: hidden;
+  height: $lineHeight * $line;
+  // stylelint-disable
+  display: -webkit-box;
+  display: -moz-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  -moz-line-clamp: $line;
+  line-clamp: $line;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  // stylelint-enable
+  box-orient: vertical;
+}
+
+/// 在长单词或 URL 地址内部进行换行，适用于以中文为主混有英文的文字排版
+///
+/// @group 外观
+/// @name text-breakWord
+%text-breakWord {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+%text_breakWord {
+  @extend %text-breakWord;
+}
+
+/// 适配多倍屏的 CSS 选择器
+///
+/// @group 设备适配
+/// @name screenResolution
+/// @param {Number} $num - 需要适配的屏幕倍数
+@mixin screenResolution($num) {
+  @media (-webkit-min-device-pixel-ratio: $num),
+    (min--moz-device-pixel-ratio: $num),
+    (min-device-pixel-ratio: $num),
+    (min-resolution: #{$num}dppx),
+    (min-resolution: #{$num*96}dpi) {
+    @content;
+  }
+}
+
+/// 适配 Pad 的 CSS 选择器，例如有响应式布局中适配 Pad 的代码可以包在这里
+///
+/// @group 设备适配
+/// @name screenForPad
+@mixin screenForPad {
+  @media (min-width:$screen_width_pad) {
+    @content;
+  }
+  @media \0screen {
+    @content;
+  }
+}
+
+/// 适配手机的 CSS 选择器，与 screenForPad 方法对应，可以用于包裹只在 Phone 版使用的代码，不在 Pad 版使用的样式
+///
+/// @group 设备适配
+/// @name screenForPhone
+@mixin screenForPhone {
+  @media (max-width:$screen_width_pad) {
+    @content;
+  }
+}
+
+/// 适配 IE 10 及以上版本的 CSS 选择器，需要针对 IE10 或以上版本的样式可以写在这里
+///
+/// @group 设备适配
+/// @name screenForIE10AndLater
+@mixin screenForIE10AndLater {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+/// 单独适配 IE 8 CSS 选择器，需要仅针对 IE 8 的样式可以写在这里
+///
+/// @group 设备适配
+/// @name forIE8
+@mixin forIE8 {
+  @media \0screen {
+    @content;
+  }
+}
+
+/// 单独适配 IE 9 CSS 选择器，需要仅针对 IE 9（不包括 IE 10 等更高版本） 的样式可以写在这里
+///
+/// @group 设备适配
+/// @name forIE9
+@mixin forIE9 {
+  @media all and (min-width:0\0) and (min-resolution: .001dpcm) {
+    @content;
+  }
+}
+
+/// 半透明背景颜色
+///
+/// @group 外观
+/// @name bgWithOpacity
+/// @param {Color} $color - 背景色的颜色值
+/// @param {Number} $alpha - 背景色的透明度
+@mixin bgWithOpacity($color,$alpha) {
+  background-color: rgba($color,$alpha);
+  @include forIE8 {
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#{ie-hex-str(rgba($color,$alpha))},endcolorstr=#{ie-hex-str(rgba($color, $alpha))});
+  }
+}
+
+/// 跨浏览器的渐变背景，垂直渐变，自上而下
+///
+/// @group 外观
+/// @name gradient-vertical
+/// @param {Color} $start-color [#555] - 渐变的开始颜色
+/// @param {Color} $end-color [#333] - 渐变的结束颜色
+/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
+/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=0); // IE9 and down
+}
+
+/// 跨浏览器的渐变背景，水平渐变，自左而右
+///
+/// @group 外观
+/// @name gradient-horizontal
+/// @param {Color} $start-color [#555] - 渐变的开始颜色
+/// @param {Color} $end-color [#333] - 渐变的结束颜色
+/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
+/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=1); // IE9 and down
+}
+
+/// 跨浏览器的渐变背景，带角度
+///
+/// @group 外观
+/// @name gradient-on-axis
+/// @param {Degree} $axis-degree [135deg] - 渐变的轴
+/// @param {Color} $start-color [#555] - 渐变的开始颜色
+/// @param {Color} $end-color [#333] - 渐变的结束颜色
+/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
+/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
+@mixin gradient-on-axis($axis-degree: 0, $start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient($axis-degree, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=0); // IE9 and down
+}
+
+/// 跨浏览器的渐变背景，垂直渐变，自上而下，支持三个渐变点
+///
+/// @group 外观
+/// @name gradient-vertical-threeColor
+/// @param {Color} $start-color [#555] - 渐变的开始颜色
+/// @param {Color} $middle-color [#444] - 渐变的中间颜色
+/// @param {Color} $end-color [#333] - 渐变的结束颜色
+/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
+/// @param {Number} $start-percent [50%] - 渐变的中间位置，需要以百分号为单位
+/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
+@mixin gradient-vertical-threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%) {
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=0); // IE9 and down
+}
+
+/// 跨浏览器的渐变背景，水平渐变，自左而右
+///
+/// @group 外观
+/// @name gradient-horizontal-threeColor
+/// @param {Color} $start-color [#555] - 渐变的开始颜色
+/// @param {Color} $middle-color [#444] - 渐变的中间颜色
+/// @param {Color} $end-color [#333] - 渐变的结束颜色
+/// @param {Number} $start-percent [0%] - 渐变的开始位置，需要以百分号为单位
+/// @param {Number} $start-percent [50%] - 渐变的中间位置，需要以百分号为单位
+/// @param {Number} $end-percent [100%] - 渐变的结束位置，需要以百分号为单位
+@mixin gradient-horizontal-threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%) {
+  background-image: linear-gradient(to right, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=1); // IE9 and down
+}
