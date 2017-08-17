@@ -28,20 +28,18 @@
   @return $string;
 }
 
-/// 加亮颜色（加百分之X的白色）
+/// 加亮颜色（以百分比的形式加入加色）
 ///
-/// @group 设备适配
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @param {Color} $color - 需要被加亮的颜色值
+/// @param {Number} $percentage - 需要增加的白色的百分比
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);
 }
 
-/// 加暗颜色（加百分之X的黑色）
+/// 加暗颜色（以百分比的形式加入黑色）
 ///
-/// @group 设备适配
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @param {Color} $color - 需要被加暗的颜色值
+/// @param {Number} $percentage - 需要增加的黑色的百分比
 @function shade($color, $percentage) {
   @return mix(black, $color, $percentage);
 }

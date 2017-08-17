@@ -7,7 +7,7 @@ module.exports = function(gulp) {
         sassdoc = require('sassdoc'),
         _ = require('lodash');
 
-    sassdoc.parse('./qmui/helper/mixin/').then(function (_data) {
+    sassdoc.parse('./qmui/helper/mixin').then(function (_data) {
       if (_data.length > 0) {
         // 按 group 把数组重新整理成二维数组
         var _result = [],
@@ -15,25 +15,29 @@ module.exports = function(gulp) {
             _currentGroupArray = null;
         for (var _i = 0; _i < _data.length; _i++) {
           var _item = _data[_i];
-          // 由于 IE8- 下 default 为属性的保留关键字，会引起错误，因此这里要把参数中这个 default 的 key 从数据里改名
-          if (_item.parameter) {
-            for (var _j = 0; _j < _item.parameter.length; _j++) {
-              var _paraItem = _item.parameter[_j];
-              if (_paraItem.hasOwnProperty('default')) {
-                _paraItem.defaultValue = _paraItem.default;
-                delete _paraItem.default;
+          if (_item.group.toString() !== 'abandon') {
+            // 排除已废弃的工具方法
+
+            // 由于 IE8- 下 default 为属性的保留关键字，会引起错误，因此这里要把参数中这个 default 的 key 从数据里改名
+            if (_item.parameter) {
+              for (var _j = 0; _j < _item.parameter.length; _j++) {
+                var _paraItem = _item.parameter[_j];
+                if (_paraItem.hasOwnProperty('default')) {
+                  _paraItem.defaultValue = _paraItem.default;
+                  delete _paraItem.default;
+                }
               }
             }
-          }
 
-          if (!_.isEqual(_item.group, _currentGroup)) {
-            _currentGroup = _item.group;
-            _currentGroupArray = [];
-            _result.push(_currentGroupArray);
-          } else {
-            _currentGroupArray = _result[_result.length - 1];
+            if (!_.isEqual(_item.group, _currentGroup)) {
+              _currentGroup = _item.group;
+              _currentGroupArray = [];
+              _result.push(_currentGroupArray);
+            } else {
+              _currentGroupArray = _result[_result.length - 1];
+            }
+            _currentGroupArray.push(_item);
           }
-          _currentGroupArray.push(_item);
         }
         _result.reverse();
 
