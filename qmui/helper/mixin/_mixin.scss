@@ -1,10 +1,13 @@
 @charset "utf-8";
 /**
  * _mixin.scss
- * @author Kayo 
+ * @author Kayo
  * @date 2014-10-31
  *
  */
+
+// CSS 浏览器兼容性封装
+@import "_adaptation";
 
 // CSS 浏览器兼容性封装
 @import "_compatible";

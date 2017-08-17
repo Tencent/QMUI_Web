@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * _dropdownMenu.scss 下拉菜单组件
- * @author clearwu 
+ * @author clearwu
  * @date 2014-11-11
  *
  * .qui_dropdownMenu
@@ -15,9 +15,11 @@
   background: $dropdownMenu_background;
   border: $dropdownMenu_border;
 }
+
 .qui_dropdownMenu ul {
   padding: $dropdownMenu_ulPadding;
 }
+
 .qui_dropdownMenu_itemLink {
   display: block;
   height: $dropdownMenu_itemLink_height;
@@ -25,6 +27,7 @@
   padding: $dropdownMenu_itemLink_padding;
   color: $dropdownMenu_itemLink_color;
 }
+
 .qui_dropdownMenu_split {
   display: block;
   height: 0;
@@ -33,5 +36,3 @@
   margin: $dropdownMenu_split_margin;
   border-top: $dropdownMenu_split_borderTop;
 }
-
-

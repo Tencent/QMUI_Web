@@ -18,7 +18,7 @@
 ///   str-replace("QMUI Web", " Web") => "QMUI"
 ///   str-replace("QMUI Web", "Web", "iOS") => "QMUI iOS"
 ///   str-replace("QMUI Web", "Web", "Android") => "QMUI Android"
-@function str-replace($string, $search, $replace: '') {
+@function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
   @if $index {
@@ -26,4 +26,22 @@
   }
 
   @return $string;
+}
+
+/// 加亮颜色（加百分之X的白色）
+///
+/// @group 设备适配
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// 加暗颜色（加百分之X的黑色）
+///
+/// @group 设备适配
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
 }

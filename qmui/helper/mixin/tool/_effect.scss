@@ -12,7 +12,7 @@
 ///
 /// @name square
 /// @param {Measure} $length - 宽高的长度
-@mixin square($length){
+@mixin square($length) {
   width: $length;
   height: $length;
 }
@@ -22,7 +22,7 @@
 /// @name absoluteCenter
 /// @param {Measure} $width - 元素的宽度
 /// @param {Measure} $height - 元素的高度
-@mixin absoluteCenter($width, $height){
+@mixin absoluteCenter($width, $height) {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -98,26 +98,26 @@
 /// @param {Measure} $crossLength [26px] - 十字架的大小
 /// @param {Measure} $crossLineThickness [2px] - 十字架线条的粗细
 /// @param {Color} $crossLineColor [#2685d2] - 十字架的颜色
-@mixin cross($crossLength:26px,$crossLineThickness:2px,$crossLineColor:$common_color_link){
+@mixin cross($crossLength:26px,$crossLineThickness:2px,$crossLineColor:$common_color_link) {
   position: relative;
   @include square($crossLength);
   &:before,
-  &:after{
+  &:after {
     content: "";
     font-size: 0;
     line-height: 0;
     position: absolute;
     background-color: $crossLineColor;
   }
-  &:before{
-    left:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
-    top:0;
-    width:$crossLineThickness;
+  &:before {
+    left: getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+    top: 0;
+    width: $crossLineThickness;
     height: 100%;
   }
-  &:after{
-    left:0;
-    top:getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
+  &:after {
+    left: 0;
+    top: getLengthMaxIntegerCenter($crossLength,$crossLineThickness);
     width: 100%;
     height: $crossLineThickness;
   }
@@ -132,7 +132,7 @@
 }
 
 // borderStyleForOnePixel 是 onePixelBorder 内部使用的方法
-@mixin borderStyleForOnePixel($direction: all, $color:#dedede){
+@mixin borderStyleForOnePixel($direction: all, $color:#dedede) {
   border-style: solid;
   border-color: $color;
   @if $direction == all {
@@ -169,11 +169,11 @@
 @mixin onePixelBorder($direction: all, $color: $common_color_border, $position: outside, $borderRadius: 0) {
   @include borderStyleForOnePixel($direction, $color);
   border-radius: $borderRadius;
-  @include screenResolution(2){
+  @include screenResolution(2) {
     position: relative;
-    border: none;
+    border: 0;
     &:after {
-      content:"";
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -181,8 +181,8 @@
       height: 200%;
       border-radius: $borderRadius * 2;
       @include borderStyleForOnePixel($direction, $color);
-      @include scale(0.5);
-      @include transform-origin(0 0);
+      transform: scale(.5);
+      transform-origin: 0 0;
       @if $position == inside {
         @include box_sizing(border-box);
       }
@@ -194,7 +194,7 @@
       width: 300%;
       height: 300%;
       border-radius: $borderRadius * 3;
-      @include scale(0.3333);
+      transform: scale(.3333);
     }
   }
 }

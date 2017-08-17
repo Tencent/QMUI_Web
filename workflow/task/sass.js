@@ -1,15 +1,16 @@
 // 进行 Sass 编译以及雪碧图处理
 var argv = require('yargs').argv,
-    lazysprite = require('postcss-lazysprite');
+  lazysprite = require('postcss-lazysprite');
+autoprefixer = require('autoprefixer');
 
-module.exports = function(gulp, common) {
+module.exports = function (gulp, common) {
   var _spriteConfig = {
     cssSeparator: '_',
     imagePath: common.config.imagesSourcePath,
     stylesheetRelative: common.config.styleResultPath,
     stylesheetInput: '../project/',
     spritePath: common.config.imagesResultPath,
-    smartUpdate: true,
+    smartUpdate: typeof common.config.needsLazyspriteSmartUpdate !== 'undefined' ? common.config.needsLazyspriteSmartUpdate : true,
     nameSpace: common.config.prefix + '_',
     retinaInfix: '_',
     outputExtralCSS: true
@@ -22,14 +23,17 @@ module.exports = function(gulp, common) {
   gulp.task('sass', '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）', function () {
     var _isOpeningBrowserSyncMod = common.config.browserSyncMod !== 'close';
     return gulp.src('../project/**/*.scss')
-               .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-               .pipe(common.plugins.if(global.isWatching && global.isHandleStyle, common.plugins.cached('sass')))
-               .pipe(common.plugins.sassInheritance({base: '../project/'}))
-               .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
-               .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
-               .pipe(common.plugins.postcss([lazysprite(_spriteConfig)]))
-               .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
-               .pipe(gulp.dest(_styleResultPath))
-               .pipe(common.plugins.if(_isOpeningBrowserSyncMod, common.reload({stream: true})));
+      .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
+      .pipe(common.plugins.if(global.isWatching && global.isHandleStyle, common.plugins.cached('sass')))
+      .pipe(common.plugins.sassInheritance({base: '../project/'}))
+      .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
+      .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
+      .pipe(common.plugins.postcss([lazysprite(_spriteConfig), autoprefixer({
+        flexbox: false,
+        browsers: ['last 5 versions', 'IE 8', 'IE 9', 'IE 10']
+      })]))
+      .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
+      .pipe(gulp.dest(_styleResultPath))
+      .pipe(common.plugins.if(_isOpeningBrowserSyncMod, common.reload({stream: true})));
   });
 };

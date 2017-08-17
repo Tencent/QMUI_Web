@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * _button.scss 按钮组件
- * @author Kayo 
+ * @author Kayo
  * @date 2014-11-04
  *
  * .qui_btn
@@ -13,7 +13,7 @@
 .qui_btn {
   display: inline-block;
   margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
-  @include box-sizing(content-box);
+  box-sizing: content-box;
   min-width: $btn_minWidth;
   height: $btn_height;
   padding: $btn_padding;
@@ -23,13 +23,13 @@
   outline: none;
   cursor: pointer;
   text-align: center;
-  font-size: $btn_fontSize; 
+  font-size: $btn_fontSize;
   color: $btn_color;
   @extend %disabledUserSelect;
   _overflow-y: hidden;
 }
 
-a.qui_btn{
+a.qui_btn {
   text-decoration: none;
 
   &:hover {
