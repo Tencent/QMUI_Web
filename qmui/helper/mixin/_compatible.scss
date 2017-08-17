@@ -1,18 +1,16 @@
 // stylelint-disable
 @charset "utf-8";
 
+////
 /// 兼容性封装，解决浏览器常用 css 兼容性问题，本文件所有方法均已废弃，改由 autoprefixer 代替
 /// @author Clear, Molice, Zhoon, Kayo，Jeff
-/// @group 兼容性封装
+/// @group abandon
 /// @date 2014-08-19
 ////
 
-
 /// display: flex 的兼容性方法
 ///
-/// @group 布局
 /// @name flex
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 %flex {
   display: -moz-box;
   display: -webkit-box;
@@ -23,9 +21,7 @@
 
 /// display: flex 的兼容性方法
 ///
-/// @group 布局
 /// @name display-flex
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin display-flex {
   display: -moz-box;
   display: -webkit-box;
@@ -36,10 +32,8 @@
 
 /// flex 的兼容性方法
 ///
-/// @group 布局
 /// @name flexbox
 /// @param {Number} $num - CSS flex 的属性值，即在父元素中的权重
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flexbox($num) {
   // 在移动端只支持 flexbox 协议（旧的 flex API）的浏览器下，只有当你设置了 display: flex 属性后，其子元素的 flex 才会生效，因此这里同时设置了 display 以及 box-flex 属性
   display: -webkit-box;
@@ -84,10 +78,8 @@
 
 /// 设置 flex 元素的伸缩流方向，即 box-orient 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-direction
 /// @param {String} $direction - 伸缩流方向，有 row，row-reverse，column，column-reverse 四个可选值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-direction($direction) {
   @include flex-direction-ForOld($direction);
   -ms-flex-direction: $direction;
@@ -97,10 +89,8 @@
 
 /// flex-grow 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-grow
 /// @param {Number} $num - CSS flex-grow 的属性值，即在父元素中的权重
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-grow($num) {
   -webkit-box-flex: $num;
   -moz-box-flex: $num;
@@ -115,10 +105,8 @@
 
 /// flex-shrink 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-shrink
 /// @param {Number} $num - CSS flex-shrink 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-shrink($num) {
   -webkit-box-flex-shrink: $num;
   -moz-box-flex-shrink: $num;
@@ -129,10 +117,8 @@
 
 /// flex-basis 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-basis
 /// @param {Number} $num - CSS flex-basis 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-basis($num) {
   -webkit-box-flex-basis: $num;
   -moz-box-flex-basis: $num;
@@ -143,10 +129,8 @@
 
 /// align-items 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-align-items
 /// @param {String} $value - 对齐方式，有 flex-start，flex-end，center，baseline，stretch 5个可选值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-align-items($value) {
   @if $value == "flex-start" {
     -webkit-box-align: start;
@@ -174,10 +158,8 @@
 
 /// justify-content 的兼容性方法
 ///
-/// @group 布局
 /// @name flex-justify-content
 /// @param {String} $value - CSS 属性 justify-content 的属性值，即 flex-start，flex-end，center，space-between，space-around 5个可选值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-justify-content($value) {
   @if $value == "space-around" {
     -webkit-box-pack: justify;
@@ -204,11 +186,9 @@
 
 /// 根据子元素的布局方向，控制其对齐方式
 ///
-/// @group 布局
 /// @name flex-childPos
 /// @param {String} $dir - 子元素当前的布局方向，可选值为 vertical 和 horizontal
 /// @param {String} $value - 希望子元素对齐的方式，可选值为 flex-start，flex-end，center
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin flex-childPos($dir, $value) {
   @if $dir == "vertical" {
     @include flex-align-items($value);
@@ -220,7 +200,6 @@
 
 /// box-sizing 的兼容性方法
 ///
-/// @group 布局
 /// @name box-sizing
 /// @param {String} $value - CSS 属性 box-sizing 的属性值
 /// @deprecated 由于浏览器的迭代更新，目前 box-sizing 已经得到非常广泛的支持，无需使用兼容封装，请使用原生的 CSS 属性 box-sizing 取代本方法。
@@ -232,9 +211,7 @@
 
 /// display: inline-block 的兼容性方法
 ///
-/// @group 布局
 /// @name inlineBlock
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin inlineBlock {
   display: inline-block;
   @if not($function_mobileOnly) {
@@ -245,7 +222,6 @@
 
 /// box-shadow 的兼容性方法
 ///
-/// @group 外观
 /// @name box-shadow
 /// @param {String} $value - CSS 属性 box-shadow 的属性值
 /// @deprecated 由于浏览器的迭代更新，目前 box-shadow 已经得到非常广泛的支持，无需使用兼容封装，请使用原生的 CSS 属性 box-shadow 取代本方法。
@@ -257,10 +233,8 @@
 
 /// 透明度的浏览器兼容方法
 ///
-/// @group 外观
 /// @name opacity
 /// @param {Number} $var - 不透明度
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin opacity($var) {
   -webkit-opacity: $var;
   -moz-opacity: $var;
@@ -273,10 +247,8 @@
 
 /// appearance 的浏览器兼容方法
 ///
-/// @group 外观
 /// @name appearance
 /// @param {Number} $value - CSS 属性 appearance 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin appearance($value) { // 暂不支持IE和Opera
   -moz-appearance: $value;
   -webkit-appearance: $value;
@@ -285,9 +257,7 @@
 
 /// 选择内容的 CSS 选择器
 ///
-/// @group 外观
 /// @name selection
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin selection {
   @at-root #{&}::selection {
     @content;
@@ -304,9 +274,7 @@
 
 /// user-select: none 的兼容性方法
 ///
-/// @group 外观
 /// @name disabledUserSelect
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 %disabledUserSelect {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -316,10 +284,8 @@
 
 /// CSS3 transform 的兼容性方法
 ///
-/// @group 变形
 /// @name transform
 /// @param {String} $value - CSS 属性 transform 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transform($value) {
   -o-transform: $value;
   -moz-transform: $value;
@@ -330,11 +296,9 @@
 
 /// CSS3 transform: scale 的兼容性方法
 ///
-/// @group 变形
 /// @name scale
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin scale($ratioX, $ratioY: $ratioX) {
   -webkit-transform: scale($ratioX, $ratioY);
   -moz-transform: scale($ratioX, $ratioY);
@@ -345,12 +309,10 @@
 
 /// CSS3 transform: scale3d 的兼容性方法
 ///
-/// @group 变形
 /// @name scale3d
 /// @param {Number} $ratioX - X轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioY [$ratioX 的值] - Y轴方向缩放的倍数，小数位缩小，大于1为放大
 /// @param {Number} $ratioZ [$ratioY 的值] - Z轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin scale3d($ratioX, $ratioY: $ratioX, $ratioZ: $ratioY) {
   -webkit-transform: scale3d($ratioX, $ratioY, $ratioZ);
   -moz-transform: scale3d($ratioX, $ratioY, $ratioZ);
@@ -361,10 +323,8 @@
 
 /// CSS3 transform: scaleX 的兼容性方法
 ///
-/// @group 变形
 /// @name scaleX
 /// @param {Number} $ratio - X轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin scaleX($ratio) {
   -webkit-transform: scaleX($ratio);
   -moz-transform: scaleX($ratio);
@@ -375,10 +335,8 @@
 
 /// CSS3 transform: scaleY 的兼容性方法
 ///
-/// @group 变形
 /// @name scaleY
 /// @param {Number} $ratio - Y轴方向缩放的倍数，小数位缩小，大于1为放大
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin scaleY($ratio) {
   -webkit-transform: scaleY($ratio);
   -moz-transform: scaleY($ratio);
@@ -389,11 +347,9 @@
 
 /// CSS3 transform: skew 的兼容性方法
 ///
-/// @group 变形
 /// @name skew
 /// @param {Number} $x - X轴方向倾斜的角度
 /// @param {Number} $y - X轴方向倾斜的角度
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin skew($x, $y) {
   -webkit-transform: skew($x, $y);
   -moz-transform: skew($x, $y);
@@ -404,11 +360,9 @@
 
 /// CSS3 transform: translate 的兼容性方法
 ///
-/// @group 变形
 /// @name translate
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin translate($x, $y) {
   -webkit-transform: translate($x, $y);
   -moz-transform: translate($x, $y);
@@ -419,10 +373,8 @@
 
 /// CSS3 transform: translateX 的兼容性方法
 ///
-/// @group 变形
 /// @name translateX
 /// @param {Number} $x - X轴方向平移的距离
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin translateX($x) {
   -webkit-transform: translateX($x);
   -moz-transform: translateX($x);
@@ -433,10 +385,8 @@
 
 /// CSS3 transform: translateY 的兼容性方法
 ///
-/// @group 变形
 /// @name translateY
 /// @param {Number} $y - Y轴方向平移的距离
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin translateY($y) {
   -webkit-transform: translateY($y);
   -moz-transform: translateY($y);
@@ -447,12 +397,10 @@
 
 /// CSS3 transform: translate3d 的兼容性方法
 ///
-/// @group 变形
 /// @name translate3d
 /// @param {Number} $x - X轴方向平移的距离
 /// @param {Number} $y - Y轴方向平移的距离
 /// @param {Number} $z - Z轴方向平移的距离
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
   -moz-transform: translate3d($x, $y, $z);
@@ -461,10 +409,8 @@
 
 /// CSS3 transform: rotate 的兼容性方法
 ///
-/// @group 变形
 /// @name rotate
 /// @param {Number} $degrees - 元素旋转的角度
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotate($degrees) {
   -webkit-transform: rotate($degrees);
   -moz-transform: rotate($degrees);
@@ -475,10 +421,8 @@
 
 /// CSS3 transform: rotateX 的兼容性方法
 ///
-/// @group 变形
 /// @name rotateX
 /// @param {Number} $degrees - 元素在X轴方向旋转的角度
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotateX($degrees) {
   -webkit-transform: rotateX($degrees);
   -moz-transform: rotateX($degrees);
@@ -489,10 +433,8 @@
 
 /// CSS3 transform: rotateY 的兼容性方法
 ///
-/// @group 变形
 /// @name rotateY
 /// @param {Number} $degrees - 元素在Y轴方向旋转的角度
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin rotateY($degrees) {
   -webkit-transform: rotateY($degrees);
   -moz-transform: rotateY($degrees);
@@ -503,10 +445,8 @@
 
 /// CSS3 perspective 的兼容性方法
 ///
-/// @group 变形
 /// @name perspective
 /// @param {Measure} $perspective - 观察者与 z=0 平面的距离
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin perspective($perspective) {
   -webkit-perspective: $perspective;
   -moz-perspective: $perspective;
@@ -515,10 +455,8 @@
 
 /// CSS3 perspective-origin 的兼容性方法
 ///
-/// @group 变形
 /// @name perspective-origin
 /// @param {Number} $origin - CSS 属性 perspective-origin 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin perspective-origin($origin) {
   -webkit-perspective-origin: $origin;
   -moz-perspective-origin: $origin;
@@ -527,10 +465,8 @@
 
 /// CSS3 transform-origin 的兼容性方法
 ///
-/// @group 变形
 /// @name transform-origin
 /// @param {Number} $origin - CSS 属性 transform-origin 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transform-origin($origin) {
   -webkit-transform-origin: $origin;
   -moz-transform-origin: $origin;
@@ -540,10 +476,8 @@
 
 /// CSS3 transition 的兼容性方法
 ///
-/// @group 过渡效果
 /// @name transition
 /// @param {String} $transition - CSS 属性 transition 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition($transition...) {
   -webkit-transition: $transition;
   -moz-transition: $transition;
@@ -553,10 +487,8 @@
 
 /// CSS3 transition-property 的兼容性方法
 ///
-/// @group 过渡效果
 /// @name transition-property
 /// @param {String} $transition-property - CSS 属性 transition-property 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-property($transition-property...) {
   -webkit-transition-property: $transition-property;
   -moz-transition-property: $transition-property;
@@ -566,10 +498,8 @@
 
 /// CSS3 transition-delay 的兼容性方法
 ///
-/// @group 过渡效果
 /// @name transition-delay
 /// @param {Number} $transition-delay - CSS 属性 transition-delay 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-delay($transition-delay) {
   -webkit-transition-delay: $transition-delay;
   -moz-transition-delay: $transition-delay;
@@ -579,10 +509,8 @@
 
 /// CSS3 transition-duration 的兼容性方法
 ///
-/// @group 过渡效果
 /// @name transition-duration
 /// @param {Number} $transition-duration - CSS 属性 transition-duration 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-duration($transition-duration...) {
   -webkit-transition-duration: $transition-duration;
   -moz-transition-duration: $transition-duration;
@@ -592,10 +520,8 @@
 
 /// CSS3 transition-timing-function 的兼容性方法
 ///
-/// @group 过渡效果
 /// @name transition-timing-function
 /// @param {String} $timing-function - CSS 属性 transition-timing-function 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-timing-function($timing-function) {
   -webkit-transition-timing-function: $timing-function;
   -moz-transition-timing-function: $timing-function;
@@ -605,10 +531,8 @@
 
 /// CSS3 transition: transform 的兼容性方法，适用于需要在 transition 中使用 transform 属性的情况，会自动对应补全好这两个属性的前缀。
 ///
-/// @group 过渡效果
 /// @name transition-transform
 /// @param {String} $transionWithoutProperty - CSS 属性 transition 中除了 transition-property 外的其他值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin transition-transform($transionWithoutProperty...) {
   -webkit-transition: -webkit-transform $transionWithoutProperty;
   -moz-transition: -webkit-transform $transionWithoutProperty;
@@ -618,10 +542,8 @@
 
 /// CSS3 animation 的兼容性方法
 ///
-/// @group 动画
 /// @name animation
 /// @param {String} $animation - CSS 属性 animation 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation($animation) {
   -webkit-animation: $animation;
   -moz-animation: $animation;
@@ -631,10 +553,8 @@
 
 /// CSS3 animation-name 的兼容性方法
 ///
-/// @group 动画
 /// @name animation
 /// @param {String} $name - CSS 属性 animation-name 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-name($name) {
   -webkit-animation-name: $name;
   -moz-animation-name: $name;
@@ -644,10 +564,8 @@
 
 /// CSS3 animation-duration 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-duration
 /// @param {Number} $duration - CSS 属性 animation-duration 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-duration($duration) {
   -webkit-animation-duration: $duration;
   -moz-animation-duration: $duration;
@@ -657,10 +575,8 @@
 
 /// CSS3 animation-timing-function 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-timing-function
 /// @param {Number} $timing-function - CSS 属性 animation-timing-function 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-timing-function($timing-function) {
   -webkit-animation-timing-function: $timing-function;
   -moz-animation-timing-function: $timing-function;
@@ -670,10 +586,8 @@
 
 /// CSS3 animation-delay 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-delay
 /// @param {Number} $delay - CSS 属性 animation-delay 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-delay($delay) {
   -webkit-animation-delay: $delay;
   -moz-animation-delay: $delay;
@@ -683,10 +597,8 @@
 
 /// CSS3 animation-iteration-count 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-iteration-count
 /// @param {Number} $iteration-count - CSS 属性 animation-iteration-count 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-iteration-count($iteration-count) {
   -webkit-animation-iteration-count: $iteration-count;
   -moz-animation-iteration-count: $iteration-count;
@@ -696,10 +608,8 @@
 
 /// CSS3 animation-direction 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-direction
 /// @param {String} $direction - CSS 属性 animation-direction 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-direction($direction) {
   -webkit-animation-direction: $direction;
   -moz-animation-direction: $direction;
@@ -709,10 +619,8 @@
 
 /// CSS3 animation-fill-mode 的兼容性方法
 ///
-/// @group 动画
 /// @name animation-fill-mode
 /// @param {String} $fill-mode - CSS 属性 animation-fill-mode 的属性值
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin animation-fill-mode($fill-mode) {
   -webkit-animation-fill-mode: $fill-mode;
   -moz-animation-fill-mode: $fill-mode;
@@ -722,10 +630,8 @@
 
 /// CSS3 keyframes 的兼容性方法
 ///
-/// @group 动画
 /// @name keyframes
 /// @param {String} $name - 动画名
-/// @deprecated 兼容性处理已改为由 autoprefixer 统一处理，编写样式时直接使用原生写法即可。
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content;
