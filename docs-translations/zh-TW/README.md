@@ -2,14 +2,14 @@
   <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/BannerForGithub_2x.png" width="220" alt="Banner" />
 </p>
 
-# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/QMUI_Web/ "Version Number")
+# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/Tencent/QMUI_Web/ "Version Number")
 > 一個旨在提高 UI 開發效率、快速產生項目 UI 的前端框架
 >
 > 官網：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
 > 下載 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
 
-[[English]](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/QMUI/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/QMUI/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
+[[English]](https://github.com/Tencent/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/Tencent/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/Tencent/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
 
 [![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg?branch=master)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
@@ -21,7 +21,7 @@ QMUI Web 是一個專註 Web UI 開發，幫助開發者快速實現特定的一
 ## 功能特性
 
 ### 基礎配置與組件
-通過內置的公共組件和對應的 SASS 配置表，你只需修改簡單的配置即可快速實現所需樣式的組件。（[QMUI SASS 配置表和公共組件如何幫忙開發者快速搭建項目基礎 UI？](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
+通過內置的公共組件和對應的 SASS 配置表，你只需修改簡單的配置即可快速實現所需樣式的組件。（[QMUI SASS 配置表和公共組件如何幫忙開發者快速搭建項目基礎 UI？](https://github.com/Tencent/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
 ### SASS 增強與支援
 QMUI Web 包含70個 SASS mixin/function/extend，涉及布局、外觀、動畫、設備適配、數值計算以及 SASS 原生能力增強等多個方面，可以大幅提升開發效率。
@@ -82,12 +82,12 @@ gulp help
 也可以查看文檔中的[詳細說明](http://qmuiteam.com/web/page/scaffold.html)。
 
 ## 完善框架
-如果有意見反饋或者功能建議，歡迎創建 [Issue](https://github.com/QMUI/QMUI_Web/issues) 或發送 [Pull Request](https://github.com/QMUI/QMUI_Web/pulls)，調試與修改框架請先閱讀[文檔](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove)，感謝你的支持和貢獻。
+如果有意見反饋或者功能建議，歡迎創建 [Issue](https://github.com/Tencent/QMUI_Web/issues) 或發送 [Pull Request](https://github.com/Tencent/QMUI_Web/pulls)，調試與修改框架請先閱讀[文檔](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove)，感謝你的支持和貢獻。
 
 設計稿 Sketch 源文件可在 [Dribbble](https://dribbble.com/shots/2895907-QMUI-Logo) 上獲取。
 
 ## QMUI Web Desktop
 
-推薦配合使用的桌機應用程式：[QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop)。它可以管理基於 QMUI Web 進行開發的項目，通過 GUI 界面處理 QMUI Web 的服務開啟/關閉，使框架的使用變得更加便捷，並提供了編譯提醒，出錯提醒，進程關閉提醒等額外的功能。
+推薦配合使用的桌機應用程式：[QMUI Web Desktop](https://github.com/Tencent/QMUI_Web_desktop)。它可以管理基於 QMUI Web 進行開發的項目，通過 GUI 界面處理 QMUI Web 的服務開啟/關閉，使框架的使用變得更加便捷，並提供了編譯提醒，出錯提醒，進程關閉提醒等額外的功能。
 
 <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />

@@ -2,14 +2,14 @@
   <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/BannerForGithub_2x.png" width="220" alt="Banner" />
 </p>
 
-# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/QMUI/QMUI_Web/ "Version Number")
+# QMUI Web [![Version Number](https://img.shields.io/npm/v/generator-qmui.svg?style=flat)](https://github.com/Tencent/QMUI_Web/ "Version Number")
 > A front-end framework to make web UI development faster and easier.
 >
 > Official Website：[http://qmuiteam.com/web](http://qmuiteam.com/web)
 >
 > Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
 
-[[English]](https://github.com/QMUI/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/QMUI/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/QMUI/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
+[[English]](https://github.com/Tencent/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/Tencent/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/Tencent/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
 
 [![Build Status](https://travis-ci.org/QMUI/QMUI_Web.svg?branch=master)](https://travis-ci.org/QMUI/QMUI_Web "Build Status")
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
@@ -21,7 +21,7 @@ This framework consists of a collection of SASS methods and a built-in workflow,
 ## Features
 
 ### Components and Configuration
-You can easily adjust global appearance of basic built-in components by editing a SASS config file. （[How do QMUI config file and basic components contribute to your UI development?](https://github.com/QMUI/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
+You can easily adjust global appearance of basic built-in components by editing a SASS config file. （[How do QMUI config file and basic components contribute to your UI development?](https://github.com/Tencent/QMUI_Web/wiki/Q&A#qmui-sass-%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%92%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%B8%AE%E5%BF%99%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80-ui)）
 
 ### SASS Enhancement
 QMUI Web ships with more than 70 SASS Mixin, Function and Extend, dealing with layout, appearance, animation, device adaptation, math calculation and other SASS enhancement, which will make your development faster and easier.
@@ -78,7 +78,7 @@ gulp help
 ```
 
 ## Make Contributions
-You can create [issues](https://github.com/QMUI/QMUI_Web/issues) or send [pull requests](https://github.com/QMUI/QMUI_Web/pulls) if you have any feedback or suggestion.
+You can create [issues](https://github.com/Tencent/QMUI_Web/issues) or send [pull requests](https://github.com/Tencent/QMUI_Web/pulls) if you have any feedback or suggestion.
 Please read the [documentation](http://qmuiteam.com/web/page/start.html#qui_frameworkImprove) before debugging or modifying this framework.
 
 Thanks very much for your support and contributions.
@@ -87,6 +87,6 @@ Design file (Sketch) is available on [Dribbble](https://dribbble.com/shots/28959
 
 ## QMUI Web Desktop
 
-If you prefer visual interface rather than CLI, it is recommended to try an additional desktop application: [QMUI Web Desktop](https://github.com/QMUI/QMUI_Web_desktop). You can manage projects based on QMUI Web, toggle QMUI Web services, and get compilation or error message in time through it.
+If you prefer visual interface rather than CLI, it is recommended to try an additional desktop application: [QMUI Web Desktop](https://github.com/Tencent/QMUI_Web_desktop). You can manage projects based on QMUI Web, toggle QMUI Web services, and get compilation or error message in time through it.
 
 <img src="https://raw.githubusercontent.com/QMUI/QMUIDemo_Web/master/public/style/images/independent/App_2x.png" width="440" alt="QMUI Web Desktop" />
