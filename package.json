@@ -4,7 +4,7 @@
   "description": "一个旨在提高 UI 开发效率、快速产生项目 UI 的前端框架",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QMUI/QMUI_Web.git"
+    "url": "git+https://github.com/Tencent/QMUI_Web.git"
   },
   "main": "gulpfile.js",
   "dependencies": {
@@ -50,7 +50,7 @@
   "author": "QMUI Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/QMUI/QMUI_Web/issues"
+    "url": "https://github.com/Tencent/QMUI_Web/issues"
   },
   "homepage": "http://qmuiteam.com/web/"
 }
