@@ -18,7 +18,9 @@
   position: absolute;
   z-index: $dialog_zIndex;
   min-width: $dialog_minWidth;
-  _width: $dialog_minWidth;
+  @if not($function_mobileOnly) {
+    _width: $dialog_minWidth;
+  }
   background: $dialog_background;
   border: $dialog_border;
   border-radius: $dialog_radius;

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * _dialog.scss
- * @author Kayo 
+ * @author Kayo
  * @date 2015-08-17
  *
  * .qui_dialog
@@ -10,12 +10,13 @@
 
 /* .qui_dialog */
 .qui_dialog {
-  @include box_shadow(0 2px 20px 0 rgba(0, 0, 0, .15));
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .15);
 }
 
 .qui_dialog_head {
   padding: 0 12px;
 }
+
 .qui_dialog_close {
   padding: 5px; // 把点击区域做大
   line-height: 1;
@@ -35,7 +36,7 @@
   padding: 23px 30px 30px 37px;
   font-size: 14px;
   color: #353C46;
-} 
+}
 
 .qui_dialog_foot {
   padding: 17px 12px;
