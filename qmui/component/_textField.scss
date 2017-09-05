@@ -25,7 +25,7 @@
   @extend %textField;
   height: $inputText_height;
   &::-ms-clear {
-    display: none;	//去除IE10给输入框加上clear叉叉按钮的效果
+    display: none;	// 去除 IE10 中的输入框清除按钮效果
   }
 }
 /* .qui_textarea */

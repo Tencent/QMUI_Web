@@ -25,8 +25,10 @@
   text-align: center;
   font-size: $btn_fontSize;
   color: $btn_color;
-  @extend %disabledUserSelect;
-  _overflow-y: hidden;
+  user-select: none;
+  @if not($function_mobileOnly) {
+    _overflow-y: hidden;
+  }
 }
 
 a.qui_btn {
@@ -39,8 +41,10 @@ a.qui_btn {
 
 /* 在低版本 ie 下，带有 border 的 submit 类型的 input 或 button 会有一条黑边，无法去除,
  * 所以如果按钮样式的 border 不为 none，项目又需要考虑兼容低版本 ie，则建议使用 a 标签代替 */
-button.qui_btn,
-input.qui_btn {
-  *overflow: visible; /* IE6/7的button需要设置此属性以使padding生效 */
-  *min-width: auto;
+@if not($function_mobileOnly) {
+  button.qui_btn,
+  input.qui_btn {
+    *overflow: visible; /* IE6/7的button需要设置此属性以使padding生效 */
+    *min-width: auto;
+  }
 }

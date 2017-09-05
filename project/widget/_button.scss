@@ -27,7 +27,7 @@
     background-color: #04B1CC;
   }
   &[Disabled] {
-    @include opacity(.5);
+    opacity: .5;
   }
 
 }
