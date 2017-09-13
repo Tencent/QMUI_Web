@@ -239,7 +239,7 @@
   -webkit-opacity: $var;
   -moz-opacity: $var;
   opacity: $var;
-  filter: alpha(opacity=$var*100);
+  filter: alpha(opacity = $var * 100);
   @if not($function_mobileOnly) {
     -khtml-opacity: $var;
   }
