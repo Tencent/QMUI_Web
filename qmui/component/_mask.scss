@@ -23,4 +23,5 @@
   z-index: $mask_zIndex;
   background: $mask_background;
   opacity: $mask_opacity;
+  filter: alpha(opacity = $mask_opacity * 100);
 }
