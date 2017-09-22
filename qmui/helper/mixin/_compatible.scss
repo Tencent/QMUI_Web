@@ -115,18 +115,6 @@
   flex-shrink: $num;
 }
 
-/// flex-order 的兼容方法
-///
-/// @name flex-order
-/// @param {Number} $num - CSS flex-order 的属性值
-@mixin flex-order($num) {
-  -webkit-box-ordinal-group: $num;
-  -moz-box-ordinal-group: $num;
-  -ms-flex-order: $num;
-  -webkit-order: $num;
-  order: $num;
-}
-
 /// flex-basis 的兼容性方法
 ///
 /// @name flex-basis
