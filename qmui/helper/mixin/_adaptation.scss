@@ -240,9 +240,7 @@
 }
 
 /// 基于渐变实现的垂直方向点画线
-/// 如果要实现的是一个物理像素粗细的线，建议放在一个单独的dom上，方便加上scale来实现
-/// 否则就不需要顾虑直接用到任意dom上即可，加上background-position控制位置
-/// background-color / background-position 等属性必须在该mixin的include之后开始写
+/// @throw 如果要实现的是一个物理像素粗细的线，建议放在一个单独的 DOM 上，方便加上 scale 来实现，否则就不需要顾虑直接用到任意 DOM 上即可，加上 background-position 控制位置，background-color / background-position 等属性必须在该 mixin 的 include 之后开始写。
 ///
 /// @group 外观
 /// @name gradient-vertical-dashed-line
@@ -257,9 +255,7 @@
 }
 
 /// 基于渐变实现的水平方向点画线
-/// 如果要实现的是一个物理像素粗细的线，建议放在一个单独的dom上，方便加上scale来实现
-/// 否则就不需要顾虑直接用到任意dom上即可，加上background-position控制位置
-/// background-color / background-position 等属性必须在该mixin的include之后开始写
+/// @throw 如果要实现的是一个物理像素粗细的线，建议放在一个单独的 DOM 上，方便加上 scale 来实现，否则就不需要顾虑直接用到任意 DOM 上即可，加上 background-position 控制位置，background-color / background-position 等属性必须在该 mixin 的 include 之后开始写。
 ///
 /// @group 外观
 /// @name gradient-horizontal-dashed-line
