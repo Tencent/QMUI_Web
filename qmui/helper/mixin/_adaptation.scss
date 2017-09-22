@@ -238,3 +238,37 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str($start-color)}", endColorstr="#{ie-hex-str($end-color)}", GradientType=1); // IE9 and down
 }
+
+/// 基于渐变实现的垂直方向点画线
+/// 如果要实现的是一个物理像素粗细的线，建议放在一个单独的dom上，方便加上scale来实现
+/// 否则就不需要顾虑直接用到任意dom上即可，加上background-position控制位置
+/// background-color / background-position 等属性必须在该mixin的include之后开始写
+///
+/// @group 外观
+/// @name gradient-vertical-dashed-line
+/// @param {Number} $dash-dot-width [2px] - 点画线里点的尺寸
+/// @param {Number} $dash-space-width [2px] - 点画线里点与点间隔尺寸
+/// @param {Color} $dash-dot-color [$common_color_separator] - 点画线里点的颜色
+/// @param {Number} $line-width [1px] - 点画线粗细
+@mixin gradient-vertical-dashed-line($dash-dot-width: 2px, $dash-space-width: 2px, $dash-dot-color: $common_color_separator, $line-width: 1px) {
+  @include gradient-vertical-threeColor($start-color: $dash-dot-color, $middle-color: $dash-dot-color, $end-color: transparent, $start-percent: 0, $middle-percent: $dash-dot-width, $end-percent: $dash-dot-width);
+  background-size: $line-width ($dash-dot-width + $dash-space-width);
+  background-repeat: repeat-y;
+}
+
+/// 基于渐变实现的水平方向点画线
+/// 如果要实现的是一个物理像素粗细的线，建议放在一个单独的dom上，方便加上scale来实现
+/// 否则就不需要顾虑直接用到任意dom上即可，加上background-position控制位置
+/// background-color / background-position 等属性必须在该mixin的include之后开始写
+///
+/// @group 外观
+/// @name gradient-horizontal-dashed-line
+/// @param {Number} $dash-dot-width [2px] - 点画线里点的尺寸
+/// @param {Number} $dash-space-width [2px] - 点画线里点与点间隔尺寸
+/// @param {Color} $dash-dot-color [$common_color_separator] - 点画线里点的颜色
+/// @param {Number} $line-width [1px] - 点画线粗细
+@mixin gradient-horizontal-dashed-line($dash-dot-width: 2px, $dash-space-width: 2px, $dash-dot-color: $common_color_separator, $line-width: 1px) {
+  @include gradient-horizontal-threeColor($start-color: $dash-dot-color, $middle-color: $dash-dot-color, $end-color: transparent, $start-percent: 0, $middle-percent: $dash-dot-width, $end-percent: $dash-dot-width);
+  background-size: ($dash-dot-width + $dash-space-width) $line-width;
+  background-repeat: repeat-x;
+}
