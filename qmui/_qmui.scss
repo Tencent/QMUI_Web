@@ -22,8 +22,11 @@
  */
 
 
-// 助手方法 helper（主要包含 reset 和 常用 mixin）
-@import "helper/_helper";
+// 常用 mixin 封装
+@import "mixin/_mixin";
 
-// 基础组件 component
-@import "component/_component";
+// CSS Reset
+@import "_reset";
+
+// 常用样式（原子类）
+@import "_function";
