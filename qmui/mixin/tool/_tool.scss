@@ -7,10 +7,10 @@
  */
 
 // 辅助编写样式效果的工具方法
-@import "_effect";
+@import "effect";
 
 // 辅助数值计算的工具方法
-@import "_calculate";
+@import "calculate";
 
 // 原生增强，补充 SASS 原生语法缺少的能力
-@import "_enhance";
+@import "enhance";

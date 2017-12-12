@@ -1,13 +1,24 @@
 @charset "UTF-8";
 /**
- * _textField.scss
+ * _textField.scss 文本输入组件
  * @author clearwu
- * @date 2015-08-17
+ * @date 2014-11-13
  *
  * .qui_inputText
  * .qui_textarea
  *
  */
+
+%textField {
+  display: block;
+  width: $textField_width;
+  line-height: $textField_lineHeight;
+  padding: $textField_padding;
+  background: $textField_background;
+  border: $textField_border;
+  border-radius: $textField_borderRadius;
+  box-sizing: content-box;
+}
 
 .qui_inputText,
 .qui_textarea {
@@ -15,6 +26,62 @@
   color: #353C46;
 }
 
-/* .qui_inputText */
+// .qui_inputText
+.qui_inputText {
+  @extend %textField;
+  height: $inputText_height;
+  &::-ms-clear {
+    display: none;	// 去除 IE10 中的输入框清除按钮效果
+  }
+}
 
-/* .qui_textarea */
+// .qui_textarea
+.qui_textarea {
+  @extend %textField;
+  height: $textarea_height;
+}
+
+// placeholder 颜色重置
+// Webkit
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $common_color_placeholder;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: $common_color_placeholderFocus;
+}
+
+// Firefox < 19
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: $common_color_placeholder;
+}
+
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  color: $common_color_placeholderFocus;
+}
+
+// Firefox > 19
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: $common_color_placeholder;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: $common_color_placeholderFocus;
+}
+
+// IE10
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $common_color_placeholder;
+}
+
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: $common_color_placeholder;
+}

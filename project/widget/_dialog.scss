@@ -1,23 +1,47 @@
 @charset "UTF-8";
 /**
- * _dialog.scss
+ * _dialog.scss 对话框组件
  * @author Kayo
- * @date 2015-08-17
+ * @date 2014-11-03
  *
  * .qui_dialog
+ * > .qui_dialog_head 对话框的头部
+ *   > .qui_dialog_title 对话框的标题
+ *   > [.qui_dialog_close] 可选。对话框的关闭按钮
+ * > .qui_dialog_cnt 对话框的内容区域
+ * > [.qui_dialog_foot] 可选。对话框的底部
  */
 
-
-/* .qui_dialog */
+// .qui_dialog
 .qui_dialog {
+  position: absolute;
+  z-index: $dialog_zIndex;
+  min-width: $dialog_minWidth;
+  background: $dialog_background;
+  border: $dialog_border;
+  border-radius: $dialog_radius;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .15);
 }
 
 .qui_dialog_head {
   padding: 0 12px;
+  background: $dialog_head_background;
+  border-bottom: $dialog_head_borderBottom;
+  border-radius: $dialog_radius $dialog_radius 0 0;
+}
+
+.qui_dialog_title {
+  height: $dialog_title_height;
+  line-height: $dialog_title_lineHeight;
+  font-size: $dialog_title_fontSize;
+  font-weight: $dialog_title_fontWeight;
+  color: $dialog_title_color;
 }
 
 .qui_dialog_close {
+  position: absolute;
+  top: $dialog_close_top;
+  right: $dialog_close_right;
   padding: 5px; // 把点击区域做大
   line-height: 1;
   font-size: 18px;
@@ -34,12 +58,16 @@
 
 .qui_dialog_body {
   padding: 23px 30px 30px 37px;
+  background: $dialog_body_background;
   font-size: 14px;
   color: #353C46;
 }
 
 .qui_dialog_foot {
   padding: 17px 12px;
+  background: $dialog_foot_background;
+  border-top: $dialog_foot_borderTop;
+  border-radius: 0 0 $dialog_radius $dialog_radius;
   text-align: right;
   line-height: 25px;
 }

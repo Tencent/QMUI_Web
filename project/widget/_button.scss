@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
- * _button.scss
+ * _button.scss 按钮组件
  * @author Kayo
- * @date 2015-08-17
+ * @date 2014-11-04
  *
  * .qui_btn
  *  + .qui_btn_Ghost
@@ -10,14 +10,26 @@
  */
 
 
-/* .qui_btn */
+// .qui_btn
 .qui_btn {
-  background-color: #04C9E8;
-  border-radius: 2px;
+  display: inline-block;
+  margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
+  box-sizing: content-box;
+  min-width: $btn_minWidth;
+  height: $btn_height;
+  padding: $btn_padding;
+  background: $btn_background;
+  border: $btn_border;
   /* line-height 的偏移值依赖于不同字体 */
   line-height: $btn_lineHeight + 2;
   line-height: $btn_lineHeight + 1 \9\0;
-  _line-height: $btn_lineHeight + 4;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: $btn_fontSize;
+  color: $btn_color;
+  user-select: none;
+  border-radius: 2px;
 
   &:hover {
     background-color: #05D7F7;
@@ -32,11 +44,12 @@
 
 }
 
-button.qui_btn,
-input.qui_btn {
-  *height: $btn_lineHeight + 2;
-  *line-height: $btn_lineHeight - 3;
-  _line-height: $btn_lineHeight - 1;
+a.qui_btn {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .qui_btn_Ghost {

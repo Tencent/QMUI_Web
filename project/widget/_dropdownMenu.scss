@@ -1,20 +1,35 @@
 @charset "UTF-8";
 /**
- * _dropdownMenu.scss
+ * _dropdownMenu.scss 下拉菜单组件
  * @author clearwu
- * @date 2015-08-17
+ * @date 2014-11-11
  *
  * .qui_dropdownMenu
  *
  */
 
-/* .qui_dropdownMenu */
+// .qui_dropdownMenu
 .qui_dropdownMenu {
+  position: absolute;
+  z-index: $dropdownMenu_zIndex;
   min-width: 206px;
+  background: $dropdownMenu_background;
+  border: $dropdownMenu_border;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border-radius: 4px;
 }
+
+.qui_dropdownMenu ul {
+  padding: $dropdownMenu_ulPadding;
+}
+
 .qui_dropdownMenu_itemLink {
+  display: block;
+  height: $dropdownMenu_itemLink_height;
+  line-height: $dropdownMenu_itemLink_lineHeight;
+  padding: $dropdownMenu_itemLink_padding;
+  color: $dropdownMenu_itemLink_color;
+
   &:hover {
     background-color: #f5f5f5;
     text-decoration: none;
@@ -22,4 +37,13 @@
   &:active {
     background-color: #ebebeb;
   }
+}
+
+.qui_dropdownMenu_split {
+  display: block;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  margin: $dropdownMenu_split_margin;
+  border-top: $dropdownMenu_split_borderTop;
 }
