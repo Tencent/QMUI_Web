@@ -143,6 +143,13 @@ module.exports = function (gulp, common) {
             common.log('Sass', '进行样式编译');
         });
 
+        // SVG雪碧图处理
+        gulp.task('watch', function(){
+            gulp.watch(common.config.imagesSourcePath + '/**/*.svg', ['svgSprite']).on('change', function(evt) {
+                common.log('svgSprite', '进行SVG雪碧图构建');
+            });
+        });
+
         // 压缩雪碧图
         if (common.config.needsImagesMinAndSync) {
             var _minImageWatcher = gulp.watch(common.config.imagesResultPath + '/*.*');
