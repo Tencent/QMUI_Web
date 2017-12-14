@@ -85,9 +85,9 @@ module.exports = function (gulp, common) {
             common.log('Merge', '文件 ' + _childFilesString + ' 合并压缩为 ' + _replaceProjectParentDirectory(path.resolve(path.join(_resultFilePath, _resultFileName))));
         }
         // 变更文件引用路径
-        gulp.src(common.config.htmlResultPath + '/**/*.html')
+        gulp.src(common.config.paths.htmlResultPath + '/**/*.html')
             .pipe(common.plugins.merge(_mergeRule))
-            .pipe(gulp.dest(common.config.htmlResultPath));
+            .pipe(gulp.dest(common.config.paths.htmlResultPath));
         common.log('Merge', '文件合并变更已完成');
 
         done();

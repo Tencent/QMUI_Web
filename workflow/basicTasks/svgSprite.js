@@ -13,12 +13,8 @@
  */
 
 var svgSprite = require('gulp-qmui-svg-sprite');
-var filter = require('gulp-filter');
 
 module.exports = function (gulp, common) {
-
-    var svgFilter = filter('**/*.svg', {restore: true});
-    var scssFilter = filter('**/*.scss');
 
     var _spriteConfig = {
         stylesheet: {
@@ -41,12 +37,8 @@ module.exports = function (gulp, common) {
     };
 
     gulp.task('svgSprite', function () {
-        return gulp.src(common.config.imagesSourcePath + '/**/*.svg')
+        return gulp.src(common.config.paths.imagesSourcePath + '/*/*.svg')
             .pipe(svgSprite(_spriteConfig))
-            .pipe(svgFilter)
-            .pipe(gulp.dest(common.config.imagesResultPath))
-            .pipe(svgFilter.restore)
-            .pipe(scssFilter)
-            .pipe(gulp.dest(common.config.svgResultPath))
+            .pipe(gulp.dest(common.config.paths.imagesResultPath))
     });
 };

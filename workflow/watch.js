@@ -54,8 +54,8 @@ module.exports = function (gulp, common) {
         // 独立图片部分
 
         // 自动同步独立图片文件夹的操作
-        var _independentImagesSourcePath = common.config.imagesSourcePath + common.config.independentImagesDirectory,
-            _independentImagesResultPath = common.config.imagesResultPath + common.config.independentImagesDirectory,
+        var _independentImagesSourcePath = common.config.paths.imagesSourcePath + common.config.paths.independentImagesDirectory,
+            _independentImagesResultPath = common.config.paths.imagesResultPath + common.config.paths.independentImagesDirectory,
             _shouldOutputEmptyLineForSyncImage;
 
         if (common.config.needsImagesMinAndSync) {
@@ -131,7 +131,18 @@ module.exports = function (gulp, common) {
 
         // 雪碧图与样式处理
         // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
-        var _styleWatchFiles = ['../project/**/*.scss', common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'];
+
+        // SVG 雪碧图监听
+        var _svgWatchFiles = common.config.paths.imagesSourcePath + '/*/*.svg';
+        if (common.config.svgSprite.openSvgSprite) {
+            gulp.watch(_svgWatchFiles, gulp.parallel('svgSprite')).on('change', function () {
+                common.log('');
+                common.log('svgSprite', '进行 SVG 雪碧图构建');
+            });
+        }
+
+        // 普通雪碧图与样式监听
+        var _styleWatchFiles = ['../project/**/*.scss', common.config.paths.imagesSourcePath + '/*/*.*', '!' + _svgWatchFiles, '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'];
         var _imageSpriteWatch = gulp.watch(_styleWatchFiles, gulp.parallel('sass'));
         _imageSpriteWatch.on('change', function (event) {
             var _file = event.path;
@@ -145,16 +156,9 @@ module.exports = function (gulp, common) {
             common.log('Sass', '进行样式编译');
         });
 
-        // SVG雪碧图处理
-        gulp.task('watch', function(){
-            gulp.watch(common.config.imagesSourcePath + '/**/*.svg', ['svgSprite']).on('change', function(evt) {
-                common.log('svgSprite', '进行SVG雪碧图构建');
-            });
-        });
-
         // 压缩雪碧图
         if (common.config.needsImagesMinAndSync) {
-            var _minImageWatcher = gulp.watch(common.config.imagesResultPath + '/*.*');
+            var _minImageWatcher = gulp.watch(common.config.paths.imagesResultPath + '/*.*');
             _minImageWatcher.on('change', function (event) {
                 var _minImageFile = event.path,
                     _minImageFilePathMd5 = md5(_minImageFile);
@@ -175,8 +179,8 @@ module.exports = function (gulp, common) {
         }
 
         // 模板自动 include
-        if (common.config.openIncludeFunction) {
-            var _includeWatcher = gulp.watch(common.config.htmlSourcePath, gulp.parallel('include'));
+        if (common.config.template.openIncludeFunction) {
+            var _includeWatcher = gulp.watch(common.config.paths.htmlSourcePath, gulp.parallel('include'));
             _includeWatcher.on('change', function (event) {
                 common.log('');
                 common.log('Include', '模板 ' + event.path + ' was ' + event.type);

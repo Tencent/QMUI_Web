@@ -32,7 +32,7 @@ module.exports = function (gulp, common) {
             return true;
         }
 
-        gulp.src(common.config.htmlSourcePath)
+        gulp.src(common.config.paths.htmlSourcePath)
             .pipe(common.plugins.plumber({
                 errorHandler: function (_error) {
                     common.error('Include', _error);
@@ -40,11 +40,11 @@ module.exports = function (gulp, common) {
                 }
             }))
             .pipe(common.plugins.include({
-                prefix: common.config.includePrefix // 模板函数的前缀
+                prefix: common.config.template.includePrefix // 模板函数的前缀
             }))
-            .pipe(common.plugins.if(_condition, gulp.dest(common.config.htmlResultPath)));
+            .pipe(common.plugins.if(_condition, gulp.dest(common.config.paths.htmlResultPath)));
 
-        common.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
+        common.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.paths.htmlResultPath);
 
         done();
     });

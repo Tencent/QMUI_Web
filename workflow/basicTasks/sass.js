@@ -21,16 +21,16 @@ var argv = require('yargs').argv,
 module.exports = function (gulp, common) {
     var _spriteConfig = {
         cssSeparator: '_',
-        imagePath: common.config.imagesSourcePath,
-        stylesheetRelative: common.config.styleResultPath,
+        imagePath: common.config.paths.imagesSourcePath,
+        stylesheetRelative: common.config.paths.styleResultPath,
         stylesheetInput: '../project/',
-        spritePath: common.config.imagesResultPath,
+        spritePath: common.config.paths.imagesResultPath,
         smartUpdate: typeof common.config.needsLazyspriteSmartUpdate !== 'undefined' ? common.config.needsLazyspriteSmartUpdate : true,
         nameSpace: common.config.prefix + '_',
         retinaInfix: '_',
         outputExtralCSS: true
     };
-    var _styleResultPath = common.config.styleResultPath;
+    var _styleResultPath = common.config.paths.styleResultPath;
     if (argv.debug) {
         _spriteConfig.logLevel = 'debug';
     }
@@ -38,7 +38,7 @@ module.exports = function (gulp, common) {
     var taskName = 'sass';
 
     gulp.task(taskName, function () {
-        var _isOpeningBrowserSyncMod = common.config.browserSyncMod !== 'close';
+        var _isOpeningBrowserSyncMod = common.config.browserSync.browserSyncMod !== 'close';
         return gulp.src('../project/**/*.scss')
             .pipe(common.plugins.plumber({
                 errorHandler: function (_error) {

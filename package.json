@@ -19,7 +19,6 @@
     "gulp-debug": "^3.1.0",
     "gulp-file-include": "^2.0.0",
     "gulp-file-sync": "^1.0.8",
-    "gulp-filter": "^5.0.1",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.0.0",
     "gulp-load-plugins": "^1.5.0",
