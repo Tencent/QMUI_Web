@@ -20,7 +20,9 @@ var path = require('path'),
 
 module.exports = function (gulp, common) {
 
-    gulp.task('include', '执行模板 include 编译（建议调用 watch 任务自动监控文件变化并调用）', function () {
+    var taskName = 'include';
+
+    gulp.task(taskName, function (done) {
 
         var _condition = function (_file) {
             var _fileName = path.basename(_file.path);
@@ -43,5 +45,12 @@ module.exports = function (gulp, common) {
             .pipe(common.plugins.if(_condition, gulp.dest(common.config.htmlResultPath)));
 
         common.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.htmlResultPath);
+
+        done();
     });
+
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '执行模板 include 编译（建议调用 watch 任务自动监控文件变化并调用）'
+    };
 };

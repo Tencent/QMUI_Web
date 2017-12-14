@@ -16,12 +16,13 @@
 // 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JS 文件
 // 传入 Sass 文件列表，以及待输出的 JS 文件地址
 module.exports = function (gulp) {
-    gulp.task('readToolMethod', false, function () {
+
+    gulp.task('readToolMethod', function (done) {
         var fs = require('fs'),
             sassdoc = require('sassdoc'),
             _ = require('lodash');
 
-        sassdoc.parse('./qmui/helper/mixin').then(function (_data) {
+        sassdoc.parse('./qmui/mixin').then(function (_data) {
             if (_data.length > 0) {
                 // 按 group 把数组重新整理成二维数组
                 var _result = [],
@@ -63,5 +64,7 @@ module.exports = function (gulp) {
                 fs.writeFileSync(_outputPath, 'var comments = ' + JSON.stringify(_result), 'utf8');
             }
         });
+
+        done();
     });
 };

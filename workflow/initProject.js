@@ -21,7 +21,7 @@ var fs = require('fs'),
 
 module.exports = function (gulp, common) {
 
-    gulp.task('initProject', false, function () {
+    gulp.task('initProject', function (done) {
         /**
          * 创建一个新项目
          * 第一步：获取 Project 文件夹中的基本目录结构和公共通用组件并持有它们，但排除了主 scss 文件 demo.scss
@@ -36,7 +36,7 @@ module.exports = function (gulp, common) {
          * 第十步：执行 Sass 编译任务，打开浏览器，并打开新复制的 demo.html；
          */
 
-            // 需要遍历的文件
+        // 需要遍历的文件
         var _sourceArr = ['project/**/*'];
         // 额外排除 demo.scss，后面单独重命名再拷贝
         _sourceArr.push('!project/demo.scss');
@@ -79,8 +79,17 @@ module.exports = function (gulp, common) {
         }
 
         common.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task')
+
+        done();
     });
 
     // 执行创建新项目任务
-    gulp.task('init', '创建一个新项目', common.plugins.sequence('initProject', 'default'));
+    var taskName = 'init';
+
+    gulp.task(taskName, gulp.series('initProject', 'default'));
+
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '创建一个新项目'
+    };
 };

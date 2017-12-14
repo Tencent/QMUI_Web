@@ -14,18 +14,20 @@
 
 
 // gulpfile.js QMUI Web Gulp 工作流
-var gulp = require('gulp-help')(require('gulp'), {
-        description: '展示这个帮助菜单',
-        hideDepsMessage: true
-    }),
+var gulp = require('gulp'),
     fs = require('fs'),
     common = require('./workflow/common.js');
 
 // 载入任务
-var taskPath = 'workflow/task';
+var basicTaskPath = 'workflow/basicTasks';
+var combinedTaskPath = 'workflow';
 
-fs.readdirSync(taskPath).filter(function (_file) {
+fs.readdirSync(basicTaskPath).filter(function (_file) {
     return _file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
-}).forEach(function (_file) {
-    require('./' + taskPath + '/' + _file)(gulp, common);
+}).sort().forEach(function (_file) {
+    require('./' + basicTaskPath + '/' + _file)(gulp, common);
 });
+
+['watch', 'start', 'initProject'].forEach(function (_file) {
+    require('./' + combinedTaskPath + '/' + _file)(gulp, common);
+})

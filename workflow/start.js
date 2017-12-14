@@ -20,9 +20,11 @@ var argv = require('yargs').argv,
 
 module.exports = function (gulp, common) {
 
+    var taskName = 'default';
+
     if (os.platform() === 'linux' || os.platform() === 'darwin') {
 
-        gulp.task('start', false, function () {
+        gulp.task('start', function (done) {
             if (argv.debug) {
                 common.log('Debug: ', 'QMUI 进入 Debug 模式');
             }
@@ -61,27 +63,32 @@ module.exports = function (gulp, common) {
             } else {
                 _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
             }
+
+            done();
         });
 
         // 默认任务
-        gulp.task('default', '默认任务，自动执行一次 include 和 sass 任务，并调用 watch 任务', ['start'], function () {
-            // TODO: 语法要求，有 options 必须填写 fn，所以这里弄个空函数，不优雅待优化
-        }, {
-            options: {
-                'debug': 'debug 模式下 gulpfile.js 有变动时会自动重启 default 任务'
-            }
-        });
+        gulp.task(taskName, gulp.parallel('start'));
     } else {
-        gulp.task('default', '默认任务，自动执行一次 include 和 sass 任务，并调用 watch 任务', ['main']);
+        gulp.task(taskName, gulp.parallel('main'));
     }
 
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '默认任务，自动执行一次 include 和 sass 任务，并调用 watch 任务',
+        options: {
+            'debug': 'debug 模式下 gulpfile.js 有变动时会自动重启 default 任务'
+        }
+    };
+
     if (common.config.browserSyncMod === 'server' || common.config.browserSyncMod === 'proxy') {
-        gulp.task('main', false, common.plugins.sequence('include', 'sass', 'watch', common.config.browserSyncMod));
+        gulp.task('main', gulp.series('include', 'sass', 'watch', common.config.browserSyncMod));
     } else if (common.config.browserSyncMod === 'close') {
-        gulp.task('main', false, common.plugins.sequence('include', 'sass', 'watch'));
+        gulp.task('main', gulp.series('include', 'sass', 'watch'));
     } else {
-        gulp.task('main', false, function () {
+        gulp.task('main', function (done) {
             common.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
+            done();
         });
     }
 };
