@@ -17,7 +17,10 @@
 var path = require('path');
 
 module.exports = function (gulp, common) {
-    gulp.task('merge', '合并变更文件', function () {
+
+    var taskName = 'merge';
+
+    gulp.task(taskName, function (done) {
         // 读取合并规则并保存起来
         var _mergeRule;
         try {
@@ -86,5 +89,12 @@ module.exports = function (gulp, common) {
             .pipe(common.plugins.merge(_mergeRule))
             .pipe(gulp.dest(common.config.htmlResultPath));
         common.log('Merge', '文件合并变更已完成');
+
+        done();
     });
+
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '合并变更文件'
+    };
 };

@@ -56,6 +56,9 @@ common.lib = lib;
 common.browserSync = browserSync;
 common.reload = reload;
 
+// 任务说明
+common.tasks = {};
+
 // 日志方法
 common.log = function (_tag, _content) {
     if (arguments.length > 1) {
