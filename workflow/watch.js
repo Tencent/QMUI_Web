@@ -20,11 +20,13 @@ var path = require('path'),
 
 // 逻辑变量
 var justAddedImage = [],
-    justBeforeAddedImage = [], // 记录压缩的图片
-    watchTaskDesciption = '文件监控，自动执行基本的工作流，包括 Sass 自动编译，雪碧图处理，模板 include 自动编译，图片文件夹操作同步以及图片文件自动压缩';
+    justBeforeAddedImage = []; // 记录压缩的图片
 
 module.exports = function (gulp, common) {
-    gulp.task('watch', watchTaskDesciption, function () {
+
+    var taskName = 'watch';
+
+    gulp.task(taskName, function (done) {
 
         global.isWatching = true;
 
@@ -130,7 +132,7 @@ module.exports = function (gulp, common) {
         // 雪碧图与样式处理
         // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
         var _styleWatchFiles = ['../project/**/*.scss', common.config.imagesSourcePath + '/*/*.*', '!' + _independentImagesSourcePath, '!' + _independentImagesSourcePath + '**/*'];
-        var _imageSpriteWatch = gulp.watch(_styleWatchFiles, ['sass']);
+        var _imageSpriteWatch = gulp.watch(_styleWatchFiles, gulp.parallel('sass'));
         _imageSpriteWatch.on('change', function (event) {
             var _file = event.path;
             if (/[^\.]+(.[gif|jpg|jpeg|png|bmp])$/.test(_file)) {
@@ -167,11 +169,18 @@ module.exports = function (gulp, common) {
 
         // 模板自动 include
         if (common.config.openIncludeFunction) {
-            var _includeWatcher = gulp.watch(common.config.htmlSourcePath, ['include']);
+            var _includeWatcher = gulp.watch(common.config.htmlSourcePath, gulp.parallel('include'));
             _includeWatcher.on('change', function (event) {
                 common.log('');
                 common.log('Include', '模板 ' + event.path + ' was ' + event.type);
             });
         }
+
+        done();
     });
+
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '文件监控，自动执行基本的工作流，包括 Sass 自动编译，雪碧图处理，模板 include 自动编译，图片文件夹操作同步以及图片文件自动压缩'
+    };
 };

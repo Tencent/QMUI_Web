@@ -13,9 +13,23 @@
  */
 
 
-// 显示 QMUI Web 的版本号
+// 清理多余文件
+var del = require('del');
+
 module.exports = function (gulp, common) {
-    gulp.task('version', '显示 QMUI Web 的版本信息', function () {
-        common.log('当前项目运行的 QMUI Web 版本号: ' + common.plugins.util.colors.green(common.packageInfo.version));
+
+    var taskName = 'clean';
+
+    gulp.task(taskName, function (done) {
+        // force: true 即允许 del 控制本目录以外的文件
+        del(common.config.cleanFileType, {force: true});
+        common.log('Clean', '清理所有的 ' + common.config.cleanFileType + ' 文件');
+
+        done();
     });
+
+    // 任务说明
+    common.tasks[taskName] = {
+        description: '清理多余文件（清理内容在 config.json 中配置）'
+    };
 };
