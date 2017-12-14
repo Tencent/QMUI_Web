@@ -28,16 +28,16 @@ module.exports = function (gulp, common) {
         common.browserSync.init({
             server: {
                 // 静态路径根目录
-                baseDir: common.config.htmlResultPath,
+                baseDir: common.config.paths.htmlResultPath,
                 // 设置路由
-                routes: common.config.browserSyncServerRoute
+                routes: common.config.browserSync.browserSyncServerRoute
             },
             logLevel: _showLog(),
             logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
-            startPath: common.config.browserSyncStartPath,
-            port: common.config.browserSyncPort
+            startPath: common.config.browserSync.browserSyncStartPath,
+            port: common.config.browserSync.browserSyncPort
         });
-        gulp.watch(common.config.browserSyncWatchPath).on('change', common.reload);
+        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('change', common.reload);
 
         done();
     });

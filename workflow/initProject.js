@@ -68,12 +68,12 @@ module.exports = function (gulp, common) {
             .pipe(gulp.dest('../project'));
 
         // 创建公共图片目录
-        if (!fs.existsSync(common.config.imagesSourcePath)) {
-            mkdirp(common.config.imagesSourcePath);
+        if (!fs.existsSync(common.config.paths.imagesSourcePath)) {
+            mkdirp(common.config.paths.imagesSourcePath);
         }
 
         // 创建独立图片目录
-        var _independentImagesSourcePath = common.config.imagesSourcePath + common.config.independentImagesDirectory;
+        var _independentImagesSourcePath = common.config.paths.imagesSourcePath + common.config.paths.independentImagesDirectory;
         if (!fs.existsSync(_independentImagesSourcePath)) {
             mkdirp(_independentImagesSourcePath);
         }

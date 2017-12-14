@@ -81,10 +81,18 @@ module.exports = function (gulp, common) {
         }
     };
 
-    if (common.config.browserSyncMod === 'server' || common.config.browserSyncMod === 'proxy') {
-        gulp.task('main', gulp.series('include', 'sass', 'watch', common.config.browserSyncMod));
-    } else if (common.config.browserSyncMod === 'close') {
-        gulp.task('main', gulp.series('include', 'sass', 'watch'));
+    if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
+        if (common.config.svgSprite.openSvgSprite) {
+            gulp.task('main', gulp.series('include', 'svgSprite', 'sass', 'watch', common.config.browserSync.browserSyncMod));
+        } else {
+            gulp.task('main', gulp.series('include', 'sass', 'watch', common.config.browserSync.browserSyncMod));
+        }
+    } else if (common.config.browserSync.browserSyncMod === 'close') {
+        if (common.config.svgSprite.openSvgSprite) {
+            gulp.task('main', gulp.series('include', 'svgSprite', 'sass', 'watch'));
+        } else {
+            gulp.task('main', gulp.series('include', 'sass', 'watch'));
+        }
     } else {
         gulp.task('main', function (done) {
             common.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');

@@ -27,14 +27,14 @@ module.exports = function (gulp, common) {
 
         common.browserSync.init({
             open: 'external',
-            proxy: common.config.browserSyncProxy,
-            port: common.config.browserSyncPort,
-            host: common.config.browserSyncHost,
+            proxy: common.config.browserSync.browserSyncProxy,
+            port: common.config.browserSync.browserSyncPort,
+            host: common.config.browserSync.browserSyncHost,
             logLevel: _showLog(),
             logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
-            startPath: common.config.browserSyncStartPath
+            startPath: common.config.browserSync.browserSyncStartPath
         });
-        gulp.watch(common.config.browserSyncWatchPath).on('change', common.reload);
+        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('change', common.reload);
 
         done();
     });
