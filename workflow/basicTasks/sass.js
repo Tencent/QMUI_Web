@@ -19,7 +19,7 @@ var argv = require('yargs').argv,
     autoprefixer = require('autoprefixer');
 
 module.exports = function (gulp, common) {
-    var _spriteConfig = {
+    var spriteConfig = {
         cssSeparator: '_',
         imagePath: common.config.paths.imagesSourcePath,
         stylesheetRelative: common.config.paths.styleResultPath,
@@ -30,15 +30,38 @@ module.exports = function (gulp, common) {
         retinaInfix: '_',
         outputExtralCSS: true
     };
-    var _styleResultPath = common.config.paths.styleResultPath;
+    var styleResultPath = common.config.paths.styleResultPath;
     if (argv.debug) {
-        _spriteConfig.logLevel = 'debug';
+        spriteConfig.logLevel = 'debug';
     }
 
-    var taskName = 'sass';
+    var sassTaskName = 'sass';
+    var sassWithCacheTaskName = 'sassWithCache';
 
-    gulp.task(taskName, function () {
-        var _isOpeningBrowserSyncMod = common.config.browserSync.browserSyncMod !== 'close';
+    gulp.task(sassWithCacheTaskName, function () {
+        return gulp.src('../project/**/*.scss', {since: gulp.lastRun(sassWithCacheTaskName)})
+            .pipe(common.plugins.plumber({
+                errorHandler: function (_error) {
+                    common.error('Sass', _error);
+                    common.plugins.util.beep();
+                }
+            }))
+            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
+            .pipe(common.plugins.sassInheritance({base: '../project/'}))
+            .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
+            .pipe(common.plugins.sass({
+                errLogToConsole: true,
+                outputStyle: 'expanded'
+            }).on('error', common.plugins.sass.logError))
+            .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
+                flexbox: false,
+                browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8']
+            })]))
+            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
+            .pipe(gulp.dest(styleResultPath));
+    });
+
+    gulp.task(sassTaskName, function () {
         return gulp.src('../project/**/*.scss')
             .pipe(common.plugins.plumber({
                 errorHandler: function (_error) {
@@ -47,21 +70,22 @@ module.exports = function (gulp, common) {
                 }
             }))
             .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-            .pipe(common.plugins.if(global.isWatching && global.isHandleStyle, common.plugins.cached('sass')))
             .pipe(common.plugins.sassInheritance({base: '../project/'}))
             .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
-            .pipe(common.plugins.sass({outputStyle: 'expanded'}).on('error', common.plugins.sass.logError))
-            .pipe(common.plugins.postcss([lazysprite(_spriteConfig), autoprefixer({
+            .pipe(common.plugins.sass({
+                errLogToConsole: true,
+                outputStyle: 'expanded'
+            }).on('error', common.plugins.sass.logError))
+            .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
                 flexbox: false,
                 browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8']
             })]))
             .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
-            .pipe(gulp.dest(_styleResultPath))
-            .pipe(common.plugins.if(_isOpeningBrowserSyncMod, common.reload({stream: true})));
+            .pipe(gulp.dest(styleResultPath));
     });
 
     // 任务说明
-    common.tasks[taskName] = {
+    common.tasks[sassTaskName] = {
         description: '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）'
     };
 };
