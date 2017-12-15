@@ -13,7 +13,6 @@
     "del": "^3.0.0",
     "gulp": "git://github.com/gulpjs/gulp#4.0",
     "gulp-better-sass-inheritance": "0.0.3",
-    "gulp-cached": "^1.1.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
