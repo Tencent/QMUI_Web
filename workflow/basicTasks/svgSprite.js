@@ -22,23 +22,25 @@ module.exports = function (gulp, common) {
             type: 'scss',
             compile: false,
             fileSuffix: '',
-            dest: '',
+            dest: 'UI_dev/project/svgSprite/',
             classNamePrefix: common.config.prefix,
             classNameSeparator: '_'
         },
         svg: {
             fileSuffix: '',
-            dest: ''
+            dest: 'public/style/images/'
         },
         template: {
             path: 'svgTemplate.tpl',
-            variables: {}
+            variables: {
+
+            }
         }
     };
 
     gulp.task('svgSprite', function () {
         return gulp.src(common.config.paths.imagesSourcePath + '/*/*.svg')
             .pipe(svgSprite(_spriteConfig))
-            .pipe(gulp.dest(common.config.paths.imagesResultPath))
+            .pipe(gulp.dest('../../'))
     });
 };

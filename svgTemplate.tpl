@@ -1,5 +1,5 @@
 {{#hasCommon}}{{#getCommonClassName}}{{/getCommonClassName}} {
-	background: url($sprite_path + "{{{sprite}}}") no-repeat;
+	background: url($sprite_path + "{{spriteName}}") no-repeat;
 	display: inline-block;
 	overflow: hidden;
 	font-size: 0;
