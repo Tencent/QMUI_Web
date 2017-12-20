@@ -13,9 +13,6 @@
 /// @group 布局
 /// @name clear
 %clear {
-  @if not($function_mobileOnly) {
-    *zoom: 1;
-  }
   &:after {
     clear: both;
     content: ".";
@@ -23,9 +20,6 @@
     line-height: 0;
     font-size: 0;
     visibility: hidden;
-    @if not($function_mobileOnly) {
-      overflow: hidden;
-    }
   }
 }
 

@@ -50,45 +50,29 @@
 /// @throw 由于方法内包含了有 $width / 2 的计算，因此如果 $width 的值为奇数，则实际上计算出的三角形会偏小，建议 $width 不要使用奇数。
 @mixin triangle($width, $height, $direction, $borderColor, $ie6borderColor:#f00) {
   @extend %triangleCommonStyle;
-  @if not($function_mobileOnly) {
-    _border-color: $ie6borderColor;
-    _filter: chroma(color=$ie6borderColor);
-  }
   /* 向上小三角 */
   @if $direction == top {
     border-width: $height $width / 2;
     border-top: 0;
     border-bottom-color: $borderColor;
-    @if not($function_mobileOnly) {
-      _border-bottom-color: $borderColor;
-    }
   }
   /* 向下小三角 */
   @else if $direction == bottom {
     border-width: $height $width / 2;
     border-bottom: 0;
     border-top-color: $borderColor;
-    @if not($function_mobileOnly) {
-      _border-top-color: $borderColor;
-    }
   }
   /* 向左小三角 */
   @else if $direction == left {
     border-width: $width / 2 $height ;
     border-left: 0;
     border-right-color: $borderColor;
-    @if not($function_mobileOnly) {
-      _border-right-color: $borderColor;
-    }
   }
   /* 向右小三角 */
   @else if $direction == right {
     border-width: $width / 2 $height;
     border-right: 0;
     border-left-color: $borderColor;
-    @if not($function_mobileOnly) {
-      _border-left-color: $borderColor;
-    }
   }
 }
 

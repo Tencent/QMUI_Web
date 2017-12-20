@@ -20,9 +20,8 @@
  *
  */
 
-// #function QMUI 功能相关
-// Mobile Only 模式下，会抛弃 IE6/7 的相关支持，默认为 true。
-$function_mobileOnly: true;
+// 计算的工具方法
+@import "../qmui/mixin/tool/_calculate";
 
 // #common 通用
 $common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;
