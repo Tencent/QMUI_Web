@@ -39,13 +39,13 @@ module.exports = function (gulp, common) {
                 _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
             }
 
-            gulp.watch('package.json', function () {
+            gulp.watch('package.json').on('all', function () {
                 common.log('');
                 common.warn('Update', '检测到 QMUI Web 的 npm 包，为了避免出现错误，建议你停止目前的 gulp，请使用 npm install 命令更新后再启动 gulp');
                 common.plugins.util.beep(10);
             });
 
-            gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*'], function () {
+            gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*']).on('all', function () {
                 common.log('');
                 if (argv.debug) {
                     common.warn('Debug', '目前为 Debug 模式，检测到工作流源码有被更新，将自动重启 gulp');
