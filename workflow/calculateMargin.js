@@ -27,26 +27,26 @@
 
 module.exports = function (tasksObj) {
     var hasOptions = false;
-    var margin = Object.keys(tasksObj).reduce(function (_maxTaskMargin, _taskName) {
-        var _optionsMargin = 0,
-            _opts;
+    var margin = Object.keys(tasksObj).reduce(function (maxTaskMargin, taskName) {
+        var optionsMargin = 0,
+            opts;
         // if exists, iterate options list to calculate margin for options
-        if (tasksObj[_taskName] && tasksObj[_taskName].options) {
-            var _help = tasksObj[_taskName] || {options: {}};
-            _opts = Object.keys(_help.options).sort();
-            _optionsMargin = _opts.reduce(function (_maxOptionMargin, _opt) {
+        if (tasksObj[taskName] && tasksObj[taskName].options) {
+            var help = tasksObj[taskName] || {options: {}};
+            opts = Object.keys(help.options).sort();
+            optionsMargin = opts.reduce(function (maxOptionMargin, opt) {
                 // if, at any time while iterating the tasks array, we also iterate an opts array, set hasOptions flag
                 hasOptions = true;
-                return _maxOptionMargin > _opt.length ? _maxOptionMargin : _opt.length;
+                return maxOptionMargin > opt.length ? maxOptionMargin : opt.length;
             }, 0);
         }
 
-        if (!tasksObj[_taskName] || _maxTaskMargin > _taskName.length && _maxTaskMargin > _optionsMargin) {
-            return _maxTaskMargin;
-        } else if (_optionsMargin > _taskName.length) {
-            return _optionsMargin;
+        if (!tasksObj[taskName] || maxTaskMargin > taskName.length && maxTaskMargin > optionsMargin) {
+            return maxTaskMargin;
+        } else if (optionsMargin > taskName.length) {
+            return optionsMargin;
         }
-        return _taskName.length;
+        return taskName.length;
     }, 0);
     return {
         margin: margin,

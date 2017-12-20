@@ -29,14 +29,14 @@ module.exports = function (gulp, common) {
                 common.log('Debug: ', 'QMUI 进入 Debug 模式');
             }
 
-            var _mainTaskProcess; // 记录当前 gulp 运行时的进程
+            var mainTaskProcess; // 记录当前 gulp 运行时的进程
 
             function restart() {
-                if (_mainTaskProcess) {
-                    _mainTaskProcess.kill();
+                if (mainTaskProcess) {
+                    mainTaskProcess.kill();
                 }
 
-                _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+                mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
             }
 
             gulp.watch('package.json').on('all', function () {
@@ -59,9 +59,9 @@ module.exports = function (gulp, common) {
 
             // 获取第一次进入时 gulp 的进程
             if (argv.debug) {
-                _mainTaskProcess = spawn('gulp', ['main', '--debug'], {stdio: 'inherit'});
+                mainTaskProcess = spawn('gulp', ['main', '--debug'], {stdio: 'inherit'});
             } else {
-                _mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+                mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
             }
 
             done();

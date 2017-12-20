@@ -16,7 +16,7 @@ var svgSprite = require('gulp-qmui-svg-sprite');
 
 module.exports = function (gulp, common) {
 
-    var _spriteConfig = {
+    var spriteConfig = {
         stylesheet: {
             bust: false,
             type: 'scss',
@@ -40,7 +40,7 @@ module.exports = function (gulp, common) {
 
     gulp.task('svgSprite', function () {
         return gulp.src(common.config.paths.imagesSourcePath + '/*/*.svg')
-            .pipe(svgSprite(_spriteConfig))
+            .pipe(svgSprite(spriteConfig))
             .pipe(gulp.dest('../../'))
     });
 };

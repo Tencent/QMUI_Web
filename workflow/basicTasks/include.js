@@ -14,9 +14,7 @@
 
 
 // 模板 include 命令，解释被 include 的内容并输出独立的 HTML 文件
-var path = require('path'),
-    browserSync = require('browser-sync').create(),
-    reload = browserSync.reload;
+var path = require('path');
 
 module.exports = function (gulp, common) {
 
@@ -24,9 +22,9 @@ module.exports = function (gulp, common) {
 
     gulp.task(taskName, function (done) {
 
-        var _condition = function (_file) {
-            var _fileName = path.basename(_file.path);
-            if (_fileName.match(/^_/)) {
+        var _condition = function (file) {
+            var fileName = path.basename(file.path);
+            if (fileName.match(/^_/)) {
                 return false;
             }
             return true;
@@ -34,8 +32,8 @@ module.exports = function (gulp, common) {
 
         gulp.src(common.config.paths.htmlSourcePath)
             .pipe(common.plugins.plumber({
-                errorHandler: function (_error) {
-                    common.error('Include', _error);
+                errorHandler: function (error) {
+                    common.error('Include', error);
                     common.plugins.util.beep();
                 }
             }))

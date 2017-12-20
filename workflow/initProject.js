@@ -37,33 +37,33 @@ module.exports = function (gulp, common) {
          */
 
         // 需要遍历的文件
-        var _sourceArr = ['project/**/*'];
+        var sourceArr = ['project/**/*'];
         // 额外排除 demo.scss，后面单独重命名再拷贝
-        _sourceArr.push('!project/demo.scss');
+        sourceArr.push('!project/demo.scss');
 
         // 获取当天的日期，并统一格式为 'yyyy-mm-dd'，替换掉 demo 注释中的文件创建日期
         // gulp-replace 的正则引擎似乎对 $ 和 ^ 不支持，只能忽略开头和结尾的判断
-        var _dateRegex = /[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))/g,
-            _currentDate = new Date(),
-            _currentYear = _currentDate.getFullYear(),
-            _currentMonth = common.lib.checkDateFormat(_currentDate.getMonth() + 1),
-            _currentDay = common.lib.checkDateFormat(_currentDate.getDate()),
-            _formattingDate = _currentYear + '-' + _currentMonth + '-' + _currentDay,
-            _targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss',
-            _authorName = common.lib.upperFirst(path.basename(os.homedir()));
+        var dateRegex = /[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))/g,
+            currentDate = new Date(),
+            currentYear = currentDate.getFullYear(),
+            currentMonth = common.lib.checkDateFormat(currentDate.getMonth() + 1),
+            currentDay = common.lib.checkDateFormat(currentDate.getDate()),
+            formattingDate = currentYear + '-' + currentMonth + '-' + currentDay,
+            targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss',
+            authorName = common.lib.upperFirst(path.basename(os.homedir()));
 
         // 执行创建项目的任务
-        gulp.src(_sourceArr)
+        gulp.src(sourceArr)
             .pipe(common.plugins.replace('qui_', common.config.prefix + '_'))
-            .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + _authorName + '$1'))
+            .pipe(common.plugins.replace(dateRegex, formattingDate))
+            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
             .pipe(gulp.dest('../project'));
 
         gulp.src(['project/demo.scss'])
-            .pipe(common.plugins.replace('../qmui/_qmui.scss', _targetQmuiStylePath))
+            .pipe(common.plugins.replace('../qmui/_qmui.scss', targetQmuiStylePath))
             .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
-            .pipe(common.plugins.replace(_dateRegex, _formattingDate))
-            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + _authorName + '$1'))
+            .pipe(common.plugins.replace(dateRegex, formattingDate))
+            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
             .pipe(common.plugins.rename(common.config.resultCssFileName))
             .pipe(gulp.dest('../project'));
 
@@ -73,9 +73,9 @@ module.exports = function (gulp, common) {
         }
 
         // 创建独立图片目录
-        var _independentImagesSourcePath = common.config.paths.imagesSourcePath + common.config.paths.independentImagesDirectory;
-        if (!fs.existsSync(_independentImagesSourcePath)) {
-            mkdirp(_independentImagesSourcePath);
+        var independentImagesSourcePath = common.config.paths.imagesSourcePath + common.config.paths.independentImagesDirectory;
+        if (!fs.existsSync(independentImagesSourcePath)) {
+            mkdirp(independentImagesSourcePath);
         }
 
         common.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task')
