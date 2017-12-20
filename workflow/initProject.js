@@ -40,6 +40,7 @@ module.exports = function (gulp, common) {
         var sourceArr = ['project/**/*'];
         // 额外排除 demo.scss，后面单独重命名再拷贝
         sourceArr.push('!project/demo.scss');
+        sourceArr.push('!project/_var.scss');
 
         // 获取当天的日期，并统一格式为 'yyyy-mm-dd'，替换掉 demo 注释中的文件创建日期
         // gulp-replace 的正则引擎似乎对 $ 和 ^ 不支持，只能忽略开头和结尾的判断
@@ -69,7 +70,10 @@ module.exports = function (gulp, common) {
             .pipe(gulp.dest('../project'));
 
         gulp.src(['project/_var.scss'])
-            .pipe(common.plugins.replace('../qmui/mixin/tool/_calculate', targetQMUICalculatePath));
+            .pipe(common.plugins.replace('../qmui/mixin/tool/_calculate', targetQMUICalculatePath))
+            .pipe(common.plugins.replace(dateRegex, formattingDate))
+            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
+            .pipe(gulp.dest('../project'));
 
         // 创建公共图片目录
         if (!fs.existsSync(common.config.paths.imagesSourcePath)) {
