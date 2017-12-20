@@ -22,12 +22,12 @@ var gulp = require('gulp'),
 var basicTaskPath = 'workflow/basicTasks';
 var combinedTaskPath = 'workflow';
 
-fs.readdirSync(basicTaskPath).filter(function (_file) {
-    return _file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
-}).sort().forEach(function (_file) {
-    require('./' + basicTaskPath + '/' + _file)(gulp, common);
+fs.readdirSync(basicTaskPath).filter(function (file) {
+    return file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
+}).sort().forEach(function (file) {
+    require('./' + basicTaskPath + '/' + file)(gulp, common);
 });
 
-['watch', 'start', 'initProject'].forEach(function (_file) {
-    require('./' + combinedTaskPath + '/' + _file)(gulp, common);
+['watch', 'start', 'initProject'].forEach(function (file) {
+    require('./' + combinedTaskPath + '/' + file)(gulp, common);
 })
