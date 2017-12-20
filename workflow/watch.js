@@ -138,7 +138,7 @@ module.exports = function (gulp, common) {
         var svgWatchFiles = common.config.paths.imagesSourcePath + '/*/*.svg';
         if (common.config.svgSprite.openSvgSprite) {
             var svgSpriteWatch = gulp.watch(svgWatchFiles, gulp.series('svgSprite'));
-            svgSpriteWatch.on('change', function () {
+            svgSpriteWatch.on('all', function () {
                 common.log('');
                 common.log('svgSprite', '进行 SVG 雪碧图构建');
             });
@@ -147,14 +147,14 @@ module.exports = function (gulp, common) {
         // 普通雪碧图与样式监听
         var styleWatchFiles = ['../project/**/*.scss'];
         var styleWatch = gulp.watch(styleWatchFiles, gulp.series('sassWithCache', 'reload'));
-        styleWatch.on('change', function () {
+        styleWatch.on('all', function () {
             common.log('');
             common.log('Sass', '进行样式编译');
         });
 
-        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.*', '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
+        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.*', '!' + svgWatchFiles, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
-        imageSpriteWatch.on('change', function () {
+        imageSpriteWatch.on('all', function () {
             common.log('');
             common.log('Sass', '进行样式编译');
         });
