@@ -152,7 +152,7 @@ module.exports = function (gulp, common) {
             common.log('Sass', '进行样式编译');
         });
 
-        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.*', '!' + svgWatchFiles, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
+        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.{png, jpg, jpeg, gif}', '!' + svgWatchFiles, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
         imageSpriteWatch.on('all', function () {
             common.log('');
@@ -162,8 +162,8 @@ module.exports = function (gulp, common) {
         // 压缩雪碧图
         if (common.config.needsImagesMinAndSync) {
             var minImageWatcher = gulp.watch(common.config.paths.imagesResultPath + '/*.*');
-            minImageWatcher.on('all', function (event, path) {
-                var minImageFile = path,
+            minImageWatcher.on('all', function (event, filePath) {
+                var minImageFile = filePath,
                     minImageFilePathMd5 = md5(minImageFile);
                 // 这里为了避免发生“增加图片到 public/images 或修改 public/images 原有的图片，触发压缩图片，因此图片又被修改，再次触发压缩图片”的情况发生，
                 // 做了一个判断，压缩一张图片时会标记下来，当再次发生图片改变时会判断这张图片是否为刚刚压缩过的图片，如果是则不执行该次压缩图片的逻辑
