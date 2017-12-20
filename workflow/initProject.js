@@ -49,7 +49,8 @@ module.exports = function (gulp, common) {
             currentMonth = common.lib.checkDateFormat(currentDate.getMonth() + 1),
             currentDay = common.lib.checkDateFormat(currentDate.getDate()),
             formattingDate = currentYear + '-' + currentMonth + '-' + currentDay,
-            targetQmuiStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui.scss',
+            targetQMUIStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui',
+            targetQMUICalculatePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/mixin/tool/_calculate',
             authorName = common.lib.upperFirst(path.basename(os.homedir()));
 
         // 执行创建项目的任务
@@ -60,12 +61,15 @@ module.exports = function (gulp, common) {
             .pipe(gulp.dest('../project'));
 
         gulp.src(['project/demo.scss'])
-            .pipe(common.plugins.replace('../qmui/_qmui.scss', targetQmuiStylePath))
+            .pipe(common.plugins.replace('../qmui/_qmui', targetQMUIStylePath))
             .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
             .pipe(common.plugins.replace(dateRegex, formattingDate))
             .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
             .pipe(common.plugins.rename(common.config.resultCssFileName))
             .pipe(gulp.dest('../project'));
+
+        gulp.src(['project/_var.scss'])
+            .pipe(common.plugins.replace('../qmui/mixin/tool/_calculate', targetQMUICalculatePath));
 
         // 创建公共图片目录
         if (!fs.existsSync(common.config.paths.imagesSourcePath)) {
