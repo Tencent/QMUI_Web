@@ -18,7 +18,7 @@ module.exports = function (gulp, common) {
 
     gulp.task('proxy', function (done) {
 
-        var _showLog = function () {
+        var showLog = function () {
             if (common.config.browserSyncShowLog) {
                 return 'info';
             }
@@ -30,7 +30,7 @@ module.exports = function (gulp, common) {
             proxy: common.config.browserSync.browserSyncProxy,
             port: common.config.browserSync.browserSyncPort,
             host: common.config.browserSync.browserSyncHost,
-            logLevel: _showLog(),
+            logLevel: showLog(),
             logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath
         });

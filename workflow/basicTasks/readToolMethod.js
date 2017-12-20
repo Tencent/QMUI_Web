@@ -22,46 +22,46 @@ module.exports = function (gulp) {
             sassdoc = require('sassdoc'),
             _ = require('lodash');
 
-        sassdoc.parse('./qmui/mixin').then(function (_data) {
-            if (_data.length > 0) {
+        sassdoc.parse('./qmui/mixin').then(function (data) {
+            if (data.length > 0) {
                 // 按 group 把数组重新整理成二维数组
-                var _result = [],
-                    _currentGroup = null,
-                    _currentGroupArray = null;
-                for (var _i = 0; _i < _data.length; _i++) {
-                    var _item = _data[_i];
-                    if (_item.group.toString() !== 'abandon') {
+                var result = [],
+                    currentGroup = null,
+                    currentGroupArray = null;
+                for (var itemIndex = 0; itemIndex < data.length; itemIndex++) {
+                    var item = data[itemIndex];
+                    if (item.group.toString() !== 'abandon') {
                         // 排除已废弃的工具方法
 
                         // 由于 IE8- 下 default 为属性的保留关键字，会引起错误，因此这里要把参数中这个 default 的 key 从数据里改名
-                        if (_item.parameter) {
-                            for (var _j = 0; _j < _item.parameter.length; _j++) {
-                                var _paraItem = _item.parameter[_j];
-                                if (_paraItem.hasOwnProperty('default')) {
-                                    _paraItem.defaultValue = _paraItem.default;
-                                    delete _paraItem.default;
+                        if (item.parameter) {
+                            for (var parameterIndex = 0; parameterIndex < item.parameter.length; parameterIndex++) {
+                                var paraItem = item.parameter[parameterIndex];
+                                if (paraItem.hasOwnProperty('default')) {
+                                    paraItem.defaultValue = paraItem.default;
+                                    delete paraItem.default;
                                 }
                             }
                         }
 
-                        if (!_.isEqual(_item.group, _currentGroup)) {
-                            _currentGroup = _item.group;
-                            _currentGroupArray = [];
-                            _result.push(_currentGroupArray);
+                        if (!_.isEqual(item.group, currentGroup)) {
+                            currentGroup = item.group;
+                            currentGroupArray = [];
+                            result.push(currentGroupArray);
                         } else {
-                            _currentGroupArray = _result[_result.length - 1];
+                            currentGroupArray = result[result.length - 1];
                         }
-                        _currentGroupArray.push(_item);
+                        currentGroupArray.push(item);
                     }
                 }
-                _result.reverse();
+                result.reverse();
 
                 // 准备把数组写入到指定文件中
 
                 var _outputPath = '../../data/qmui_method.js';
 
                 // 写入文件
-                fs.writeFileSync(_outputPath, 'var comments = ' + JSON.stringify(_result), 'utf8');
+                fs.writeFileSync(_outputPath, 'var comments = ' + JSON.stringify(result), 'utf8');
             }
         });
 

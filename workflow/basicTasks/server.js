@@ -18,7 +18,7 @@ module.exports = function (gulp, common) {
 
     gulp.task('server', function (done) {
 
-        var _showLog = function () {
+        var showLog = function () {
             if (common.config.browserSyncShowLog) {
                 return 'info';
             }
@@ -32,7 +32,7 @@ module.exports = function (gulp, common) {
                 // 设置路由
                 routes: common.config.browserSync.browserSyncServerRoute
             },
-            logLevel: _showLog(),
+            logLevel: showLog(),
             logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath,
             port: common.config.browserSync.browserSyncPort
