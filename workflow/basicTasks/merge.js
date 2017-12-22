@@ -37,7 +37,7 @@ module.exports = function (gulp, common) {
             // 转换为以项目根目录为开头的路径形式
             var projectParentDirectory = path.resolve('../../..');
             return source.replace(projectParentDirectory, '').replace(/^[\\\/]/, '');
-        }
+        };
 
         // 合并文件
         for (var sourceFile in mergeRule) {
@@ -65,11 +65,8 @@ module.exports = function (gulp, common) {
             }
 
             var condition = function (file) {
-                if (file.path.toString().indexOf('.js') !== -1) {
-                    return true;
-                }
-                return false;
-            }
+                return file.path.toString().indexOf('.js') !== -1;
+            };
 
             gulp.src(childFiles)
                 .pipe(common.plugins.plumber({

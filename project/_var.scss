@@ -26,11 +26,11 @@
 // #common 通用
 $common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;
 $common_fontSize: 14px;
-$common_body_background: #fff;
+$common_body_background: #FFF;
 $common_body_color: #000;
-$common_color_link: #2685d2;
+$common_color_link: #2685D2;
 $common_color_linkTapHighlight: rgba(105, 186, 255, .13);
-$common_color_separator: #ccccce;
+$common_color_separator: #CCCCCE;
 $common_color_border: $common_color_separator;
 $common_color_placeholder: #ADB4BE;
 $common_color_placeholderFocus: $common_color_placeholder;
@@ -54,7 +54,7 @@ $btn_padding: 0 12px;
 $btn_background: #04C9E8;
 $btn_border: 1px solid transparent;
 $btn_fontSize: 13px;
-$btn_color: #fff;
+$btn_color: #FFF;
 
 
 // #dialog 对话框组件
@@ -70,7 +70,7 @@ $dialog_head_borderBottom: none; // 对话框头部的下边线
 $dialog_title_height: 40px;
 $dialog_title_fontSize: 14px;
 $dialog_title_fontWeight: bold;
-$dialog_title_color: #fff;
+$dialog_title_color: #FFF;
 $dialog_title_lineHeight: $dialog_title_height;
 
 $dialog_close_top: 5px;
@@ -86,7 +86,7 @@ $dialog_foot_borderTop: $dialog_head_borderBottom; // 对话框底部的上边�
 $mask_zIndex: $common_zIndex_9;
 $maskWrap_zIndex: $mask_zIndex;
 $mask_background: #000;
-$mask_opacity: 0.5;
+$mask_opacity: .5;
 
 
 // #dropdownMenu 下拉菜单组件
