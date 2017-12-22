@@ -30,4 +30,4 @@ fs.readdirSync(basicTaskPath).filter(function (file) {
 
 ['watch', 'start', 'initProject'].forEach(function (file) {
     require('./' + combinedTaskPath + '/' + file)(gulp, common);
-})
+});

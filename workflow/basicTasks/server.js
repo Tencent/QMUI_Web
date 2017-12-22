@@ -23,7 +23,7 @@ module.exports = function (gulp, common) {
                 return 'info';
             }
             return 'silent';
-        }
+        };
 
         common.browserSync.init({
             server: {

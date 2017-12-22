@@ -24,11 +24,8 @@ module.exports = function (gulp, common) {
 
         var _condition = function (file) {
             var fileName = path.basename(file.path);
-            if (fileName.match(/^_/)) {
-                return false;
-            }
-            return true;
-        }
+            return !fileName.match(/^_/);
+        };
 
         gulp.src(common.config.paths.htmlSourcePath)
             .pipe(common.plugins.plumber({

@@ -36,7 +36,7 @@ lib.isElementInArray = function (array, element) {
         }
     }
     return false;
-}
+};
 
 // 删除数组中的某个元素并返回一个新数组
 lib.deleteElementInArray = function (array, element) {
@@ -45,11 +45,11 @@ lib.deleteElementInArray = function (array, element) {
             return array.slice(0, _i).concat(array.slice(_i + 1, array.length));
         }
     }
-}
+};
 
 // 使字符串的第一个字符大写
 lib.upperFirst = function (data) {
     return data.substring(0, 1).toUpperCase() + data.substring(1);
-}
+};
 
 module.exports = lib;
