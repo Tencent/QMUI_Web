@@ -9,38 +9,6 @@
  *
  */
 
-%textField {
-  display: block;
-  width: $textField_width;
-  line-height: $textField_lineHeight;
-  padding: $textField_padding;
-  background: $textField_background;
-  border: $textField_border;
-  border-radius: $textField_borderRadius;
-  box-sizing: content-box;
-}
-
-.qui_inputText,
-.qui_textarea {
-  font-size: 15px;
-  color: #353C46;
-}
-
-// .qui_inputText
-.qui_inputText {
-  @extend %textField;
-  height: $inputText_height;
-  &::-ms-clear {
-    display: none;	// 去除 IE10 中的输入框清除按钮效果
-  }
-}
-
-// .qui_textarea
-.qui_textarea {
-  @extend %textField;
-  height: $textarea_height;
-}
-
 // placeholder 颜色重置
 // Webkit
 input::-webkit-input-placeholder,
@@ -84,4 +52,36 @@ textarea:-ms-input-placeholder {
 input:focus:-ms-input-placeholder,
 textarea:focus:-ms-input-placeholder {
   color: $common_color_placeholder;
+}
+
+%textField {
+  display: block;
+  width: $textField_width;
+  line-height: $textField_lineHeight;
+  padding: $textField_padding;
+  background: $textField_background;
+  border: $textField_border;
+  border-radius: $textField_borderRadius;
+  box-sizing: content-box;
+}
+
+.qui_inputText,
+.qui_textarea {
+  font-size: 15px;
+  color: #353C46;
+}
+
+// .qui_inputText
+.qui_inputText {
+  @extend %textField;
+  height: $inputText_height;
+  &::-ms-clear {
+    display: none;	// 去除 IE10 中的输入框清除按钮效果
+  }
+}
+
+// .qui_textarea
+.qui_textarea {
+  @extend %textField;
+  height: $textarea_height;
 }
