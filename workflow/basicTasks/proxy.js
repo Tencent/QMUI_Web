@@ -31,7 +31,7 @@ module.exports = function (gulp, common) {
             port: common.config.browserSync.browserSyncPort,
             host: common.config.browserSync.browserSyncHost,
             logLevel: showLog(),
-            logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
+            logPrefix: common.util.colors.gray(common.lib.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath
         });
         gulp.watch(common.config.browserSync.browserSyncWatchPath).on('change', common.reload);

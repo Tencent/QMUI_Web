@@ -86,7 +86,7 @@ module.exports = function (gulp, common) {
             mkdirp(independentImagesSourcePath);
         }
 
-        common.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task');
+        common.util.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task');
 
         done();
     });

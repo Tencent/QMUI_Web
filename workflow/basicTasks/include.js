@@ -30,8 +30,8 @@ module.exports = function (gulp, common) {
         gulp.src(common.config.paths.htmlSourcePath)
             .pipe(common.plugins.plumber({
                 errorHandler: function (error) {
-                    common.error('Include', error);
-                    common.plugins.util.beep();
+                    common.util.error('Include', error);
+                    common.util.beep();
                 }
             }))
             .pipe(common.plugins.include({
@@ -39,7 +39,7 @@ module.exports = function (gulp, common) {
             }))
             .pipe(common.plugins.if(_condition, gulp.dest(common.config.paths.htmlResultPath)));
 
-        common.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.paths.htmlResultPath);
+        common.util.log('Include', '根据 include 标签合并后输出新文件到 ' + common.config.paths.htmlResultPath);
 
         done();
     });

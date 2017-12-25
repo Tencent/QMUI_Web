@@ -23,7 +23,7 @@ module.exports = function (gulp, common) {
     gulp.task(taskName, function (done) {
         // force: true 即允许 del 控制本目录以外的文件
         del(common.config.cleanFileType, {force: true});
-        common.log('Clean', '清理所有的 ' + common.config.cleanFileType + ' 文件');
+        common.util.log('Clean', '清理所有的 ' + common.config.cleanFileType + ' 文件');
 
         done();
     });

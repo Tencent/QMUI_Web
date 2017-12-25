@@ -19,7 +19,7 @@ module.exports = function (gulp, common) {
     var taskName = 'version';
 
     gulp.task(taskName, function (done) {
-        common.log('当前项目运行的 QMUI Web 版本号: ' + common.plugins.util.colors.green(common.packageInfo.version));
+        common.util.log('当前项目运行的 QMUI Web 版本号: ' + common.util.colors.green(common.packageInfo.version));
         done();
     });
 
