@@ -28,7 +28,7 @@ module.exports = function (gulp, common) {
 
     gulp.task(taskName, function (done) {
 
-        common.log('Watch', 'QMUI 进入自动监听');
+        common.util.log('Watch', 'QMUI 进入自动监听');
 
         // 图片管理（图片文件夹操作同步以及图片文件自动压缩）
 
@@ -37,8 +37,8 @@ module.exports = function (gulp, common) {
             gulp.src(_dir)
                 .pipe(common.plugins.plumber({
                     errorHandler: function (_error) {
-                        common.error('Min Image', _error);
-                        common.plugins.util.beep();
+                        common.util.error('Min Image', _error);
+                        common.util.beep();
                     }
                 }))
                 .pipe(common.plugins.imagemin({
@@ -59,7 +59,7 @@ module.exports = function (gulp, common) {
         // 如果有需要，则在执行同步图片任务之前输出一个空行
         var outputEmptyForSyncImageIfNeed = function () {
             if (shouldOutputEmptyLineForSyncImage) {
-                common.log('');
+                common.util.log('');
                 shouldOutputEmptyLineForSyncImage = false;
             }
         };
@@ -78,7 +78,7 @@ module.exports = function (gulp, common) {
                         // 如果不是，则说明准备处理另一张图片了，这时清空标记，进入下一张图片的处理
                         justBeforeAddedImage.push(absoluteMinImageFilePathMd5);
                         outputEmptyForSyncImageIfNeed();
-                        common.log('Min Image', '对 ' + absoluteMinImageFilePath + ' 进行图片压缩');
+                        common.util.log('Min Image', '对 ' + absoluteMinImageFilePath + ' 进行图片压缩');
                         imageMinOnSameDir(absoluteMinImageFilePath);
                     }
                 },
@@ -89,7 +89,7 @@ module.exports = function (gulp, common) {
                     if (!common.lib.isElementInArray(justBeforeAddedImage, absoluteMinImageFilePathMd5)) {
                         justBeforeAddedImage.push(absoluteMinImageFilePathMd5);
                         outputEmptyForSyncImageIfNeed();
-                        common.log('Min Image', '对 ' + absoluteMinImageFilePath + ' 进行图片压缩');
+                        common.util.log('Min Image', '对 ' + absoluteMinImageFilePath + ' 进行图片压缩');
                         imageMinOnSameDir(absoluteMinImageFilePath);
                     } else {
                         justBeforeAddedImage = common.lib.deleteElementInArray(justBeforeAddedImage, absoluteMinImageFilePathMd5);
@@ -102,12 +102,12 @@ module.exports = function (gulp, common) {
                     if (!common.lib.isElementInArray(justAddedImage, absoluteMinImageFilePathMd5)) {
                         justAddedImage.push(absoluteMinImageFilePathMd5);
                         outputEmptyForSyncImageIfNeed();
-                        common.log('Sync Image', '同步增加文件到 ' + absoluteMinImageFilePath);
+                        common.util.log('Sync Image', '同步增加文件到 ' + absoluteMinImageFilePath);
                     }
                 },
                 deleteFileCallback: function (_fullPathSrc, _fullPathDist) {
                     outputEmptyForSyncImageIfNeed();
-                    common.log('Sync Image', '同步删除文件 ' + path.resolve(_fullPathDist));
+                    common.util.log('Sync Image', '同步删除文件 ' + path.resolve(_fullPathDist));
                 },
                 updateFileCallback: function (_fullPathSrc, _fullPathDist) {
                     var absoluteMinImageFilePath = path.resolve(_fullPathDist),
@@ -116,7 +116,7 @@ module.exports = function (gulp, common) {
                     if (!common.lib.isElementInArray(justAddedImage, absoluteMinImageFilePathMd5)) {
                         justAddedImage.push(absoluteMinImageFilePathMd5);
                         outputEmptyForSyncImageIfNeed();
-                        common.log('Sync Image', '同步更新文件到 ' + absoluteMinImageFilePath);
+                        common.util.log('Sync Image', '同步更新文件到 ' + absoluteMinImageFilePath);
                     } else {
                         justAddedImage = common.lib.deleteElementInArray(justAddedImage, absoluteMinImageFilePathMd5);
                     }
@@ -139,8 +139,8 @@ module.exports = function (gulp, common) {
         if (common.config.svgSprite.openSvgSprite) {
             var svgSpriteWatch = gulp.watch(svgWatchFiles, gulp.series('svgSprite'));
             svgSpriteWatch.on('all', function () {
-                common.log('');
-                common.log('svgSprite', '进行 SVG 雪碧图构建');
+                common.util.log('');
+                common.util.log('svgSprite', '进行 SVG 雪碧图构建');
             });
         }
 
@@ -148,15 +148,15 @@ module.exports = function (gulp, common) {
         var styleWatchFiles = ['../project/**/*.scss'];
         var styleWatch = gulp.watch(styleWatchFiles, gulp.series('sassWithCache', 'reload'));
         styleWatch.on('all', function () {
-            common.log('');
-            common.log('Sass', '进行样式编译');
+            common.util.log('');
+            common.util.log('Sass', '进行样式编译');
         });
 
         var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.{png, jpg, jpeg, gif}', '!' + svgWatchFiles, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
         imageSpriteWatch.on('all', function () {
-            common.log('');
-            common.log('Sass', '进行样式编译');
+            common.util.log('');
+            common.util.log('Sass', '进行样式编译');
         });
 
         // 压缩雪碧图
@@ -172,7 +172,7 @@ module.exports = function (gulp, common) {
 
                     justAddedImage.push(minImageFilePathMd5);
 
-                    common.log('Min Image', '对 ' + minImageFile + ' 进行图片压缩');
+                    common.util.log('Min Image', '对 ' + minImageFile + ' 进行图片压缩');
                     imageMinOnSameDir(minImageFile);
 
                 } else if (common.lib.isElementInArray(justAddedImage, minImageFilePathMd5)) {
@@ -185,8 +185,8 @@ module.exports = function (gulp, common) {
         if (common.config.template.openIncludeFunction) {
             var includeWatcher = gulp.watch(common.config.paths.htmlSourcePath, gulp.series('include'));
             includeWatcher.on('change', function (event) {
-                common.log('');
-                common.log('Include', '模板 ' + event.path + ' was ' + event.type);
+                common.util.log('');
+                common.util.log('Include', '模板 ' + event.path + ' was ' + event.type);
             });
         }
 

@@ -26,7 +26,7 @@ module.exports = function (gulp, common) {
 
         gulp.task('start', function (done) {
             if (argv.debug) {
-                common.log('Debug: ', 'QMUI 进入 Debug 模式');
+                common.util.log('Debug: ', 'QMUI 进入 Debug 模式');
             }
 
             var mainTaskProcess; // 记录当前 gulp 运行时的进程
@@ -40,20 +40,20 @@ module.exports = function (gulp, common) {
             }
 
             gulp.watch('package.json').on('all', function () {
-                common.log('');
-                common.warn('Update', '检测到 QMUI Web 的 npm 包，为了避免出现错误，建议你停止目前的 gulp，请使用 npm install 命令更新后再启动 gulp');
-                common.plugins.util.beep(10);
+                common.util.log('');
+                common.util.warn('Update', '检测到 QMUI Web 的 npm 包，为了避免出现错误，建议你停止目前的 gulp，请使用 npm install 命令更新后再启动 gulp');
+                common.util.beep(10);
             });
 
             gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*']).on('all', function () {
-                common.log('');
+                common.util.log('');
                 if (argv.debug) {
-                    common.warn('Debug', '目前为 Debug 模式，检测到工作流源码有被更新，将自动重启 gulp');
-                    common.plugins.util.beep(10);
+                    common.util.warn('Debug', '目前为 Debug 模式，检测到工作流源码有被更新，将自动重启 gulp');
+                    common.util.beep(10);
                     restart();
                 } else {
-                    common.warn('Update', '检测到工作流源码有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
-                    common.plugins.util.beep(10);
+                    common.util.warn('Update', '检测到工作流源码有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
+                    common.util.beep(10);
                 }
             });
 
@@ -95,7 +95,7 @@ module.exports = function (gulp, common) {
         }
     } else {
         gulp.task('main', function (done) {
-            common.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
+            common.util.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
             done();
         });
     }

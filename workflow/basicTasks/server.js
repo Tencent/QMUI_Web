@@ -33,7 +33,7 @@ module.exports = function (gulp, common) {
                 routes: common.config.browserSync.browserSyncServerRoute
             },
             logLevel: showLog(),
-            logPrefix: common.plugins.util.colors.gray(common.lib.getCurrentTime()),
+            logPrefix: common.util.colors.gray(common.lib.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath,
             port: common.config.browserSync.browserSyncPort
         });

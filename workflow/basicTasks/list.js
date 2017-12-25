@@ -35,7 +35,7 @@ module.exports = function (gulp, common) {
 
             var help = common.tasks[name];
 
-            var args = [' ', common.plugins.util.colors.cyan(name)];
+            var args = [' ', common.util.colors.cyan(name)];
 
             args.push(new Array(margin - name.length + 1 + optionsBuffer.length).join(' '));
 
@@ -47,7 +47,7 @@ module.exports = function (gulp, common) {
                 var options = Object.keys(help.options);
                 options.forEach(function (option) {
                     var optText = help.options[option];
-                    args.push('\n ' + optionsBuffer + common.plugins.util.colors.cyan(option) + ' ');
+                    args.push('\n ' + optionsBuffer + common.util.colors.cyan(option) + ' ');
 
                     args.push(new Array(margin - option.length + 1).join(' '));
                     args.push(optText);

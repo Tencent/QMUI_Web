@@ -26,6 +26,9 @@ var plugins = require('gulp-load-plugins')({
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     _ = require('lodash'),
+    beeper = require('beeper'),
+    colors = require('ansi-colors'),
+    log = require('fancy-log'),
     configDefault,
     configUser = {};
 
@@ -36,7 +39,7 @@ try {
     try {
         configDefault = require('../../config.json');
     } catch (_e) {
-        plugins.util.log(plugins.util.colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
+        log(colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
     }
 }
 
@@ -56,30 +59,36 @@ common.lib = lib;
 common.browserSync = browserSync;
 common.reload = reload;
 
-// 任务说明
-common.tasks = {};
+// 创建工具类，放置工具方法
+common.util = {};
+
+common.util.beep = beeper;
+common.util.colors = colors;
 
 // 日志方法
-common.log = function (_tag, _content) {
+common.util.log = function (_tag, _content) {
     if (arguments.length > 1) {
-        plugins.util.log(common.plugins.util.colors.green('QMUI ' + _tag + ': ') + _content);
+        log(common.util.colors.green('QMUI ' + _tag + ': ') + _content);
     } else {
-        plugins.util.log(arguments[0]);
+        log(arguments[0]);
     }
 };
-common.warn = function (_tag, _content) {
+common.util.warn = function (_tag, _content) {
     if (arguments.length > 1) {
-        plugins.util.log(common.plugins.util.colors.yellow('QMUI ' + _tag + ': ') + _content);
+        log(common.util.colors.yellow('QMUI ' + _tag + ': ') + _content);
     } else {
-        plugins.util.log(arguments[0]);
+        log(arguments[0]);
     }
 };
-common.error = function (_tag, _content) {
+common.util.error = function (_tag, _content) {
     if (arguments.length > 1) {
-        plugins.util.log(common.plugins.util.colors.red('QMUI ' + _tag + ': ') + _content);
+        log(common.util.colors.red('QMUI ' + _tag + ': ') + _content);
     } else {
-        plugins.util.log(arguments[0]);
+        log(arguments[0]);
     }
 };
+
+// 任务说明
+common.tasks = {};
 
 module.exports = common;
