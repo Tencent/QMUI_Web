@@ -13,7 +13,7 @@
     "beeper": "^1.1.1",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
-    "gulp": "github:gulpjs/gulp#6d71a65",
+    "gulp": "^4.0.0",
     "gulp-better-sass-inheritance": "^0.0.3",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
