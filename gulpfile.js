@@ -18,7 +18,7 @@ var gulp = require('gulp'),
     fs = require('fs'),
     common = require('./workflow/common.js');
 
-// 载入任务
+// 载入基础任务
 var basicTaskPath = 'workflow/basicTasks';
 var combinedTaskPath = 'workflow';
 
@@ -28,6 +28,19 @@ fs.readdirSync(basicTaskPath).filter(function (file) {
     require('./' + basicTaskPath + '/' + file)(gulp, common);
 });
 
-['watch', 'start', 'initProject'].forEach(function (file) {
+// 载入复合任务
+
+// 载入 watch 任务
+require('./' + combinedTaskPath + '/watch')(gulp, common);
+
+// 载入自定义任务
+if (common.config.customTasks) {
+    Object.keys(common.config.customTasks).forEach(function (customTaskName) {
+        require('./' + common.config.customTasks[customTaskName])(gulp, common);
+    });
+}
+
+// 载入 start 和 initProject 任务
+['start', 'initProject'].forEach(function (file) {
     require('./' + combinedTaskPath + '/' + file)(gulp, common);
 });

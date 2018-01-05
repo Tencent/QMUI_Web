@@ -42,18 +42,18 @@ module.exports = function (gulp, common) {
             gulp.watch('package.json').on('all', function () {
                 common.util.log('');
                 common.util.warn('Update', '检测到 QMUI Web 的 npm 包，为了避免出现错误，建议你停止目前的 gulp，请使用 npm install 命令更新后再启动 gulp');
-                common.util.beep(10);
+                common.util.beep(3);
             });
 
             gulp.watch(['gulpfile.js', 'workflow', 'workflow/**/*']).on('all', function () {
                 common.util.log('');
                 if (argv.debug) {
                     common.util.warn('Debug', '目前为 Debug 模式，检测到工作流源码有被更新，将自动重启 gulp');
-                    common.util.beep(10);
+                    common.util.beep(3);
                     restart();
                 } else {
                     common.util.warn('Update', '检测到工作流源码有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
-                    common.util.beep(10);
+                    common.util.beep(3);
                 }
             });
 
@@ -81,22 +81,32 @@ module.exports = function (gulp, common) {
         }
     };
 
-    if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
-        if (common.config.svgSprite.openSvgSprite) {
-            gulp.task('main', gulp.series('include', 'svgSprite', 'sass', 'watch', common.config.browserSync.browserSyncMod));
-        } else {
-            gulp.task('main', gulp.series('include', 'sass', 'watch', common.config.browserSync.browserSyncMod));
-        }
-    } else if (common.config.browserSync.browserSyncMod === 'close') {
-        if (common.config.svgSprite.openSvgSprite) {
-            gulp.task('main', gulp.series('include', 'svgSprite', 'sass', 'watch'));
-        } else {
-            gulp.task('main', gulp.series('include', 'sass', 'watch'));
-        }
-    } else {
+    // 判断 browserSync 的值是否正确
+    if (common.config.browserSync.browserSyncMod !== 'server' && common.config.browserSync.browserSyncMod !== 'proxy' && common.config.browserSync.browserSyncMod !== 'close') {
         gulp.task('main', function (done) {
             common.util.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
             done();
         });
+    } else {
+        // 常规启动任务
+        var mainTasks = ['include'];
+        if (common.config.svgSprite.openSvgSprite) {
+            mainTasks.push('svgSprite');
+        }
+        mainTasks.push(['sass', 'watch']);
+
+        // 根据 broserSync 的类型加入对应的任务
+        if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
+            mainTasks.push(common.config.browserSync.browserSyncMod);
+        }
+
+        // 加入用户自定义任务
+        if (common.config.customTasks) {
+            Object.keys(common.config.customTasks).forEach(function (customTaskName) {
+                mainTasks.push(customTaskName);
+            });
+        }
+
+        gulp.task('main', gulp.series(mainTasks));
     }
 };
