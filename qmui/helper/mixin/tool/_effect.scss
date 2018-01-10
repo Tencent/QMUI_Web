@@ -194,7 +194,7 @@
       width: 300%;
       height: 300%;
       border-radius: $borderRadius * 3;
-      transform: scale(.3333);
+      transform: scale((1 / 3));
     }
   }
 }
