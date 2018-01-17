@@ -168,7 +168,7 @@
       transform: scale(.5);
       transform-origin: 0 0;
       @if $position == inside {
-        @include box_sizing(border-box);
+        box-sizing: border-box;
       }
       pointer-events: none;
     }
@@ -178,7 +178,7 @@
       width: 300%;
       height: 300%;
       border-radius: $borderRadius * 3;
-      transform: scale(.3333);
+      transform: scale((1 / 3));
     }
   }
 }
