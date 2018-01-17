@@ -92,25 +92,38 @@
   }
 }
 
-/// 适配 Pad 的 CSS 选择器，例如有响应式布局中适配 Pad 的代码可以包在这里
-///
+/// 适配 iPhone X 等屏幕尺寸为58英寸的设备
 /// @group 设备适配
-/// @name screenForPad
-@mixin screenForPad {
-  @media (min-width:$screen_width_pad) {
-    @content;
-  }
-  @media \0screen {
+/// @name screenFor58Inch
+@mixin screenFor58Inch {
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
     @content;
   }
 }
 
-/// 适配手机的 CSS 选择器，与 screenForPad 方法对应，可以用于包裹只在 Phone 版使用的代码，不在 Pad 版使用的样式
-///
+/// 适配 iPhone 6 / 7 / 8 Plus 等屏幕尺寸为55英寸的设备
 /// @group 设备适配
-/// @name screenForPhone
-@mixin screenForPhone {
-  @media (max-width:$screen_width_pad) {
+/// @name screenFor55Inch
+@mixin screenFor55Inch {
+  @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    @content;
+  }
+}
+
+/// 适配 iPhone 6 / 7 / 8 等屏幕尺寸为47英寸的设备
+/// @group 设备适配
+/// @name screenFor47Inch
+@mixin screenFor47Inch {
+  @media (max-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+/// 适配 iPhone 5 / 5s / SE 等屏幕尺寸为40英寸的设备
+/// @group 设备适配
+/// @name screenFor40Inch
+@mixin screenFor40Inch {
+  @media (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
     @content;
   }
 }
