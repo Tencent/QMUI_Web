@@ -11,7 +11,7 @@ before_script:
   - cp config.js ../config.js
   - npm install
 script:
-  - gulp init
+  - gulp initProject
   - gulp list
   - gulp sass
   - gulp include
