@@ -54,7 +54,7 @@ module.exports = function (gulp, common) {
                 });
             }
 
-            Reflect.apply(console.log, console, args);
+            console.log.apply(console, args);
         });
 
         console.log('');

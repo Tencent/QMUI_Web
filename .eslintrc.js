@@ -182,9 +182,9 @@ module.exports = {
         "padded-blocks": "off",
         "prefer-arrow-callback": "off",
         "prefer-const": "error",
-        "prefer-reflect": [2, { exceptions: ["delete"] }],
+        "prefer-reflect": [2, { exceptions: ["delete", "apply"] }],
         "prefer-rest-params": "off",
-        "prefer-spread": "error",
+        "prefer-spread": "off",
         "prefer-template": "off",
         "quote-props": "off",
         "quotes": [
