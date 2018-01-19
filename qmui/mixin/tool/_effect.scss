@@ -140,12 +140,15 @@
   @else if $direction == vertical {
     border-width: 1px 0;
   }
+  @else if $direction == none {
+    border-width: 0;
+  }
 }
 
-/// 在移动设备上生成 1px 宽的边框，direction 支持 all, top, bottom, left, right, horizontal, vertical 7个 direction 值，position 支持 outside 和 inside 两个值
+/// 在移动设备上生成 1px 宽的边框，direction 支持 all, top, bottom, left, right, horizontal, vertical, none 8个 direction 值，position 支持 outside 和 inside 两个值
 ///
 /// @name onePixelBorder
-/// @param {String} $direction [all] - 边框的方向，支持 all（所有方向），top（上边框），right（右边框），bottom（下边框），left（左边框），horizontal（左右边框），vertical（上下边框）
+/// @param {String} $direction [all] - 边框的方向，支持 all（所有方向），top（上边框），right（右边框），bottom（下边框），left（左边框），horizontal（左右边框），vertical（上下边框），none（无边框）
 /// @param {Color} $color - 边框的颜色
 /// @param {String} $position [outside] - 边框的位置，支持 outside 和 inside
 /// @param {Number} $borderRadius [0] - 边框的圆角
