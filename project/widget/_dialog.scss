@@ -14,64 +14,64 @@
 
 // .qui_dialog
 .qui_dialog {
-  position: absolute;
-  z-index: $dialog_zIndex;
-  min-width: $dialog_minWidth;
-  background: $dialog_background;
-  border: $dialog_border;
-  border-radius: $dialog_radius;
-  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .15);
+    position: absolute;
+    z-index: $dialog_zIndex;
+    min-width: $dialog_minWidth;
+    background: $dialog_background;
+    border: $dialog_border;
+    border-radius: $dialog_radius;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .15);
 }
 
 .qui_dialog_head {
-  padding: 0 12px;
-  background: $dialog_head_background;
-  border-bottom: $dialog_head_borderBottom;
-  border-radius: $dialog_radius $dialog_radius 0 0;
+    padding: 0 12px;
+    background: $dialog_head_background;
+    border-bottom: $dialog_head_borderBottom;
+    border-radius: $dialog_radius $dialog_radius 0 0;
 }
 
 .qui_dialog_title {
-  height: $dialog_title_height;
-  line-height: $dialog_title_lineHeight;
-  font-size: $dialog_title_fontSize;
-  font-weight: $dialog_title_fontWeight;
-  color: $dialog_title_color;
+    height: $dialog_title_height;
+    line-height: $dialog_title_lineHeight;
+    font-size: $dialog_title_fontSize;
+    font-weight: $dialog_title_fontWeight;
+    color: $dialog_title_color;
 }
 
 .qui_dialog_close {
-  position: absolute;
-  top: $dialog_close_top;
-  right: $dialog_close_right;
-  padding: 5px; // 把点击区域做大
-  line-height: 1;
-  font-size: 18px;
-  color: #fff;
+    position: absolute;
+    top: $dialog_close_top;
+    right: $dialog_close_right;
+    padding: 5px; // 把点击区域做大
+    line-height: 1;
+    font-size: 18px;
+    color: #fff;
 
-  &:hover {
-    color: #d6d9de;
-    text-decoration: none;
-  }
-  &:active {
-    color: #eaecee;
-  }
+    &:hover {
+        color: #d6d9de;
+        text-decoration: none;
+    }
+    &:active {
+        color: #eaecee;
+    }
 }
 
 .qui_dialog_body {
-  padding: 23px 30px 30px 37px;
-  background: $dialog_body_background;
-  font-size: 14px;
-  color: #353C46;
+    padding: 23px 30px 30px 37px;
+    background: $dialog_body_background;
+    font-size: 14px;
+    color: #353C46;
 }
 
 .qui_dialog_foot {
-  padding: 17px 12px;
-  background: $dialog_foot_background;
-  border-top: $dialog_foot_borderTop;
-  border-radius: 0 0 $dialog_radius $dialog_radius;
-  text-align: right;
-  line-height: 25px;
+    padding: 17px 12px;
+    background: $dialog_foot_background;
+    border-top: $dialog_foot_borderTop;
+    border-radius: 0 0 $dialog_radius $dialog_radius;
+    text-align: right;
+    line-height: 25px;
 }
 
 .qui_dialog_foot .qui_btn {
-  margin-left: 12px;
+    margin-left: 12px;
 }

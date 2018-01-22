@@ -43,7 +43,8 @@
     "yargs": "^10.0.3"
   },
   "devDependencies": {
-    "sassdoc": "^2.5.0"
+    "sassdoc": "^2.5.0",
+    "stylelint-wechat-work-css": "^0.2.5"
   },
   "keywords": [
     "QMUI"

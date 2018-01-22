@@ -19,12 +19,11 @@
  * #inputText、#textarea 文本输入组件
  *
  */
-
 // 计算的工具方法
 @import "../qmui/mixin/tool/_calculate";
 
 // #common 通用
-$common_fontFamily: "Helvetica Neue",Helvetica,Verdana,san-serif;
+$common_fontFamily: "Helvetica Neue", Helvetica, Verdana, san-serif;
 $common_fontSize: 14px;
 $common_body_background: #FFF;
 $common_body_color: #000;
@@ -45,7 +44,6 @@ $common_zIndex_8: 80;
 $common_zIndex_9: 90;
 $common_zIndex_10: 100;
 
-
 // #button 按钮组件
 $btn_minWidth: 46px;
 $btn_height: 30px;
@@ -55,7 +53,6 @@ $btn_background: #04C9E8;
 $btn_border: 1px solid transparent;
 $btn_fontSize: 13px;
 $btn_color: #FFF;
-
 
 // #dialog 对话框组件
 $dialog_zIndex: $common_zIndex_10;
@@ -81,13 +78,11 @@ $dialog_body_background: #fff;
 $dialog_foot_background: $dialog_background; // 对话框底部的背景，默认与对话框的背景一样
 $dialog_foot_borderTop: $dialog_head_borderBottom; // 对话框底部的上边线，样式默认与对话框边线一样
 
-
 // #mask 遮罩层组件
 $mask_zIndex: $common_zIndex_9;
 $maskWrap_zIndex: $mask_zIndex;
 $mask_background: #000;
 $mask_opacity: .5;
-
 
 // #dropdownMenu 下拉菜单组件
 $dropdownMenu_zIndex: $common_zIndex_3;
@@ -97,22 +92,20 @@ $dropdownMenu_ulPadding: 12px 0;
 $dropdownMenu_itemLink_height: 32px;
 $dropdownMenu_itemLink_lineHeight: $dropdownMenu_itemLink_height;
 $dropdownMenu_itemLink_padding: 0 15px;
-$dropdownMenu_itemLink_color:  #000;
+$dropdownMenu_itemLink_color: #000;
 $dropdownMenu_split_margin: 5px 0;
 $dropdownMenu_split_borderTop: 1px solid #ccc;
-
 
 // #tab 选项卡组件
 $tab_background: #fff;
 $tab_head_background: $tab_background;
 $tabNav_padding: 0 16px;
-$tabNav_item_margin: 0 24px 0 0;
+$tabNav_item_margin: 0 24px -1px 0;
 $tabNav_itemLink_height: 43px;
 $tabNav_itemLink_lineHeight: $tabNav_itemLink_height;
 $tabNav_itemLink_padding: 0;
 $tabNav_itemLink_background: transparent;
 $tabNav_itemLink_color: #858C96;
-
 
 // #inputText、#textarea 文本输入组件
 $textField_width: 270px;

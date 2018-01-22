@@ -8,21 +8,20 @@
  * > .qui_mask
  */
 
-
 // 遮罩层的包裹容器，包裹遮罩层以及需要弹出的内容（如对话框）
 .qui_maskWrap {
-  position: relative;
-  z-index: $maskWrap_zIndex;
+    position: relative;
+    z-index: $maskWrap_zIndex;
 }
 
 .qui_mask {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $mask_zIndex;
-  background: $mask_background;
-  opacity: $mask_opacity;
-  filter: alpha(opacity = $mask_opacity * 100);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $mask_zIndex;
+    background: $mask_background;
+    opacity: $mask_opacity;
+    filter: alpha(opacity=$mask_opacity * 100);
 }
