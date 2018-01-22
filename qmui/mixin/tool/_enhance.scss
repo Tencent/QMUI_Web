@@ -7,7 +7,6 @@
 /// @date 2016-06-18
 ////
 
-
 /// 字符串 replace 方法，用于在字符串中用一些字符替换另一些字符
 ///
 /// @name str-replace
@@ -19,13 +18,13 @@
 ///   str-replace("QMUI Web", "Web", "iOS") => "QMUI iOS"
 ///   str-replace("QMUI Web", "Web", "Android") => "QMUI Android"
 @function str-replace($string, $search, $replace: "") {
-  $index: str-index($string, $search);
+    $index: str-index($string, $search);
 
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
 
-  @return $string;
+    @return $string;
 }
 
 /// 加亮颜色（以百分比的形式加入加色）
@@ -33,7 +32,7 @@
 /// @param {Color} $color - 需要被加亮的颜色值
 /// @param {Number} $percentage - 需要增加的白色的百分比
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+    @return mix(white, $color, $percentage);
 }
 
 /// 加暗颜色（以百分比的形式加入黑色）
@@ -41,5 +40,5 @@
 /// @param {Color} $color - 需要被加暗的颜色值
 /// @param {Number} $percentage - 需要增加的黑色的百分比
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+    @return mix(black, $color, $percentage);
 }

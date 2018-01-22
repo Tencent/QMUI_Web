@@ -9,63 +9,65 @@
  *
  */
 
-
 // .qui_btn
 .qui_btn {
-  display: inline-block;
-  margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
-  box-sizing: content-box;
-  min-width: $btn_minWidth;
-  height: $btn_height;
-  padding: $btn_padding;
-  background: $btn_background;
-  border: $btn_border;
-  /* line-height 的偏移值依赖于不同字体 */
-  line-height: $btn_lineHeight + 2;
-  line-height: $btn_lineHeight + 1 \9\0;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: $btn_fontSize;
-  color: $btn_color;
-  user-select: none;
-  border-radius: 2px;
+    display: inline-block;
+    margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
+    box-sizing: content-box;
+    min-width: $btn_minWidth;
+    height: $btn_height;
+    padding: $btn_padding;
+    background: $btn_background;
+    border: $btn_border;
+    /* line-height 的偏移值依赖于不同字体 */
+    line-height: $btn_lineHeight + 2;
+    line-height: $btn_lineHeight + 1 \9\0;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: $btn_fontSize;
+    color: $btn_color;
+    user-select: none;
+    border-radius: 2px;
 
-  &:hover {
-    background-color: #05D7F7;
-  }
-  &:active,
-  &_Active {
-    background-color: #04B1CC;
-  }
-  &[Disabled] {
-    opacity: .5;
-  }
-
+    &:hover {
+        background-color: #05D7F7;
+    }
+    &:active,
+    &_Active {
+        background-color: #04B1CC;
+    }
+    &[Disabled] {
+        opacity: .5;
+    }
 }
 
 a.qui_btn {
-  text-decoration: none;
-
-  &:hover {
     text-decoration: none;
-  }
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.a[title = "1"] {
+
 }
 
 .qui_btn_Ghost {
-  background-color: transparent;
-  border: 1px solid #04C9E8;
-  color: #04C9E8;
+    background-color: transparent;
+    border: 1px solid #04C9E8;
+    color: #04C9E8;
 
-  &:hover {
-    background-color: transparent;
-    border-color: #05D7F7;
-    color: #05D7F7;
-  }
-  &:active,
-  &_Active {
-    background-color: transparent;
-    border-color: #04B1CC;
-    color: #04B1CC;
-  }
+    &:hover {
+        background-color: transparent;
+        border-color: #05D7F7;
+        color: #05D7F7;
+    }
+    &:active,
+    &_Active {
+        background-color: transparent;
+        border-color: #04B1CC;
+        color: #04B1CC;
+    }
 }

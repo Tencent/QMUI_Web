@@ -9,26 +9,76 @@
  */
 
 /* #reset */
-body,dl,dd,h1,h2,h3,h4,h5,h6,p,pre,form,fieldset,legend {margin: 0;}
-ul,ol,fieldset {margin:0;padding:0;}
-th, td {padding: 0;}
-table {font-size:inherit;}
-fieldset, img {border:none;}
-ul,ol,li {list-style:none;}
-body {font-size:$common_fontSize;line-height:1.5;background:$common_body_background;color: $common_body_color;}
-h1,h2,h3,h4{font-size:18px; font-weight:normal;}
-body,input,textarea,select,button {font-family:$common_fontFamily; outline:none; -webkit-text-size-adjust:none;}
-input, textarea, select, button {
-  font-size:inherit; // form control's default font in webkit is "-webkit-small-control"
-  -webkit-tap-highlight-color:rgba(0,0,0,0); // remove widget tap highlighted in mobile safari
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, pre, form, fieldset, legend {
+    margin: 0;
 }
-a {color: $common_color_link;text-decoration:none;-webkit-tap-highlight-color:$common_color_linkTapHighlight;}
-:focus {outline: none;}
+
+ul, ol, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+th, td {
+    padding: 0;
+}
+
+table {
+    font-size: inherit;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+body {
+    font-size: $common_fontSize;
+    line-height: 1.5;
+    background: $common_body_background;
+    color: $common_body_color;
+}
+
+h1, h2, h3, h4 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+body, input, textarea, select, button {
+    font-family: $common_fontFamily;
+    outline: none;
+    // stylelint-disable
+    // For Webkit kernel on mobile
+    -webkit-text-size-adjust: none;
+    // stylelint-enable
+}
+
+input, textarea, select, button {
+    font-size: inherit; // form control's default font in webkit is "-webkit-small-control"
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // remove widget tap highlighted in mobile safari
+}
+
+a {
+    color: $common_color_link;
+    text-decoration: none;
+    -webkit-tap-highlight-color: $common_color_linkTapHighlight;
+}
+
+:focus {
+    outline: none;
+}
 
 /* #html5 HTML5 元素的支持 */
 article, aside, details,
 figcaption, figure,
 footer, header, hgroup,
 main, nav, section,
-summary { display: block; }
-audio, canvas, video { display: inline-block; }
+summary {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+}

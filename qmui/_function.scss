@@ -5,51 +5,50 @@
  * @date 2014-11-17
  */
 
-
 .qui_txtNormal {
-  font-weight: normal!important;
+    font-weight: normal !important;
 }
 
 .qui_txtBold {
-  font-weight: bold!important;
+    font-weight: bold !important;
 }
 
 .qui_txtLeft {
-  text-align: left!important;
+    text-align: left !important;
 }
 
 .qui_txtRight {
-  text-align: right!important;
+    text-align: right !important;
 }
 
 .qui_txtUnderline {
-  text-decoration: underline!important;
+    text-decoration: underline !important;
 }
 
 .qui_txtUnderlineNone {
-  text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 .qui_txtOverflow {
-  @extend %text_ellipsis;
+    @extend %text_ellipsis;
 }
 
 .qui_clear {
-  @extend %clear;
+    @extend %clear;
 }
 
 .qui_txtNowrap {
-  white-space: nowrap!important;
+    white-space: nowrap !important;
 }
 
 .qui_layoutLeft {
-  float: left!important;
+    float: left !important;
 }
 
 .qui_layoutRight {
-  float: right!important;
+    float: right !important;
 }
 
 .qui_displayNone {
-  display: none!important;
+    display: none !important;
 }

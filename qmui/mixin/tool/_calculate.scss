@@ -30,59 +30,59 @@
 ///     ...
 ///   }
 @function getLengthDirectionValue($property, $direction) {
-  // 声明变量
-  $top: 0;
-  $right: 0;
-  $bottom: 0;
-  $left: 0;
-  // 获取 $property 列表值中值的个数，从而判断是哪种 CSS length 的写法
-  $propertyLength: length($property);
-  @if $propertyLength == 1 {
-    $top: $property;
-    $right: $property;
-    $bottom: $property;
-    $left: $property;
-  } @else if $propertyLength == 2 {
-    $top: nth($property, 1);
-    $right: nth($property, 2);
-    $bottom: nth($property, 1);
-    $left: nth($property, 2);
-  } @else if $propertyLength == 3 {
-    $top: nth($property, 1);
-    $right: nth($property, 2);
-    $bottom: nth($property, 3);
-    $left: nth($property, 2);
-  } @else if $propertyLength == 4 {
-    $top: nth($property, 1);
-    $right: nth($property, 2);
-    $bottom: nth($property, 3);
-    $left: nth($property, 4);
-  } @else {
-    @return 0;
-  }
+    // 声明变量
+    $top: 0;
+    $right: 0;
+    $bottom: 0;
+    $left: 0;
+    // 获取 $property 列表值中值的个数，从而判断是哪种 CSS length 的写法
+    $propertyLength: length($property);
+    @if $propertyLength == 1 {
+        $top: $property;
+        $right: $property;
+        $bottom: $property;
+        $left: $property;
+    } @else if $propertyLength == 2 {
+        $top: nth($property, 1);
+        $right: nth($property, 2);
+        $bottom: nth($property, 1);
+        $left: nth($property, 2);
+    } @else if $propertyLength == 3 {
+        $top: nth($property, 1);
+        $right: nth($property, 2);
+        $bottom: nth($property, 3);
+        $left: nth($property, 2);
+    } @else if $propertyLength == 4 {
+        $top: nth($property, 1);
+        $right: nth($property, 2);
+        $bottom: nth($property, 3);
+        $left: nth($property, 4);
+    } @else {
+        @return 0;
+    }
 
-  // 根据参数中的方向值输出需要的结果
-  @if $direction == top {
-    @return $top;
-  } @else if $direction == right {
-    @return $right;
-  } @else if $direction == bottom {
-    @return $bottom;
-  } @else if $direction == left {
-    @return $left;
-  } @else if $direction == horizontal {
-    @if $left != $right {
-      @warn "左边（#{$left}）与右边（#{$right}）的值并不相等，不应该直接使用 horizontal 这个方向";
+    // 根据参数中的方向值输出需要的结果
+    @if $direction == top {
+        @return $top;
+    } @else if $direction == right {
+        @return $right;
+    } @else if $direction == bottom {
+        @return $bottom;
+    } @else if $direction == left {
+        @return $left;
+    } @else if $direction == horizontal {
+        @if $left != $right {
+            @warn "左边（#{$left}）与右边（#{$right}）的值并不相等，不应该直接使用 horizontal 这个方向";
+        }
+        @return $left;
+    } @else if $direction == vertical {
+        @if $top != $bottom {
+            @warn "上边（#{$top}）与下边（#{$bottom}）的值并不相等，不应该直接使用 vertical 这个方向";
+        }
+        @return $top;
+    } @else {
+        @return 0;
     }
-    @return $left;
-  } @else if $direction == vertical {
-    @if $top != $bottom {
-      @warn "上边（#{$top}）与下边（#{$bottom}）的值并不相等，不应该直接使用 vertical 这个方向";
-    }
-    @return $top;
-  } @else {
-    @return 0;
-  }
 }
 
 /// 获取两个 CSS 长度值的中间值并取整，通常可用于子元素在父元素中需要居中时计算两者高度差
@@ -91,12 +91,12 @@
 /// @param {Number | String} $parent - 较大的长度值
 /// @param {Number | String} $child - 较小的长度值
 @function getLengthMaxIntegerCenter($parent, $child) {
-  $center: ($parent - $child) / 2;
-  // 注意这里的取整使用 ceil 而不是 floor 并不是随意写的，这是模拟现代浏览器对于小数点长度值的表现而定的。
-  // 例如，margin-top: 10.5px 在现代浏览器中会表现为 margin-top: 11px 而不是 margin-top: 10px
-  // 又例如，margin-top: -10.5px 在现代浏览器的表现等同于 margin-top: -10px 而不是 margin-top: -11px
-  // 即小数长度值会被当成不小于该小数的下一个整数去处理，也就是 ceil 的效果。所以不要随意改成 floor，其他长度值方法也应该如此处理
-  @return ceil($center);
+    $center: ($parent - $child) / 2;
+    // 注意这里的取整使用 ceil 而不是 floor 并不是随意写的，这是模拟现代浏览器对于小数点长度值的表现而定的。
+    // 例如，margin-top: 10.5px 在现代浏览器中会表现为 margin-top: 11px 而不是 margin-top: 10px
+    // 又例如，margin-top: -10.5px 在现代浏览器的表现等同于 margin-top: -10px 而不是 margin-top: -11px
+    // 即小数长度值会被当成不小于该小数的下一个整数去处理，也就是 ceil 的效果。所以不要随意改成 floor，其他长度值方法也应该如此处理
+    @return ceil($center);
 }
 
 /// 获取数值的n次幂的值
@@ -108,17 +108,17 @@
 ///   pow(10, 5) => 100000
 ///   pow(10, -1) => 0.1
 @function pow($number, $pow) {
-  $result: 1;
-  @if $pow > 0 {
-    @for $i from 1 through $pow {
-      $result: $result * $number;
+    $result: 1;
+    @if $pow > 0 {
+        @for $i from 1 through $pow {
+            $result: $result * $number;
+        }
+    } @else if $pow < 0 {
+        @for $i from $pow to 0 {
+            $result: $result / $number;
+        }
     }
-  } @else if $pow < 0 {
-    @for $i from $pow to 0 {
-      $result: $result / $number;
-    }
-  }
-  @return $result;
+    @return $result;
 }
 
 /// 将数值格式化为指定小数位数的数字。
@@ -135,18 +135,18 @@
 ///   toFixed(-3.1415926535898, 4, ceil) => -3.1415
 ///   toFixed(3.1415926535898px) => 3.14px
 @function toFixed($number, $precision: 0, $type: round) {
-  $result: null;
-  @if $type == round {
-    $result: round($number * pow(10, $precision)) / pow(10, $precision);
-  } @else if $type == floor {
-    $result: floor($number * pow(10, $precision)) / pow(10, $precision);
-  } @else if $type == ceil {
-    $result: ceil($number * pow(10, $precision)) / pow(10, $precision);
-  } @else {
-    @warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
-    $result: $number;
-  }
-  @return $result;
+    $result: null;
+    @if $type == round {
+        $result: round($number * pow(10, $precision)) / pow(10, $precision);
+    } @else if $type == floor {
+        $result: floor($number * pow(10, $precision)) / pow(10, $precision);
+    } @else if $type == ceil {
+        $result: ceil($number * pow(10, $precision)) / pow(10, $precision);
+    } @else {
+        @warn "type参数输入有误,请选择输入'round'、'floor'、'ceil'其中一个";
+        $result: $number;
+    }
+    @return $result;
 }
 
 /// 阶乘计算
@@ -156,20 +156,20 @@
 /// @example
 ///   factorial(4) => 4 * 3 * 2 * 1 => 24
 @function factorial($number) {
-  $value: 1;
-  @if $number > 0 {
-    @for $i from 1 through $number {
-      $value: $value * $i;
+    $value: 1;
+    @if $number > 0 {
+        @for $i from 1 through $number {
+            $value: $value * $i;
+        }
     }
-  }
-  @return $value;
+    @return $value;
 }
 
 /// 获取 π 的值（11位小数精度）
 ///
 /// @name pi
 @function pi() {
-  @return 3.14159265359;
+    @return 3.14159265359;
 }
 
 /// 通过角度计算弧度
@@ -180,12 +180,12 @@
 ///   rad(180deg) -> 3.14159
 ///   rad(45deg) -> 0.7854
 @function rad($angle) {
-  $unit: unit($angle);
-  $unitless: $angle / ($angle * 0 + 1);
-  @if $unit == deg {
-    $unitless: $unitless / 180 * pi();
-  }
-  @return $unitless;
+    $unit: unit($angle);
+    $unitless: $angle / ($angle * 0 + 1);
+    @if $unit == deg {
+        $unitless: $unitless / 180 * pi();
+    }
+    @return $unitless;
 }
 
 /// 计算 sin 三角函数
@@ -196,12 +196,12 @@
 ///   sin(45deg) -> 0.70711
 ///   sin(90deg) -> 1
 @function sin($angle) {
-  $sin: 0;
-  $angle: rad($angle);
-  @for $i from 0 through 10 {
-    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / factorial(2 * $i + 1);
-  }
-  @return $sin;
+    $sin: 0;
+    $angle: rad($angle);
+    @for $i from 0 through 10 {
+        $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / factorial(2 * $i + 1);
+    }
+    @return $sin;
 }
 
 /// 计算 cos 三角函数
@@ -212,12 +212,12 @@
 ///   cos(45deg) -> 0.70711
 ///   cos(90deg) -> 0
 @function cos($angle) {
-  $cos: 0;
-  $angle: rad($angle);
-  @for $i from 0 through 10 {
-    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / factorial(2 * $i);
-  }
-  @return $cos;
+    $cos: 0;
+    $angle: rad($angle);
+    @for $i from 0 through 10 {
+        $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / factorial(2 * $i);
+    }
+    @return $cos;
 }
 
 /// 计算 tan 三角函数
@@ -228,5 +228,5 @@
 ///   tan(45deg) -> 1
 ///   tan(50deg) -> 1.19175
 @function tan($angle) {
-  @return sin($angle) / cos($angle);
+    @return sin($angle) / cos($angle);
 }
