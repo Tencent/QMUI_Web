@@ -66,20 +66,14 @@ common.util.colors = colors;
 // 日志方法
 var addColor = function (str, type) {
     if (supportsColor() && (typeof argv.color === 'undefined' || argv.color)) {
-        switch (type) {
-            case 'warn':
-                return common.util.colors.yellow(str);
-
-            case 'error':
-                return common.util.colors.red(str);
-
-            case 'log':
-            default:
-                return common.util.colors.green(str);
+        if (type === 'warn') {
+            return common.util.colors.yellow(str);
+        } else if (type === 'error') {
+            return common.util.colors.red(str);
         }
-    } else {
-        return str;
+        return common.util.colors.green(str);
     }
+    return str;
 };
 
 common.util.log = function (tag, content) {
