@@ -40,12 +40,6 @@ module.exports = function (gulp, common) {
 
     gulp.task(sassWithCacheTaskName, function () {
         return gulp.src('../project/**/*.scss', {since: gulp.lastRun(sassWithCacheTaskName)})
-            .pipe(common.plugins.plumber({
-                errorHandler: function (_error) {
-                    common.util.error('Sass', _error);
-                    common.util.beep();
-                }
-            }))
             .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
             .pipe(common.plugins.sassInheritance({base: '../project/'}))
             .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
@@ -63,12 +57,6 @@ module.exports = function (gulp, common) {
 
     gulp.task(sassTaskName, function () {
         return gulp.src('../project/**/*.scss')
-            .pipe(common.plugins.plumber({
-                errorHandler: function (_error) {
-                    common.util.error('Sass', _error);
-                    common.util.beep();
-                }
-            }))
             .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
             .pipe(common.plugins.sassInheritance({base: '../project/'}))
             .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
