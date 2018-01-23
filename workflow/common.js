@@ -26,26 +26,24 @@ var plugins = require('gulp-load-plugins')({
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     _ = require('lodash'),
+    argv = require('yargs').argv,
     beeper = require('beeper'),
     colors = require('ansi-colors'),
+    supportsColor = require('color-support'),
     log = require('fancy-log'),
     configDefault,
     configUser = {};
 
 // 读取项目配置表
 try {
-    configDefault = require('../../config.js');
-} catch (_event) {
-    try {
-        configDefault = require('../../config.json');
-    } catch (_e) {
-        log(colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
-    }
+    configDefault = require('../../qmui.config.js');
+} catch (event) {
+    log(colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
 }
 
 try {
-    configUser = require('../../config.user.js');
-} catch (_e) {
+    configUser = require('../../qmui.config.user.js');
+} catch (event) {
     // 没有个人用户配置，无需额外处理
 }
 
@@ -66,23 +64,43 @@ common.util.beep = beeper;
 common.util.colors = colors;
 
 // 日志方法
-common.util.log = function (_tag, _content) {
+var addColor = function (str, type) {
+    if (supportsColor() && (typeof argv.color === 'undefined' || argv.color)) {
+        switch (type) {
+            case 'warn':
+                return common.util.colors.yellow(str);
+
+            case 'error':
+                return common.util.colors.red(str);
+
+            case 'log':
+            default:
+                return common.util.colors.green(str);
+        }
+    } else {
+        return str;
+    }
+};
+
+common.util.log = function (tag, content) {
     if (arguments.length > 1) {
-        log(common.util.colors.green('QMUI ' + _tag + ': ') + _content);
+        log(addColor('QMUI ' + tag + ': ', 'log') + content);
     } else {
         log(arguments[0]);
     }
 };
-common.util.warn = function (_tag, _content) {
+
+common.util.warn = function (tag, content) {
     if (arguments.length > 1) {
-        log(common.util.colors.yellow('QMUI ' + _tag + ': ') + _content);
+        log(addColor('QMUI ' + tag + ': ', 'warn') + content);
     } else {
         log(arguments[0]);
     }
 };
-common.util.error = function (_tag, _content) {
+
+common.util.error = function (tag, content) {
     if (arguments.length > 1) {
-        log(common.util.colors.red('QMUI ' + _tag + ': ') + _content);
+        log(addColor('QMUI ' + tag + ': ', 'error') + content);
     } else {
         log(arguments[0]);
     }

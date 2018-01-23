@@ -8,7 +8,7 @@ node_js:
   - "6.0"
   - "stable"
 before_script:
-  - cp config.js ../config.js
+  - cp qmui.config.js ../qmui.config.js
   - npm install
 script:
   - gulp initProject
