@@ -24,13 +24,9 @@ module.exports = function (gulp, common) {
         // 读取合并规则并保存起来
         var mergeRule;
         try {
-            mergeRule = require('../../../mergeRule.js');
+            mergeRule = require('../../../qmui.merge.rule.js');
         } catch (event) {
-            try {
-                mergeRule = require('../../../mergeRule.json');
-            } catch (error) {
-                common.util.error('Merge', '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
-            }
+            common.util.error('Merge', '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
         }
 
         var replaceProjectParentDirectory = function (source) {

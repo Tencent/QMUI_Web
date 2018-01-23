@@ -36,7 +36,11 @@ module.exports = function (gulp, common) {
                     mainTaskProcess.kill();
                 }
 
-                mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+                var mainTask = ['main'];
+                if (typeof argv.color !== 'undefined' && !argv.color) {
+                    mainTask.push('--no-color');
+                }
+                mainTaskProcess = spawn('gulp', mainTask, {stdio: 'inherit'});
             }
 
             gulp.watch('package.json').on('all', function () {
@@ -54,15 +58,19 @@ module.exports = function (gulp, common) {
                 } else {
                     common.util.warn('Update', '检测到工作流源码有被更新，建议你停止目前的 gulp 任务，再重新启动 gulp，以载入最新的代码。如果 npm 包也需要更新，请先更新 npm 包再重启 gulp');
                     common.util.beep(3);
+
                 }
             });
 
             // 获取第一次进入时 gulp 的进程
+            var mainTask = ['main'];
             if (argv.debug) {
-                mainTaskProcess = spawn('gulp', ['main', '--debug'], {stdio: 'inherit'});
-            } else {
-                mainTaskProcess = spawn('gulp', ['main'], {stdio: 'inherit'});
+                mainTask.push('--debug');
             }
+            if (typeof argv.color !== 'undefined' && !argv.color) {
+                mainTask.push('--no-color');
+            }
+            mainTaskProcess = spawn('gulp', mainTask, {stdio: 'inherit'});
 
             done();
         });
