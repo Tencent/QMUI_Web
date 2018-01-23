@@ -74,7 +74,7 @@ If you need more customization, please refer to [Creating Project (Advanced)](ht
 ## Task List in Build-In Workflow
 
 ```bash
-gulp help
+gulp list 
 ```
 
 ## Make Contributions
