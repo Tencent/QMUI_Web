@@ -76,7 +76,7 @@ yo qmui
 
 ```bash
 #在 UI_dev/qmui_web 中執行以下命令可以查看工作流的任務列表及說明
-gulp help
+gulp list
 ```
 
 也可以查看文檔中的[詳細說明](http://qmuiteam.com/web/page/scaffold.html)。
