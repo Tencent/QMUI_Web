@@ -65,8 +65,7 @@ module.exports = function (gulp, common) {
                 outputStyle: 'expanded'
             }).on('error', common.plugins.sass.logError))
             .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
-                flexbox: false,
-                browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8']
+                browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
             })]))
             .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
             .pipe(gulp.dest(styleResultPath));
