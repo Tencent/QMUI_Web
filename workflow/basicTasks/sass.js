@@ -38,38 +38,34 @@ module.exports = function (gulp, common) {
     var sassTaskName = 'sass';
     var sassWithCacheTaskName = 'sassWithCache';
 
-    gulp.task(sassWithCacheTaskName, function () {
-        return gulp.src('../project/**/*.scss', {since: gulp.lastRun(sassWithCacheTaskName)})
-            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-            .pipe(common.plugins.sassInheritance({base: '../project/'}))
-            .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
-            .pipe(common.plugins.sass({
-                errLogToConsole: true,
-                outputStyle: 'expanded'
-            }).on('error', common.plugins.sass.logError))
-            .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
-                flexbox: false,
-                browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8']
-            })]))
-            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
-            .pipe(gulp.dest(styleResultPath));
-    });
+    function sassOptionWithCache() {
+        return {since: gulp.lastRun(sassWithCacheTaskName)};
+    }
 
-    gulp.task(sassTaskName, function () {
-        return gulp.src('../project/**/*.scss')
-            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-            .pipe(common.plugins.sassInheritance({base: '../project/'}))
-            .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
-            .pipe(common.plugins.sass({
-                errLogToConsole: true,
-                outputStyle: 'expanded'
-            }).on('error', common.plugins.sass.logError))
-            .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
-                browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
-            })]))
-            .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
-            .pipe(gulp.dest(styleResultPath));
-    });
+    function sassHandle(options) {
+        options = options || function () {
+            return {};
+        };
+        return function () {
+            return gulp.src('../project/**/*.scss', options())
+                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
+                .pipe(common.plugins.sassInheritance({base: '../project/'}))
+                .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
+                .pipe(common.plugins.sass({
+                    errLogToConsole: true,
+                    outputStyle: 'expanded'
+                }).on('error', common.plugins.sass.logError))
+                .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
+                    browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
+                })]))
+                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
+                .pipe(gulp.dest(styleResultPath));
+        }
+    }
+
+    gulp.task(sassWithCacheTaskName, sassHandle(sassOptionWithCache));
+
+    gulp.task(sassTaskName, sassHandle());
 
     // 任务说明
     common.tasks[sassTaskName] = {
