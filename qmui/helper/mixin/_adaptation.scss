@@ -98,42 +98,6 @@
   }
 }
 
-/// 适配 iPhone X 等屏幕尺寸为58英寸的设备
-/// @group 设备适配
-/// @name screenFor58Inch
-@mixin screenFor58Inch {
-  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-    @content;
-  }
-}
-
-/// 适配 iPhone 6 / 7 / 8 Plus 等屏幕尺寸为55英寸的设备
-/// @group 设备适配
-/// @name screenFor55Inch
-@mixin screenFor55Inch {
-  @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
-    @content;
-  }
-}
-
-/// 适配 iPhone 6 / 7 / 8 等屏幕尺寸为47英寸的设备
-/// @group 设备适配
-/// @name screenFor47Inch
-@mixin screenFor47Inch {
-  @media (max-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
-    @content;
-  }
-}
-
-/// 适配 iPhone 5 / 5s / SE 等屏幕尺寸为40英寸的设备
-/// @group 设备适配
-/// @name screenFor40Inch
-@mixin screenFor40Inch {
-  @media (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-    @content;
-  }
-}
-
 /// 适配 IE 10 及以上版本的 CSS 选择器，需要针对 IE10 或以上版本的样式可以写在这里
 ///
 /// @group 设备适配
