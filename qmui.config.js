@@ -47,10 +47,6 @@ module.exports = {
         'browserSyncProxy': ''
     },
 
-    'svgSprite': {
-        'openSvgSprite': false
-    },
-
     /**
      * 模板 include 引擎
      *

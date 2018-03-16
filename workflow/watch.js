@@ -134,16 +134,6 @@ module.exports = function (gulp, common) {
         // 雪碧图与样式处理
         // 监控雪碧图原图和样式，如果有改动，会触发样式编译以及雪碧图生成
 
-        // SVG 雪碧图监听
-        var svgWatchFiles = common.config.paths.imagesSourcePath + '/*/*.svg';
-        if (common.config.svgSprite.openSvgSprite) {
-            var svgSpriteWatch = gulp.watch(svgWatchFiles, gulp.series('svgSprite'));
-            svgSpriteWatch.on('all', function () {
-                common.util.log('');
-                common.util.log('svgSprite', '进行 SVG 雪碧图构建');
-            });
-        }
-
         // 普通雪碧图与样式监听
         var styleWatchFiles = ['../project/**/*.scss'];
         var styleWatch = gulp.watch(styleWatchFiles, gulp.series('sassWithCache', 'reload'));
@@ -152,7 +142,7 @@ module.exports = function (gulp, common) {
             common.util.log('Sass', '进行样式编译');
         });
 
-        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.{png, jpg, jpeg, gif}', '!' + svgWatchFiles, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
+        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.{png, jpg, jpeg, gif}', '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
         imageSpriteWatch.on('all', function () {
             common.util.log('');
@@ -184,9 +174,9 @@ module.exports = function (gulp, common) {
         // 模板自动 include
         if (common.config.template.openIncludeFunction) {
             var includeWatcher = gulp.watch(common.config.paths.htmlSourcePath, gulp.series('include'));
-            includeWatcher.on('change', function (event) {
+            includeWatcher.on('all', function (event, filePath) {
                 common.util.log('');
-                common.util.log('Include', '模板 ' + event.path + ' was ' + event.type);
+                common.util.log('Include', 'Template ' + filePath + ' was ' + event);
             });
         }
 
