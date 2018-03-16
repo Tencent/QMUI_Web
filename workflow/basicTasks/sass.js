@@ -16,10 +16,11 @@
 // 进行 Sass 编译以及雪碧图处理
 var argv = require('yargs').argv,
     lazysprite = require('postcss-lazysprite'),
+    svgSprite = require('postcss-svg-sprite'),
     autoprefixer = require('autoprefixer');
 
 module.exports = function (gulp, common) {
-    var spriteConfig = {
+    var lazySpriteConfig = {
         cssSeparator: '_',
         imagePath: common.config.paths.imagesSourcePath,
         stylesheetRelative: common.config.paths.styleResultPath,
@@ -30,9 +31,15 @@ module.exports = function (gulp, common) {
         retinaInfix: '_',
         outputExtralCSS: true
     };
+    var svgSpriteConfig = {
+        imagePath: common.config.paths.imagesSourcePath,
+        spritePath: common.config.paths.imagesResultPath,
+        styleOutput: common.config.paths.styleResultPath,
+        nameSpace: common.config.prefix
+    };
     var styleResultPath = common.config.paths.styleResultPath;
     if (argv.debug) {
-        spriteConfig.logLevel = 'debug';
+        lazySpriteConfig.logLevel = 'debug';
     }
 
     var sassTaskName = 'sass';
@@ -55,7 +62,7 @@ module.exports = function (gulp, common) {
                     errLogToConsole: true,
                     outputStyle: 'expanded'
                 }).on('error', common.plugins.sass.logError))
-                .pipe(common.plugins.postcss([lazysprite(spriteConfig), autoprefixer({
+                .pipe(common.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
                     browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
                 })]))
                 .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录

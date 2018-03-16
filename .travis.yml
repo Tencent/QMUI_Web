@@ -17,4 +17,3 @@ script:
   - gulp include
   - gulp clean
   - gulp merge
-  - gulp svgSprite

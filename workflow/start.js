@@ -97,11 +97,7 @@ module.exports = function (gulp, common) {
         });
     } else {
         // 常规启动任务
-        var mainTasks = ['include'];
-        if (common.config.svgSprite.openSvgSprite) {
-            mainTasks.push('svgSprite');
-        }
-        mainTasks.push(['sass', 'watch']);
+        var mainTasks = ['include', 'sass', 'watch'];
 
         // 根据 broserSync 的类型加入对应的任务
         if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
