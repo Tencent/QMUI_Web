@@ -33,9 +33,9 @@ module.exports = function (gulp, common) {
     };
     var svgSpriteConfig = {
         imagePath: common.config.paths.imagesSourcePath,
-        spritePath: common.config.paths.imagesResultPath,
+        spriteOutput: common.config.paths.imagesResultPath,
         styleOutput: common.config.paths.styleResultPath,
-        nameSpace: common.config.prefix
+        nameSpace: common.config.prefix + '_'
     };
     var styleResultPath = common.config.paths.styleResultPath;
     if (argv.debug) {
@@ -60,6 +60,7 @@ module.exports = function (gulp, common) {
                 .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
                 .pipe(common.plugins.sass({
                     errLogToConsole: true,
+                    indentWidth: 4,
                     outputStyle: 'expanded'
                 }).on('error', common.plugins.sass.logError))
                 .pipe(common.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
