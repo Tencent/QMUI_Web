@@ -20,6 +20,31 @@ var argv = require('yargs').argv,
 
 module.exports = function (gulp, common) {
 
+    // 判断 browserSync 的值是否正确
+    if (common.config.browserSync.browserSyncMod !== 'server' && common.config.browserSync.browserSyncMod !== 'proxy' && common.config.browserSync.browserSyncMod !== 'close') {
+        gulp.task('main', function (done) {
+            common.util.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
+            done();
+        });
+    } else {
+        // 常规启动任务
+        var mainTasks = ['include', 'sass', 'watch'];
+
+        // 根据 broserSync 的类型加入对应的任务
+        if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
+            mainTasks.push(common.config.browserSync.browserSyncMod);
+        }
+
+        // 加入用户自定义任务
+        if (common.config.customTasks) {
+            Object.keys(common.config.customTasks).forEach(function (customTaskName) {
+                mainTasks.push(customTaskName);
+            });
+        }
+
+        gulp.task('main', gulp.series(mainTasks));
+    }
+
     var taskName = 'default';
 
     if (os.platform() === 'linux' || os.platform() === 'darwin') {
@@ -88,29 +113,4 @@ module.exports = function (gulp, common) {
             'debug': 'debug 模式下 gulpfile.js 有变动时会自动重启 default 任务'
         }
     };
-
-    // 判断 browserSync 的值是否正确
-    if (common.config.browserSync.browserSyncMod !== 'server' && common.config.browserSync.browserSyncMod !== 'proxy' && common.config.browserSync.browserSyncMod !== 'close') {
-        gulp.task('main', function (done) {
-            common.util.error('Config', 'Config 中的 browserSyncMod 仅支持 ', common.plugins.util.colors.yellow('server'), ', ', common.plugins.util.colors.yellow('proxy'), ', ', common.plugins.util.colors.yellow('close'), ' 三个值');
-            done();
-        });
-    } else {
-        // 常规启动任务
-        var mainTasks = ['include', 'sass', 'watch'];
-
-        // 根据 broserSync 的类型加入对应的任务
-        if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
-            mainTasks.push(common.config.browserSync.browserSyncMod);
-        }
-
-        // 加入用户自定义任务
-        if (common.config.customTasks) {
-            Object.keys(common.config.customTasks).forEach(function (customTaskName) {
-                mainTasks.push(customTaskName);
-            });
-        }
-
-        gulp.task('main', gulp.series(mainTasks));
-    }
 };

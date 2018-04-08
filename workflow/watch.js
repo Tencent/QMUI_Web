@@ -16,7 +16,8 @@
 // 文件监控
 var path = require('path'),
     pngquant = require('imagemin-pngquant'),
-    md5 = require('js-md5');
+    md5 = require('js-md5'),
+    os = require('os');
 
 // 逻辑变量
 var justAddedImage = [],
@@ -142,7 +143,11 @@ module.exports = function (gulp, common) {
             common.util.log('Sass', '进行样式编译');
         });
 
-        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.{png, jpg, jpeg, gif}', '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
+        var imageWatchFileSuffix = '{png, jpg, jpeg, gif, svg}';
+        if (os.platform() !== 'linux' && os.platform() !== 'darwin') {
+            imageWatchFileSuffix = '*';
+        }
+        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.' + imageWatchFileSuffix, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
         imageSpriteWatch.on('all', function () {
             common.util.log('');
