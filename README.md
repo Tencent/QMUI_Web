@@ -12,6 +12,8 @@
 [[English]](https://github.com/Tencent/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/Tencent/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/Tencent/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
 
 [![Build Status](https://travis-ci.org/Tencent/QMUI_Web.svg?branch=master)](https://travis-ci.org/Tencent/QMUI_Web "Build Status")
+[![Build status](https://ci.appveyor.com/api/projects/status/1h6de3rq6x45nnse?svg=true
+)](https://ci.appveyor.com/project/Tencent/QMUI_Web)
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
