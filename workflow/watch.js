@@ -143,11 +143,7 @@ module.exports = function (gulp, common) {
             common.util.log('Sass', '进行样式编译');
         });
 
-        var imageWatchFileSuffix = '{png, jpg, jpeg, gif, svg}';
-        if (os.platform() !== 'linux' && os.platform() !== 'darwin') {
-            imageWatchFileSuffix = '*';
-        }
-        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.' + imageWatchFileSuffix, '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
+        var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.*', '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
         var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
         imageSpriteWatch.on('all', function () {
             common.util.log('');
