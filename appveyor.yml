@@ -1,0 +1,39 @@
+# AppVeyor file
+# http://www.appveyor.com/docs/lang/nodejs-iojs
+# http://www.appveyor.com/docs/appveyor-yml
+
+version: "{build}"
+
+clone_depth: 10
+
+# Test against the latest version of this Node.js version
+environment:
+  nodejs_version: "8"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  - cp qmui.config.js ../qmui.config.js
+  # install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - gulp initProject
+  - gulp list
+  - gulp sass
+  - gulp include
+  - gulp clean
+  - gulp merge
+
+# Don't actually build.
+build: off
+
+cache:
+  - C:\Users\appveyor\AppData\Roaming\npm-cache -> package.json # npm cache
+  - node_modules -> package.json                                # local npm modules
