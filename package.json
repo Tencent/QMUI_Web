@@ -40,7 +40,7 @@
         "mkdirp": "^0.5.1",
         "path": "^0.12.7",
         "postcss-lazysprite": "^1.8.0",
-        "postcss-svg-sprite": "1.0.0-beta",
+        "postcss-svg-sprite": "^1.0.1",
         "yargs": "^11.0.0"
     },
     "devDependencies": {
