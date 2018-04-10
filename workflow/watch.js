@@ -137,14 +137,22 @@ module.exports = function (gulp, common) {
 
         // 普通雪碧图与样式监听
         var styleWatchFiles = ['../project/**/*.scss'];
-        var styleWatch = gulp.watch(styleWatchFiles, gulp.series('sassWithCache', 'reload'));
+        var styleWatchTasks = ['sassWithCache'];
+        if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
+            styleWatchTasks.push('reload');
+        }
+        var styleWatch = gulp.watch(styleWatchFiles, gulp.series(styleWatchTasks));
         styleWatch.on('all', function () {
             common.util.log('');
             common.util.log('Sass', '进行样式编译');
         });
 
         var imageWatchFiles = [common.config.paths.imagesSourcePath + '/*/*.*', '!' + independentImagesSourcePath, '!' + independentImagesSourcePath + '**/*'];
-        var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series('sass', 'reload'));
+        var imageSpriteTasks = ['sass'];
+        if (common.config.browserSync.browserSyncMod === 'server' || common.config.browserSync.browserSyncMod === 'proxy') {
+            imageSpriteTasks.push('reload');
+        }
+        var imageSpriteWatch = gulp.watch(imageWatchFiles, gulp.series(imageSpriteTasks));
         imageSpriteWatch.on('all', function () {
             common.util.log('');
             common.util.log('Sass', '进行样式编译');
