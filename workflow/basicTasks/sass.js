@@ -61,6 +61,7 @@ module.exports = function (gulp, common) {
                 .pipe(common.plugins.sass({
                     errLogToConsole: true,
                     indentWidth: 4,
+                    precision: 6,
                     outputStyle: 'expanded'
                 }).on('error', common.plugins.sass.logError))
                 .pipe(common.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
