@@ -40,12 +40,12 @@
         "mkdirp": "^0.5.1",
         "path": "^0.12.7",
         "postcss-lazysprite": "^1.8.0",
-        "postcss-svg-sprite": "^1.0.2",
+        "postcss-svg-sprite": "^1.0.3",
         "yargs": "^11.0.0"
     },
     "devDependencies": {
         "sassdoc": "^2.5.0",
-        "stylelint-wechat-work-css": "^0.2.7"
+        "stylelint-wechat-work-css": "^0.3.2"
     },
     "keywords": [
         "QMUI"
