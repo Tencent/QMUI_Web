@@ -9,7 +9,7 @@
     "main": "gulpfile.js",
     "dependencies": {
         "ansi-colors": "^1.1.0",
-        "autoprefixer": "^8.2.0",
+        "autoprefixer": "^8.3.0",
         "beeper": "^1.1.1",
         "browser-sync": "^2.23.6",
         "color-support": "^1.1.3",
@@ -40,7 +40,7 @@
         "mkdirp": "^0.5.1",
         "path": "^0.12.7",
         "postcss-lazysprite": "^1.8.0",
-        "postcss-svg-sprite": "^1.0.3",
+        "postcss-svg-sprite": "^1.0.5",
         "yargs": "^11.0.0"
     },
     "devDependencies": {
