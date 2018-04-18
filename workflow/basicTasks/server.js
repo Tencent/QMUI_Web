@@ -37,7 +37,7 @@ module.exports = function (gulp, common) {
             startPath: common.config.browserSync.browserSyncStartPath,
             port: common.config.browserSync.browserSyncPort
         });
-        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('change', common.reload);
+        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('all', common.reload);
 
         done();
     });
