@@ -34,7 +34,7 @@ module.exports = function (gulp, common) {
             logPrefix: common.util.colors.gray(common.lib.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath
         });
-        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('change', common.reload);
+        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('all', common.reload);
 
         done();
     });
