@@ -13,7 +13,7 @@
 
 [![Build Status](https://travis-ci.org/Tencent/QMUI_Web.svg?branch=master)](https://travis-ci.org/Tencent/QMUI_Web "Build Status")
 [![Build status](https://ci.appveyor.com/api/projects/status/1h6de3rq6x45nnse?svg=true
-)](https://ci.appveyor.com/project/kayo5994/QMUI_Web)
+)](https://ci.appveyor.com/project/kayo5994/qmui-web)
 [![devDependencies](https://img.shields.io/david/dev/QMUI/qmui_web.svg?style=flat)](https://ci.appveyor.com/project/QMUI/qmui_web "devDependencies")
 [![QMUI Team Name](https://img.shields.io/badge/Team-QMUI-brightgreen.svg?style=flat)](https://github.com/QMUI "QMUI Team")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
@@ -79,7 +79,7 @@ yo qmui
 
 ```bash
 #在 UI_dev/qmui_web 中执行以下命令可以查看工作流的任务列表及说明
-gulp list 
+gulp list
 ```
 
 也可以查看文档中的[详细说明](http://qmuiteam.com/web/page/scaffold.html)。
