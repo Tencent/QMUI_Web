@@ -81,7 +81,7 @@
 /// @param {Measure} $crossLength [26px] - 十字架的大小
 /// @param {Measure} $crossLineThickness [2px] - 十字架线条的粗细
 /// @param {Color} $crossLineColor [#2685d2] - 十字架的颜色
-@mixin cross($crossLength:26px,$crossLineThickness:2px,$crossLineColor:$common_color_link) {
+@mixin cross($crossLength: 26px, $crossLineThickness: 2px, $crossLineColor: $common_color_link) {
     position: relative;
     @include square($crossLength);
     &:before,
