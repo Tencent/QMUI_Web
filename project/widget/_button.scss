@@ -12,14 +12,14 @@
 // .qui_btn
 .qui_btn {
     display: inline-block;
-    margin: 0; // input = button有默认 margin 值，这里需要重置 - zhoon
+    margin: 0; // input = button有默认 margin 值，这里需要重置
     box-sizing: content-box;
     min-width: $btn_minWidth;
     height: $btn_height;
     padding: $btn_padding;
     background: $btn_background;
     border: $btn_border;
-    /* line-height 的偏移值依赖于不同字体 */
+    // line-height 的偏移值依赖于不同字体
     line-height: $btn_lineHeight + 2;
     line-height: $btn_lineHeight + 1 \9\0;
     outline: none;
