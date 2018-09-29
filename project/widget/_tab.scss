@@ -15,51 +15,51 @@
 
 // .qui_tab
 .qui_tab {
-  background: $tab_background;
-  border: 1px solid #DEE0E2;
+    background: $tab_background;
+    border: 1px solid #DEE0E2;
 }
 
 .qui_tab_title {
-  background: $tab_head_background;
+    background: $tab_head_background;
 }
 
 .qui_tabNav {
-  @extend %clear;
-  padding: $tabNav_padding;
-  border-bottom: 1px solid #DEE0E2;
+    @extend %clear;
+    padding: $tabNav_padding;
+    border-bottom: 1px solid #DEE0E2;
 }
 
 .qui_tabNav_item {
-  float: left;
-  margin: $tabNav_item_margin;
-  border-bottom: 3px solid transparent;
-  font-size: 16px;
+    float: left;
+    margin: $tabNav_item_margin;
+    border-bottom: 3px solid transparent;
+    font-size: 16px;
 
-  &_Curr {
-    border-color: #04C9E8;
+    &_Curr {
+        border-color: #04C9E8;
 
-    .qui_tabNav_itemLink {
-      color: #04C9E8;
+        .qui_tabNav_itemLink {
+            color: #04C9E8;
+        }
     }
-  }
 }
 
 .qui_tabNav_itemLink {
-  display: block;
-  height: $tabNav_itemLink_height;
-  line-height: $tabNav_itemLink_lineHeight;
-  padding: $tabNav_itemLink_padding;
-  background: $tabNav_itemLink_background;
-  color: $tabNav_itemLink_color;
+    display: block;
+    height: $tabNav_itemLink_height;
+    line-height: $tabNav_itemLink_lineHeight;
+    padding: $tabNav_itemLink_padding;
+    background: $tabNav_itemLink_background;
+    color: $tabNav_itemLink_color;
 
-  &:hover {
-    color: #04C9E8;
-    text-decoration: none;
+    &:hover {
+        color: #04C9E8;
+        text-decoration: none;
 
-  }
+    }
 }
 
 .qui_tab_cnt {
-  min-height: 100px;
-  padding: 16px 24px;
+    min-height: 100px;
+    padding: 16px 24px;
 }
