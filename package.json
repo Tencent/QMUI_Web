@@ -39,7 +39,7 @@
         "lodash": "^4.17.11",
         "mkdirp": "^0.5.1",
         "path": "^0.12.7",
-        "postcss-lazysprite": "^2.1.4",
+        "postcss-lazysprite": "^1.8.2",
         "postcss-svg-sprite": "^1.0.6",
         "yargs": "^12.0.2"
     },
