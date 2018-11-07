@@ -55,19 +55,19 @@
         border-top: 0;
         border-bottom-color: $borderColor;
     }
-        /* 向下小三角 */
+    /* 向下小三角 */
     @else if $direction == bottom {
         border-width: $height $width / 2;
         border-bottom: 0;
         border-top-color: $borderColor;
     }
-        /* 向左小三角 */
+    /* 向左小三角 */
     @else if $direction == left {
         border-width: $width / 2 $height;
         border-left: 0;
         border-right-color: $borderColor;
     }
-        /* 向右小三角 */
+    /* 向右小三角 */
     @else if $direction == right {
         border-width: $width / 2 $height;
         border-right: 0;
@@ -144,10 +144,12 @@
 /// @param {Color} $color - 边框的颜色
 /// @param {String} $position [outside] - 边框的位置，支持 outside 和 inside
 /// @param {Number} $borderRadius [0] - 边框的圆角
+/// @param {Number} $offset 水平缩进值
 /// @throw 在多倍屏下，本方法会利用元素的 ::after 做效果，因此需要注意使用了该方法后 ::after 则尽量避免添加样式，以免影响效果
-@mixin onePixelBorder($direction: all, $color: $common_color_border, $position: outside, $borderRadius: 0) {
+@mixin onePixelBorder($direction: all, $color: $common_color_border, $position: outside, $borderRadius: 0, $borderStyle: solid, $offset: 0) {
     @include borderStyleForOnePixel($direction, $color);
     border-radius: $borderRadius;
+    border-style: $borderStyle;
     @include screenResolution(2) {
         position: relative;
         border: 0;
@@ -155,11 +157,16 @@
             content: "";
             position: absolute;
             top: 0;
-            left: 0;
-            width: 200%;
+            left: $offset;
+            @if $offset == 0 {
+                width: 200%;
+            } @else {
+                width: calc(200% - #{$offset * 2 * 2});
+            }
             height: 200%;
             border-radius: $borderRadius * 2;
             @include borderStyleForOnePixel($direction, $color);
+            border-style: $borderStyle;
             transform: scale(.5);
             transform-origin: 0 0;
             @if $position == inside {
@@ -170,7 +177,11 @@
     }
     @include screenResolution(3) {
         &:after {
-            width: 300%;
+            @if $offset == 0 {
+                width: 300%;
+            } @else {
+                width: calc(300% - #{$offset * 3 * 2});
+            }
             height: 300%;
             border-radius: $borderRadius * 3;
             transform: scale((1 / 3));

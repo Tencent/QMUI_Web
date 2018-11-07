@@ -30,7 +30,7 @@ module.exports = {
                 'opacity',
                 'keyframes'
             ],
-        'wechat-work/comments-in-header': true, // 文件头部需要有注释 @date 和 @author
+        'wechat-work/comments-in-header': false, // 文件头部需要有注释 @date 和 @author，QMUI Web 源码中使用的是 SassDoc 的注释格式，不被识别，因此设置为 false
         'wechat-work/selector-namespace-follow-filename': [true, {
             'fileDirWhiteList': ['widget', 'qmui'],
             'filenameWhitelist': []
