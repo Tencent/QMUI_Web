@@ -45,9 +45,8 @@
 /// @param {Measure} $height - 三角形的高
 /// @param {String} $direction - 三角形的方向（即与底边相对的顶点指向的方向）
 /// @param {Color} $borderColor - 三角形的边框色
-/// @param {Color} $ie6borderColor [#f00] - IE6 不支持 border-color: transparent,而 border 三角形利用了这个特性，因此如果需要兼容 IE6，则需要填写 $ie6borderColor，颜色值一般为三角形背后元素的颜色。
 /// @throw 由于方法内包含了有 $width / 2 的计算，因此如果 $width 的值为奇数，则实际上计算出的三角形会偏小，建议 $width 不要使用奇数。
-@mixin triangle($width, $height, $direction, $borderColor, $ie6borderColor:#f00) {
+@mixin triangle($width, $height, $direction, $borderColor) {
     @extend %triangleCommonStyle;
     /* 向上小三角 */
     @if $direction == top {
