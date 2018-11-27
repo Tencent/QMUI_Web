@@ -7,6 +7,9 @@ node_js:
   - "7.0"
   - "8.0"
   - "stable"
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.12.3
+  - export PATH="$HOME/.yarn/bin:$PATH"
 before_script:
   - cp qmui.config.js ../qmui.config.js
   - npm install
