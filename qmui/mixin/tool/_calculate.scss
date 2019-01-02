@@ -121,6 +121,20 @@
     @return $result;
 }
 
+/// 获取数值的开平方值
+///
+/// @name sqrt
+/// @param {Number} $number - 待开平方的数值
+/// @example
+///   sqrt(2) => 1.414214
+@function sqrt($num) {
+    $temp:1;
+    @while abs($temp - $num / $temp) > 1e-6 {
+        $temp: ($temp + $num/$temp) / 2;
+    }
+    @return $temp;
+}
+
 /// 将数值格式化为指定小数位数的数字。
 ///
 /// @name toFixed
