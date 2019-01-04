@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,70 +14,68 @@
 
 
 // 进行 Sass 编译以及雪碧图处理
-var argv = require('yargs').argv,
-    lazysprite = require('postcss-lazysprite'),
-    svgSprite = require('postcss-svg-sprite'),
-    autoprefixer = require('autoprefixer');
+const argv = require('yargs').argv;
+const lazysprite = require('postcss-lazysprite');
+const svgSprite = require('postcss-svg-sprite');
+const autoprefixer = require('autoprefixer');
 
-module.exports = function (gulp, common) {
-    var lazySpriteConfig = {
+module.exports = (gulp, mix) => {
+    const lazySpriteConfig = {
         cssSeparator: '_',
-        imagePath: common.config.paths.imagesSourcePath,
-        stylesheetRelative: common.config.paths.styleResultPath,
+        imagePath: mix.config.paths.imagesSourcePath,
+        stylesheetRelative: mix.config.paths.styleResultPath,
         stylesheetInput: '../project/',
-        spritePath: common.config.paths.imagesResultPath,
-        smartUpdate: typeof common.config.needsLazyspriteSmartUpdate !== 'undefined' ? common.config.needsLazyspriteSmartUpdate : true,
-        nameSpace: common.config.prefix + '_',
+        spritePath: mix.config.paths.imagesResultPath,
+        smartUpdate: typeof mix.config.needsLazyspriteSmartUpdate !== 'undefined' ? mix.config.needsLazyspriteSmartUpdate : true,
+        nameSpace: `${mix.config.prefix}_`,
         retinaInfix: '_',
         outputExtralCSS: true
     };
-    var svgSpriteConfig = {
-        imagePath: common.config.paths.imagesSourcePath,
-        spriteOutput: common.config.paths.imagesResultPath,
-        styleOutput: common.config.paths.styleResultPath,
-        nameSpace: common.config.prefix + '_'
+    const svgSpriteConfig = {
+        imagePath: mix.config.paths.imagesSourcePath,
+        spriteOutput: mix.config.paths.imagesResultPath,
+        styleOutput: mix.config.paths.styleResultPath,
+        nameSpace: `${mix.config.prefix}_`
     };
-    var styleResultPath = common.config.paths.styleResultPath;
+    const styleResultPath = mix.config.paths.styleResultPath;
     if (argv.debug) {
         lazySpriteConfig.logLevel = 'debug';
     }
 
-    var sassTaskName = 'sass';
-    var sassWithCacheTaskName = 'sassWithCache';
+    const sassTaskName = 'sass';
+    const sassWithCacheTaskName = 'sassWithCache';
 
-    function sassOptionWithCache() {
+    const sassOptionWithCache = () => {
         return {since: gulp.lastRun(sassWithCacheTaskName)};
-    }
+    };
 
-    function sassHandle(options) {
-        options = options || function () {
+    const sassHandle = (options) => {
+        options = options || (() => {
             return {};
-        };
-        return function () {
+        });
+        return () => {
             return gulp.src('../project/**/*.scss', options())
-                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.init()))
-                .pipe(common.plugins.sassInheritance({base: '../project/'}))
-                .pipe(common.plugins.if(Boolean(argv.debug), common.plugins.debug({title: 'Sass Debug:'})))
-                .pipe(common.plugins.sass({
+                .pipe(mix.plugins.sassInheritance({base: '../project/'}))
+                .pipe(mix.plugins.if(Boolean(argv.debug), mix.plugins.debug({title: 'Sass Debug:'})))
+                .pipe(mix.plugins.if(mix.config.needsSourceMaps, mix.plugins.sourcemaps.init()))
+                .pipe(mix.plugins.sass({
                     errLogToConsole: true,
                     indentWidth: 4,
                     precision: 6,
                     outputStyle: 'expanded'
-                }).on('error', common.plugins.sass.logError))
-                .pipe(common.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
+                }).on('error', mix.plugins.sass.logError))
+                .pipe(mix.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
                     browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
                 })]))
-                .pipe(common.plugins.if(common.config.needsSourceMaps, common.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
+                .pipe(mix.plugins.if(mix.config.needsSourceMaps, mix.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
                 .pipe(gulp.dest(styleResultPath));
         }
-    }
+    };
 
     gulp.task(sassWithCacheTaskName, sassHandle(sassOptionWithCache));
 
     gulp.task(sassTaskName, sassHandle());
 
     // 任务说明
-    common.tasks[sassTaskName] = {
-        description: '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）'
-    };
+    mix.addTaskDescription(sassTaskName, '进行 Sass 编译以及雪碧图处理（框架自带 Watch 机制监听 Sass 和图片变化后自行编译，不建议手工调用本方法）');
 };

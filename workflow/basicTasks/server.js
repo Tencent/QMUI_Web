@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,30 +14,30 @@
 
 
 // server 监视文件改动并重新载入
-module.exports = function (gulp, common) {
+module.exports = (gulp, mix) => {
 
-    gulp.task('server', function (done) {
+    gulp.task('server', done => {
 
-        var showLog = function () {
-            if (common.config.browserSyncShowLog) {
+        const showLog = () => {
+            if (mix.config.browserSyncShowLog) {
                 return 'info';
             }
             return 'silent';
         };
 
-        common.browserSync.init({
+        mix.browserSync.init({
             server: {
                 // 静态路径根目录
-                baseDir: common.config.paths.htmlResultPath,
+                baseDir: mix.config.paths.htmlResultPath,
                 // 设置路由
-                routes: common.config.browserSync.browserSyncServerRoute
+                routes: mix.config.browserSync.browserSyncServerRoute
             },
             logLevel: showLog(),
-            logPrefix: common.util.colors.gray(common.lib.getCurrentTime()),
-            startPath: common.config.browserSync.browserSyncStartPath,
-            port: common.config.browserSync.browserSyncPort
+            logPrefix: mix.util.colors.gray(mix.timeFormat.getCurrentTime()),
+            startPath: mix.config.browserSync.browserSyncStartPath,
+            port: mix.config.browserSync.browserSyncPort
         });
-        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('all', common.reload);
+        gulp.watch(mix.config.browserSync.browserSyncWatchPath).on('all', mix.reload);
 
         done();
     });

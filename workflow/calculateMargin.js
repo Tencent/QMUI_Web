@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -25,16 +25,16 @@
  * @returns {{margin: number, hasOptions: boolean}} 返回一个合适的缩进距离。
  */
 
-module.exports = function (tasksObj) {
-    var hasOptions = false;
-    var margin = Object.keys(tasksObj).reduce(function (maxTaskMargin, taskName) {
-        var optionsMargin = 0,
-            opts;
+module.exports = tasksObj => {
+    let hasOptions = false;
+    const margin = Object.keys(tasksObj).reduce((maxTaskMargin, taskName) => {
+        let optionsMargin = 0;
+        let opts;
         // if exists, iterate options list to calculate margin for options
         if (tasksObj[taskName] && tasksObj[taskName].options) {
-            var help = tasksObj[taskName] || {options: {}};
+            const help = tasksObj[taskName] || {options: {}};
             opts = Object.keys(help.options).sort();
-            optionsMargin = opts.reduce(function (maxOptionMargin, opt) {
+            optionsMargin = opts.reduce((maxOptionMargin, opt) => {
                 // if, at any time while iterating the tasks array, we also iterate an opts array, set hasOptions flag
                 hasOptions = true;
                 return maxOptionMargin > opt.length ? maxOptionMargin : opt.length;

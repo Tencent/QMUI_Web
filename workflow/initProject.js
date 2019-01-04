@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,14 +14,15 @@
 
 
 // 创建一个新项目
-var fs = require('fs'),
-    mkdirp = require('mkdirp'),
-    path = require('path'),
-    os = require('os');
+const fs = require('fs');
+const upperFirst = require('lodash/upperFirst');
+const mkdirp = require('mkdirp');
+const path = require('path');
+const os = require('os');
 
-module.exports = function (gulp, common) {
+module.exports = (gulp, mix) => {
 
-    gulp.task('initProject', function (done) {
+    gulp.task('initProject', done => {
         /**
          * 创建一个新项目
          * 第一步：获取 Project 文件夹中的基本目录结构和公共通用组件并持有它们，但排除了主 scss 文件 demo.scss
@@ -37,67 +38,65 @@ module.exports = function (gulp, common) {
          */
 
         // 需要遍历的文件
-        var sourceArr = ['project/**/*'];
+        const sourceArr = ['project/**/*'];
         // 额外排除 demo.scss，后面单独重命名再拷贝
         sourceArr.push('!project/demo.scss');
         sourceArr.push('!project/_var.scss');
 
         // 获取当天的日期，并统一格式为 'yyyy-mm-dd'，替换掉 demo 注释中的文件创建日期
         // gulp-replace 的正则引擎似乎对 $ 和 ^ 不支持，只能忽略开头和结尾的判断
-        var dateRegex = /[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))/g,
-            currentDate = new Date(),
-            currentYear = currentDate.getFullYear(),
-            currentMonth = common.lib.checkDateFormat(currentDate.getMonth() + 1),
-            currentDay = common.lib.checkDateFormat(currentDate.getDate()),
-            formattingDate = currentYear + '-' + currentMonth + '-' + currentDay,
-            targetQMUIStylePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/_qmui',
-            targetQMUICalculatePath = '../' + path.resolve('.').replace(/\\/g, '/').split('/').pop() + '/qmui/mixin/tool/_calculate',
-            authorName = common.lib.upperFirst(path.basename(os.homedir()));
+        const dateRegex = /[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))/g;
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = mix.timeFormat.checkDateFormat(currentDate.getMonth() + 1);
+        const currentDay = mix.timeFormat.checkDateFormat(currentDate.getDate());
+        const formattingDate = `${currentYear}-${currentMonth}-${currentDay}`;
+        const targetQMUIStylePath = `../${path.resolve('.').replace(/\\/g, '/').split('/').pop()}/qmui/_qmui`;
+        const targetQMUICalculatePath = `../${path.resolve('.').replace(/\\/g, '/').split('/').pop()}/qmui/mixin/tool/_calculate`;
+        const authorName = upperFirst(path.basename(os.homedir()));
 
         // 执行创建项目的任务
         gulp.src(sourceArr)
-            .pipe(common.plugins.replace('qui_', common.config.prefix + '_'))
-            .pipe(common.plugins.replace(dateRegex, formattingDate))
-            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
+            .pipe(mix.plugins.replace('qui_', mix.config.prefix + '_'))
+            .pipe(mix.plugins.replace(dateRegex, formattingDate))
+            .pipe(mix.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
             .pipe(gulp.dest('../project'));
 
         gulp.src(['project/demo.scss'])
-            .pipe(common.plugins.replace('../qmui/_qmui', targetQMUIStylePath))
-            .pipe(common.plugins.replace('demo.scss', common.config.resultCssFileName))
-            .pipe(common.plugins.replace(dateRegex, formattingDate))
-            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
-            .pipe(common.plugins.rename(common.config.resultCssFileName))
+            .pipe(mix.plugins.replace('../qmui/_qmui', targetQMUIStylePath))
+            .pipe(mix.plugins.replace('demo.scss', mix.config.resultCssFileName))
+            .pipe(mix.plugins.replace(dateRegex, formattingDate))
+            .pipe(mix.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
+            .pipe(mix.plugins.rename(mix.config.resultCssFileName))
             .pipe(gulp.dest('../project'));
 
         gulp.src(['project/_var.scss'])
-            .pipe(common.plugins.replace('../qmui/mixin/tool/_calculate', targetQMUICalculatePath))
-            .pipe(common.plugins.replace(dateRegex, formattingDate))
-            .pipe(common.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
+            .pipe(mix.plugins.replace('../qmui/mixin/tool/_calculate', targetQMUICalculatePath))
+            .pipe(mix.plugins.replace(dateRegex, formattingDate))
+            .pipe(mix.plugins.replace(/@author .*([\r\n])/, '@author ' + authorName + '$1'))
             .pipe(gulp.dest('../project'));
 
         // 创建公共图片目录
-        if (!fs.existsSync(common.config.paths.imagesSourcePath)) {
-            mkdirp(common.config.paths.imagesSourcePath);
+        if (!fs.existsSync(mix.config.paths.imagesSourcePath)) {
+            mkdirp(mix.config.paths.imagesSourcePath);
         }
 
         // 创建独立图片目录
-        var independentImagesSourcePath = common.config.paths.imagesSourcePath + common.config.paths.independentImagesDirectory;
+        const independentImagesSourcePath = mix.config.paths.imagesSourcePath + mix.config.paths.independentImagesDirectory;
         if (!fs.existsSync(independentImagesSourcePath)) {
             mkdirp(independentImagesSourcePath);
         }
 
-        common.util.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task');
+        mix.util.log('Create Project', '项目创建完毕，接下来会按配置执行一次 Default Task');
 
         done();
     });
 
     // 执行创建新项目任务
-    var taskName = 'init';
+    const taskName = 'init';
 
     gulp.task(taskName, gulp.series('initProject', 'default'));
 
     // 任务说明
-    common.tasks[taskName] = {
-        description: '创建一个新项目'
-    };
+    mix.addTaskDescription(taskName, '创建一个新项目');
 };
