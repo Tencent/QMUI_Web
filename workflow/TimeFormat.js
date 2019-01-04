@@ -12,22 +12,21 @@
  * limitations under the License.
  */
 
+const padStart = require('lodash/padStart');
 
-// 清理多余文件
-const del = require('del');
+// 工具方法
+class TimeFormat {
+    constructor() {
+    }
 
-module.exports = (gulp, mix) => {
+    checkDateFormat(date) {
+        return padStart(date.toString(), 2, '0');
+    }
 
-    const taskName = 'clean';
+    getCurrentTime() {
+        const time = new Date();
+        return `${this.checkDateFormat(time.getHours())}:${this.checkDateFormat(time.getMinutes())}:${this.checkDateFormat(time.getSeconds())}`;
+    }
+}
 
-    gulp.task(taskName, done => {
-        // force: true 即允许 del 控制本目录以外的文件
-        del(mix.config.cleanFileType, {force: true});
-        mix.util.log('Clean', `清理所有的 ${mix.config.cleanFileType.join(', ')} 文件`);
-
-        done();
-    });
-
-    // 任务说明
-    mix.addTaskDescription(taskName, '清理多余文件（清理内容在 config.json 中配置）');
-};
+module.exports = TimeFormat;

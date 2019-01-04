@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,17 +14,15 @@
 
 
 // 显示 QMUI Web 的版本号
-module.exports = function (gulp, common) {
+module.exports = (gulp, mix) => {
 
-    var taskName = 'version';
+    const taskName = 'version';
 
-    gulp.task(taskName, function (done) {
-        common.util.log('当前项目运行的 QMUI Web 版本号: ' + common.util.colors.green(common.packageInfo.version));
+    gulp.task(taskName, done => {
+        mix.util.log('当前项目运行的 QMUI Web 版本号: ' + mix.util.colors.green(mix.packageInfo.version));
         done();
     });
 
     // 任务说明
-    common.tasks[taskName] = {
-        description: '显示 QMUI Web 的版本信息'
-    };
+    mix.addTaskDescription(taskName, '显示 QMUI Web 的版本信息');
 };

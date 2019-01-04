@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,11 +14,11 @@
 
 
 // proxy 监视文件改动并重新载入
-module.exports = function (gulp, common) {
+module.exports = (gulp, common) => {
 
-    gulp.task('proxy', function (done) {
+    gulp.task('proxy', done => {
 
-        var showLog = function () {
+        const showLog = () => {
             if (common.config.browserSyncShowLog) {
                 return 'info';
             }
@@ -31,7 +31,7 @@ module.exports = function (gulp, common) {
             port: common.config.browserSync.browserSyncPort,
             host: common.config.browserSync.browserSyncHost,
             logLevel: showLog(),
-            logPrefix: common.util.colors.gray(common.lib.getCurrentTime()),
+            logPrefix: common.util.colors.gray(common.timeFormat.getCurrentTime()),
             startPath: common.config.browserSync.browserSyncStartPath
         });
         gulp.watch(common.config.browserSync.browserSyncWatchPath).on('all', common.reload);

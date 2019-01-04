@@ -1,6 +1,6 @@
 /**
  * Tencent is pleased to support the open source community by making QMUI Web available.
- * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ * Copyright (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
  * Licensed under the MIT License (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
@@ -14,33 +14,35 @@
 
 
 // gulpfile.js QMUI Web Gulp 工作流
-var gulp = require('gulp'),
-    fs = require('fs'),
-    common = require('./workflow/common.js');
+const gulp = require('gulp');
+const fs = require('fs');
+const mix = new (require('./workflow/Mix.js'))();
 
 // 载入基础任务
-var basicTaskPath = 'workflow/basicTasks';
-var combinedTaskPath = 'workflow';
+const basicTaskPath = 'workflow/basicTasks';
+const combinedTaskPath = 'workflow';
 
-fs.readdirSync(basicTaskPath).filter(function (file) {
+const basicTaskPathFilterCallback = file => {
     return file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
-}).sort().forEach(function (file) {
-    require('./' + basicTaskPath + '/' + file)(gulp, common);
+};
+
+fs.readdirSync(basicTaskPath).filter(basicTaskPathFilterCallback).sort().forEach(file => {
+    require('./' + basicTaskPath + '/' + file)(gulp, mix);
 });
 
 // 载入复合任务
 
 // 载入 watch 任务
-require('./' + combinedTaskPath + '/watch')(gulp, common);
+require('./' + combinedTaskPath + '/watch')(gulp, mix);
 
 // 载入自定义任务
-if (common.config.customTasks) {
-    Object.keys(common.config.customTasks).forEach(function (customTaskName) {
-        require('./' + common.config.customTasks[customTaskName])(gulp, common);
+if (mix.config.customTasks) {
+    Object.keys(mix.config.customTasks).forEach(customTaskName => {
+        require('./' + mix.config.customTasks[customTaskName])(gulp, mix);
     });
 }
 
 // 载入 start 和 initProject 任务
-['start', 'initProject'].forEach(function (file) {
-    require('./' + combinedTaskPath + '/' + file)(gulp, common);
+['start', 'initProject'].forEach(file => {
+    require('./' + combinedTaskPath + '/' + file)(gulp, mix);
 });
