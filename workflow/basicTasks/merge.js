@@ -15,10 +15,105 @@
 
 // 合并变更文件
 const path = require('path');
+const argv = require('yargs').argv;
+const through = require('through2');
+const minimatch = require('minimatch');
 
 module.exports = (gulp, mix) => {
 
     const taskName = 'merge';
+
+    const mergeReference = function (rules) {
+        // 基于 https://github.com/aDaiCode/gulp-merge-link
+        rules = rules || [];
+
+        const linkRegex = /<link(?:\s+|\s+.+\s+)href\s*=\s*["']?(.+\.css).*?>/g;
+        const scriptRegex = /<script(?:\s+|\s+.+\s+)src\s*=\s*["']?(.+\.js).*?script\s*>/g;
+
+        const linkTemplate = function (href) {
+            return '<link rel="stylesheet" href="' + href + '"/>';
+        };
+        const scriptTemplate = function (src) {
+            return '<script type="text/javascript" src="' + src + '"></script>';
+        };
+
+        const getReference = function (reg, contents) {
+            let result,
+                references = [];
+            // noinspection JSAssignmentUsedAsCondition
+            while (result = reg.exec(contents)) {
+                references.push({
+                    match: result[0],
+                    url: result[1].trim().replace(/^\.\//, '')
+                });
+            }
+            return references;
+        };
+
+        const getTemplate = function (url) {
+            const isScript = /\.js$/.test(url);
+            if (isScript) {
+                return scriptTemplate(url);
+            } else {
+                return linkTemplate(url);
+            }
+        };
+
+        return through.obj(function (file, encoding, callback) {
+            if (file.isNull() || file.isStream()) {
+                return callback(null, file);
+            }
+
+            let contents = String(file.contents);
+            let references = [],
+                replaceList = [],
+                flag = {};
+
+            // 获取所有引用
+            references = references.concat(getReference(linkRegex, contents)).concat(getReference(scriptRegex, contents));
+
+            // 循环所有引用，检测是否需要进行处理
+            for (let key in references) {
+                let reference = references[key];
+
+                for (let targetUrl in rules) {
+                    // 把引用与传入的合并规则进行对比，把命中规则的引用进行合并处理
+                    if (!rules.hasOwnProperty(targetUrl)) {
+                        break;
+                    }
+                    let sourceUrls = rules[targetUrl];
+
+                    const sourceUrlFound = sourceUrls.find(sourceUrl => {
+                        sourceUrl = sourceUrl.trim().replace(/^\.\//, '');
+
+                        return minimatch(reference.url, sourceUrl);
+                    });
+
+                    if (sourceUrlFound) {
+                        replaceList.push({
+                            match: reference.match,
+                            replace: flag[targetUrl] ? '' : getTemplate(targetUrl)
+                        });
+
+                        flag[targetUrl] = true;
+                        break;
+                    }
+                }
+            }
+
+            if (argv.debug) {
+                mix.util.log('Merge', file.path);
+            }
+
+            replaceList.map(replace => {
+                contents = contents.replace(replace.match, replace.replace);
+            });
+
+            file.contents = Buffer.from(contents);
+
+            return callback(null, file);
+        });
+    };
 
     gulp.task(taskName, done => {
         // 读取合并规则并保存起来
@@ -80,7 +175,7 @@ module.exports = (gulp, mix) => {
         }
         // 变更文件引用路径
         gulp.src(mix.config.paths.htmlResultPath + '/**/*.html')
-            .pipe(mix.plugins.merge(mergeRule))
+            .pipe(mergeReference(mergeRule))
             .pipe(gulp.dest(mix.config.paths.htmlResultPath));
         mix.util.log('Merge', '文件合并变更已完成');
 
