@@ -176,6 +176,10 @@ module.exports = (gulp, mix) => {
         // 变更文件引用路径
         gulp.src(mix.config.paths.htmlResultPath + '/**/*.html')
             .pipe(mergeReference(mergeRule))
+            .pipe(mix.plugins.htmlmin({
+                removeComments: true,
+                collapseWhitespace: true
+            }))
             .pipe(gulp.dest(mix.config.paths.htmlResultPath));
         mix.util.log('Merge', '文件合并变更已完成');
 
