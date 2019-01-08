@@ -23,21 +23,21 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'merge';
 
-    const mergeReference = function (rules) {
+    const mergeReference = rules => {
         // 基于 https://github.com/aDaiCode/gulp-merge-link
         rules = rules || [];
 
         const linkRegex = /<link(?:\s+|\s+.+\s+)href\s*=\s*["']?(.+\.css).*?>/g;
         const scriptRegex = /<script(?:\s+|\s+.+\s+)src\s*=\s*["']?(.+\.js).*?script\s*>/g;
 
-        const linkTemplate = function (href) {
+        const linkTemplate = href => {
             return '<link rel="stylesheet" href="' + href + '"/>';
         };
-        const scriptTemplate = function (src) {
+        const scriptTemplate = src => {
             return '<script type="text/javascript" src="' + src + '"></script>';
         };
 
-        const getReference = function (reg, contents) {
+        const getReference = (reg, contents) => {
             let result,
                 references = [];
             // noinspection JSAssignmentUsedAsCondition
@@ -50,7 +50,7 @@ module.exports = (gulp, mix) => {
             return references;
         };
 
-        const getTemplate = function (url) {
+        const getTemplate = url => {
             const isScript = /\.js$/.test(url);
             if (isScript) {
                 return scriptTemplate(url);
@@ -59,7 +59,7 @@ module.exports = (gulp, mix) => {
             }
         };
 
-        return through.obj(function (file, encoding, callback) {
+        return through.obj((file, encoding, callback) => {
             if (file.isNull() || file.isStream()) {
                 return callback(null, file);
             }
@@ -124,7 +124,7 @@ module.exports = (gulp, mix) => {
             mix.util.error('Merge', '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
         }
 
-        const replaceProjectParentDirectory = function (source) {
+        const replaceProjectParentDirectory = source => {
             // 转换为以项目根目录为开头的路径形式
             const projectParentDirectory = path.resolve('../../..');
             return source.replace(projectParentDirectory, '').replace(/^[\\\/]/, '');
