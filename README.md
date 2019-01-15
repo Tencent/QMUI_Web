@@ -9,6 +9,8 @@
 >
 > 下载 Demo：[https://github.com/QMUI/QMUIDemo_Web/releases](https://github.com/QMUI/QMUIDemo_Web/releases)
 
+[加入我们（长期有效）](https://qmuiteam.com/join-us/)
+
 [[English]](https://github.com/Tencent/QMUI_Web/tree/master/docs-translations/en-US/README.md) / [[简体中文]](https://github.com/Tencent/QMUI_Web/blob/master/README.md) / [[繁體中文]](//github.com/Tencent/QMUI_Web/tree/master/docs-translations/zh-TW/README.md)
 
 [![Build Status](https://travis-ci.org/Tencent/QMUI_Web.svg?branch=master)](https://travis-ci.org/Tencent/QMUI_Web "Build Status")
