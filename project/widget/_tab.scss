@@ -24,7 +24,7 @@
 }
 
 .qui_tabNav {
-    @extend %clear;
+    @include clear;
     padding: $tabNav_padding;
     border-bottom: 1px solid #DEE0E2;
 }

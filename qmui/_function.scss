@@ -30,11 +30,11 @@
 }
 
 .qui_txtOverflow {
-    @extend %text_ellipsis;
+    @include text-ellipsis;
 }
 
 .qui_clear {
-    @extend %clear;
+    @include clear;
 }
 
 .qui_txtNowrap {

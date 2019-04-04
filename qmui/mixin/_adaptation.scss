@@ -11,7 +11,7 @@
 ///
 /// @group 布局
 /// @name clear
-%clear {
+@mixin clear {
     &:after {
         clear: both;
         content: ".";
@@ -22,11 +22,15 @@
     }
 }
 
+%clear {
+    @include clear;
+}
+
 /// 单行省略号
 ///
 /// @group 外观
 /// @name text-ellipsis
-%text-ellipsis {
+@mixin text-ellipsis {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -35,8 +39,8 @@
     word-wrap: normal;
 }
 
-%text_ellipsis {
-    @extend %text-ellipsis;
+%text-ellipsis {
+    @include text-ellipsis;
 }
 
 /// 多行省略号
@@ -59,6 +63,7 @@
     line-clamp: $line;
     -webkit-box-orient: vertical;
     -moz-box-orient: vertical;
+    -webkit-text-size-adjust: none;
     // stylelint-enable
     box-orient: vertical;
 }
@@ -67,13 +72,13 @@
 ///
 /// @group 外观
 /// @name text-breakWord
-%text-breakWord {
+@mixin text-breakWord {
     word-wrap: break-word;
     word-break: break-word;
 }
 
-%text_breakWord {
-    @extend %text-breakWord;
+%text-breakWord {
+    @include text-breakWord;
 }
 
 /// 适配多倍屏的 CSS 选择器
