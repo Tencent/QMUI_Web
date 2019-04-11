@@ -14,10 +14,10 @@
 
 
 // 刷新浏览器
-module.exports = (gulp, common) => {
+module.exports = (gulp, mix) => {
 
     gulp.task('reload', done => {
-        common.reload();
+        mix.reload();
         done();
     });
 };
