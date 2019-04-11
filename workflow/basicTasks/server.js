@@ -19,7 +19,7 @@ module.exports = (gulp, mix) => {
     gulp.task('server', done => {
 
         const showLog = () => {
-            if (mix.config.browserSyncShowLog) {
+            if (mix.config.browserSync.browserSyncShowLog) {
                 return 'info';
             }
             return 'silent';
@@ -33,7 +33,7 @@ module.exports = (gulp, mix) => {
                 routes: mix.config.browserSync.browserSyncServerRoute
             },
             logLevel: showLog(),
-            logPrefix: mix.util.colors.gray(mix.timeFormat.getCurrentTime()),
+            logPrefix: mix.util.addColor(mix.timeFormat.getCurrentTime(), 'info'),
             startPath: mix.config.browserSync.browserSyncStartPath,
             port: mix.config.browserSync.browserSyncPort
         });

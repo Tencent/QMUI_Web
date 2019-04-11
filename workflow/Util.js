@@ -34,6 +34,8 @@ class Util {
                 return this.colors.yellow(str);
             } else if (type === 'error') {
                 return this.colors.red(str);
+            } else if (type === 'info') {
+                return this.colors.gray(str);
             }
             return this.colors.green(str);
         }

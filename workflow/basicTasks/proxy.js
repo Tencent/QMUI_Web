@@ -14,27 +14,27 @@
 
 
 // proxy 监视文件改动并重新载入
-module.exports = (gulp, common) => {
+module.exports = (gulp, mix) => {
 
     gulp.task('proxy', done => {
 
         const showLog = () => {
-            if (common.config.browserSyncShowLog) {
+            if (mix.config.browserSync.browserSyncShowLog) {
                 return 'info';
             }
             return 'silent';
         };
 
-        common.browserSync.init({
+        mix.browserSync.init({
             open: 'external',
-            proxy: common.config.browserSync.browserSyncProxy,
-            port: common.config.browserSync.browserSyncPort,
-            host: common.config.browserSync.browserSyncHost,
+            proxy: mix.config.browserSync.browserSyncProxy,
+            port: mix.config.browserSync.browserSyncPort,
+            host: mix.config.browserSync.browserSyncHost,
             logLevel: showLog(),
-            logPrefix: common.util.colors.gray(common.timeFormat.getCurrentTime()),
-            startPath: common.config.browserSync.browserSyncStartPath
+            logPrefix: mix.util.addColor(mix.timeFormat.getCurrentTime(), 'info'),
+            startPath: mix.config.browserSync.browserSyncStartPath
         });
-        gulp.watch(common.config.browserSync.browserSyncWatchPath).on('all', common.reload);
+        gulp.watch(mix.config.browserSync.browserSyncWatchPath).on('all', mix.reload);
 
         done();
     });
