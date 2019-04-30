@@ -18,15 +18,15 @@ const isEqual = require('lodash/isEqual');
 
 // 读取含有工具方法的 Sass 文件列表（Sass 文件需要以 Sassdoc 格式编写注释），并将工具名称集输出为 JS 文件
 // 传入 Sass 文件列表，以及待输出的 JS 文件地址
-module.exports = gulp => {
+module.exports = (gulp) => {
 
-    gulp.task('readToolMethod', done => {
+    gulp.task('readToolMethod', (done) => {
 
-        sassdoc.parse('./qmui/mixin').then(data => {
+        sassdoc.parse('./qmui/mixin').then((data) => {
             if (data.length > 0) {
                 // 按 group 把数组重新整理成二维数组
-                let result = [],
-                    currentGroup = null,
+                const result = [];
+                let currentGroup = null,
                     currentGroupArray = null;
                 for (let itemIndex = 0; itemIndex < data.length; itemIndex++) {
                     const item = data[itemIndex];

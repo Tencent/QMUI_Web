@@ -45,16 +45,12 @@ module.exports = (gulp, mix) => {
     const sassTaskName = 'sass';
     const sassWithCacheTaskName = 'sassWithCache';
 
-    const sassOptionWithCache = () => {
-        return {since: gulp.lastRun(sassWithCacheTaskName)};
-    };
+    const sassOptionWithCache = () => ({since: gulp.lastRun(sassWithCacheTaskName)});
 
     const sassHandle = (options) => {
-        options = options || (() => {
-            return {};
-        });
-        return () => {
-            return gulp.src('../project/**/*.scss', options())
+        options = options || (() => ({}));
+        return () =>
+            gulp.src('../project/**/*.scss', options())
                 .pipe(mix.plugins.sassInheritance({base: '../project/'}))
                 .pipe(mix.plugins.if(Boolean(argv.debug), mix.plugins.debug({title: 'Sass Debug:'})))
                 .pipe(mix.plugins.if(mix.config.needsSourceMaps, mix.plugins.sourcemaps.init()))
@@ -65,11 +61,10 @@ module.exports = (gulp, mix) => {
                     outputStyle: 'expanded'
                 }).on('error', mix.plugins.sass.logError))
                 .pipe(mix.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
-                    browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie < 8', 'iOS >= 8']
+                    browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie <= 8', 'iOS > 8']
                 })]))
                 .pipe(mix.plugins.if(mix.config.needsSourceMaps, mix.plugins.sourcemaps.write('./maps'))) // Source Maps 的 Base 输出目录为 style 输出的目录
-                .pipe(gulp.dest(styleResultPath));
-        }
+                .pipe(gulp.dest(styleResultPath))
     };
 
     gulp.task(sassWithCacheTaskName, sassHandle(sassOptionWithCache));

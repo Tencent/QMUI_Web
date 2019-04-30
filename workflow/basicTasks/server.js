@@ -16,7 +16,7 @@
 // server 监视文件改动并重新载入
 module.exports = (gulp, mix) => {
 
-    gulp.task('server', done => {
+    gulp.task('server', (done) => {
 
         const showLog = () => {
             if (mix.config.browserSync.browserSyncShowLog) {

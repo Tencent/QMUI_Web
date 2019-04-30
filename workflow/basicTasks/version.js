@@ -18,7 +18,7 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'version';
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
         mix.util.log('当前项目运行的 QMUI Web 版本号: ' + mix.util.colors.green(mix.packageInfo.version));
         done();
     });

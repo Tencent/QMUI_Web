@@ -22,11 +22,9 @@ const mix = new (require('./workflow/Mix.js'))();
 const basicTaskPath = 'workflow/basicTasks';
 const combinedTaskPath = 'workflow';
 
-const basicTaskPathFilterCallback = file => {
-    return file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
-};
+const basicTaskPathFilterCallback = (file) => file.match(/js$/); // 排除非 JS 文件，如 Vim 临时文件
 
-fs.readdirSync(basicTaskPath).filter(basicTaskPathFilterCallback).sort().forEach(file => {
+fs.readdirSync(basicTaskPath).filter(basicTaskPathFilterCallback).sort().forEach((file) => {
     require('./' + basicTaskPath + '/' + file)(gulp, mix);
 });
 
@@ -37,12 +35,12 @@ require('./' + combinedTaskPath + '/watch')(gulp, mix);
 
 // 载入自定义任务
 if (mix.config.customTasks) {
-    Object.keys(mix.config.customTasks).forEach(customTaskName => {
+    Object.keys(mix.config.customTasks).forEach((customTaskName) => {
         require('./' + mix.config.customTasks[customTaskName])(gulp, mix);
     });
 }
 
 // 载入 start 和 initProject 任务
-['start', 'initProject'].forEach(file => {
+['start', 'initProject'].forEach((file) => {
     require('./' + combinedTaskPath + '/' + file)(gulp, mix);
 });

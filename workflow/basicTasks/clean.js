@@ -20,7 +20,7 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'clean';
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
         // force: true 即允许 del 控制本目录以外的文件
         del(mix.config.cleanFileType, {force: true});
         mix.util.log('Clean', `清理所有的 ${mix.config.cleanFileType.join(', ')} 文件`);

@@ -23,40 +23,36 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'merge';
 
-    const mergeReference = rules => {
+    const mergeReference = (rules) => {
         // 基于 https://github.com/aDaiCode/gulp-merge-link
         rules = rules || [];
 
         const linkRegex = /<link(?:\s+|\s+.+\s+)href\s*=\s*["']?(.+\.css).*?>/g;
         const scriptRegex = /<script(?:\s+|\s+.+\s+)src\s*=\s*["']?(.+\.js).*?script\s*>/g;
 
-        const linkTemplate = href => {
-            return '<link rel="stylesheet" href="' + href + '"/>';
-        };
-        const scriptTemplate = src => {
-            return '<script type="text/javascript" src="' + src + '"></script>';
-        };
+        const linkTemplate = (href) => '<link rel="stylesheet" href="' + href + '"/>';
+        const scriptTemplate = (src) => '<script type="text/javascript" src="' + src + '"></script>';
 
         const getReference = (reg, contents) => {
-            let result,
-                references = [];
-            // noinspection JSAssignmentUsedAsCondition
+            let result;
+            const references = [];
+            /* eslint-disable no-cond-assign */
             while (result = reg.exec(contents)) {
                 references.push({
                     match: result[0],
                     url: result[1].trim().replace(/^\.\//, '')
                 });
             }
+            /* eslint-enable no-cond-assign */
             return references;
         };
 
-        const getTemplate = url => {
-            const isScript = /\.js$/.test(url);
+        const getTemplate = (url) => {
+            const isScript = (/\.js$/).test(url);
             if (isScript) {
                 return scriptTemplate(url);
-            } else {
-                return linkTemplate(url);
             }
+            return linkTemplate(url);
         };
 
         return through.obj((file, encoding, callback) => {
@@ -65,25 +61,25 @@ module.exports = (gulp, mix) => {
             }
 
             let contents = String(file.contents);
-            let references = [],
-                replaceList = [],
-                flag = {};
+            let references = [];
+            const replaceList = [];
+            const flag = {};
 
             // 获取所有引用
             references = references.concat(getReference(linkRegex, contents)).concat(getReference(scriptRegex, contents));
 
             // 循环所有引用，检测是否需要进行处理
-            for (let key in references) {
-                let reference = references[key];
+            for (const key in references) {
+                const reference = references[key];
 
-                for (let targetUrl in rules) {
+                for (const targetUrl in rules) {
                     // 把引用与传入的合并规则进行对比，把命中规则的引用进行合并处理
                     if (!rules.hasOwnProperty(targetUrl)) {
                         break;
                     }
-                    let sourceUrls = rules[targetUrl];
+                    const sourceUrls = rules[targetUrl];
 
-                    const sourceUrlFound = sourceUrls.find(sourceUrl => {
+                    const sourceUrlFound = sourceUrls.find((sourceUrl) => {
                         sourceUrl = sourceUrl.trim().replace(/^\.\//, '');
 
                         return minimatch(reference.url, sourceUrl);
@@ -105,7 +101,7 @@ module.exports = (gulp, mix) => {
                 mix.util.log('Merge', file.path);
             }
 
-            replaceList.map(replace => {
+            replaceList.forEach((replace) => {
                 contents = contents.replace(replace.match, replace.replace);
             });
 
@@ -115,23 +111,23 @@ module.exports = (gulp, mix) => {
         });
     };
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
         // 读取合并规则并保存起来
         let mergeRule;
         try {
             mergeRule = require('../../../qmui.merge.rule.js');
-        } catch (event) {
+        } catch (error) {
             mix.util.error('Merge', '没有找到合并规则文件，请按照 http://qmuiteam.com/web/scaffold.html#qui_scaffoldMerge 的说明进行合并规则配置');
         }
 
-        const replaceProjectParentDirectory = source => {
+        const replaceProjectParentDirectory = (source) => {
             // 转换为以项目根目录为开头的路径形式
             const projectParentDirectory = path.resolve('../../..');
-            return source.replace(projectParentDirectory, '').replace(/^[\\\/]/, '');
+            return source.replace(projectParentDirectory, '').replace(/^[\\/]/, '');
         };
 
         // 合并文件
-        for (let sourceFile in mergeRule) {
+        for (const sourceFile in mergeRule) {
             // 后面变更文件时，需要的是每个文件在 HTML 中书写的路径，即相对模板文件的路径
             // 但对合并文件，即 concat 来说，需要的是文件相对 qmui_web 目录的路径，因此需要对合并的结果以及来源文件手工加上一个 '../'
 
@@ -140,8 +136,8 @@ module.exports = (gulp, mix) => {
             const resultFilePath = path.dirname(resultFile);
             const value = mergeRule[sourceFile]; // 来源文件原始路径获取
 
-            let childFiles = [],
-                childFilesString = ''; // 用于在 Log 中显示
+            const childFiles = [];
+            let childFilesString = ''; // 用于在 Log 中显示
 
             // 遍历来源文件并给每个文件加上 '../'
             for (let index = 0; index < value.length; index++) {
@@ -156,13 +152,11 @@ module.exports = (gulp, mix) => {
                 }
             }
 
-            const condition = file => {
-                return file.path.toString().indexOf('.js') !== -1;
-            };
+            const condition = (file) => file.path.toString().indexOf('.js') !== -1;
 
             gulp.src(childFiles)
                 .pipe(mix.plugins.plumber({
-                    errorHandler: error => {
+                    errorHandler: (error) => {
                         mix.util.error('Merge', error);
                         mix.util.beep();
                     }

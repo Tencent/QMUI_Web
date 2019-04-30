@@ -22,7 +22,7 @@ module.exports = (gulp, mix) => {
 
     // 判断 browserSync 的值是否正确
     if (mix.config.browserSync.browserSyncMod !== 'server' && mix.config.browserSync.browserSyncMod !== 'proxy' && mix.config.browserSync.browserSyncMod !== 'close') {
-        gulp.task('main', done => {
+        gulp.task('main', (done) => {
             mix.util.error('Config', `Config 中的 browserSyncMod 仅支持 ${mix.plugins.util.colors.yellow('server')}, ${mix.plugins.util.colors.yellow('proxy')}, ${mix.plugins.util.colors.yellow('close')} 三个值`);
             done();
         });
@@ -37,7 +37,7 @@ module.exports = (gulp, mix) => {
 
         // 加入用户自定义任务
         if (mix.config.customTasks) {
-            Object.keys(mix.config.customTasks).forEach(customTaskName => {
+            Object.keys(mix.config.customTasks).forEach((customTaskName) => {
                 mainTasks.push(customTaskName);
             });
         }
@@ -49,7 +49,7 @@ module.exports = (gulp, mix) => {
 
     if (os.platform() === 'linux' || os.platform() === 'darwin') {
 
-        gulp.task('start', done => {
+        gulp.task('start', (done) => {
             if (argv.debug) {
                 mix.util.log('Debug: ', 'QMUI 进入 Debug 模式');
             }

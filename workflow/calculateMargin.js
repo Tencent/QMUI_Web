@@ -25,7 +25,7 @@
  * @returns {{margin: number, hasOptions: boolean}} 返回一个合适的缩进距离。
  */
 
-module.exports = tasksObj => {
+module.exports = (tasksObj) => {
     let hasOptions = false;
     const margin = Object.keys(tasksObj).reduce((maxTaskMargin, taskName) => {
         let optionsMargin = 0;

@@ -22,7 +22,7 @@ const os = require('os');
 
 module.exports = (gulp, mix) => {
 
-    gulp.task('initProject', done => {
+    gulp.task('initProject', (done) => {
         /**
          * 创建一个新项目
          * 第一步：获取 Project 文件夹中的基本目录结构和公共通用组件并持有它们，但排除了主 scss 文件 demo.scss

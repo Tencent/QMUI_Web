@@ -16,9 +16,6 @@ const padStart = require('lodash/padStart');
 
 // 工具方法
 class TimeFormat {
-    constructor() {
-    }
-
     checkDateFormat(date) {
         return padStart(date.toString(), 2, '0');
     }

@@ -16,7 +16,7 @@
 // 刷新浏览器
 module.exports = (gulp, mix) => {
 
-    gulp.task('reload', done => {
+    gulp.task('reload', (done) => {
         mix.reload();
         done();
     });

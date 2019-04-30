@@ -20,7 +20,7 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'list';
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
         const marginData = calculateMargin(mix.tasks);
         const margin = marginData.margin;
         const optionsBuffer = marginData.hasOptions ? '  --' : '';
@@ -31,7 +31,7 @@ module.exports = (gulp, mix) => {
         console.log('');
         console.log('Available tasks');
 
-        Object.keys(mix.getAllTask()).forEach(name => {
+        Object.keys(mix.getAllTask()).forEach((name) => {
 
             const help = mix.getTask(name);
 
@@ -45,7 +45,7 @@ module.exports = (gulp, mix) => {
 
             if (help.options) {
                 const options = Object.keys(help.options);
-                options.forEach(option => {
+                options.forEach((option) => {
                     const optText = help.options[option];
                     args.push('\n ' + optionsBuffer + mix.util.colors.cyan(option) + ' ');
 

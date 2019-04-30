@@ -26,18 +26,18 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'watch';
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
 
         mix.util.log('Watch', 'QMUI 进入自动监听');
 
         // 图片管理（图片文件夹操作同步以及图片文件自动压缩）
 
         // 公共方法
-        const imageMinOnSameDir = _dir => {
-            gulp.src(_dir)
+        const imageMinOnSameDir = (dir) => {
+            gulp.src(dir)
                 .pipe(mix.plugins.plumber({
-                    errorHandler: _error => {
-                        mix.util.error('Min Image', _error);
+                    errorHandler: (error) => {
+                        mix.util.error('Min Image', error);
                         mix.util.beep();
                     }
                 }))
@@ -46,7 +46,7 @@ module.exports = (gulp, mix) => {
                     svgoPlugins: [{removeViewBox: false}],
                     use: [pngquant()]
                 }))
-                .pipe(gulp.dest(path.dirname(_dir)));
+                .pipe(gulp.dest(path.dirname(dir)));
         };
 
         // 独立图片部分
@@ -92,12 +92,7 @@ module.exports = (gulp, mix) => {
                         mix.util.log('Min Image', `对 ${absoluteMinImageFilePath} 进行图片压缩`);
                         imageMinOnSameDir(absoluteMinImageFilePath);
                     } else {
-                        justBeforeAddedImage = justBeforeAddedImage.filter(item => {
-                            if (item !== absoluteMinImageFilePathMd5) {
-                                return item;
-                            }
-
-                        });
+                        justBeforeAddedImage = justBeforeAddedImage.filter((item) => item !== absoluteMinImageFilePathMd5);
                     }
                 },
                 addFileCallback (_fullPathSrc, _fullPathDist) {
@@ -123,12 +118,7 @@ module.exports = (gulp, mix) => {
                         outputEmptyForSyncImageIfNeed();
                         mix.util.log('Sync Image', `同步更新文件到 ${absoluteMinImageFilePath}`);
                     } else {
-                        justAddedImage = justAddedImage.filter(item => {
-                            if (item !== absoluteMinImageFilePathMd5) {
-                                return item;
-                            }
-
-                        });
+                        justAddedImage = justAddedImage.filter((item) => item !== absoluteMinImageFilePathMd5);
                     }
                 }
             });
@@ -184,11 +174,7 @@ module.exports = (gulp, mix) => {
                     imageMinOnSameDir(minImageFile);
 
                 } else if (justAddedImage.includes(minImageFilePathMd5)) {
-                    justAddedImage = justAddedImage.filter(item => {
-                        if (item !== minImageFilePathMd5) {
-                            return item;
-                        }
-                    });
+                    justAddedImage = justAddedImage.filter((item) => item !== minImageFilePathMd5);
                 }
             });
         }

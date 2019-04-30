@@ -15,17 +15,18 @@
 
 // 声明插件以及配置文件的依赖
 const plugins = require('gulp-load-plugins')({
-        rename: {
-            'gulp-file-include': 'include',
-            'gulp-merge-link': 'merge',
-            'gulp-better-sass-inheritance': 'sassInheritance'
-        }
-    });
+    rename: {
+        'gulp-file-include': 'include',
+        'gulp-merge-link': 'merge',
+        'gulp-better-sass-inheritance': 'sassInheritance'
+    }
+});
 const packageInfo = require('../package.json');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 const colors = require('ansi-colors');
 const defaultsDeep = require('lodash/defaultsDeep');
+const util = new (require('./Util'))();
 
 let configDefault;
 let configUser = {};
@@ -33,13 +34,13 @@ let configUser = {};
 // 读取项目配置表
 try {
     configDefault = require('../../qmui.config.js');
-} catch (event) {
-    log(colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
+} catch (error) {
+    util.log(colors.red('QMUI Config: ') + '找不到项目配置表，请按照 http://qmuiteam.com/web/index.html 的说明进行项目配置');
 }
 
 try {
     configUser = require('../../qmui.config.user.js');
-} catch (event) {
+} catch (error) {
     // 没有个人用户配置，无需额外处理
 }
 
@@ -53,13 +54,17 @@ class Mix {
         this.reload = reload;
 
         this.timeFormat = new (require('./TimeFormat'))();
-        this.util = new (require('./Util'))();
+        this.util = util;
 
         this.tasks = {};
     }
 
     /**
      * 增加任务说明的接口。
+     * @param {String} name QMUI 工作流中任务的名字。
+     * @param {String} description 任务的简短介绍。
+     * @param {Object} options 任务的参数。
+     * @returns {undefined}
      */
     addTaskDescription(name, description, options) {
         this.tasks[name] = {
@@ -70,6 +75,7 @@ class Mix {
 
     /**
      * 获取所有任务。
+     * @returns {Array} 返回 QMUI 工作流中所有任务。
      */
     getAllTask() {
         return this.tasks;
@@ -77,6 +83,8 @@ class Mix {
 
     /**
      * 获取单个任务的信息。
+     * @param {String} name 需要获取的 QMUI 工作流任务的名字。
+     * @returns {Object} 返回 QMUI 工作流中某个指定的任务。
      */
     getTask(name) {
         return this.tasks[name];

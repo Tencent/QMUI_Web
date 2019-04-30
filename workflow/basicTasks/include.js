@@ -20,16 +20,16 @@ module.exports = (gulp, mix) => {
 
     const taskName = 'include';
 
-    gulp.task(taskName, done => {
+    gulp.task(taskName, (done) => {
 
-        const _condition = file => {
+        const _condition = (file) => {
             const fileName = path.basename(file.path);
             return !fileName.match(/^_/);
         };
 
         gulp.src(mix.config.paths.htmlSourcePath)
             .pipe(mix.plugins.plumber({
-                errorHandler: error => {
+                errorHandler: (error) => {
                     mix.util.error('Include', error);
                     mix.util.beep();
                 }
