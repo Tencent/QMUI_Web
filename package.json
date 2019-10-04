@@ -40,7 +40,7 @@
         "mkdirp": "^0.5.1",
         "node-sass": "^4.12.0",
         "path": "^0.12.7",
-        "postcss-lazysprite": "^1.8.2",
+        "postcss-lazysprite": "^2.2.0",
         "postcss-svg-sprite": "^1.0.6",
         "through2": "^3.0.1",
         "yargs": "^14.0.0"
