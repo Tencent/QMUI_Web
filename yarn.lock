@@ -382,10 +382,10 @@ ansi-colors@^1.0.1, ansi-colors@^1.1.0:
   dependencies:
     ansi-wrap "^0.1.0"
 
-ansi-colors@^3.0.0:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
-  integrity sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
+ansi-colors@^2.0.1:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-2.0.5.tgz#5da37825fef3e75f3bda47f760d64bfd10e15e10"
+  integrity sha512-yAdfUZ+c2wetVNIFsNRn44THW+Lty6S5TwMpUfLA/UaGhiXbBv/F8E60/1hMLd0cnF/CDoWH8vzVaI5bAcHCjw==
 
 ansi-colors@^4.1.1:
   version "4.1.1"
@@ -956,7 +956,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.5.2:
+bluebird@^3.4.7:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.0.tgz#56a6a886e03f6ae577cffedeb524f8f2450293cf"
   integrity sha512-aBQ1FxIa7kSWCcmKHlcHFlT2jt6J/l4FzC7KcPELkOJOsPOb/bccdhmIrKDfXhwFrmc7vDoDrrepFvGqjyXGJg==
@@ -7444,21 +7444,20 @@ postcss-jsx@^0.36.0:
   dependencies:
     "@babel/core" ">=7.1.0"
 
-postcss-lazysprite@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/postcss-lazysprite/-/postcss-lazysprite-2.2.0.tgz#d10e5a4c0db98aedbb4bb1c04a1c351c5c34f87e"
-  integrity sha512-M2AZoLTvjRSt4fOpybLrG2ksMFiM51DpOJ6nHJPyYh5iOP0y52OnHbyuMr3gm2jJf5CIH2p1e/F8abiPbOIQxw==
+postcss-lazysprite@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/postcss-lazysprite/-/postcss-lazysprite-1.8.2.tgz#9b9420278ad9a0043a2847b1958ae48d901a3440"
+  integrity sha1-m5QgJ4rZoAQ6KEexlYrkjZAaNEA=
   dependencies:
-    ansi-colors "^3.0.0"
-    bluebird "^3.5.2"
+    ansi-colors "^2.0.1"
+    bluebird "^3.4.7"
     fancy-log "^1.3.2"
     lodash "^4.17.4"
     mkdirp "^0.5.1"
-    postcss "^7.0.8"
+    postcss "^6.0.1"
     rev-hash "^2.0.0"
     spark-md5 "^3.0.0"
     spritesmith "^3.2.1"
-    svg-sprite "1.5.0"
 
 postcss-less@^3.1.0:
   version "3.1.4"
@@ -7583,7 +7582,7 @@ postcss@7.0.12:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^6.0.16:
+postcss@^6.0.1, postcss@^6.0.16:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   integrity sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
@@ -7601,7 +7600,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.7:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^7.0.17, postcss@^7.0.8:
+postcss@^7.0.17:
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.18.tgz#4b9cda95ae6c069c67a4d933029eddd4838ac233"
   integrity sha512-/7g1QXXgegpF+9GJj4iN7ChGF40sYuGYJ8WZu8DZWnmhQ/G36hfdk3q9LBJmoK+lZ+yzZ5KYpOoxq7LF1BxE8g==
@@ -9310,7 +9309,7 @@ sver-compat@^1.5.0:
     es6-iterator "^2.0.1"
     es6-symbol "^3.1.1"
 
-svg-sprite@1.5.0, svg-sprite@^1.3.7:
+svg-sprite@^1.3.7:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/svg-sprite/-/svg-sprite-1.5.0.tgz#d0c0dd2f9aa1bc12ca649d7a8f301370b26e42ce"
   integrity sha512-0mE5BLY3K8wg3+HrYfzpiKbIM44IGcg8uINED8ri22EdQbLvGecOHjRtkrNAlphbiU5kyGyqoBlIaukL45fs2Q==
