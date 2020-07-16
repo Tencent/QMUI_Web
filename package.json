@@ -35,7 +35,7 @@
         "gulp-uglify": "^3.0.2",
         "imagemin-pngquant": "^8.0.0",
         "js-md5": "^0.7.3",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "lodash.template": "^4.5.0",
         "minimatch": "^3.0.4",
         "mkdirp": "^0.5.1",
