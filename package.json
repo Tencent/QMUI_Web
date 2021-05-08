@@ -46,7 +46,7 @@
         "set-value": "^3.0.2",
         "static-eval": "^2.1.0",
         "through2": "^4.0.2",
-        "yargs": "^16.2.0"
+        "yargs": "^14.2.1"
     },
     "scripts": {
         "lint": "./node_modules/.bin/eslint ."
