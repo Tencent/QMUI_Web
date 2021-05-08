@@ -16,6 +16,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - cp qmui.config.js ../qmui.config.js
   - npm install -g gulp-cli
+  - npm rebuild node-sass
   # install modules
   - npm install
 
