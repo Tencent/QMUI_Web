@@ -34,7 +34,7 @@ QMUI Web has a built-in workflow and tools to automate a lot of work, including 
 In addition to the built-in basic components, we also provide several extended components such as file upload button, tree menu, etc.
 
 ## Setup
-ure to install [Node.js](https://nodejs.org/) (recommend 8.0 or later) and then install Gulp globally with the following command:
+ure to install [Node.js](https://nodejs.org/) (recommend 10.0 or later) and then install Gulp globally with the following command:
 
 ```bash
 #Install gulp
