@@ -43,7 +43,7 @@
         "path": "^0.12.7",
         "postcss-lazysprite": "^1.8.2",
         "postcss-svg-sprite": "^1.0.6",
-        "set-value": "^3.0.2",
+        "set-value": "^4.0.1",
         "static-eval": "^2.1.0",
         "through2": "^4.0.2",
         "yargs": "^14.2.1"
