@@ -54,12 +54,12 @@ module.exports = (gulp, mix) => {
                 .pipe(mix.plugins.sassInheritance({base: '../project/'}))
                 .pipe(mix.plugins.if(Boolean(argv.debug), mix.plugins.debug({title: 'Sass Debug:'})))
                 .pipe(mix.plugins.if(mix.config.needsSourceMaps, mix.plugins.sourcemaps.init()))
-                .pipe(mix.plugins.sass({
+                .pipe(mix.plugins.dartSass({
                     errLogToConsole: true,
                     indentWidth: 4,
                     precision: 6,
                     outputStyle: 'expanded'
-                }).on('error', mix.plugins.sass.logError))
+                }).on('error', mix.plugins.dartSass.logError))
                 .pipe(mix.plugins.postcss([lazysprite(lazySpriteConfig), svgSprite(svgSpriteConfig), autoprefixer({
                     browsers: ['defaults', 'last 5 versions', '> 5% in CN', 'not ie <= 8', 'iOS > 8']
                 })]))
