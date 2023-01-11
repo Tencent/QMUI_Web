@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@use "sass:math";
+
 ////
 /// 辅助数值计算的工具方法
 /// @author Kayo
@@ -91,7 +93,7 @@
 /// @param {Number | String} $parent - 较大的长度值
 /// @param {Number | String} $child - 较小的长度值
 @function getLengthMaxIntegerCenter($parent, $child) {
-    $center: ($parent - $child) / 2;
+    $center: math.div($parent - $child, 2);
     // 注意这里的取整使用 ceil 而不是 floor 并不是随意写的，这是模拟现代浏览器对于小数点长度值的表现而定的。
     // 例如，margin-top: 10.5px 在现代浏览器中会表现为 margin-top: 11px 而不是 margin-top: 10px
     // 又例如，margin-top: -10.5px 在现代浏览器的表现等同于 margin-top: -10px 而不是 margin-top: -11px
@@ -130,7 +132,7 @@
 @function sqrt($num) {
     $temp:1;
     @while abs($temp - $num / $temp) > 1e-6 {
-        $temp: ($temp + $num/$temp) / 2;
+        $temp: ($temp + $num / $temp) / 2;
     }
     @return $temp;
 }
